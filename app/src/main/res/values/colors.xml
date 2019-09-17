@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4D94FF</color>
+    <color name="colorPrimaryDark">#4D94FF</color>
+    <color name="colorAccent">#4D94FF</color>
+    <!--<color name="black">#000</color>
+    <color name="white">#ffffff</color>
+    <color name="B3">#B3B3B3</color>
+    <color name="orange">#FFAA00</color>
+    <color name="bg_blue_3_color">#4D94FF</color>
+    <color name="red">#E83030</color>
+    <color name="line">#888888</color>
+    <color name="line_e6">#E6E6E6</color>
+    <color name="light9">#999999</color>
+    <color name="green">#5000ff00</color>-->
+
+    <!--背景色-->
+    <color name="bg_content_grey">#F5F5F5</color>
+    <color name="bg_title_red">#E83030</color>
+    <color name="bg_white">#ffffff</color>
+    <color name="bg_dark">#ff131f30</color>
+    <color name="bg_dark_line">#081724</color>
+    <color name="bg_light_line">#ffe1ebfa</color>
+    <color name="bg_dark_light">#333842</color>
+    <!--主色-->
+    <color name="bg_blue">#4D94FF</color>
+    <color name="bg_chart_txt">#A3B4CC</color>
+    <color name="bg_halfblue">#B2D1FF</color>
+    <!--辅助色-->
+    <color name="bg_orange">#FF9933</color>
+    <!--默认分割线-->
+    <color name="bg_line">#e8e8eb</color>
+    <color name="bg_green">#ff52cca3</color>
+    <color name="bg_green_light">#ffebfff8</color>
+    <!--买入未选背景色-->
+    <!--<color name="bg_green_half">#AEDEB6</color>-->
+    <color name="bg_red">#FF7F66</color>
+    <color name="bg_red_light">#fffff7f7</color>
+    <!--<color name="bg_red_half">#FFD0CC</color>-->
+    <color name="bg_half_white">#80000000</color>
+    <color name="bg_half">#40000000</color>
+    <color name="bg_db">#DBDBDB</color>
+    <color name="bg_dig">#c1ddf3</color>
+
+    <!--字体-->
+    <!--卖出辅助色-->
+    <color name="txt_red">#FF7F66</color>
+    <color name="txt_black">#000</color>
+    <color name="txt_white">#ffffff</color>
+    <color name="txt_grey">#808080</color>
+    <color name="txt_blue">#4D94FF</color>
+    <color name="txt_blue_dark">#00AAFF</color>
+    <!--重要字体颜色-->
+    <color name="txt_dark">#333333</color>
+    <!--主要字体颜色-->
+    <color name="txt_all6">#666666</color>
+    <!--次要字体颜色-->
+    <color name="txt_all9">#999999</color>
+    <!--辅助文字颜色-->
+    <color name="txt_allC">#CCCCCC</color>
+    <color name="txt_whiteBlue">#CCE0FF</color>
+
+    <color name="txt_all8">#888888</color>
+    <color name="txt_half8">#50888888</color>
+    <color name="txt_light8">#20888888</color>
+
+    <color name="txt_allB">#BBBBBB</color>
+    <!--买入辅助色-->
+    <color name="txt_green">#ff52cca3</color>
+
+    <!--输入框-->
+    <color name="input_txt">#525A66</color>
+    <color name="input_hint">#C4C7CC</color>
+
+    <!-- QRCode scanner color begin -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="corner_color">#00FF00</color>
+    <color name="txt_db">#DBDBDB</color>
+    <!-- QRCode scanner color end -->
+
+    <!--K线图-->
+    <!-- top -->
+    <color name="common_gray_bg">#F5F5F5</color>
+    <!-- text-->
+    <color name="text_color_common">#fff</color>
+    <color name="text_color_red">#FF0000</color>
+    <color name="text_color_orange">#FCAE05</color>
+    <color name="text_color_maroon">#CD0000</color>
+    <!-- common -->
+    <color name="common_1">#EEE9BF</color>
+    <color name="common_2">#C0FF3E</color>
+    <!-- chart -->
+    <color name="marker_bg">#fff</color>
+    <color name="marker_line_bg">#fff</color>
+    <color name="marker_text_bg">#fff</color>
+    <color name="border_color">#A7ADBC</color>
+    <color name="mine_label_txt">#B0000000</color>
+    <color name="minute_jizhun">#7F9976</color>
+    <color name="minute_blue">#00D0FC</color>
+    <color name="minute_yellow">#E7B448</color>
+    <color name="ma5">#823E66</color>
+    <color name="ma10">#B99C7A</color>
+    <color name="ma20">#3C7193</color>
+    <color name="ma30">#7F9976</color>
+    <color name="increasing_color">#ffe6734e</color>
+    <color name="decreasing_color">#ff54bf66</color>
+
+    <color name="color_33">#333333</color>
+    <color name="color_66">#666666</color>
+    <color name="color_99">#999999</color>
+    <color name="color_cc">#cccccc</color>
+    <color name="color_e6">#e6e6e6</color>
+    <color name="color_f5">#f5f5f5</color>
+
+    <color name="color_00aaff">#00aaff</color>
+    <color name="color_4c94ff">#4c94ff</color>
+    <color name="color_b2d1ff">#b2d1ff</color>
+    <color name="color_cce0ff">#cce0ff</color>
+    <color name="color_ff4d4d">#ff4d4d</color>
+    <color name="color_ff9933">#ff9933</color>
+    <color name="color_33000000">#33000000</color>
+    <color name="round_corner_progress_bar_background_default">#5f5f5f</color>
+    <color name="round_corner_progress_bar_progress_default">#7f7f7f</color>
+    <color name="round_corner_progress_bar_secondary_progress_default">@android:color/transparent</color>
+    <color name="txt_kline">#657BA8</color>
+    <color name="txt_kline_time_select">#99BBFF</color>
+    <color name="minute_grayLine">#ff363d4d</color>
+    <color name="amount_btn_empty">#A1A8B3</color>
+    <color name="bg_blue_dark">#246DB3</color>
+    <color name="txt_7a">#7A8799</color>
+    <color name="bg_kline">#F0F4FA</color>
+    <color name="f0">#F0F4FA</color>
+</resources>

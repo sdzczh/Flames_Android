@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/transparent">
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/bg_white_4">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_group_close"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/close"
+                android:layout_alignParentRight="true"
+                android:paddingTop="13dp"
+                android:paddingRight="13dp"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_groups_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="奥丁官方微信群"
+            android:textColor="@color/txt_app"
+            android:textSize="15sp"
+            android:layout_marginTop="13dp"/>
+        <View
+            style="@style/Line"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="23dp"
+            android:layout_marginTop="15dp"/>
+        <ImageView
+            android:id="@+id/iv_groups_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@color/txt_bg"/>
+        <TextView
+            android:id="@+id/tv_groups_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/txt_content"
+            android:text="扫码加入，快速了解币圈"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="42dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

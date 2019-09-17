@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txt_182853"
+    android:orientation="vertical">
+
+    <FrameLayout
+        style="@style/title_bg"
+        android:background="@color/txt_182853">
+
+        <ImageView
+            android:id="@+id/activity_ccEntrustDetails_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:src="@mipmap/back_white" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingTop="10dp">
+            <!--订单信息-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_top_orderState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="订单状态"
+                        android:textColor="@color/txt_app"
+                        android:textStyle="bold"
+                        android:textSize="22sp" />
+
+                    <!--中间提示信息-->
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_top_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/txt_B8C6D2"
+                        android:textSize="@dimen/font_12sp"
+                        android:text="您已成功下单，请及时付款"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_top_btn_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/makecall"
+                    android:gravity="center"
+                    android:text="拨打电话"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_11sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_top_btn_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/message"
+                    android:gravity="center"
+                    android:text="联系对方"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_11sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <!--内容-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_corners_whitesolid"
+                android:minHeight="260dp"
+                android:orientation="vertical"
+                android:paddingBottom="15dp">
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_contentTop_allAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="¥ 0.00"
+                    android:textColor="@color/txt_title"
+                    android:textSize="28sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="25dp"/>
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_contentTop_allAmountTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请向以下账户付款"
+                    android:textColor="@color/txt_B8C6D2"
+                    android:textSize="13sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"/>
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="10dp"/>
+                <!--顶部交易信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/bg_corners_f0_top"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="15dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="交易金额"
+                            android:textColor="#A3B4CC"
+                            android:textSize="@dimen/font_12sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="交易单价(CNY)"
+                            android:textColor="#A3B4CC"
+                            android:textSize="@dimen/font_12sp" />
+
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="交易数量(CNY)"
+                            android:textColor="#A3B4CC"
+                            android:textSize="@dimen/font_12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+
+
+
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text=""
+                            android:textColor="#525A66"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                    <!--支付方式-->
+                    <LinearLayout
+                        android:id="@+id/activity_ccEntrustDetails_contentPay_payType_switch"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/bg_white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingEnd="20dp"
+                        android:paddingStart="20dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="支付方式"
+                            android:textColor="@color/txt_content"
+                            android:textSize="14sp"
+                            />
+                        <ImageView
+                            android:id="@+id/activity_ccEntrustDetails_contentPay_payType_icon"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@mipmap/pay_ali"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/activity_ccEntrustDetails_contentPay_payType_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="支付宝支付"
+                            android:textColor="@color/txt_content"
+                            android:textSize="@dimen/font_14sp"
+                            android:includeFontPadding="false"
+                            android:layout_marginLeft="7dp"
+                            android:drawableRight="@mipmap/next_go"
+                            android:drawablePadding="10dp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/activity_ccEntrustDetails_contentTop_priceBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:text="交易单价(CNY)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/txt_B8C6D2"
+                            android:textSize="@dimen/font_14sp"
+                            android:id="@+id/activity_ccEntrustDetails_contentTop_priceTitle"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/activity_ccEntrustDetails_contentTop_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="1.00"
+                            android:textColor="@color/txt_content"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/activity_ccEntrustDetails_contentTop_numberBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:text="成交总额"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/txt_B8C6D2"
+                            android:textSize="@dimen/font_14sp"
+                            android:id="@+id/activity_ccEntrustDetails_contentTop_numberTitle"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/activity_ccEntrustDetails_contentTop_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="200"
+                            android:textColor="@color/txt_content"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                <!--代付款、请付款：支付信息，包括支付方式，收款人，账号，二维码-->
+            <LinearLayout
+                android:id="@+id/activity_ccEntrustDetails_contentPay_frame"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentPay_payerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="收款人"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"/>
+
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentPay_payAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="支付宝账号"
+                        app:tatv_right_img="@mipmap/copy"
+                        app:tatv_copy_visibility="visable"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"/>
+
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentPay_payErweima"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="收款二维码"
+                        app:tatv_right_img="@mipmap/erweima_smail"
+                        app:tatv_rightImg_visibility="visable"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"/>
+                </LinearLayout>
+
+                <!--订单信息-->
+                <LinearLayout
+                    android:id="@+id/activity_ccEntrustDetails_contentOrder_frame"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp">
+
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentOrder_userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="卖家" />
+
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentOrder_perPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="单价"
+                        app:tatv_right_txt="¥ 0.00" />
+
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentOrder_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="数量"
+                        app:tatv_right_txt="0" />
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentOrder_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="下单时间" />
+
+                    <huoli.com.pgy.Widgets.TextAndTextItem
+                        android:id="@+id/activity_ccEntrustDetails_contentOrder_numId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tatv_left_txt="订单号"
+                        app:tatv_right_img="@mipmap/copy"
+                        app:tatv_copy_visibility="visable" />
+
+                </LinearLayout>
+
+                <!--参考号-->
+                <huoli.com.pgy.Widgets.TextAndTextItem
+                    android:id="@+id/activity_ccEntrustDetails_content_referenceId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tatv_leftImg_visibility="visable"
+                    app:tatv_left_txt="参考号"
+                    app:tatv_right_img="@mipmap/copy"
+                    app:tatv_copy_visibility="visable"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"/>
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <!--底部蓝色文字提示信息-->
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_contentBottomNotice_blue"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColor="@color/txt_808DAC"
+                    android:textSize="@dimen/font_12sp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="如您已向卖家转账付款，请务必点击右下角“我已付款”按钮，否则有可能造成资金损失。"/>
+
+                <!--底部按钮-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--申诉-->
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_complaint"
+                        android:visibility="gone"
+                        style="@style/full_width_textView_margin15"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_corners_b8solid"
+                        android:text="申诉"
+                        android:textColor="@color/txt_white" />
+
+                    <!--取消订单-->
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_cancelOrder"
+                        android:visibility="gone"
+                        style="@style/full_width_textView_margin15"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_corners_b8solid"
+                        android:text="取消订单"
+                        android:textColor="@color/txt_white" />
+
+                    <!--我已付款-->
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_payed"
+                        style="@style/full_width_textView_blue"
+                        android:visibility="gone"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:text="我已付款"
+                        android:background="@drawable/bg_app_color_small"
+                        android:textColor="@color/txt_white" />
+
+                    <!--确认收款-->
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_receipted"
+                        android:visibility="gone"
+                        style="@style/full_width_textView_blue"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:text="确认收款"
+                        android:textColor="@color/txt_white" />
+                </LinearLayout>
+
+                <!--底部黄色文字提示信息-->
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_contentBottomNotice_orange"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:textColor="@color/txt_F66950"
+                    android:textSize="@dimen/font_12sp"
+                    android:text="15:00内未付款，订单将自动取消，打款请备注参考号"/>
+
+            </LinearLayout>
+
+            <!--对方详情-->
+            <LinearLayout
+                android:id="@+id/activity_ccEntrustDetails_bottomContact_frame"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_corners_18solid"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_height="40dp">
+                <huoli.com.pgy.Widgets.RoundImageView
+                    android:id="@+id/activity_ccEntrustDetails_bottomContact_icon"
+                    app:roundtype="circle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_bottomContact_nikeName"
+                    android:layout_marginStart="10dp"
+                    android:drawablePadding="5dp"
+                    android:textColor="#A3B4CC"
+                    android:textSize="@dimen/font_14sp"
+                    android:drawableEnd="@mipmap/more_blue"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <!--底部提醒-->
+            <LinearLayout
+                android:id="@+id/activity_ccEntrustDetails_bottomNotice_frame"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_corners_18solid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交易提醒"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_15sp" />
+
+                <TextView
+                    android:id="@+id/activity_ccEntrustDetails_bottomNotice_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#50ffffff"
+                    android:lineSpacingExtra="3dp"
+                    android:textSize="@dimen/font_13sp"
+                    android:layout_marginRight="13dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

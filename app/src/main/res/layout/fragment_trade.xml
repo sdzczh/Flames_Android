@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--顶部C2C选择列表-->
+    <FrameLayout
+        style="@style/title_bg">
+
+        <RadioGroup
+            android:id="@+id/fragment_trade_group"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <RadioButton
+                android:id="@+id/fragment_trade_group_c2c"
+                android:text="币币"
+                android:checked="true"
+                style="@style/c2cTop_tab"
+                android:textColor="@drawable/selector_font_light_blue"/>
+            <View
+                android:layout_width="1dp"
+                android:background="#CFD8E6"
+                android:layout_gravity="center"
+                android:layout_height="10dp"/>
+            <RadioButton
+                android:id="@+id/fragment_trade_group_lever"
+                android:text="杠杆"
+                style="@style/c2cTop_tab"
+                android:textColor="@drawable/selector_font_light_blue"/>
+        </RadioGroup>
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_text"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="币币"/>
+        <include layout="@layout/view_title_message"/>
+
+    </FrameLayout>
+    <View
+        android:id="@+id/view_line"
+        style="@style/Line"/>
+    <huoli.com.pgy.Widgets.NoScrollViewPager
+        android:id="@+id/fragment_trade_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</LinearLayout>

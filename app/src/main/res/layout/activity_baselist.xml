@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bg_content_grey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <huoli.com.pgy.Widgets.TitleView
+        android:id="@+id/activity_baselist_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"/>
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/activity_baselist_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        app:scrollbarStyle="insideOverlay"
+        app:layout_progress="@layout/view_progress"
+        app:layout_empty="@layout/view_empty" />
+</LinearLayout>

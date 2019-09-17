@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_titleMessage_frame"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_gravity="end|center_vertical"
+    android:layout_marginEnd="20dp"
+    android:visibility="gone">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/message" />
+
+    <View
+        android:id="@+id/view_titleMessage_point"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_gravity="end|top"
+        android:background="@drawable/shape_circle_red"
+        android:visibility="invisible" />
+</FrameLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_marginBottom="0.5dp"
+    android:background="@color/bg_white"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <huoli.com.pgy.Widgets.RoundImageView
+        android:id="@+id/new_header"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/touxiang"
+        app:roundtype="circle"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ship_name"
+            android:text="某某"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/txt_dark"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="请求加为好友"
+            android:textSize="12sp"
+            android:textColor="@color/txt_all9"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ship_agree"
+        android:visibility="gone"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bg_corners_bluesolid"
+        android:text="同意"
+        android:textColor="@color/txt_white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/ship_refuse"
+        android:visibility="gone"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bg_corners_allcsolid"
+        android:text="拒绝"
+        android:textColor="@color/txt_white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/ship_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/txt_all9"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

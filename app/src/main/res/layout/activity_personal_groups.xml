@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txt_bg">
+    <include layout="@layout/view_personal_title"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/white">
+            <huoli.com.pgy.Widgets.PersonalItemView
+                android:id="@+id/piv_activity_personal_groups_qq"
+                style="@style/PersonalItem"
+                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_text="QQ群"
+                app:tv_item_right_color="@color/txt_content"
+                app:iv_item_erweima_visible="true"
+                app:tv_item_right_text=""
+                android:visibility="gone">
+
+            </huoli.com.pgy.Widgets.PersonalItemView>
+            <View
+                style="@style/PersonalLine"
+                android:visibility="gone"
+                android:background="@color/white"/>
+            <huoli.com.pgy.Widgets.PersonalItemView
+                android:id="@+id/piv_activity_personal_groups_wx"
+                style="@style/PersonalItem"
+                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_text="微信群"
+                app:tv_item_right_color="@color/txt_content"
+                app:iv_item_erweima_visible="true"
+                app:tv_item_right_text="">
+
+            </huoli.com.pgy.Widgets.PersonalItemView>
+            <View
+                style="@style/PersonalLine"
+                android:background="@color/white"/>
+            <huoli.com.pgy.Widgets.PersonalItemView
+                android:id="@+id/piv_activity_personal_groups_gongzong"
+                style="@style/PersonalItem"
+                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_text="公众号"
+                app:tv_item_right_color="@color/txt_content"
+                app:iv_item_erweima_visible="true"
+                app:tv_item_right_text="">
+
+            </huoli.com.pgy.Widgets.PersonalItemView>
+            <View
+                style="@style/PersonalLine"
+                android:background="@color/white"/>
+            <huoli.com.pgy.Widgets.PersonalItemView
+                android:id="@+id/piv_activity_personal_groups_weibo"
+                style="@style/PersonalItem"
+                android:visibility="gone"
+                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_text="新浪微博"
+                app:tv_item_right_color="@color/txt_content"
+                app:tv_item_right_text=""
+                app:iv_item_erweima_visible="true">
+
+            </huoli.com.pgy.Widgets.PersonalItemView>
+            <View
+                style="@style/PersonalLine"
+                android:visibility="gone"
+                android:background="@color/white"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

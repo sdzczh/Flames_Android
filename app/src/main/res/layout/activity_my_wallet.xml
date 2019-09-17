@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <FrameLayout
+        style="@style/title_bg">
+        <ImageView
+            android:id="@+id/iv_activity_my_wallet_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/title_back"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="bottom"/>
+        <TextView
+            android:id="@+id/tv_activity_my_wallet_title"
+            style="@style/title_text"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="我的标题"/>
+    </FrameLayout>
+    <include layout="@layout/view_divider_line"/>
+    <com.tmall.ultraviewpager.UltraViewPager
+        android:id="@+id/uvp_activity_my_wallet_type"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:layout_marginTop="15dp">
+
+    </com.tmall.ultraviewpager.UltraViewPager>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_activity_my_wallet_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:id="@+id/ll_error_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tv_error_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_b8c0cc"
+                android:textSize="14sp"
+                android:text="账户还没有币种"/>
+            <Button
+                android:id="@+id/btn_error_reload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/color_b8c0cc"
+                android:text="重新加载"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

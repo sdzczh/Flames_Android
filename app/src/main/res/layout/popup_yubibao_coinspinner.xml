@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <huoli.com.pgy.Widgets.MyDemoGridView
+        android:id="@+id/rv_popup_yubibao_coinlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3"
+        android:background="@color/color_e5ffffff"
+        android:layout_marginTop="45dp">
+
+    </huoli.com.pgy.Widgets.MyDemoGridView>
+    <View
+        android:id="@+id/view_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_e5ffffff"/>
+</LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bg_white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        style="@style/title_bg">
+        <ImageView
+            android:id="@+id/activity_tradeC2COrderBusiness_title_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="bottom"
+            android:src="@mipmap/title_back"/>
+        <com.androidkun.xtablayout.XTabLayout
+            android:id="@+id/activity_tradeC2COrderBusiness_title_tab"
+            style="@style/TabLayoutTextStyle15"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            app:xTabTextAppearance="@style/TabLayoutTextStyle15"
+            app:xTabSelectedTextColor="@color/txt_title"
+            app:xTabTextColor="@color/txt_B8C6D2"
+            app:xTabTextSize="16sp"
+            app:xTabSelectedTextSize="16sp"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:xTabDividerColor="@color/txt_content"
+            app:xTabDividerGravity="center"
+            app:xTabDividerWidth="1dp"
+            app:xTabDividerHeight="15dp"
+            app:tabTextColor="@color/txt_B8C6D2"
+            app:xTabIndicatorColor="@color/transparent"
+            android:layout_gravity="center_horizontal|bottom" />
+        <TextView
+            android:id="@+id/activity_tradeC2COrderBusiness_title_choose"
+            android:text="筛选"
+            android:drawableStart="@mipmap/shaixuan"
+            android:drawablePadding="5dp"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="#7A8799"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="15dp"/>
+    </FrameLayout>
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingStart="15dp"-->
+        <!--android:paddingEnd="15dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--&lt;!&ndash;Tab&ndash;&gt;-->
+
+        <!--<View-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_weight="1"/>-->
+
+    <!--</LinearLayout>-->
+
+    <!--底部内容-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_tradeC2COrderBusiness_title_viewPager"
+        android:layout_width="match_parent"
+        android:background="@color/bg_white"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+</LinearLayout>

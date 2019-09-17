@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_im_addFriend_frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:visibility="visible">
+
+    <huoli.com.pgy.Widgets.RoundImageView
+        android:id="@+id/item_im_addFriend_userIcon"
+        app:roundtype="circle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/touxiang" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_im_addFriend_userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/txt_dark"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/item_im_addFriend_userPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_all9"
+            android:textSize="@dimen/font_12sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

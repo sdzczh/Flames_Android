@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="35dp"
+    android:textSize="@dimen/font_14sp"
+    android:background="@drawable/selector_radio_bg_blue_light"
+    android:button="@null"
+    android:maxLines="1"
+    android:gravity="center"
+    android:textColor="@drawable/selector_font_white_dark">
+
+</CheckBox>

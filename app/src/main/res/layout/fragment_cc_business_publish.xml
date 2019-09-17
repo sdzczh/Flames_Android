@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+    <include layout="@layout/view_divider_line_10"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--价格-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/bg_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_priceTitle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="购买价格"
+                    android:textColor="@color/txt_content"
+                    android:textSize="@dimen/font_15sp" />
+
+                <huoli.com.pgy.Widgets.NumberEditText
+                    android:id="@+id/fragment_c2cBusinessPublish_inputPrice"
+                    style="@style/EditText_default_input"
+                    android:layout_width="0dp"
+                    android:hint="请输入价格"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:maxLength="11"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/txt_B8C6D2"
+                    android:textColor="@color/txt_title"/>
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_realTimePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="90dp"
+                    android:text="参考价格：0CNY"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_11sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+            <!--数量-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_numberTitle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="数量"
+                    android:textColor="@color/txt_content"
+                    android:textSize="@dimen/font_15sp" />
+
+                <huoli.com.pgy.Widgets.NumberEditText
+                    android:id="@+id/fragment_c2cBusinessPublish_inputNumber"
+                    style="@style/EditText_default_input"
+                    android:layout_width="0dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLength="11"
+                    android:hint="请输入数量"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/txt_B8C6D2"
+                    android:textColor="@color/txt_title"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+            <!--每笔交易限额-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="55dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_amountTitle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="金额(CNY)"
+                    android:textColor="@color/txt_content"
+                    android:textSize="@dimen/font_15sp" />
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_allPrice"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:text="0.0"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/txt_B8C6D2"
+                    android:textColor="@color/txt_title"/>
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_limitMinPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="80dp"
+                    android:text="最小交易额200"
+                    android:textColor="@color/txt_B8C6D2"
+                    android:textSize="@dimen/font_11sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/bg_line"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+            <!--总价区间-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="单笔限额"
+                    android:textColor="@color/txt_content"
+                    android:textSize="@dimen/font_15sp" />
+
+                <huoli.com.pgy.Widgets.NumberEditText
+                    android:id="@+id/fragment_c2cBusinessPublish_minPrice"
+                    style="@style/EditText_default_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="最小"
+                    android:maxLength="8"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:inputType="numberDecimal"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/txt_B8C6D2"
+                    android:textColor="@color/txt_title"/>
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/txt_title" />
+
+                <huoli.com.pgy.Widgets.NumberEditText
+                    android:id="@+id/fragment_c2cBusinessPublish_maxPrice"
+                    style="@style/EditText_default_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="最大"
+                    android:maxLength="8"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:inputType="numberDecimal"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/txt_B8C6D2"
+                    android:textColor="@color/txt_title"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CNY"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_15sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/bg_line"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+            <!--支付方式-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_payTitle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="支付方式："
+                    android:textColor="@color/txt_content"
+                    android:textSize="@dimen/font_15sp"
+                    android:layout_marginBottom="20dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@mipmap/pay_ali"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <CheckBox
+                        android:id="@+id/fragment_c2cBusinessPublish_checkAli"
+                        android:textColor="@color/txt_content"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="支付宝"
+                        android:button="@null"
+                        android:drawableRight="@drawable/selector_check_box_icon"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@mipmap/pay_wx"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <CheckBox
+                        android:id="@+id/fragment_c2cBusinessPublish_checkWx"
+                        android:textColor="@color/txt_content"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="微信"
+                        android:button="@null"
+                        android:drawableRight="@drawable/selector_check_box_icon"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@mipmap/pay_card"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <CheckBox
+                        android:id="@+id/fragment_c2cBusinessPublish_checkCard"
+                        android:textColor="@color/txt_content"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="银行卡"
+                        android:button="@null"
+                        android:drawableRight="@drawable/selector_check_box_icon"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/bg_line"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/fragment_c2cBusinessPublish_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="交易限额：每笔交易的最小额度和最大额度"
+                android:textColor="@color/txt_808DAC"
+                android:textSize="@dimen/font_12sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保证金："
+                    android:textColor="@color/txt_content"
+                    android:textSize="13sp"
+                    />
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_marginFee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_13sp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="平台服务费："
+                    android:textColor="@color/txt_content"
+                    android:textSize="13sp"
+                    />
+                <TextView
+                    android:id="@+id/fragment_c2cBusinessPublish_serverFee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00%"
+                    android:textColor="@color/txt_app"
+                    android:textSize="@dimen/font_13sp" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/fragment_c2cBusinessPublish_publish"
+                android:layout_marginTop="20dp"
+                style="@style/SubmitTextView"
+                android:text="发布交易单"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

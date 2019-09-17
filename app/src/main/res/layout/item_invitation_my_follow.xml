@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:id="@+id/tv_item_my_follow_tel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="184****1111"
+            android:textColor="@color/txt_content"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/tv_item_my_follow_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="60ECN"
+            android:textColor="@color/txt_content"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/tv_item_my_follow_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="2019-09-09 15:20:56"
+            android:textColor="@color/txt_content"
+            android:textSize="12sp"
+            android:gravity="right"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"/>
+</LinearLayout>

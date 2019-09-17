@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_withchoose"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="交易类型"
+            android:textColor="@color/txt_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="15dp"
+            android:textSize="@dimen/font_15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <huoli.com.pgy.Widgets.MultiLineRadioGroup
+            android:id="@+id/layout_widget_conditionChoose_chooseType"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:child_layout="@layout/item_dialog_conditions"
+            app:child_margin_horizontal="10dp"
+            app:child_margin_vertical="20dp"
+            app:gravity="1"
+            app:single_choice="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="订单状态"
+            android:textColor="@color/txt_content"
+            android:textSize="@dimen/font_15sp" />
+        <huoli.com.pgy.Widgets.MultiLineRadioGroup
+            android:id="@+id/layout_widget_conditionChoose_chooseState"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:child_layout="@layout/item_dialog_conditions"
+            app:child_margin_horizontal="10dp"
+            app:child_margin_vertical="20dp"
+            app:gravity="1"
+            app:single_choice="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_blue"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/layout_widget_conditionChoose_reset"
+                android:textSize="14sp"
+                android:textColor="@color/txt_blue"
+                android:text="重置"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/layout_widget_conditionChoose_confirm"
+                android:textSize="14sp"
+                android:textColor="@color/txt_white"
+                android:background="@color/txt_blue"
+                android:text="确定"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/layout_widget_conditionChoose_bottomFrame"
+        android:layout_width="match_parent"
+        android:background="@color/bg_half"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

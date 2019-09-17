@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/view_divider_line_10"/>
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/activity_baseListMargin_list"
+        android:layout_width="match_parent"
+        app:layout_empty="@layout/view_empty"
+        app:layout_error="@layout/view_error"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txt_bg"
+    android:orientation="vertical">
+
+    <FrameLayout style="@style/title_bg">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:src="@mipmap/title_back" />
+        <TextView
+            style="@style/title_text"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:text="商家信息"/>
+    </FrameLayout>
+    <include layout="@layout/view_divider_line_10"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fadeScrollbars="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white"
+            android:orientation="vertical">
+            <!--头部-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <huoli.com.pgy.Widgets.RoundImageView
+                        android:id="@+id/activity_ccPersonalBusiness_headIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="#ffd1d1d1"
+                        app:roundtype="circle" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/activity_ccPersonalBusiness_nikeName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textColor="@color/txt_title"
+                            android:textSize="@dimen/font_15sp"
+                            android:text="币圈小诸葛"/>
+
+                        <TextView
+                            android:id="@+id/activity_ccPersonalBusiness_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="注册时间：2017-11-11"
+                            android:textColor="@color/txt_content"
+                            android:textSize="@dimen/font_11sp"
+                            android:layout_marginTop="5dp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/activity_ccPersonalBusiness_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@mipmap/message"
+                        android:gravity="center"
+                        android:text="联系对方"
+                        android:textColor="@color/txt_blue"
+                        android:textSize="@dimen/font_12sp" />
+
+                </LinearLayout>
+
+                <include layout="@layout/view_divider_line"/>
+                <!--第一行列表-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+                    <!--委托价-->
+                    <LinearLayout
+                        style="@style/entrust_item_frame"
+                        android:layout_weight="1"
+                        android:gravity="start">
+
+                        <TextView
+                            style="@style/entrust_item_title"
+                            android:text="总成单"
+                            android:textColor="@color/txt_A8B0C5" />
+
+                        <TextView
+                            android:id="@+id/activity_ccPersonalBusiness_allOrders"
+                            style="@style/entrust_item_content"
+                            android:textSize="@dimen/font_15sp" />
+                    </LinearLayout>
+                    <!--委托量-->
+                    <LinearLayout style="@style/entrust_item_frame"
+                        android:gravity="center">
+
+                        <TextView
+                            style="@style/entrust_item_title"
+                            android:text="法币交易"
+                            android:textColor="@color/txt_A8B0C5" />
+
+                        <TextView
+                            android:id="@+id/activity_ccPersonalBusiness_c2cOrders"
+                            style="@style/entrust_item_content"
+                            android:textSize="@dimen/font_15sp" />
+                    </LinearLayout>
+
+                    <!--成交量-->
+                    <LinearLayout
+                        style="@style/entrust_item_frame"
+                        android:gravity="end">
+
+                        <TextView
+                            style="@style/entrust_item_title"
+                            android:text="币币交易"
+                            android:textColor="@color/txt_A8B0C5" />
+
+                        <TextView
+                            android:id="@+id/activity_ccPersonalBusiness_goodsOrders"
+                            style="@style/entrust_item_content"
+                            android:textSize="@dimen/font_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/activity_ccPersonalBusiness_certification_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:drawablePadding="5dp"
+                        android:drawableStart="@mipmap/rz_sj"
+                        android:text="手机认证"
+                        android:textColor="@color/txt_content"
+                        android:textSize="@dimen/font_11sp"
+                        android:visibility="gone"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/activity_ccPersonalBusiness_certification_realName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:drawableStart="@mipmap/rz_sm"
+                        android:text="实名认证"
+                        android:textColor="@color/txt_content"
+                        android:textSize="@dimen/font_11sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                style="@style/Line_10"
+                android:layout_marginTop="20dp"/>
+            <!--列表-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_ccPersonalBusiness_buyList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_ccPersonalBusiness_saleList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

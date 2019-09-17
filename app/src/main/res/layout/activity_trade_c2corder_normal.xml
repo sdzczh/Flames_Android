@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/txt_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/view_title_withchoose"/>
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/activity_tradeC2COrderNormal_list"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        app:layout_empty="@layout/view_empty"
+        app:layout_error="@layout/view_error"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

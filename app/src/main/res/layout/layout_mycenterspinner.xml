@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_corners_whitesolid"
+    android:layout_margin="20dp"
+    android:padding="2dp"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/myCenterSpinner_title"
+        android:text="选择"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:textColor="@color/txt_all6"
+        android:textSize="@dimen/font_16sp"
+        android:layout_height="55dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_blue"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+    <ListView
+        android:id="@+id/myCenterSpinner_list"
+        android:layout_width="match_parent"
+        android:divider="@color/bg_white"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"/>
+
+</LinearLayout>

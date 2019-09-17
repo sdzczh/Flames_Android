@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <huoli.com.pgy.Widgets.TitleView
+        android:id="@+id/activity_crop_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_title="图片裁剪" />
+    <com.oginotihiro.cropview.CropView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/civ_cropview"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl_activity_screen_ok"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/txt_allC"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:id="@+id/tv_activity_crop_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取 消"
+            android:textSize="20sp"
+            android:textColor="@color/txt_blue"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/tv_activity_crop_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="裁 剪"
+            android:textSize="20sp"
+            android:textColor="@color/txt_blue"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+</LinearLayout>

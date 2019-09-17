@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_personal_title"/>
+
+    <!--头部-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:background="@color/bg_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/activity_entrustDetails_top_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:textSize="@dimen/font_16sp" />
+
+            <TextView
+                android:id="@+id/activity_entrustDetails_top_entrustType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A8799"
+                android:textSize="@dimen/font_16sp" />
+
+
+            <TextView
+                android:id="@+id/activity_entrustDetails_top_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="#C4C7CC"
+                android:textSize="@dimen/font_12sp" />
+        </LinearLayout>
+
+
+        <!--第一行列表-->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--委托价-->
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:gravity="start"
+                style="@style/entrust_item_frame">
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_entrustPrice_title"
+                    style="@style/entrust_item_title"
+                    android:text="委托价"/>
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_entrustPrice_content"
+                    style="@style/entrust_item_content" />
+            </LinearLayout>
+            <!--委托量-->
+            <LinearLayout
+                style="@style/entrust_item_frame">
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_entrustAmount_title"
+                    style="@style/entrust_item_title"
+                    android:text="委托量"/>
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_entrustAmount_content"
+                    style="@style/entrust_item_content"  />
+            </LinearLayout>
+
+            <!--成交量-->
+            <LinearLayout
+                android:gravity="end"
+                style="@style/entrust_item_frame">
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_tradeAmount_title"
+                    style="@style/entrust_item_title"
+                    android:text="成交量"/>
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_tradeAmount_content"
+                    style="@style/entrust_item_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <!--第二行列表-->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--成交总额-->
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:gravity="start"
+                style="@style/entrust_item_frame">
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_tradeSum_title"
+                    android:text="成交总额"
+                    style="@style/entrust_item_title" />
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_tradeSum_content"
+                    style="@style/entrust_item_content" />
+            </LinearLayout>
+            <!--成交均价-->
+            <LinearLayout
+                style="@style/entrust_item_frame">
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_tradeAve_title"
+                    android:text="成交均价"
+                    style="@style/entrust_item_title" />
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_tradeAve_content"
+                    style="@style/entrust_item_content" />
+            </LinearLayout>
+            <!--手续费-->
+            <LinearLayout
+                android:gravity="end"
+                style="@style/entrust_item_frame">
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_poundage_title"
+                    android:text="手续费"
+                    style="@style/entrust_item_title" />
+
+                <TextView
+                    android:id="@+id/activity_entrustDetails_content_poundage_content"
+                    style="@style/entrust_item_content"  />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#fff0f4fa"/>
+    <!--列表-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_entrustDetails_list"
+        android:layout_width="match_parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

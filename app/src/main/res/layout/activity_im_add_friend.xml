@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_content_grey"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_search_title_bar"/>
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/activity_addFriend_list"
+        android:layout_width="match_parent"
+        app:layout_empty="@layout/view_empty"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <!--提示-->
+        <TextView
+            android:id="@+id/dialog_pay_title"
+            android:textSize="16sp"
+            android:text="请输入交易密码"
+            android:textColor="#525A66"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:gravity="center"/>
+
+        <huoli.com.pgy.Widgets.PayPsdInputView
+            android:id="@+id/dialog_pay_password"
+            android:inputType="number"
+            app:maxCount="6"
+            app:psdType="bottomLine"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+
+        <TextView
+            android:id="@+id/dialog_pay_positiveButton"
+            android:textSize="@dimen/font_12sp"
+            android:textColor="@color/txt_blue"
+            android:text="忘记交易密码？"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</FrameLayout>

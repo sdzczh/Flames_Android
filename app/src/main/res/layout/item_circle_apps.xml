@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/iv_item_circle_apps_icon"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@color/color_7a8799"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/tv_item_circle_apps_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txt_title"
+        android:textSize="12sp"
+        android:text="应用"
+        android:layout_marginTop="10dp"
+        android:includeFontPadding="false"/>
+    <TextView
+        android:id="@+id/tv_item_circle_apps_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_c4c7cc"
+        android:textSize="10sp"
+        android:text=""
+        android:layout_marginTop="10dp"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

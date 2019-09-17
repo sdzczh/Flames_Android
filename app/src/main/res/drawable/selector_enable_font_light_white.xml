@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--激活的时候，改变字体颜色-->
+    <item android:state_enabled="true" android:color="@color/txt_white"/>
+    <item android:state_enabled="false" android:color="@color/txt_all9"/>
+</selector>

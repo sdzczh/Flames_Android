@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="5dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VOL:"
+        android:textColor="@color/txt_kline"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_volMa_vol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/txt_kline"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MA5:"
+        android:textColor="#CCBD5A"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_volMa_ma5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:layout_marginEnd="10dp"
+        android:textColor="#CCBD5A"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MA10:"
+        android:textColor="#54BF66"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_volMa_ma10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="#54BF66"
+        android:textSize="@dimen/font_10sp" />
+
+</LinearLayout>

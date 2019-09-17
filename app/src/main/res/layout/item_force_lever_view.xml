@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+    <ImageView
+        android:id="@+id/iv_item_force_lever_icon"
+        android:layout_width="45dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:src="@color/color_7a8799"/>
+    <TextView
+        android:id="@+id/tv_item_force_lever_values"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_7a8799"
+        android:text="12"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

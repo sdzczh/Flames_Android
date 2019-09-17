@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp">
+        <TextView
+            android:id="@+id/tv_item_flow_record_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/txt_content"
+            android:text="充币"/>
+        <ImageView
+            android:id="@+id/iv_item_flow_record_question"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@mipmap/question"
+            android:visibility="gone"
+            android:padding="10dp"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/tv_item_flow_record_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_525a66"
+            android:textSize="16sp"
+            android:text="+12" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="7dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp">
+        <TextView
+            android:id="@+id/tv_item_flow_record_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:textColor="@color/txt_B8C6D2"
+            android:text="18-10-02 16:00:00"/>
+        <TextView
+            android:id="@+id/tv_item_flow_record_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_B8C6D2"
+            android:textSize="11sp"
+            android:text="BTC" />
+    </LinearLayout>
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="20dp"/>
+</LinearLayout>

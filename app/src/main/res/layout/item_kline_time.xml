@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/KLine_item_frame"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content">
+
+    <!--中文名-->
+    <TextView
+        android:id="@+id/KLine_item_timeTxt"
+        android:text="时间"
+        android:layout_width="wrap_content"
+        android:minWidth="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@drawable/selector_font_kline_time"
+        android:textSize="@dimen/font_12sp" />
+</FrameLayout>

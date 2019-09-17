@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:padding="5dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开:"
+        android:textColor="#CCBD5A"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_market_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:layout_marginEnd="10dp"
+        android:textColor="#CCBD5A"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="高:"
+        android:textColor="#54BF66"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_market_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:layout_marginEnd="10dp"
+        android:textColor="#54BF66"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收:"
+        android:textColor="#B47ACC"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_market_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:layout_marginEnd="10dp"
+        android:textColor="#B47ACC"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="低:"
+        android:textColor="@color/txt_white"
+        android:textSize="@dimen/font_10sp" />
+
+    <TextView
+        android:id="@+id/layout_klineChart_market_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/txt_white"
+        android:textSize="@dimen/font_10sp" />
+
+</LinearLayout>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_ccTradeEntrust_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="买入/卖出"
+            android:maxLines="1"
+            android:textSize="@dimen/font_16sp"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/iv_item_ccTradeEntrust_type"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/mairu"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_coinName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ECN"
+                android:maxLines="1"
+                android:textColor="@color/txt_title"
+                android:textSize="@dimen/font_15sp"
+                android:layout_marginLeft="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" /CNY"
+                android:textColor="#ff191c1e"
+                android:textSize="11sp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/item_ccTradeEntrust_submitTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:text="00:00"
+            android:maxLines="1"
+            android:textColor="@color/txt_808DAC"
+            android:textSize="@dimen/font_11sp" />
+
+        <TextView
+            android:id="@+id/item_ccTradeEntrust_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="状态"
+            android:maxLines="1"
+            android:textSize="@dimen/font_12sp" />
+    </LinearLayout>
+    <include layout="@layout/view_divider_line"/>
+    <!--底部列表-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp">
+
+        <!--单价-->
+        <LinearLayout android:layout_weight="1.5" style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_priceTitle"
+                style="@style/entrust_item_title"
+                android:text="价格(CNY)" />
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_price"
+                style="@style/entrust_item_content" />
+        </LinearLayout>
+
+        <!--数量-->
+        <LinearLayout style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_numberTitle"
+                style="@style/entrust_item_title"
+                android:text="数量" />
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_number"
+                style="@style/entrust_item_content" />
+        </LinearLayout>
+
+        <!--总金额-->
+        <LinearLayout style="@style/entrust_item_frame"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_dealAmountTitle"
+                style="@style/entrust_item_title"
+                android:text="交易总额(CNY)" />
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_dealAmount"
+                style="@style/entrust_item_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--底部列表-->
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="15dp">
+
+        <!--单价-->
+        <LinearLayout android:layout_weight="1.5" style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_limitPriceTitle"
+                style="@style/entrust_item_title"
+                android:text="限额(CNY)" />
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_limitPrice"
+                style="@style/entrust_item_content" />
+        </LinearLayout>
+
+        <!--数量-->
+        <LinearLayout style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_remainNumberTitle"
+                style="@style/entrust_item_title"
+                android:text="剩余数量" />
+
+            <TextView
+                android:id="@+id/item_ccTradeEntrust_remainNumber"
+                style="@style/entrust_item_content" />
+        </LinearLayout>
+
+        <!--总金额-->
+        <LinearLayout style="@style/entrust_item_frame"
+            android:gravity="end">
+
+            <TextView
+                style="@style/entrust_item_title"
+                android:text="支付方式" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                style="@style/entrust_item_content" >
+                <ImageView
+                    android:id="@+id/item_ccTradeEntrust_payAli"
+                    android:visibility="invisible"
+                    android:src="@mipmap/pay_ali"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp" />
+                <ImageView
+                    android:id="@+id/item_ccTradeEntrust_payWx"
+                    android:src="@mipmap/pay_wx"
+                    android:visibility="invisible"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp" />
+                <ImageView
+                    android:id="@+id/item_ccTradeEntrust_payBank"
+                    android:src="@mipmap/pay_card"
+                    android:visibility="invisible"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="15dp"
+                    android:layout_height="13dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--底部按钮-->
+    <LinearLayout
+        android:id="@+id/item_ccTradeEntrust_bottomFrame"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"/>
+        <!--撤销订单-->
+        <TextView
+            android:id="@+id/item_ccTradeEntrust_undoOrder"
+            android:text="撤销订单"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_corners_b8solid"
+            android:textColor="@color/txt_white"
+            android:textSize="@dimen/font_14sp" />
+        <!--开始、暂停接单-->
+        <TextView
+            android:id="@+id/item_ccTradeEntrust_startOrCancelOrder"
+            android:text="开始委托"
+            android:layout_height="35dp"
+            android:layout_width="90dp"
+            android:gravity="center"
+            android:background="@drawable/bg_app_color_small"
+            android:textColor="@color/txt_white"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginRight="30dp"/>
+        </LinearLayout>
+    <include layout="@layout/view_divider_line_10"/>
+</LinearLayout>

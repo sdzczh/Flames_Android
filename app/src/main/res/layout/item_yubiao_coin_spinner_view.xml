@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/transparent"
+    android:id="@+id/ll_item_yubibao_coin_spinner_bg">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_item_yubiao_coin_spinner_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:riv_oval="true"
+        android:layout_marginTop="30dp"
+        android:src="@color/color_7a8799"/>
+    <TextView
+        android:id="@+id/tv_item_yubibao_coin_spinner_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:includeFontPadding="false"
+        android:textSize="16sp"
+        android:textColor="@color/color_525a66"
+        android:text="BTC"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <!--背景图-->
+    <ImageView
+        android:id="@+id/iv_activity_block_bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/lv1" />
+
+    <FrameLayout
+        android:id="@+id/fl_activity_block_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp">
+
+        <FrameLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_activity_block_back"
+                android:layout_width="30dp"
+                android:layout_height="31dp"
+                android:src="@mipmap/block_back"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"/>
+            <!--标题-->
+            <LinearLayout
+                android:id="@+id/ll_activity_block_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@mipmap/block_bg_digleveltitle"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_activity_block_blockPoolName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="圣魂村"
+                    android:textColor="@color/txt_white"
+                    android:textSize="@dimen/font_14sp" />
+
+                <TextView
+                    android:id="@+id/tv_activity_block_currentLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="LV1"
+                    android:textColor="@color/txt_white"
+                    android:textSize="@dimen/font_10sp" />
+            </LinearLayout>
+
+            <!--在线人数-->
+            <TextView
+                android:id="@+id/tv_activity_block_currentNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="10dp"
+                android:text="3444名魂士在线"
+                android:textColor="@color/txt_white"
+                android:textSize="@dimen/size_dp_10"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+
+        <!--底部按钮-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="105dp"
+            android:orientation="horizontal">
+            <!--挖矿秘籍-->
+            <TextView
+                android:id="@+id/tv_activity_block_digSecret"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableTop="@mipmap/block_digsecret"
+                android:gravity="center"
+                android:text="挖矿秘籍"
+                android:textColor="@color/txt_white"
+                android:textSize="@dimen/font_10sp"
+                android:visibility="gone"/>
+            <!--我的资产-->
+            <TextView
+                android:id="@+id/tv_activity_block_myAssets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableTop="@mipmap/block_myassets"
+                android:gravity="center"
+                android:text="我的资产"
+                android:textColor="@color/txt_white"
+                android:textSize="@dimen/font_10sp"
+                android:visibility="gone"/>
+            <!--提升算力-->
+            <TextView
+                android:id="@+id/tv_activity_block_improveForce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableTop="@mipmap/block_myforce"
+                android:gravity="center"
+                android:text="提升算力"
+                android:textColor="@color/txt_white"
+                android:textSize="@dimen/font_10sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+            <!--我的算力-->
+            <LinearLayout
+                android:id="@+id/ll_activity_blockNew_currentCalculateForce_frame"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_activity_block_currentCalculateForce_icon"
+                    android:layout_width="45dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/tv_activity_block_currentCalculateForce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="算力值 0"
+                    android:textColor="@color/txt_white"
+                    android:textSize="@dimen/font_10sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!--底部BottomSheet-->
+    <LinearLayout
+        android:id="@+id/ll_activity_blockNew_bottomFrame"
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="105dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_corners_whitesolid_top"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_activity_block_bottomFrame_switch_state"
+                android:textSize="14sp"
+                android:textColor="@color/color_7a8799"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动挖矿关"
+                android:layout_marginLeft="17dp"/>
+
+            <Switch
+                android:id="@+id/switch_activity_block_bottomFrame_switch_state"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"
+                android:checked="true"
+                android:showText="false"
+                android:thumb="@color/transparent"
+                android:track="@color/transparent"
+                android:background="@drawable/selector_switch_bg"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tv_activity_block_bottomFrame_switch_music"
+                android:textSize="14sp"
+                android:textColor="@color/color_7a8799"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="音效"
+                android:layout_marginLeft="17dp"/>
+
+            <Switch
+                android:id="@+id/switch_activity_block_bottomFrame_music"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"
+                android:checked="false"
+                android:showText="false"
+                android:thumb="@color/transparent"
+                android:track="@color/transparent"
+                android:background="@drawable/selector_switch_bg"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_corners_whitesolid_bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/color_f0f4fa"
+                android:gravity="center"
+                android:text="挖矿记录"
+                android:textColor="@color/color_7a8799"
+                android:textSize="@dimen/font_12sp" />
+
+            <huoli.com.pgy.Widgets.SupperRecyclerView
+                android:id="@+id/srv_activity_block_bottomFrame_list"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/bg_white"
+                android:fadeScrollbars="true"
+                app:layout_behavior="@string/bottom_sheet_behavior"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

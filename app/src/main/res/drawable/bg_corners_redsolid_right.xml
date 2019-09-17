@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--交易买卖界面，切换限价市价交易-->
+    <solid android:color="@color/bg_red"/>      <!--填充-->
+    <corners
+        android:bottomRightRadius="@dimen/corners_size"
+        android:topRightRadius="@dimen/corners_size"/>         <!--圆角-->
+</shape>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleView">//自定义标题TitleView
+        <attr name="tv_title" format="string" />//中间标题的文字
+        <attr name="tv_right" format="string" />//右边的文字
+        <attr name="tv_right_color" format="color" />//右侧文本颜色
+        <attr name="tv_right_img" format="integer" />//右侧图片
+        <attr name="tv_back_visibility" format="enum">//左侧按钮是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+        <attr name="tv_img_right_visibility" format="enum">
+            //右侧按钮是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+        <attr name="tv_tv_right_visibility" format="enum">//右侧文字是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="UserInfoView">//自定义用户信息
+        //左边标题的文本
+        <attr name="uv_label_text" format="string" />
+        //中间内容的文本
+        <attr name="uv_content_text" format="string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MineShowItemView">//我的界面中Item
+        <attr name="msv_img_icon" format="reference" />//左侧显示的头像图标
+        <attr name="msv_text" format="string" />
+        //中间文本
+        <attr name="msv_textcolor" format="color" />
+        //中间文本颜色
+    </declare-styleable>
+
+    <declare-styleable name="PerCentImageView">
+        <attr name="HeightPercentWidth" format="float" />
+        //高是宽的多少倍
+    </declare-styleable>
+
+    <declare-styleable name="SchoolShowItemView">//学校预览界面中Item
+        <attr name="ssv_img_icon" format="reference" />//左侧显示的图标
+        <attr name="ssv_text" format="string" />//中间文本
+        <attr name="ssv_text_right" format="string" />//右侧文本
+        <attr name="ssv_iv_right_visibility" format="enum">//右侧>图标是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+    </declare-styleable>
+
+    <attr name="borderRadius" format="dimension" />
+    <attr name="roundtype">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" />
+        <attr name="roundtype" />
+    </declare-styleable>
+
+    <declare-styleable name="TextAndNextItemView">//自定义文字和next的Item
+        <attr name="tan_text" format="string" />//文本
+        <attr name="tan_right_text" format="string" />//文本
+    </declare-styleable>
+
+    <declare-styleable name="IconTextAndTextItemView">//自定义文字和文字的Item
+        <attr name="tat_icon" format="reference" />//左侧显示的图标
+        <attr name="tat_icon_visibility" format="enum">//左侧图标是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+        <attr name="tat_left" format="string" />//文本
+        <attr name="tat_right" format="string" />//文本
+        <attr name="tat_txt_color" format="color" />
+        //文本颜色
+    </declare-styleable>
+
+    <declare-styleable name="CircleProgressView">//倒计时
+        <attr name="background_color" format="color" />
+        //背景色
+        <attr name="border_color" format="color" />
+        //外圈颜色
+        <attr name="border_width" format="dimension" />
+        <attr name="inside_color" format="color" />
+        //内圈颜色
+        <attr name="inside_width" format="dimension" />
+        <attr name="centerNotice" format="string" />
+        //提示文字颜色
+        <attr name="centerNotice_color" format="color" />
+        <attr name="centerTime_color" format="color" />
+        //倒计时颜色
+    </declare-styleable>
+
+    <!-- 支付属性 -->
+    <declare-styleable name="PayPsdInputView">
+        <attr name="maxCount" format="integer" />
+        <attr name="circleColor" format="color" />
+        <attr name="bottomLineColor" format="color" />
+        <attr name="radius" format="reference" />
+        <attr name="divideLineWidth" format="dimension" />
+        <attr name="divideLineColor" format="color" />
+        <attr name="rectAngle" format="dimension" />
+        <attr name="focusedColor" format="color" />
+        <attr name="psdType" format="enum">
+            <enum name="weChat" value="0" />
+            <enum name="bottomLine" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TextAndTextItem">//自定义文字和文字的Item
+        <attr name="tatv_left_txt" format="string" />//左侧的文字
+        <attr name="tatv_right_txt" format="string" />//右边的文字
+        <attr name="tatv_right_img" format="integer" />//右侧图片
+        <attr name="tatv_leftImg_visibility" format="enum">//左侧问题图片是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+        <attr name="tatv_rightImg_visibility" format="enum">
+            //右侧图片是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+        <attr name="tatv_copy_visibility" format="enum">
+            //右侧图片是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+            <enum name="gone" value="2" />
+            //2为消失
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PasswordVisibleItem">//自定义密码输入框
+        <attr name="pwd_visibility" format="enum">//密码是否显示
+            <enum name="visable" value="0" />
+            //0为显示
+            <enum name="invisable" value="1" />
+            //1为不显示
+        </attr>
+        <attr name="pwd_left" format="string" />//左侧文本
+        <attr name="pwd_edit_txt" format="string" />//中间输入文本
+        <attr name="pwd_edit_hint" format="string" />//中间输入文本hint
+        <attr name="pwd_edit_inputType" format="integer" />//中间输入文本hint
+    </declare-styleable>
+
+    <declare-styleable name="InputAndTextItemView">//自定义输入框和文字的Item
+        <attr name="iatv_left" format="string" />
+        //左侧文本
+        <attr name="iatv_hint" format="string" />
+        //左侧hint
+        <attr name="iatv_inputType" format="integer" />
+        //输入框内容类型
+        <attr name="iatv_right" format="string" />
+        //右侧文本
+    </declare-styleable>
+
+    <!--带有可设置图标大小的TextView-->
+    <declare-styleable name="ImageTextView">
+        <attr name="drawable" format="reference" />
+        <attr name="drawableWidth" format="dimension" />
+        <attr name="drawableHeight" format="dimension" />
+        <attr name="position" format="integer" />
+    </declare-styleable>
+    <!--corner_color 边角颜色，
+            scanner_color 扫描线颜色
+            possible_result_color 扫描点颜色
+            frame_color 扫描框边线颜色
+            mask_color 模糊区域颜色
+            label_text  框上方提示
+        -->
+    <declare-styleable name="ViewfinderView">
+        <attr name="corner_color" format="color" />
+        <attr name="laser_color" format="color" />
+        <attr name="frame_color" format="color" />
+        <attr name="mask_color" format="color" />
+        <attr name="result_point_color" format="color" />
+        <attr name="result_color" format="color" />
+        <attr name="label_text_color" format="color" />
+        <attr name="label_text" format="string" />
+        <attr name="label_text_size" format="float" />
+    </declare-styleable>
+
+    <!--下载大文件环形进度条-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
+        <attr name="roundWidth" format="dimension"></attr>
+        <attr name="textColor" format="color" />
+        <attr name="textSizes" format="dimension" />
+        <attr name="max" format="integer"></attr>
+        <attr name="textIsDisplayable" format="boolean"></attr>
+        <attr name="style">
+            <enum name="STROKE" value="0"></enum>
+            <enum name="FILL" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+    <!--多行单选按钮-->
+    <declare-styleable name="MultiLineRadioGroup">
+        <attr name="child_margin_horizontal" format="dimension" />
+        <attr name="child_margin_vertical" format="dimension" />
+        <attr name="child_layout" format="integer" />
+        <attr name="child_count" format="integer" />
+        <attr name="child_values" format="integer" />
+        <attr name="single_choice" format="boolean" />
+        <attr name="gravity" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RatioImageView">
+        <attr name="ratio" format="float"></attr>
+    </declare-styleable>
+    <declare-styleable name="Ratio">
+        <attr name="ratioValue" format="float"></attr>
+    </declare-styleable>
+    <declare-styleable name="RoundCornerProgress">
+        <attr name="rcReverse" format="boolean"/>
+        <attr name="rcProgress" format="float"/>
+        <attr name="rcMax" format="float"/>
+        <attr name="rcSecondaryProgress" format="float"/>
+        <attr name="rcBackgroundPadding" format="dimension"/>
+        <attr name="rcRadius" format="dimension"/>
+        <attr name="rcProgressColor" format="color"/>
+        <attr name="rcSecondaryProgressColor" format="color"/>
+        <attr name="rcBackgroundColor" format="color"/>
+    </declare-styleable>
+    <!--圆角头像-->
+    <declare-styleable name="SelectableRoundedImageView">
+        <attr name="sriv_left_top_corner_radius" format="dimension" />
+        <attr name="sriv_right_top_corner_radius" format="dimension" />
+        <attr name="sriv_left_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_right_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_border_width" format="dimension" />
+        <attr name="sriv_border_color" format="color" />
+        <attr name="sriv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <declare-styleable name="PersonalItemView">
+        <attr name="iv_item_left_icon_visible" format="boolean" />
+        <attr name="iv_item_left_icon" format="reference" />
+        <attr name="tv_item_left_text" format="string" />
+        <attr name="tv_item_left_color" format="color" />
+        <attr name="tv_item_right_text" format="string" />
+        <attr name="tv_item_right_color" format="color" />
+        <attr name="iv_item_next_visible" format="boolean"/>
+        <attr name="iv_item_next_icon" format="reference" />
+        <attr name="iv_item_erweima_visible" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="PersonalItemInputView">
+        <attr name="iv_input_item_left_icon_visible" format="boolean" />
+        <attr name="iv_input_item_left_icon" format="reference" />
+        <attr name="tv_input_item_left_text" format="string" />
+        <attr name="tv_input_item_left_color" format="color" />
+        <attr name="edt_input_item_right_text" format="string" />
+        <attr name="edt_input_item_right_hint" format="string" />
+        <attr name="edt_input_item_right_color" format="color" />
+        <attr name="edt_input_item_right_hintcolor" format="color" />
+    </declare-styleable>
+
+    <!--数字输入框-->
+    <declare-styleable name="AmountView">
+        <attr name="av_input" format="string" />
+        <attr name="av_input_hint" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundAngleFrameLayout">
+        <attr name="framelayout_radius" format="dimension" />
+        <attr name="framelayout_topLeftRadius" format="dimension" />
+        <attr name="framelayout_topRightRadius" format="dimension" />
+        <attr name="framelayout_bottomLeftRadius" format="dimension" />
+        <attr name="framelayout_bottomRightRadius" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="BannerView">
+        <attr name="banner_page_margin" format="dimension" />
+        <attr name="banner_auto_scroll" format="boolean"/>
+        <attr name="banner_toggle_duration" format="integer"/>
+        <attr name="banner_ratio" format="float"/>
+        <attr name="banner_radius" format="dimension" />
+    </declare-styleable>
+</resources>

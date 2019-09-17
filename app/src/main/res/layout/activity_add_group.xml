@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <include layout="@layout/view_personal_title"/>
+    <ImageView
+        android:id="@+id/iv_activity_add_group_qr"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitXY"
+        android:src="@color/color_7a8799"/>
+    <TextView
+        android:id="@+id/tv_activity_add_group_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="14sp"
+        android:textColor="@color/color_4d94ff"
+        android:text="点击保存二维码"
+        android:layout_marginTop="25dp"
+        android:padding="5dp"/>
+    <TextView
+        android:id="@+id/tv_activity_add_group_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:lineSpacingExtra="5dp"
+        android:textColor="@color/color_7a8799"
+        android:textSize="14sp"
+        android:text=""/>
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/bg_white"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        style="@style/title_bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/title_content_height">
+        <ImageView
+            android:id="@+id/activity_imMain_title_back"
+            android:src="@mipmap/back"
+            android:layout_width="48dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_height="18dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <RadioGroup
+            android:id="@+id/activity_imMain_title_group"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <RadioButton
+                android:id="@+id/activity_imMain_title_group_message"
+                android:text="消息"
+                android:checked="true"
+                android:textSize="@dimen/font_18sp"
+                android:textColor="@drawable/selector_font_light_blue"
+                style="@style/radiobtn_buyOrSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:background="#ffcfd8e6"/>
+
+            <RadioButton
+                android:id="@+id/activity_imMain_title_group_contact"
+                android:text="通讯录"
+                android:textSize="@dimen/font_18sp"
+                android:textColor="@drawable/selector_font_light_blue"
+                style="@style/radiobtn_buyOrSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:background="#ffcfd8e6"/>
+
+            <RadioButton
+                android:id="@+id/activity_imMain_title_group_chatRoom"
+                android:text="社群"
+                android:textSize="@dimen/font_18sp"
+                android:textColor="@drawable/selector_font_light_blue"
+                style="@style/radiobtn_buyOrSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </RadioGroup>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/activity_imMain_title_more"
+            android:src="@mipmap/plus"
+            android:layout_width="48dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_height="18dp" />
+    </LinearLayout>
+    </FrameLayout>
+    <include layout="@layout/view_divider_line"/>
+
+    <FrameLayout
+        android:id="@+id/activity_imMain_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="61dp"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/tv_item_forcescore_long_task_title"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/color_525a66"
+        android:text="任务名字"
+        android:paddingLeft="5dp"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:id="@+id/tv_item_forcescore_long_task_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/color_ff9933"
+        android:text="+50算力"
+        android:layout_toRightOf="@+id/tv_item_forcescore_long_task_title"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/tv_item_forcescore_long_task_state"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_long_task"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:text="做任务"
+        android:textColor="@color/color_fefefe"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

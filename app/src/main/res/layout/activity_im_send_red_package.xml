@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_content_grey"
+    android:orientation="vertical">
+
+    <huoli.com.pgy.Widgets.TitleView
+        android:id="@+id/activity_sendRedPackage_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_title="发红包"/>
+
+    <!--提现账户-->
+    <huoli.com.pgy.Widgets.TextAndNextItem
+        android:id="@+id/activity_sendRedPackage_accountType"
+        app:tan_text="账户"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <!--选择币种-->
+    <huoli.com.pgy.Widgets.TextAndNextItem
+        android:id="@+id/activity_sendRedPackage_coinType"
+        app:tan_text="币种"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前余额："
+            android:textColor="@color/txt_all6"
+            android:textSize="@dimen/font_12sp" />
+        <TextView
+            android:id="@+id/activity_sendRedPackage_availableBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textColor="@color/txt_all6"
+            android:textSize="@dimen/font_12sp" />
+        <TextView
+            android:id="@+id/activity_sendRedPackage_availableBalance_coinName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_all6"
+            android:textSize="@dimen/font_12sp" />
+
+    </LinearLayout>
+
+    <!--数量-->
+    <LinearLayout
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:background="@color/bg_white"
+        android:layout_height="50dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数量"
+            android:layout_marginStart="10dp"
+            style="@style/font_14all6"/>
+
+        <huoli.com.pgy.Widgets.NumberEditText
+            android:id="@+id/activity_sendRedPackage_amount"
+            style="@style/EditText_default_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:hint="请输入数量"
+            android:inputType="numberDecimal"
+            android:maxLength="11" />
+
+        <TextView
+            android:id="@+id/activity_sendRedPackage_amount_coinName"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_all6"
+            android:textSize="@dimen/font_14sp" />
+    </LinearLayout>
+
+    <!--留言-->
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:background="@color/bg_white"
+        android:layout_height="50dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="留言"
+            android:layout_marginStart="10dp"
+            style="@style/font_14all6"/>
+
+        <EditText
+            android:id="@+id/activity_sendRedPackage_message"
+            style="@style/EditText_default_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:hint="恭喜发财，大吉大利"
+            android:maxLength="50" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="折合"
+        style="@style/font_14all6"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/activity_sendRedPackage_price"
+        android:text="¥0.00"
+        android:textColor="@color/txt_dark"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/activity_sendRedPackage_submit"
+        style="@style/full_width_textView_margin15"
+        android:background="@drawable/bg_corners_redsolid"
+        android:textColor="@color/bg_white"
+        android:text="发红包" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"/>
+    <TextView
+        android:id="@+id/activity_sendRedPackage_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:text="红包记录"
+        android:textColor="@color/txt_red"
+        android:textSize="@dimen/font_14sp" />
+    <TextView
+        android:text="未领取红包将于24小时后退回"
+        android:textSize="@dimen/font_12sp"
+        android:textColor="@color/txt_all9"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

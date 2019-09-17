@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bg_white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--顶部C2C选择列表-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#fff5f5f5"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="40dp">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/fragment_tradeC2c_tab"
+            style="@style/TabLayoutTextStyle14"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:tabIndicatorHeight="1dp"
+            app:tabTextAppearance="@style/TabLayoutTextStyle14"
+            app:tabIndicatorColor="@color/bg_blue"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/txt_blue"
+            app:tabGravity="center"
+            app:tabTextColor="#7A8799" />
+
+        <RadioGroup
+            android:id="@+id/fragment_tradeC2c_group"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/fragment_tradeC2c_group_normal"
+                android:text="普通"
+                android:drawableStart="@drawable/selector_bluegrey_point"
+                android:drawablePadding="5dp"
+                android:textSize="@dimen/font_14sp"
+                android:checked="true"
+                style="@style/radiobtn_buyOrSale"
+                android:textColor="@drawable/selector_font_light_blue"/>
+
+            <RadioButton
+                android:id="@+id/fragment_tradeC2c_group_business"
+                android:text="商家"
+                android:drawableStart="@drawable/selector_bluegrey_point"
+                android:drawablePadding="5dp"
+                android:textSize="@dimen/font_14sp"
+                style="@style/radiobtn_buyOrSale"
+                android:textColor="@drawable/selector_font_light_blue"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_tradeC2c_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</LinearLayout>

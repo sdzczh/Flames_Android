@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <!--导航-->
+    <huoli.com.pgy.Widgets.TitleView
+        android:id="@+id/js_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:tv_title="COIN大转盘" />
+    <WebView
+        android:id="@+id/wv_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"></WebView>
+</LinearLayout>

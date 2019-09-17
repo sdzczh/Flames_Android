@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/view_personal_title"/>
+
+    <EditText
+        android:id="@+id/activity_ccEntrustComplaint_input"
+        android:textSize="14sp"
+        android:textColor="@color/txt_content"
+        android:textColorHint="@color/txt_B8C6D2"
+        android:background="@drawable/bg_light8stroke_whitesoild"
+        android:padding="10dp"
+        android:hint="请输入申诉理由"
+        android:minLines="7"
+        android:gravity="top|start"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="提起申诉后资产将会冻结，申诉专员将介入本次交易，直至申诉结
+束。恶意申诉属于扰乱平台正常运营秩序，情节严重将冻结账户。"
+        android:textSize="@dimen/font_12sp"
+        android:textColor="@color/txt_B8C6D2"
+        android:lineSpacingExtra="7dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/activity_ccEntrustComplaint_submit"
+        android:text="提交申诉"
+        android:background="@drawable/bg_app_color_big"
+        android:textColor="@color/txt_white"
+        android:layout_marginTop="60dp"
+        style="@style/full_width_textView_margin15"/>
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_content_grey"
+    android:orientation="vertical">
+
+    <huoli.com.pgy.Widgets.TitleView
+        android:id="@+id/activity_noteInfo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_title="备注" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注名" />
+
+        <EditText
+            android:id="@+id/activity_noteInfo_inputNote"
+            android:hint="请输入备注"
+            android:gravity="end"
+            style="@style/EditText_default_input"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_noteInfo_update"
+        android:text="确定"
+        android:textColor="@color/bg_white"
+        style="@style/full_width_textView_blue"/>
+</LinearLayout>

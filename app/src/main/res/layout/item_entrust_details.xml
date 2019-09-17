@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:background="@drawable/bg_corners_whitesolid"
+    android:orientation="vertical">
+
+    <!--时间-->
+    <TextView
+        android:id="@+id/entrust_details_item_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="00:00"
+        android:textColor="#C4C7CC"
+        android:textSize="@dimen/font_12sp" />
+
+    <!--底部列表-->
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <!--成交价-->
+        <LinearLayout
+            android:gravity="start"
+            android:layout_weight="1.5"
+            style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/entrust_details_item_dealPrice_title"
+                style="@style/entrust_item_title" />
+
+            <TextView
+                android:id="@+id/entrust_details_item_dealPrice_content"
+                style="@style/entrust_item_content"  />
+        </LinearLayout>
+
+
+        <!--成交量-->
+        <LinearLayout
+            style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/entrust_details_item_dealNumber_title"
+                style="@style/entrust_item_title" />
+
+            <TextView
+                android:id="@+id/entrust_details_item_dealNumber_content"
+                style="@style/entrust_item_content"   />
+        </LinearLayout>
+
+        <!--交易额-->
+        <LinearLayout
+            android:gravity="end"
+            style="@style/entrust_item_frame">
+
+            <TextView
+                android:id="@+id/entrust_details_item_dealAmount_title"
+                style="@style/entrust_item_title" />
+
+            <TextView
+                android:id="@+id/entrust_details_item_dealAmount_content"
+                style="@style/entrust_item_content"  />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
