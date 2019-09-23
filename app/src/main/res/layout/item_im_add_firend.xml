@@ -9,7 +9,7 @@
     android:padding="10dp"
     android:visibility="visible">
 
-    <huoli.com.pgy.Widgets.RoundImageView
+    <app.com.pgy.Widgets.RoundImageView
         android:id="@+id/item_im_addFriend_userIcon"
         app:roundtype="circle"
         android:layout_width="40dp"

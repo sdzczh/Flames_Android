@@ -6,7 +6,7 @@
     android:background="@color/bg_content_grey"
     android:orientation="vertical">
 
-    <huoli.com.pgy.Widgets.TitleView
+    <app.com.pgy.Widgets.TitleView
         android:id="@+id/activity_userDetail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <huoli.com.pgy.Widgets.RoundImageView
+        <app.com.pgy.Widgets.RoundImageView
             android:id="@+id/activity_userDetail_icon"
             android:layout_width="70dp"
             android:layout_height="70dp"

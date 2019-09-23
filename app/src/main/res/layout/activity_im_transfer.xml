@@ -6,14 +6,14 @@
     android:background="@color/bg_content_grey"
     android:orientation="vertical">
 
-    <huoli.com.pgy.Widgets.TitleView
+    <app.com.pgy.Widgets.TitleView
         android:id="@+id/activity_imTransfer_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tv_title="转账"/>
 
     <!--提现账户-->
-    <huoli.com.pgy.Widgets.TextAndNextItem
+    <app.com.pgy.Widgets.TextAndNextItem
         android:id="@+id/activity_imTransfer_accountType"
         app:tan_text="账户"
         android:layout_marginTop="15dp"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
     <!--选择币种-->
-    <huoli.com.pgy.Widgets.TextAndNextItem
+    <app.com.pgy.Widgets.TextAndNextItem
         android:id="@+id/activity_imTransfer_coinType"
         app:tan_text="币种"
         android:layout_marginStart="15dp"
@@ -79,7 +79,7 @@
             android:layout_marginStart="10dp"
             style="@style/font_14all6"/>
 
-        <huoli.com.pgy.Widgets.NumberEditText
+        <app.com.pgy.Widgets.NumberEditText
             android:id="@+id/activity_imTransfer_amount"
             style="@style/EditText_default_input"
             android:layout_width="0dp"

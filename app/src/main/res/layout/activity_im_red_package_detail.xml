@@ -97,7 +97,7 @@
             android:orientation="horizontal"
             android:padding="10dp"
             android:layout_height="70dp">
-            <huoli.com.pgy.Widgets.RoundImageView
+            <app.com.pgy.Widgets.RoundImageView
                 android:id="@+id/activity_redPackageDetail_mineReceivedFrame_icon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

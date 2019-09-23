@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/txt_title"
                         android:textSize="20sp"
-                        android:text="ODIN"
+                        android:text="PGY"
                         android:layout_marginLeft="13dp"/>
                     <View
                         android:layout_width="0dp"

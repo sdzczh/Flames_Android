@@ -20,11 +20,11 @@
         app:tabTextColor="@color/color_7a8799">
     </android.support.design.widget.TabLayout>
 
-    <huoli.com.pgy.Widgets.NoScrollViewPager
+    <app.com.pgy.Widgets.NoScrollViewPager
         android:id="@+id/nvp_fragment_market_content_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-    </huoli.com.pgy.Widgets.NoScrollViewPager>
+    </app.com.pgy.Widgets.NoScrollViewPager>
 </LinearLayout>

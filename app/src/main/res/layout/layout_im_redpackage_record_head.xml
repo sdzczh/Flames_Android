@@ -6,7 +6,7 @@
     android:background="@color/bg_content_grey"
     android:layout_height="200dp">
 
-    <huoli.com.pgy.Widgets.RoundImageView
+    <app.com.pgy.Widgets.RoundImageView
         android:id="@+id/layout_im_redPackageRecordHead_icon"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"

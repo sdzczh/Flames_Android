@@ -10,7 +10,7 @@
     android:padding="10dp">
 
     <!--图标-->
-    <huoli.com.pgy.Widgets.RoundImageView
+    <app.com.pgy.Widgets.RoundImageView
         android:id="@+id/layout_im_groupMember_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_white"
     android:orientation="vertical"
-    tools:context="huoli.com.pgy.Activitys.MainActivity">
+    tools:context="app.com.pgy.Activitys.MainActivity">
 
     <FrameLayout
         android:id="@+id/activity_main_container"
@@ -26,7 +26,7 @@
             style="@style/MainActivity_tab"
             android:checked="true"
             android:drawableTop="@drawable/selector_bottom_onecoin"
-            android:text="奥丁" />
+            android:text="蒲公英" />
 
         <RadioButton
             android:id="@+id/activity_main_group_market"

@@ -24,7 +24,7 @@
                 android:paddingTop="20dp"
                 android:paddingLeft="20dp"
                 android:paddingBottom="20dp">
-                <huoli.com.pgy.Widgets.PersonalItemInputView
+                <app.com.pgy.Widgets.PersonalItemInputView
                     android:id="@+id/piiv_activity_bind_bankcard_bankName"
                     style="@style/PersonalInputItem"
                     app:tv_input_item_left_text="开户行"
@@ -33,10 +33,10 @@
                     app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
                     app:edt_input_item_right_color="@color/txt_content">
 
-                </huoli.com.pgy.Widgets.PersonalItemInputView>
+                </app.com.pgy.Widgets.PersonalItemInputView>
                 <View style="@style/PersonalLine"
                     android:layout_marginBottom="10dp"/>
-                <huoli.com.pgy.Widgets.PersonalItemInputView
+                <app.com.pgy.Widgets.PersonalItemInputView
                     android:id="@+id/piiv_activity_bind_bankcard_branchBankName"
                     style="@style/PersonalInputItem"
                     app:tv_input_item_left_text="所在支行"
@@ -45,10 +45,10 @@
                     app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
                     app:edt_input_item_right_color="@color/txt_content">
 
-                </huoli.com.pgy.Widgets.PersonalItemInputView>
+                </app.com.pgy.Widgets.PersonalItemInputView>
                 <View style="@style/PersonalLine"
                     android:layout_marginBottom="10dp"/>
-                <huoli.com.pgy.Widgets.PersonalItemInputView
+                <app.com.pgy.Widgets.PersonalItemInputView
                     android:id="@+id/piiv_activity_bind_bankcard_userName"
                     style="@style/PersonalInputItem"
                     app:tv_input_item_left_text="开户姓名"
@@ -56,10 +56,10 @@
                     app:edt_input_item_right_hint="请输入开户姓名"
                     app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
                     app:edt_input_item_right_color="@color/txt_content">
-                </huoli.com.pgy.Widgets.PersonalItemInputView>
+                </app.com.pgy.Widgets.PersonalItemInputView>
                 <View style="@style/PersonalLine"
                     android:layout_marginBottom="10dp"/>
-                <huoli.com.pgy.Widgets.PersonalItemInputView
+                <app.com.pgy.Widgets.PersonalItemInputView
                     android:id="@+id/piiv_activity_bind_bankcard_cardNum"
                     style="@style/PersonalInputItem"
                     app:tv_input_item_left_text="银行卡号"
@@ -68,7 +68,7 @@
                     app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
                     app:edt_input_item_right_color="@color/txt_content">
 
-                </huoli.com.pgy.Widgets.PersonalItemInputView>
+                </app.com.pgy.Widgets.PersonalItemInputView>
                 <View style="@style/PersonalLine"
                     android:layout_marginBottom="10dp"/>
             </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="huoli.com.pgy">
+    package="app.com.pgy">
 
     <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,17 +39,17 @@
 
     <!-- ⼩米 配置开始 < -->
     <permission
-        android:name="huoli.com.pgy.permission.MIPUSH_RECEIVE"
+        android:name="app.com.pgy.permission.MIPUSH_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="huoli.com.onecoin.permission.MIPUSH_RECEIVE" />
+    <uses-permission android:name="app.com.pgy.permission.MIPUSH_RECEIVE" />
     <!-- ⼩米 配置结束 < -->
     <!-- GCM 配置开始 < -->
     <permission
-        android:name="huoli.com.pgy.permission.C2D_MESSAGE"
+        android:name="app.com.pgy.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="huoli.com.onecoin.permission.C2D_MESSAGE" />
+    <uses-permission android:name="app.com.pgy.permission.C2D_MESSAGE" />
     <!-- GCM 配置结束 < -->
     <!-- 华为 配置开始 < -->
     <!-- HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限 -->
@@ -283,7 +283,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="huoli.com.pgy"
+                    android:host="app.com.pgy"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -300,7 +300,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="huoli.com.pgy"
+                    android:host="app.com.pgy"
                     android:path="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>
@@ -317,7 +317,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="huoli.com.pgy"
+                    android:host="app.com.pgy"
                     android:path="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>
@@ -349,7 +349,7 @@
         <!-- 融云IM -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="huoli.com.pgy.FileProvider"
+            android:authorities="app.com.pgy.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

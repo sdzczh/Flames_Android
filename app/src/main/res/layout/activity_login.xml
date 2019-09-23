@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/txt_title"
         android:textSize="24dp"
-        android:text="欢迎来到奥丁"
+        android:text="欢迎来到蒲公英"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="25dp"/>
     <RadioGroup
@@ -224,7 +224,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/txt_B8C6D2"
             android:textSize="13sp"
-            android:text="还没有奥丁账号？"/>
+            android:text="还没有蒲公英账号？"/>
         <TextView
             android:id="@+id/tv_activity_login_toRegister"
             android:layout_width="wrap_content"

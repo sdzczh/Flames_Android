@@ -23,7 +23,7 @@
             android:padding="20dp"
             android:gravity="center"/>
 
-        <huoli.com.pgy.Widgets.PayPsdInputView
+        <app.com.pgy.Widgets.PayPsdInputView
             android:id="@+id/dialog_pay_password"
             android:inputType="number"
             app:maxCount="6"

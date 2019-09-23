@@ -320,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <huoli.com.pgy.Widgets.TextAndTextItem
+                <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentPay_payerName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -328,7 +328,7 @@
                         android:paddingEnd="10dp"
                         android:paddingStart="10dp"/>
 
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentPay_payAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -338,7 +338,7 @@
                         android:paddingEnd="10dp"
                         android:paddingStart="10dp"/>
 
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentPay_payErweima"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -359,32 +359,32 @@
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp">
 
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_userName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:tatv_left_txt="卖家" />
 
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_perPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:tatv_left_txt="单价"
                         app:tatv_right_txt="¥ 0.00" />
 
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:tatv_left_txt="数量"
                         app:tatv_right_txt="0" />
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:tatv_left_txt="下单时间" />
 
-                    <huoli.com.pgy.Widgets.TextAndTextItem
+                    <app.com.pgy.Widgets.TextAndTextItem
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_numId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -395,7 +395,7 @@
                 </LinearLayout>
 
                 <!--参考号-->
-                <huoli.com.pgy.Widgets.TextAndTextItem
+                <app.com.pgy.Widgets.TextAndTextItem
                     android:id="@+id/activity_ccEntrustDetails_content_referenceId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -499,7 +499,7 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:layout_height="40dp">
-                <huoli.com.pgy.Widgets.RoundImageView
+                <app.com.pgy.Widgets.RoundImageView
                     android:id="@+id/activity_ccEntrustDetails_bottomContact_icon"
                     app:roundtype="circle"
                     android:layout_width="25dp"

@@ -45,7 +45,7 @@
     <View
         android:id="@+id/view_line"
         style="@style/Line"/>
-    <huoli.com.pgy.Widgets.NoScrollViewPager
+    <app.com.pgy.Widgets.NoScrollViewPager
         android:id="@+id/fragment_trade_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -38,7 +38,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:visibility="gone">
-                <huoli.com.pgy.Widgets.RatioRadioButton
+                <app.com.pgy.Widgets.RatioRadioButton
                     android:id="@+id/rb_fragment_circle_block"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
@@ -47,7 +47,7 @@
                     android:checked="true"
                     android:background="@drawable/selector_block_rb_left_bg"
                     app:ratioValue="4.6"/>
-                <huoli.com.pgy.Widgets.RatioRadioButton
+                <app.com.pgy.Widgets.RatioRadioButton
                     android:id="@+id/rb_fragment_circle_newblock"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
@@ -56,7 +56,7 @@
                     android:background="@drawable/selector_block_rb_right_bg"
                     app:ratioValue="4.6"/>
             </RadioGroup>
-            <huoli.com.pgy.Widgets.RatioImageView
+            <app.com.pgy.Widgets.RatioImageView
                 android:id="@+id/riv_fragment_circle_img"
                 android:layout_width="match_parent"
                 android:layout_height="161dp"
@@ -65,7 +65,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:visibility="gone"/>
-            <huoli.com.pgy.Widgets.RoundAngleFrameLayout
+            <app.com.pgy.Widgets.RoundAngleFrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -81,7 +81,7 @@
                     android:paddingLeft="-2dp"
                     >
                 </com.tmall.ultraviewpager.UltraViewPager>
-            </huoli.com.pgy.Widgets.RoundAngleFrameLayout>
+            </app.com.pgy.Widgets.RoundAngleFrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                 android:layout_marginBottom="20dp"/>
             <View
                 style="@style/Line"/>
-            <huoli.com.pgy.im.widget.DemoGridView
+            <app.com.pgy.im.widget.DemoGridView
                 android:id="@+id/dgv_fragment_circle_apps"
                 android:background="@color/bg_white"
                 android:gravity="start"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
-            </huoli.com.pgy.im.widget.DemoGridView>
+            </app.com.pgy.im.widget.DemoGridView>
         </LinearLayout>
     </ScrollView>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

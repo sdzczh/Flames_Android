@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <huoli.com.pgy.Widgets.MyDemoGridView
+    <app.com.pgy.Widgets.MyDemoGridView
         android:id="@+id/rv_popup_yubibao_coinlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,7 +11,7 @@
         android:background="@color/color_e5ffffff"
         android:layout_marginTop="45dp">
 
-    </huoli.com.pgy.Widgets.MyDemoGridView>
+    </app.com.pgy.Widgets.MyDemoGridView>
     <View
         android:id="@+id/view_bottom"
         android:layout_width="match_parent"

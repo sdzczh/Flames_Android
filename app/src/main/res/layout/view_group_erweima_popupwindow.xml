@@ -27,7 +27,7 @@
             android:id="@+id/tv_groups_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="奥丁官方微信群"
+            android:text="蒲公英官方微信群"
             android:textColor="@color/txt_app"
             android:textSize="15sp"
             android:layout_marginTop="13dp"/>

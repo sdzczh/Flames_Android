@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <!--导航-->
-    <huoli.com.pgy.Widgets.TitleView
+    <app.com.pgy.Widgets.TitleView
         android:id="@+id/js_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"

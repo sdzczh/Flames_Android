@@ -98,7 +98,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="2"/>
                             <!--限价时输入价格-->
-                            <huoli.com.pgy.Widgets.AmountView
+                            <app.com.pgy.Widgets.AmountView
                                 android:id="@+id/fragment_tradeGoods_limitPrice"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"/>
@@ -131,7 +131,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="2"/>
                             <!--限价时输入数量-->
-                            <huoli.com.pgy.Widgets.AmountView
+                            <app.com.pgy.Widgets.AmountView
                                 android:id="@+id/fragment_tradeGoods_amount"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"/>

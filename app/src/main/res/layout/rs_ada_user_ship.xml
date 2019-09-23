@@ -8,7 +8,7 @@
     android:padding="10dp"
     android:orientation="horizontal">
 
-    <huoli.com.pgy.Widgets.RoundImageView
+    <app.com.pgy.Widgets.RoundImageView
         android:id="@+id/new_header"
         android:layout_width="40dp"
         android:layout_height="40dp"

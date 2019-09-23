@@ -71,8 +71,8 @@
     public void *(android.webkit.webView, jav.lang.String);
 }
 
-#实体类huoli.com.onecoin.Models.Beans;
--keep public class huoli.com.onecoin.Models.** {*;}
+#实体类app.com.pgy.Models.Beans;
+-keep public class app.com.pgy.Models.** {*;}
 
 #fasterxml.jackson三方包
 -keepattributes *EnclosingMethod*
@@ -271,14 +271,14 @@
 
 -keep public class * extends android.content.BroadcastReceiver
 
-#实体类huoli.com.onecoin.Models.Beans;huoli.com.onecoin.im.server.response;
--keep class huoli.com.onecoin.im.SealNotificationReceiver {*;}
--keep public class huoli.com.onecoin.im.** {*;}
-#-keep public class huoli.com.onecoin.im.server.request.** {*;}
-#-keep public class huoli.com.onecoin.im.model.** {*;}
-#-keep public class huoli.com.onecoin.im.db.** {*;}
-#-keep public class huoli.com.onecoin.im.server.network.** {*;}
-#-keep public class huoli.com.onecoin.im.server.broadcast.** {*;}
+#实体类app.com.pgy.Models.Beans;app.com.pgy.im.server.response;
+-keep class app.com.pgy.im.SealNotificationReceiver {*;}
+-keep public class app.com.pgy.im.** {*;}
+#-keep public class app.com.pgy.im.server.request.** {*;}
+#-keep public class app.com.pgy.im.model.** {*;}
+#-keep public class app.com.pgy.im.db.** {*;}
+#-keep public class app.com.pgy.im.server.network.** {*;}
+#-keep public class app.com.pgy.im.server.broadcast.** {*;}
 
 #greendao
 #-dontwarn de.greenrobot.dao.**

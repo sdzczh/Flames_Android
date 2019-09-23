@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/txt_title"
                         android:textSize="13sp"
-                        android:text="欢迎来到奥丁"
+                        android:text="欢迎来到蒲公英"
                         android:singleLine="true"
                         android:maxLines="1"
                         android:ellipsize="end"
@@ -70,7 +70,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"/>
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_wallet"
                     style="@style/PersonalItem"
                     app:iv_item_left_icon_visible="true"
@@ -81,7 +81,7 @@
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="21dp"/>
 
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_safety"
                     style="@style/PersonalItem"
                     app:iv_item_left_icon_visible="true"
@@ -91,7 +91,7 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="21dp"/>
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_group"
                     style="@style/PersonalItem"
                     app:iv_item_left_icon_visible="true"
@@ -101,17 +101,17 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="21dp"/>
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_web"
                     style="@style/PersonalItem"
                     app:iv_item_left_icon_visible="true"
                     app:iv_item_left_icon="@mipmap/personal_web"
                     app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="奥丁官网"
+                    app:tv_item_left_text="蒲公英官网"
                     app:iv_item_next_visible="true"
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="21dp"/>
-                <!--<huoli.com.onecoin.Widgets.PersonalItemView-->
+                <!--<app.com.onecoin.Widgets.PersonalItemView-->
                     <!--style="@style/PersonalItem"-->
                     <!--app:iv_item_left_icon_visible="true"-->
                     <!--app:iv_item_left_icon="@mipmap/personal_posters"-->
@@ -153,7 +153,7 @@
                             android:src="@mipmap/next"
                             android:layout_marginTop="3dp" />
                     </LinearLayout>
-                    <huoli.com.pgy.Widgets.RatioImageView
+                    <app.com.pgy.Widgets.RatioImageView
                         android:id="@+id/iv_invitation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
 
 
 
-        <huoli.com.pgy.Widgets.PersonalItemView
+        <app.com.pgy.Widgets.PersonalItemView
             android:id="@+id/piv_fragment_personal_item_yibi"
             style="@style/PersonalItem"
             app:iv_item_left_icon_visible="true"
@@ -197,7 +197,7 @@
             app:iv_item_next_visible="true"
             android:visibility="gone"/>
 
-        <huoli.com.pgy.Widgets.PersonalItemView
+        <app.com.pgy.Widgets.PersonalItemView
 
             style="@style/PersonalItem"
             app:iv_item_left_icon_visible="true"

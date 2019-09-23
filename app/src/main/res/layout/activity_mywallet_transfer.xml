@@ -89,7 +89,7 @@
                 android:textColor="@color/txt_title"
                 android:textSize="15sp"
                 android:text="数量："/>
-            <huoli.com.pgy.Widgets.NumberEditText
+            <app.com.pgy.Widgets.NumberEditText
                 android:id="@+id/edt_activity_mywallet_transfer_amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

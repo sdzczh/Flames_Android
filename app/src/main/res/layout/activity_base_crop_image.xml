@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <huoli.com.pgy.Widgets.TitleView
+    <app.com.pgy.Widgets.TitleView
         android:id="@+id/activity_crop_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

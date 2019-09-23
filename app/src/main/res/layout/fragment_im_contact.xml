@@ -43,7 +43,7 @@
             android:textSize="30.0dip"
             android:visibility="invisible" />
 
-        <huoli.com.pgy.im.server.pinyin.SideBar
+        <app.com.pgy.im.server.pinyin.SideBar
             android:id="@+id/fragment_imContact_sidebar"
             android:layout_width="20.0dip"
             android:layout_height="fill_parent"

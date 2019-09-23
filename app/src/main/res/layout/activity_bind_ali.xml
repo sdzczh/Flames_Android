@@ -16,7 +16,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:background="@color/white">
-        <huoli.com.pgy.Widgets.PersonalItemInputView
+        <app.com.pgy.Widgets.PersonalItemInputView
             android:id="@+id/piiv_activity_bind_ali_name"
             style="@style/PersonalInputItem"
             app:tv_input_item_left_color="@color/txt_title"
@@ -24,10 +24,10 @@
             app:edt_input_item_right_color="@color/txt_content"
             app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
             app:edt_input_item_right_hint="请输入真实姓名">
-        </huoli.com.pgy.Widgets.PersonalItemInputView>
+        </app.com.pgy.Widgets.PersonalItemInputView>
         <View style="@style/PersonalLine"
             android:layout_marginBottom="20dp"/>
-        <huoli.com.pgy.Widgets.PersonalItemInputView
+        <app.com.pgy.Widgets.PersonalItemInputView
             android:id="@+id/piiv_activity_bind_ali"
             style="@style/PersonalInputItem"
             app:tv_input_item_left_color="@color/txt_title"
@@ -35,7 +35,7 @@
             app:edt_input_item_right_color="@color/txt_content"
             app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
             app:edt_input_item_right_hint="请输入支付宝账号">
-        </huoli.com.pgy.Widgets.PersonalItemInputView>
+        </app.com.pgy.Widgets.PersonalItemInputView>
         <View style="@style/PersonalLine"
             android:layout_marginBottom="20dp"/>
         <RelativeLayout

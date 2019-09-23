@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <huoli.com.pgy.Widgets.TitleView
+    <app.com.pgy.Widgets.TitleView
         android:id="@+id/activity_groupDetail_title"
         app:tv_title="群资料"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <huoli.com.pgy.Widgets.RoundImageView
+        <app.com.pgy.Widgets.RoundImageView
             android:id="@+id/activity_groupDetail_icon"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -92,7 +92,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <huoli.com.pgy.im.widget.DemoGridView
+    <app.com.pgy.im.widget.DemoGridView
         android:id="@+id/activity_groupDetail_list"
         android:background="@color/bg_white"
         android:gravity="start"

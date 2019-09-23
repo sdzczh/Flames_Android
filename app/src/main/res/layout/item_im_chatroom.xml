@@ -11,7 +11,7 @@
     android:padding="10dp">
 
     <!--图标-->
-    <huoli.com.pgy.Widgets.RoundImageView
+    <app.com.pgy.Widgets.RoundImageView
         android:id="@+id/layout_im_chatRoom_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"

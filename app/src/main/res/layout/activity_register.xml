@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/txt_title"
                 android:textSize="24dp"
-                android:text="注册奥丁账号"
+                android:text="注册蒲公英账号"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="25dp"
                 android:includeFontPadding="false"/>
@@ -185,6 +185,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/color_4d94ff"
             android:textSize="14sp"
-            android:text="《奥丁使用协议》"/>
+            android:text="《蒲公英使用协议》"/>
     </LinearLayout>
 </LinearLayout>

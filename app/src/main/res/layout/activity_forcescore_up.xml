@@ -32,7 +32,7 @@
                 android:paddingRight="15dp"
                 android:paddingBottom="15dp"
                 android:paddingTop="7dp">
-                <huoli.com.pgy.Widgets.RoundAngleFrameLayout
+                <app.com.pgy.Widgets.RoundAngleFrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:framelayout_radius="5dp">
@@ -45,7 +45,7 @@
                         android:paddingLeft="-2dp"
                         >
                     </com.tmall.ultraviewpager.UltraViewPager>
-                </huoli.com.pgy.Widgets.RoundAngleFrameLayout>
+                </app.com.pgy.Widgets.RoundAngleFrameLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                         android:drawableRight="@mipmap/question"
                         android:drawablePadding="5dp"/>
                 </LinearLayout>
-                <huoli.com.pgy.im.widget.DemoGridView
+                <app.com.pgy.im.widget.DemoGridView
                     android:id="@+id/dgv_activity_forcescore_up_one"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                     android:listSelector="@color/transparent"
                     android:numColumns="3">
 
-                </huoli.com.pgy.im.widget.DemoGridView>
+                </app.com.pgy.im.widget.DemoGridView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                     android:layout_marginTop="40dp"
                     android:textSize="20sp"
                     android:text="每日分享"/>
-                <huoli.com.pgy.im.widget.DemoGridView
+                <app.com.pgy.im.widget.DemoGridView
                     android:id="@+id/dgv_activity_forcescore_up_share"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                     android:listSelector="@color/transparent"
                     android:numColumns="4">
 
-                </huoli.com.pgy.im.widget.DemoGridView>
+                </app.com.pgy.im.widget.DemoGridView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                     android:textSize="20sp"
                     android:text="永久任务"
                     android:layout_marginBottom="15dp"/>
-                <huoli.com.pgy.im.widget.DemoGridView
+                <app.com.pgy.im.widget.DemoGridView
                     android:id="@+id/dgv_activity_forcescore_up_long_task"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                     android:listSelector="@color/transparent"
                     android:numColumns="1">
 
-                </huoli.com.pgy.im.widget.DemoGridView>
+                </app.com.pgy.im.widget.DemoGridView>
             </LinearLayout>
         </ScrollView>
         <LinearLayout

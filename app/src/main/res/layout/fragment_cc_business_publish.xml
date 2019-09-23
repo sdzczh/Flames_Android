@@ -29,7 +29,7 @@
                     android:textColor="@color/txt_content"
                     android:textSize="@dimen/font_15sp" />
 
-                <huoli.com.pgy.Widgets.NumberEditText
+                <app.com.pgy.Widgets.NumberEditText
                     android:id="@+id/fragment_c2cBusinessPublish_inputPrice"
                     style="@style/EditText_default_input"
                     android:layout_width="0dp"
@@ -76,7 +76,7 @@
                     android:textColor="@color/txt_content"
                     android:textSize="@dimen/font_15sp" />
 
-                <huoli.com.pgy.Widgets.NumberEditText
+                <app.com.pgy.Widgets.NumberEditText
                     android:id="@+id/fragment_c2cBusinessPublish_inputNumber"
                     style="@style/EditText_default_input"
                     android:layout_width="0dp"
@@ -159,7 +159,7 @@
                     android:textColor="@color/txt_content"
                     android:textSize="@dimen/font_15sp" />
 
-                <huoli.com.pgy.Widgets.NumberEditText
+                <app.com.pgy.Widgets.NumberEditText
                     android:id="@+id/fragment_c2cBusinessPublish_minPrice"
                     style="@style/EditText_default_input"
                     android:layout_width="0dp"
@@ -182,7 +182,7 @@
                     android:layout_marginStart="10dp"
                     android:background="@color/txt_title" />
 
-                <huoli.com.pgy.Widgets.NumberEditText
+                <app.com.pgy.Widgets.NumberEditText
                     android:id="@+id/fragment_c2cBusinessPublish_maxPrice"
                     style="@style/EditText_default_input"
                     android:layout_width="0dp"

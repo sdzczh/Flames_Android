@@ -235,7 +235,7 @@
                 android:textColor="@color/color_7a8799"
                 android:textSize="@dimen/font_12sp" />
 
-            <huoli.com.pgy.Widgets.SupperRecyclerView
+            <app.com.pgy.Widgets.SupperRecyclerView
                 android:id="@+id/srv_activity_block_bottomFrame_list"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"

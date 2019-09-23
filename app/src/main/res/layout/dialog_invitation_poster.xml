@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="赚钱，上奥丁就够了"
+                android:text="赚钱，上蒲公英就够了"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 android:layout_marginTop="7dp"

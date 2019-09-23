@@ -182,7 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone">
-                <huoli.com.pgy.Widgets.RatioImageView
+                <app.com.pgy.Widgets.RatioImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:ratio="4.06"

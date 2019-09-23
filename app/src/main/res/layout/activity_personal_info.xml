@@ -86,7 +86,7 @@
                 />
         </RelativeLayout>
 
-        <huoli.com.pgy.Widgets.PersonalItemView
+        <app.com.pgy.Widgets.PersonalItemView
             android:id="@+id/piv_activity_personal_info_sex"
             style="@style/PersonalItem"
             android:layout_marginTop="15dp"
@@ -95,9 +95,9 @@
             app:tv_item_left_color="@color/txt_title"
             app:tv_item_right_text=""
             app:tv_item_right_color="@color/txt_B8C6D2">
-        </huoli.com.pgy.Widgets.PersonalItemView>
+        </app.com.pgy.Widgets.PersonalItemView>
 
-        <huoli.com.pgy.Widgets.PersonalItemView
+        <app.com.pgy.Widgets.PersonalItemView
             android:id="@+id/piv_activity_personal_info_force"
             style="@style/PersonalItem"
             app:tv_item_left_text="算力"
@@ -105,7 +105,7 @@
             app:tv_item_right_text=""
             app:tv_item_right_color="@color/color_525a66"
             android:visibility="gone">
-        </huoli.com.pgy.Widgets.PersonalItemView>
+        </app.com.pgy.Widgets.PersonalItemView>
     </LinearLayout>
     <View
         android:layout_width="0dp"

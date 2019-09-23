@@ -26,7 +26,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "huoli.com.pgy"
+        applicationId "app.com.pgy"
         minSdkVersion 19
         targetSdkVersion 26
         /*2019年7月29日 1  1.0.0 xu*/
@@ -141,7 +141,7 @@ dependencies {
     compile 'com.journeyapps:zxing-android-integration:2.3.0@aar'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
-    testCompile 'junit:junit:4.12'
+//    testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.github.fenjuly:ToggleExpandLayout:774e497692'
     compile 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'

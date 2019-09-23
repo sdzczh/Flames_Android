@@ -6,7 +6,7 @@
     android:background="@color/bg_content_grey"
     android:orientation="vertical">
 
-    <huoli.com.pgy.Widgets.TitleView
+    <app.com.pgy.Widgets.TitleView
         android:id="@+id/activity_conversation_title"
         app:tv_img_right_visibility="visable"
         app:tv_right_img="@mipmap/user"

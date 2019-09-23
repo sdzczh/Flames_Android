@@ -19,7 +19,7 @@
                 android:orientation="vertical"
                 android:padding="20dp"
                 android:background="@color/white">
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_realname"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="实名认证"
@@ -29,8 +29,8 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp">
-                </huoli.com.pgy.Widgets.PersonalItemView>
-                <huoli.com.pgy.Widgets.PersonalItemView
+                </app.com.pgy.Widgets.PersonalItemView>
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_loginPw"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="登录密码"
@@ -40,9 +40,9 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp">
-                </huoli.com.pgy.Widgets.PersonalItemView>
+                </app.com.pgy.Widgets.PersonalItemView>
 
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_tradePw"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="交易密码"
@@ -52,7 +52,7 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp">
-                </huoli.com.pgy.Widgets.PersonalItemView>
+                </app.com.pgy.Widgets.PersonalItemView>
             </LinearLayout>
             <View
                 style="@style/Line_10"/>
@@ -62,7 +62,7 @@
                 android:orientation="vertical"
                 android:padding="20dp"
                 android:background="@color/white">
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_bindWx"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="绑定微信"
@@ -72,9 +72,9 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp">
-                </huoli.com.pgy.Widgets.PersonalItemView>
+                </app.com.pgy.Widgets.PersonalItemView>
 
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_bindAli"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="绑定支付宝"
@@ -84,9 +84,9 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp">
-                </huoli.com.pgy.Widgets.PersonalItemView>
+                </app.com.pgy.Widgets.PersonalItemView>
 
-                <huoli.com.pgy.Widgets.PersonalItemView
+                <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_bindBank"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="绑定银行卡"
@@ -96,7 +96,7 @@
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp">
-                </huoli.com.pgy.Widgets.PersonalItemView>
+                </app.com.pgy.Widgets.PersonalItemView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
