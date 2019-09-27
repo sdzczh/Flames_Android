@@ -118,7 +118,7 @@ public class SecuritycenterActivity extends BaseActivity {
 
     @OnClick({R.id.iv_back,R.id.piv_activity_securitycenter_loginPw,R.id.piv_activity_securitycenter_tradePw,
             R.id.piv_activity_securitycenter_realname,R.id.piv_activity_securitycenter_bindWx,R.id.piv_activity_securitycenter_bindAli,
-            R.id.piv_activity_securitycenter_bindBank})
+            R.id.piv_activity_securitycenter_bindBank,R.id.piv_activity_securitycenter_code})
     public void onViewClick(View v){
         Intent intent = null;
         Bundle bundle = null;
@@ -155,6 +155,8 @@ public class SecuritycenterActivity extends BaseActivity {
             case R.id.piv_activity_securitycenter_bindBank:
                 intent = new Intent(mContext,BindBankActivity.class);
                 //  跳转绑定银行卡
+                break;
+            case R.id.piv_activity_securitycenter_code:
                 break;
         }
         if (intent != null && LoginUtils.isLogin(this)){

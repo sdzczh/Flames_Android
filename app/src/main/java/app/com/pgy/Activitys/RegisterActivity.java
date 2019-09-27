@@ -11,13 +11,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Constants.Preferences;
@@ -31,6 +31,8 @@ import app.com.pgy.Utils.NetUtil;
 import app.com.pgy.Utils.PasswordUtil;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Utils.ToolsUtils;
+import butterknife.BindView;
+import butterknife.OnClick;
 
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
@@ -61,6 +63,20 @@ public class RegisterActivity extends BaseActivity {
     TextView tv_toAgreement;
     @BindView(R.id.ll_activity_register_backLogin)
     LinearLayout llActivityRegisterBackLogin;
+    @BindView(R.id.rb_activity_register_by_tel)
+    RadioButton rbActivityRegisterByTel;
+    @BindView(R.id.rb_activity_register_by_email)
+    RadioButton rbActivityRegisterByEmail;
+    @BindView(R.id.rg_activity_register_type)
+    RadioGroup rgActivityRegisterType;
+    @BindView(R.id.ll_activity_register_tel)
+    LinearLayout llActivityRegisterTel;
+    @BindView(R.id.edt_activity_register_email)
+    EditText edtActivityRegisterEmail;
+    @BindView(R.id.iv_activity_register_emailclear)
+    ImageView ivActivityRegisterEmailclear;
+    @BindView(R.id.ll_activity_register_email)
+    LinearLayout llActivityRegisterEmail;
 
     /**
      * 用户输入的手机号、验证码、密码
@@ -75,6 +91,8 @@ public class RegisterActivity extends BaseActivity {
      */
     private String verificationMarkFromNet;
     private String agreement;
+
+    private boolean registerByTel = true;
     /**
      * 倒计时器,默认60s
      */
@@ -112,6 +130,24 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        rgActivityRegisterType.check(R.id.rb_activity_register_by_tel);
+        registerByTel = true;
+        updateRegisterView();
+        rgActivityRegisterType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_activity_register_by_tel:
+                        registerByTel = true;
+                        updateRegisterView();
+                        break;
+                    case R.id.rb_activity_register_by_email:
+                        registerByTel = false;
+                        updateRegisterView();
+                        break;
+                }
+            }
+        });
         edt_password.setFilters(new InputFilter[]{EdittextUtils.getNoEmojiNoCh(getApplicationContext())});
         edt_tel.addTextChangedListener(new TextWatcher() {
             @Override
@@ -132,7 +168,7 @@ public class RegisterActivity extends BaseActivity {
 
                 } else if (iv_clear.getVisibility() != View.VISIBLE) {
                     iv_clear.setVisibility(View.VISIBLE);
-                    if (checkInupt()){
+                    if (checkInupt()) {
                         tv_submit.setEnabled(true);
                     }
                 }
@@ -158,7 +194,7 @@ public class RegisterActivity extends BaseActivity {
 
                 } else if (iv_pwShow.getVisibility() != View.VISIBLE) {
                     iv_pwShow.setVisibility(View.VISIBLE);
-                    if (checkInupt()){
+                    if (checkInupt()) {
                         tv_submit.setEnabled(true);
                     }
                 }
@@ -177,22 +213,63 @@ public class RegisterActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(edt_verificationCode.getText().length() > 0){
-                    if (checkInupt()){
+                if (edt_verificationCode.getText().length() > 0) {
+                    if (checkInupt()) {
                         tv_submit.setEnabled(true);
                     }
-                }else {
+                } else {
                     tv_submit.setEnabled(false);
                 }
             }
         });
+
+        edtActivityRegisterEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (edtActivityRegisterEmail.getText().length() < 1) {
+                    ivActivityRegisterEmailclear.setVisibility(View.GONE);
+                    tv_submit.setEnabled(false);
+
+                } else if (ivActivityRegisterEmailclear.getVisibility() != View.VISIBLE) {
+                    ivActivityRegisterEmailclear.setVisibility(View.VISIBLE);
+                    if (checkInupt()) {
+                        tv_submit.setEnabled(true);
+                    }
+                }
+            }
+        });
+
         PasswordUtil.setPasswordShow(edt_password, iv_pwShow, isPwdVisible);
         isPwdVisible = !isPwdVisible;
     }
 
-    private boolean checkInupt(){
-        if (edt_tel.getText().length() > 0&&edt_verificationCode.getText().length() > 0 &&
-                edt_password.getText().length() > 0){
+    private void updateRegisterView() {
+        if (registerByTel) {
+            rbActivityRegisterByTel.setTextSize(25);
+            rbActivityRegisterByEmail.setTextSize(17);
+            llActivityRegisterTel.setVisibility(View.VISIBLE);
+            llActivityRegisterEmail.setVisibility(View.GONE);
+        } else {
+            rbActivityRegisterByTel.setTextSize(17);
+            rbActivityRegisterByEmail.setTextSize(25);
+            llActivityRegisterTel.setVisibility(View.GONE);
+            llActivityRegisterEmail.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean checkInupt() {
+        if (edt_tel.getText().length() > 0 && edt_verificationCode.getText().length() > 0 &&
+                edt_password.getText().length() > 0) {
             return true;
         }
         return false;
@@ -200,7 +277,7 @@ public class RegisterActivity extends BaseActivity {
 
     @OnClick({R.id.iv_activity_register_close, R.id.iv_activity_register_clear, R.id.tv_activity_register_verificationCode,
             R.id.iv_activity_register_pwShow, R.id.tv_activity_register_submit, R.id.tv_activity_register_toAgreement,
-            R.id.ll_activity_register_backLogin})
+            R.id.ll_activity_register_backLogin,R.id.iv_activity_register_emailclear})
     public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.iv_activity_register_close:
@@ -227,6 +304,9 @@ public class RegisterActivity extends BaseActivity {
                 intent2Detail.putExtra("title", "协议声明");
                 intent2Detail.putExtra("url", agreement);
                 startActivity(intent2Detail);
+                break;
+            case R.id.iv_activity_register_emailclear:
+                edtActivityRegisterEmail.setText("");
                 break;
         }
     }
@@ -294,7 +374,7 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
         referPhoneNumber = edt_refereeTel.getText().toString().trim();
-        if (TextUtils.isEmpty(referPhoneNumber)){
+        if (TextUtils.isEmpty(referPhoneNumber)) {
             showToast("请输入邀请码");
             return;
         }

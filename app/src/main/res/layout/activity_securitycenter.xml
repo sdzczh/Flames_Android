@@ -8,7 +8,8 @@
     <include layout="@layout/view_personal_title"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,7 +18,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp"
                 android:background="@color/white">
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_realname"
@@ -28,40 +28,63 @@
                     app:tv_item_right_text=""
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginBottom="15dp"
+                    android:visibility="gone">
                 </app.com.pgy.Widgets.PersonalItemView>
+
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_loginPw"
                     style="@style/PersonalItem"
                     app:tv_item_left_text="登录密码"
                     app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_right_color="@color/txt_B8C6D2"
+                    app:tv_item_right_color="@color/txt_all9"
                     app:tv_item_right_text="修改"
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    >
                 </app.com.pgy.Widgets.PersonalItemView>
-
+                <View
+                    style="@style/Line"/>
+                <app.com.pgy.Widgets.PersonalItemView
+                    android:id="@+id/piv_activity_securitycenter_code"
+                    style="@style/PersonalItem"
+                    app:tv_item_left_text="短信验证"
+                    app:tv_item_left_color="@color/txt_title"
+                    app:tv_item_right_color="@color/txt_all9"
+                    app:iv_item_next_visible="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </app.com.pgy.Widgets.PersonalItemView>
+                <View
+                    style="@style/Line"/>
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_tradePw"
                     style="@style/PersonalItem"
-                    app:tv_item_left_text="交易密码"
+                    app:tv_item_left_text="资金密码"
                     app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_right_color="@color/txt_B8C6D2"
+                    app:tv_item_right_color="@color/txt_all9"
                     app:tv_item_right_text=""
                     app:iv_item_next_visible="true"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
                 </app.com.pgy.Widgets.PersonalItemView>
             </LinearLayout>
-            <View
-                style="@style/Line_10"/>
+<!--            <View-->
+<!--                style="@style/Line_10"/>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="20dp"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:visibility="gone">
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_activity_securitycenter_bindWx"
                     style="@style/PersonalItem"

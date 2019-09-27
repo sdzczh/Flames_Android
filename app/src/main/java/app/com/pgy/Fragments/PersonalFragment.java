@@ -4,18 +4,22 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.security.rp.RPSDK;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.BindView;
-import butterknife.OnClick;
+import java.util.HashMap;
+import java.util.Map;
+
 import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Activitys.InVitationActivity;
 import app.com.pgy.Activitys.LoginActivity;
@@ -26,16 +30,29 @@ import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Activitys.SystemSettingActivity;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
+import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
+import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import app.com.pgy.Models.Beans.EventBean.EventUserInfoChange;
+import app.com.pgy.Models.Beans.RealNameResult;
+import app.com.pgy.Models.Beans.StringNameBean;
 import app.com.pgy.Models.Beans.User;
+import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.ImageLoaderUtils;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.LoginUtils;
+import app.com.pgy.Utils.TimeUtils;
+import app.com.pgy.Widgets.PersonalItemView;
 import app.com.pgy.im.db.Friend;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import io.rong.imkit.RongIM;
+
+import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 /**
  * Created by YX on 2018/7/7.
@@ -51,7 +68,12 @@ public class PersonalFragment extends BaseFragment {
     TextView tv_nickname;
     @BindView(R.id.tv_fragment_personal_tel)
     TextView tv_tel;
-    private String jinglingName,jinglingId;
+    @BindView(R.id.piv_fragment_personal_item_version)
+    PersonalItemView pivFragmentPersonalItemVersion;
+    @BindView(R.id.tv_fragment_personal_loginout)
+    TextView tvFragmentPersonalLoginout;
+    Unbinder unbinder;
+    private String jinglingName, jinglingId;
 
     public static PersonalFragment newInstance() {
         if (instance == null) {
@@ -82,27 +104,33 @@ public class PersonalFragment extends BaseFragment {
         if (isLogin()) {
             User user = Preferences.getLocalUser();
             tv_nickname.setText(user.getName());
-            tv_tel.setText("UID："+ user.getUuid());
-            ImageLoaderUtils.displayCircle(mContext,riv_headerImg,Preferences.getLocalUser().getHeadImg());
+            tv_tel.setText("UID：" + user.getUuid());
+            ImageLoaderUtils.displayCircle(mContext, riv_headerImg, Preferences.getLocalUser().getHeadImg());
+            tvFragmentPersonalLoginout.setVisibility(View.VISIBLE);
         } else {
             tv_nickname.setText("登录/注册");
             tv_tel.setText("欢迎来到蒲公英");
             riv_headerImg.setImageResource(R.mipmap.icon_unlogin);
+            tvFragmentPersonalLoginout.setVisibility(View.GONE);
         }
     }
-    @OnClick({R.id.ll_fragment_personal_userinfo,R.id.riv_fragment_personal_headerImg,R.id.rl_fragment_personal_userInfo,R.id.piv_fragment_personal_item_wallet,R.id.piv_fragment_personal_item_safety,
-            R.id.piv_fragment_personal_item_poster,R.id.piv_fragment_personal_item_group,R.id.piv_fragment_personal_item_yibi,
-            R.id.piv_fragment_personal_item_system,R.id.iv_invitation,R.id.piv_fragment_personal_item_web})
-    public void onViewClick(View v){
+
+    @OnClick({R.id.ll_fragment_personal_userinfo, R.id.riv_fragment_personal_headerImg, R.id.rl_fragment_personal_userInfo,
+            R.id.piv_fragment_personal_item_wallet, R.id.piv_fragment_personal_item_safety,
+            R.id.piv_fragment_personal_item_poster, R.id.piv_fragment_personal_item_group, R.id.piv_fragment_personal_item_yibi,
+            R.id.piv_fragment_personal_item_system, R.id.iv_invitation, R.id.piv_fragment_personal_item_web,
+            R.id.ll_fragment_personal_renzheng,R.id.piv_fragment_personal_item_help,R.id.piv_fragment_personal_item_version,
+            R.id.piv_fragment_personal_item_huilv,R.id.piv_fragment_personal_item_feelv})
+    public void onViewClick(View v) {
         Intent intent = null;
         Bundle bundle = null;
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.ll_fragment_personal_userinfo:
             case R.id.riv_fragment_personal_headerImg:
             case R.id.rl_fragment_personal_userInfo:
-               if (isLogining()){
+                if (isLogining()) {
                     intent = new Intent(mContext, PersonalInfoActivity.class);
-               }
+                }
                 break;
             case R.id.piv_fragment_personal_item_wallet:
                 //  跳转我的钱包
@@ -112,13 +140,14 @@ public class PersonalFragment extends BaseFragment {
                 }
                 break;
             case R.id.piv_fragment_personal_item_safety:
-                if (isLogining()){
+                if (isLogining()) {
                     intent = new Intent(mContext, SecuritycenterActivity.class);
                 }
                 break;
+            case R.id.iv_invitation:
             case R.id.piv_fragment_personal_item_poster:
                 // 2018/7/7 跳转邀请海报
-                if (isLogining()){
+                if (isLogining()) {
                     intent = new Intent(mContext, InVitationActivity.class);
                 }
                 break;
@@ -127,21 +156,21 @@ public class PersonalFragment extends BaseFragment {
                 intent = new Intent(mContext, PersonalGroupsActivity.class);
                 break;
             case R.id.piv_fragment_personal_item_yibi:
-                if (!isLogining()){
+                if (!isLogining()) {
                     return;
                 }
-                 /*从配置文件获取COIN精灵*/
+                /*从配置文件获取COIN精灵*/
                 Configuration.YibiElve yibijingling = getConfiguration().getYibiElve();
-                if (yibijingling == null){
-                    yibijingling=new Configuration.YibiElve();
+                if (yibijingling == null) {
+                    yibijingling = new Configuration.YibiElve();
                 }
                 jinglingId = yibijingling.getPhone();
-                jinglingName = TextUtils.isEmpty(yibijingling.getName())?"COIN精灵":yibijingling.getName();
+                jinglingName = TextUtils.isEmpty(yibijingling.getName()) ? "COIN精灵" : yibijingling.getName();
                 String headPath = yibijingling.getHeadPath();
-                RongIM.getInstance().refreshUserInfoCache(new Friend(jinglingId,jinglingName, Uri.parse(headPath)));
-                try{
-                    RongIM.getInstance().startPrivateChat(mContext,jinglingId,jinglingName);
-                }catch (Exception e){
+                RongIM.getInstance().refreshUserInfoCache(new Friend(jinglingId, jinglingName, Uri.parse(headPath)));
+                try {
+                    RongIM.getInstance().startPrivateChat(mContext, jinglingId, jinglingName);
+                } catch (Exception e) {
                     e.printStackTrace();
                     showToast("系统异常");
                 }
@@ -149,29 +178,52 @@ public class PersonalFragment extends BaseFragment {
             case R.id.piv_fragment_personal_item_web:
                 /*跳转COIN官网*/
                 intent = new Intent(mContext, WebDetailActivity.class);
-                intent.putExtra("title","蒲公英官网");
-                intent.putExtra("url",getConfiguration().getIndexUrl());
+                intent.putExtra("title", "蒲公英官网");
+                intent.putExtra("url", getConfiguration().getIndexUrl());
                 break;
+
             case R.id.piv_fragment_personal_item_system:
                 intent = new Intent(mContext, SystemSettingActivity.class);
                 break;
-                default:break;
-            case R.id.iv_invitation:
+
+            case R.id.ll_fragment_personal_renzheng:
+                // 跳转实名认证
                 if (isLogining()){
-                    intent = new Intent(mContext, InVitationActivity.class);
+                    if (Preferences.getLocalUser().isIdCheckFlag()) {
+                        showToast("您已完成实名认证");
+                        return;
+                    }
+                    start2RealName();
                 }
                 break;
+            case R.id.piv_fragment_personal_item_help:
+                if (isLogining()) {
+
+                }
+                break;
+            case R.id.piv_fragment_personal_item_version:
+                if (isLogining())
+                break;
+            case R.id.piv_fragment_personal_item_huilv:
+                int a = 0;
+                break;
+            case R.id.piv_fragment_personal_item_feelv:
+                int a1 = 0;
+                break;
+            default:
+                break;
+
         }
-        if (intent != null){
-            if (bundle != null){
+        if (intent != null) {
+            if (bundle != null) {
                 intent.putExtras(bundle);
             }
             startActivity(intent);
         }
     }
 
-    private boolean isLogining(){
-        if (isLogin()){
+    private boolean isLogining() {
+        if (isLogin()) {
             return true;
         }
         Intent intent = new Intent(mContext, LoginActivity.class);
@@ -186,8 +238,9 @@ public class PersonalFragment extends BaseFragment {
     public void Event(EventLoginState loginState) {
         refreshUserMessage();
     }
+
     /**
-     *用户信息改变状态监听
+     * 用户信息改变状态监听
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void EventUserInfoCHange(EventUserInfoChange change) {
@@ -199,8 +252,8 @@ public class PersonalFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         /*切换底部行情页面的时候*/
-        LogUtils.w("home","home----onHiddenChanged:"+hidden);
-        if (!hidden){
+        LogUtils.w("home", "home----onHiddenChanged:" + hidden);
+        if (!hidden) {
             switchScene(null);
         }
     }
@@ -211,5 +264,104 @@ public class PersonalFragment extends BaseFragment {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+        unbinder.unbind();
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    private String taskId;
+    /**
+     * 去请求实名认证token
+     */
+    private void start2RealName() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType", SYSTEMTYPE_ANDROID);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        NetWorks.getRealNameToken(Preferences.getAccessToken(), map, new getBeanCallback<RealNameResult>() {
+            @Override
+            public void onSuccess(RealNameResult realNameResult) {
+                if (realNameResult == null) {
+                    realNameResult = new RealNameResult();
+                }
+                LogUtils.w("realName", "start2RealName:" + realNameResult.toString());
+                LogUtils.w(TAG, realNameResult.toString());
+                String verifyToken = realNameResult.getToken();
+                taskId = realNameResult.getTaskId();
+                if (TextUtils.isEmpty(verifyToken)) {
+                    showToast("获取token失败");
+                    return;
+                }
+                start2Certification(verifyToken);
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                onFail(errorCode, reason);
+                /*网络错误*/
+            }
+        });
+    }
+
+    /**
+     * 开始认证
+     */
+    private void start2Certification(String verifyToken) {
+        RPSDK.start(verifyToken, mContext, new RPSDK.RPCompletedListener() {
+            @Override
+            public void onAuditResult(RPSDK.AUDIT audit) {
+                LogUtils.w("realName", "阿里认证结果：" + audit);
+                if (TextUtils.isEmpty(taskId)) {
+                    return;
+                }
+                getRealNameState(taskId);
+                if (audit == RPSDK.AUDIT.AUDIT_PASS) { //认证通过
+                    //showToast("认证通过");
+
+                } else if (audit == RPSDK.AUDIT.AUDIT_FAIL) { //认证不通过
+                    //showToast("认证不通过");
+                } else if (audit == RPSDK.AUDIT.AUDIT_NOT) { //未认证，用户取消
+                    //showToast("未认证，用户取消");
+                }
+            }
+
+        });
+    }
+
+
+    private void getRealNameState(String taskId) {
+        showLoading(null);
+        Map<String, Object> map = new HashMap<>();
+        map.put("taskId", taskId);
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType", SYSTEMTYPE_ANDROID);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        NetWorks.getRealNameStatus(Preferences.getAccessToken(), map, new getBeanCallback<StringNameBean>() {
+            @Override
+            public void onSuccess(StringNameBean realNameStatus) {
+                hideLoading();
+                showToast("实名认证成功");
+                LogUtils.w("realName", "getRealNameState：" + realNameStatus.toString());
+                Preferences.saveUserName(realNameStatus.getName());
+                LogUtils.w("realName", "userName:" + realNameStatus.getName());
+                Preferences.setIsHasRealName(true);
+                EventBus.getDefault().post(new EventRealName(true));
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                hideLoading();
+                onFail(errorCode, reason);
+                /*网络错误*/
+            }
+        });
+
+    }
+
 }
