@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txt_bg">
+    <include layout="@layout/view_personal_title"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1(美元)≈￥"
+            android:textColor="#ff333333"
+            android:textSize="22sp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/tv_activity_huilv_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7.1"
+            android:textColor="#ff333333"
+            android:textSize="22sp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(人民币)"
+            android:textColor="#ff333333"
+            android:textSize="22sp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/xuxian"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="计算规则：PGY虚拟合约采用银行柜台汇率过去14天的平均值作为汇率参考值，在每一个交割结算日，若该平均值与系统当前汇率偏离超过0.2%，则会采用最新的14天平均值作为系统汇率。"
+        android:textColor="#ff333333"
+        android:textSize="15sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.com.pgy.Activitys.Base.WebDetailActivity;
+import app.com.pgy.Activitys.HuiLvActivity;
 import app.com.pgy.Activitys.InVitationActivity;
 import app.com.pgy.Activitys.LoginActivity;
 import app.com.pgy.Activitys.MyWalletActivity;
@@ -205,7 +206,7 @@ public class PersonalFragment extends BaseFragment {
                 if (isLogining())
                 break;
             case R.id.piv_fragment_personal_item_huilv:
-                int a = 0;
+                intent = new Intent(mContext, HuiLvActivity.class);
                 break;
             case R.id.piv_fragment_personal_item_feelv:
                 int a1 = 0;

@@ -410,6 +410,9 @@
         <activity android:name=".Activitys.InVitationHistoryActivity" />
         <activity android:name=".Activitys.InVitationMyFollowActivity" />
         <activity android:name=".Activitys.QiangGouViewActivity" />
+        <activity android:name=".Activitys.PersonalRenZhengActivity" />
+        <activity android:name=".Activitys.HuiLvActivity" />
+        <activity android:name=".Activitys.HuiLvHistoryListActivity" />
 
         <!-- 第三方的推送 权限 广播 和服务 -->
 

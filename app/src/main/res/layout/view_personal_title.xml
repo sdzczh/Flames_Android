@@ -32,6 +32,16 @@
         android:src="@mipmap/question1"
         android:layout_marginRight="10dp"
         android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tv_title_right"
+        style="@style/title_text"
+        android:text="历史汇率"
+        android:textColor="#ff3075ee"
+        android:textSize="17sp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        android:visibility="gone"/>
 </FrameLayout>
     <View
         android:id="@+id/view_line"
