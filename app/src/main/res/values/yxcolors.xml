@@ -35,11 +35,11 @@
     <color name="txt_app">#098DE6</color>
     <color name="txt_app_out">#F55B3D</color>
     <color name="txt_app_in">#01C18B</color>
-    <color name="txt_app_enable">#B4BDD6</color>
+    <color name="txt_app_enable">#D1D1D2</color>
     <color name="txt_app_line">#E6E8EB</color>
-    <color name="txt_app_sq">#F2F4F5</color>
-    <color name="txt_title">#11293B</color>
-    <color name="txt_content">#63727D</color>
+    <color name="txt_app_sq">#f7f8fa</color>
+    <color name="txt_title">#333333</color>
+    <color name="txt_content">#666666</color>
     <color name="txt_B8C6D2">#B8C6D2</color>
     <color name="txt_808DAC">#808DAC</color>
 

@@ -18,39 +18,72 @@
         android:fitsSystemWindows="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:minHeight="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed"
             android:fitsSystemWindows="true">
-            <!--币种-->
-            <TextView
-                android:id="@+id/fragment_tradeGoods_c2cName"
-                android:text="DK/CNY"
-                android:textSize="20sp"
-                android:paddingStart="15dp"
-                android:textColor="@color/txt_title"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@mipmap/coinchoose_right"
-                android:drawablePadding="10dp"
-                android:minWidth="100dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical">
+                <!--币种-->
+                <TextView
+                    android:id="@+id/fragment_tradeGoods_c2cName"
+                    android:text="DK/CNY"
+                    android:textSize="16sp"
+                    android:paddingStart="15dp"
+                    android:textColor="@color/txt_title"
+                    android:drawableRight="@mipmap/trade_xiala"
+                    android:drawablePadding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/fragment_tradeGoods_currentPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10160.8"
+                    android:textColor="#ffee6560"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/fragment_tradeGoods_currentPrice_cny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 10160.80"
+                    android:textColor="#ffb5b5b7"
+                    android:textSize="11sp"
+                    android:layout_marginLeft="10dp"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/trade_up"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+
+            <View
+                style="@style/Line"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:paddingStart="17dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:paddingBottom="10dp"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <!--左半边-->
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:gravity="center_vertical"
                     android:layout_height="match_parent">
 
                         <!--切换买入卖出-->
@@ -58,66 +91,63 @@
                             android:id="@+id/fragment_tradeGoods_group"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:background="@mipmap/trade_buy_sale_bg_select">
 
                             <RadioButton
                                 android:id="@+id/fragment_tradeGoods_group_buy"
                                 style="@style/goods_radiobtn_limitormarket"
-                                android:background="@drawable/selector_radio_bg_green_grey_left"
-                                android:textColor="@color/white"
+                                android:textColor="@drawable/selector_font_white_green"
                                 android:checked="true"
                                 android:text="买入"
-                                android:layout_marginRight="-2.5dp"/>
+                                android:layout_marginRight="-2.5dp"
+                                android:background="@color/transparent"/>
 
                             <RadioButton
                                 android:id="@+id/fragment_tradeGoods_group_sale"
                                 style="@style/goods_radiobtn_limitormarket"
-                                android:background="@drawable/selector_radio_bg_red_grey_right"
-                                android:textColor="@color/white"
+                                android:background="@color/transparent"
+                                android:textColor="@drawable/selector_font_white_red"
                                 android:text="卖出"
                                 android:layout_marginLeft="-2.5dp"/>
                         </RadioGroup>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"/>
+
                         <!--切换限价市价-->
                     <TextView
                         android:id="@+id/fragment_tradeGoods_limitOrMarket"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableEnd="@mipmap/arrow_down_1"
+                        android:drawableEnd="@mipmap/trade_xiala"
                         android:drawablePadding="7dp"
                         android:gravity="center_vertical"
                         android:minLines="1"
-                        android:text="限价"
-                        android:textColor="@color/txt_content"
-                        android:textSize="@dimen/font_13sp" />
-                    <View
+                        android:text="限价买入"
+                        android:textColor="@color/txt_title"
+                        android:textSize="@dimen/font_14sp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="8dp"/>
+                    <!--限价时输入价格-->
+<!--                    <app.com.pgy.Widgets.AmountView-->
+<!--                        android:id="@+id/fragment_tradeGoods_limitPrice"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="40dp"/>-->
+                    <app.com.pgy.Widgets.AmountImageView
+                        android:id="@+id/fragment_tradeGoods_limitPrice"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"/>
-                            <!--限价时输入价格-->
-                            <app.com.pgy.Widgets.AmountView
-                                android:id="@+id/fragment_tradeGoods_limitPrice"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"/>
-                            <!--市价价格-->
-                            <TextView
-                                android:id="@+id/fragment_tradeGoods_marketPrice"
-                                android:text="以当前最优价格交易"
-                                android:visibility="gone"
-                                android:textColor="#8F9DB3"
-                                android:maxLines="1"
-                                android:textSize="@dimen/font_14sp"
-                                android:background="@drawable/bg_corners_f5solid"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp" />
-                    <View
+                        android:layout_height="32dp"/>
+                    <!--市价价格-->
+                    <TextView
+                        android:id="@+id/fragment_tradeGoods_marketPrice"
+                        android:text="以当前最优价格交易"
+                        android:visibility="gone"
+                        android:textColor="#8F9DB3"
+                        android:maxLines="1"
+                        android:textSize="@dimen/font_14sp"
+                        android:background="@drawable/bg_corners_f5solid"
+                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="40dp" />
+
                     <TextView
                         android:id="@+id/fragment_tradeGoods_priceOfCny"
                         android:text="≈0 CNY"
@@ -125,67 +155,81 @@
                         android:textSize="12sp"
                         android:gravity="center_vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"/>
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_weight="2"/>-->
                             <!--限价时输入数量-->
-                            <app.com.pgy.Widgets.AmountView
-                                android:id="@+id/fragment_tradeGoods_amount"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"/>
-                    <View
+<!--                            <app.com.pgy.Widgets.AmountView-->
+<!--                                android:id="@+id/fragment_tradeGoods_amount"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="40dp"/>-->
+                    <app.com.pgy.Widgets.AmountImageView
+                        android:id="@+id/fragment_tradeGoods_amount"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:id="@+id/fragment_tradeGoods_available"
-                        android:text="可用0CNY"
-                        android:textSize="@dimen/font_12sp"
-                        android:textColor="@color/txt_content"
-                        android:maxLines="1"
-                        android:gravity="center_vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"/>
+                        android:layout_height="32dp"/>
                     <RadioGroup
                         android:id="@+id/fragment_tradeGoods_percentGroup"
                         android:layout_width="match_parent"
-                        android:background="@drawable/bg_corners_f5solid"
+                        android:background="@color/white"
                         android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
                         android:layout_height="25dp">
 
                         <RadioButton
                             android:id="@+id/fragment_tradeGoods_percentGroup_first"
                             android:text="25%"
-                            android:background="@drawable/selector_radio_bg_green_grey_left"
-                            style="@style/radio_trade_percent" />
+                            android:background="@mipmap/trade_jindu_bg"
+                            style="@style/radio_trade_percent"
+                            android:layout_marginRight="3dp"/>
 
                         <RadioButton
                             android:id="@+id/fragment_tradeGoods_percentGroup_second"
                             android:text="50%"
-                            android:background="@drawable/selector_radio_bg_green_grey"
-                            style="@style/radio_trade_percent" />
+                            android:background="@mipmap/trade_jindu_bg"
+                            style="@style/radio_trade_percent"
+                            android:layout_marginRight="3dp"/>
                         <RadioButton
                             android:id="@+id/fragment_tradeGoods_percentGroup_third"
                             android:text="75%"
-                            android:background="@drawable/selector_radio_bg_green_grey"
-                            style="@style/radio_trade_percent" />
+                            android:background="@mipmap/trade_jindu_bg"
+                            style="@style/radio_trade_percent"
+                            android:layout_marginRight="3dp"/>
                         <RadioButton
                             android:id="@+id/fragment_tradeGoods_percentGroup_forth"
                             android:text="100%"
-                            android:background="@drawable/selector_radio_bg_green_grey_right"
+                            android:background="@mipmap/trade_jindu_bg"
                             style="@style/radio_trade_percent" />
                     </RadioGroup>
-
-                    <View
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2.5"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp">
+                        <TextView
+                            android:text="可用 "
+                            android:textSize="@dimen/font_12sp"
+                            android:textColor="#B5B5B7"
+                            android:maxLines="1"
+                            android:gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/fragment_tradeGoods_available"
+                            android:text="0CNY"
+                            android:textSize="@dimen/font_12sp"
+                            android:textColor="@color/txt_content"
+                            android:maxLines="1"
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/fragment_tradeGoods_tradeAmountFrame"
                         android:layout_width="match_parent"
@@ -193,26 +237,22 @@
                         android:gravity="center_vertical"
                         android:layout_height="wrap_content">
                         <TextView
-                            android:text="交易额"
-                            android:textColor="@color/txt_content"
-                            android:textSize="13sp"
+                            android:text="可买 "
+                            android:textColor="#B5B5B7"
+                            android:textSize="12sp"
                             android:layout_marginEnd="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <TextView
                             android:id="@+id/fragment_tradeGoods_tradeAmount"
                             android:text="0.00CNY"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textColor="@color/txt_content"
                             android:maxLines="1"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"/>
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"/>
+
                     <!--中间买入卖出按钮-->
                     <TextView
                         android:id="@+id/fragment_tradeGoods_trade"
@@ -221,9 +261,10 @@
                         android:layout_height="40dp"
                         android:gravity="center"
                         android:text="买入"
-                        android:textColor="@drawable/selector_enable_font_light_white"
-                        android:background="@drawable/selector_bg_app_color_small"
-                        android:textSize="@dimen/font_15sp" />
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_app_enable_big"
+                        android:textSize="@dimen/font_15sp"
+                        android:layout_marginTop="28dp"/>
 
                     <!--中间登录按钮-->
                     <TextView
@@ -234,23 +275,23 @@
                         android:text="登录/注册"
                         android:textColor="@drawable/selector_enable_font_light_white"
                         android:background="@drawable/selector_bg_app_color_small"
-                        android:textSize="@dimen/font_15sp" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"/>
+                        android:textSize="@dimen/font_15sp"
+                        android:layout_marginTop="28dp"/>
+
                     <!--K线图-->
                     <LinearLayout
                         android:id="@+id/fragment_tradeGoods_kline_frame"
                         android:layout_width="match_parent"
                         android:orientation="vertical"
-                        android:layout_height="90dp">
+                        android:layout_height="90dp"
+                        android:visibility="gone">
 
                         <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/fragment_tradeGoods_kline"
                             android:layout_width="match_parent"
                             android:layout_weight="1"
-                            android:layout_height="0dp"/>
+                            android:layout_height="0dp"
+                            android:visibility="gone"/>
                         <LinearLayout
                             android:layout_marginTop="3dp"
                             android:layout_width="match_parent"
@@ -294,11 +335,17 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@drawable/xuxian"
+                        android:layout_marginTop="28dp"/>
                     <!--列表头部-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp"
+                        android:layout_marginTop="7dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -325,65 +372,27 @@
                             android:textSize="@dimen/font_11sp"
                             android:textColor="@color/txt_B8C6D2"/>
                     </LinearLayout>
-                    <View
-                        style="@style/Line"
-                        android:layout_marginTop="5dp"/>
                     <!--卖出列表-->
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
+
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/fragment_tradeGoods_list_sale"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
-                    </FrameLayout>
-
-                    <!--当前价格-->
-                    <LinearLayout
-                        android:gravity="center_vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                            android:layout_height="110dp"/>
 
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:orientation="vertical"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:id="@+id/fragment_tradeGoods_currentPrice"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/txt_01C18B"
-                                android:textSize="18sp"
-                                android:maxLines="1"
-                                android:text="0.00" />
-                            <TextView
-                                android:id="@+id/fragment_tradeGoods_currentPrice_cny"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="≈0.00 CNY"
-                                android:textSize="@dimen/font_12sp"
-                                android:textColor="@color/txt_B8C6D2"
-                                android:maxLines="1"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:layout_height="0dp">
                     <!--买入列表-->
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/fragment_tradeGoods_list_buy"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                    </FrameLayout>
+                        android:layout_height="110dp"
+                        android:layout_marginTop="30dp"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

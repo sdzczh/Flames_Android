@@ -45,10 +45,18 @@ public class ChangeLoginPwActivity extends BaseActivity {
     TextView tv_verification;
     @BindView(R.id.edt_activity_change_login_pw_verificationCode)
     EditText edt_verification;
+    @BindView(R.id.edt_activity_change_login_pw_oldPw)
+    EditText edt_oldPw;
+    @BindView(R.id.iv_activity_change_login_pw_oldpwShow)
+    ImageView iv_oldpwShow;
     @BindView(R.id.edt_activity_change_login_pw_newpw)
     EditText edt_newPw;
-    @BindView(R.id.iv_activit_change_login_pw_pwShow)
+    @BindView(R.id.iv_activity_change_login_pw_pwShow)
     ImageView iv_pwShow;
+    @BindView(R.id.edt_activity_change_login_pw_newpw1)
+    EditText edt_newPw1;
+    @BindView(R.id.iv_activity_change_login_pw_pwShow1)
+    ImageView iv_pwShow1;
     @BindView(R.id.tv_activity_change_login_pw_submit)
     TextView tv_submit;
 
@@ -58,6 +66,7 @@ public class ChangeLoginPwActivity extends BaseActivity {
     private String userPhoneNumber;
     private String verificationCode;
     private String password;
+    private boolean isOldVisible = false;
     private boolean isPwdVisible = false;
     /**
      * 服务器返回的验证码标志
@@ -102,6 +111,30 @@ public class ChangeLoginPwActivity extends BaseActivity {
         tv_title.setText("修改登录密码");
         userPhoneNumber = Preferences.getLocalUser().getPhone();
         tv_tel.setText(Utils.getSecretPhoneNum(userPhoneNumber));
+        edt_oldPw.setFilters(new InputFilter[]{EdittextUtils.getNoEmojiNoCh(getApplicationContext())});
+        edt_oldPw.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (edt_oldPw.getText().length() < 1){
+                    iv_oldpwShow.setVisibility(View.GONE);
+                }else if (iv_oldpwShow.getVisibility() != View.VISIBLE){
+                    iv_oldpwShow.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        PasswordUtil.setPasswordShow(edt_oldPw,iv_oldpwShow,isOldVisible);
+        isOldVisible = !isOldVisible;
+
         edt_newPw.setFilters(new InputFilter[]{EdittextUtils.getNoEmojiNoCh(getApplicationContext())});
         edt_newPw.addTextChangedListener(new TextWatcher() {
             @Override
@@ -125,10 +158,12 @@ public class ChangeLoginPwActivity extends BaseActivity {
         });
         PasswordUtil.setPasswordShow(edt_newPw,iv_pwShow,isPwdVisible);
         isPwdVisible = !isPwdVisible;
+        edt_newPw1.setFilters(new InputFilter[]{EdittextUtils.getNoEmojiNoCh(getApplicationContext())});
+
     }
 
-    @OnClick({R.id.iv_back,R.id.tv_activity_change_login_pw_verificationCode,R.id.iv_activit_change_login_pw_pwShow,
-            R.id.tv_activity_change_login_pw_submit})
+    @OnClick({R.id.iv_back,R.id.tv_activity_change_login_pw_verificationCode,R.id.iv_activity_change_login_pw_pwShow,
+            R.id.tv_activity_change_login_pw_submit,R.id.iv_activity_change_login_pw_oldpwShow})
     public void onViewClick(View view){
         switch (view.getId()){
             case R.id.iv_back:
@@ -137,12 +172,16 @@ public class ChangeLoginPwActivity extends BaseActivity {
             case R.id.tv_activity_change_login_pw_verificationCode:
                 getVerificationCode();
                 break;
-            case R.id.iv_activit_change_login_pw_pwShow:
+            case R.id.iv_activity_change_login_pw_pwShow:
                 PasswordUtil.setPasswordShow(edt_newPw,iv_pwShow,isPwdVisible);
                 isPwdVisible = !isPwdVisible;
                 break;
             case R.id.tv_activity_change_login_pw_submit:
                 submitPwd2Net();
+                break;
+            case R.id.iv_activity_change_login_pw_oldpwShow:
+                PasswordUtil.setPasswordShow(edt_oldPw,iv_oldpwShow,isOldVisible);
+                isOldVisible = !isOldVisible;
                 break;
         }
     }
@@ -187,10 +226,10 @@ public class ChangeLoginPwActivity extends BaseActivity {
      * 去服务器修改
      */
     private void submitPwd2Net() {
-        if (!ToolsUtils.isPhone(userPhoneNumber)) {
-            showToast(getString(R.string.illegal_phone));
-            return;
-        }
+//        if (!ToolsUtils.isPhone(userPhoneNumber)) {
+//            showToast(getString(R.string.illegal_phone));
+//            return;
+//        }
         if (TextUtils.isEmpty(verificationMarkFromNet)) {
             showToast(R.string.getVerificationFirst);
             return;
@@ -203,6 +242,10 @@ public class ChangeLoginPwActivity extends BaseActivity {
         password = edt_newPw.getText().toString().trim();
         if (!ToolsUtils.isDigitalAndWord(password)) {
             showToast(getString(R.string.illegal_password));
+            return;
+        }
+        if (!edt_newPw1.getText().toString().trim().equals(password)){
+            showToast("确认密码不正确");
             return;
         }
         showLoading(tv_submit);

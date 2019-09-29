@@ -44,7 +44,7 @@
 
     <!--字体-->
     <!--卖出辅助色-->
-    <color name="txt_red">#FF7F66</color>
+    <color name="txt_red">#EE6662</color>
     <color name="txt_black">#000</color>
     <color name="txt_white">#ffffff</color>
     <color name="txt_grey">#808080</color>
@@ -66,7 +66,7 @@
 
     <color name="txt_allB">#BBBBBB</color>
     <!--买入辅助色-->
-    <color name="txt_green">#ff52cca3</color>
+    <color name="txt_green">#4DB872</color>
 
     <!--输入框-->
     <color name="input_txt">#525A66</color>

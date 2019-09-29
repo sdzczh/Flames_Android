@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Widgets.AmountImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -99,13 +100,13 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     @BindView(R.id.fragment_tradeGoods_limitOrMarket)
     TextView fragmentTradeGoodsLimitOrMarket;
     @BindView(R.id.fragment_tradeGoods_limitPrice)
-    AmountView fragmentTradeGoodsLimitPrice;
+    AmountImageView fragmentTradeGoodsLimitPrice;
     @BindView(R.id.fragment_tradeGoods_priceOfCny)
     TextView fragmentTradeGoodsPriceOfCny;
     @BindView(R.id.fragment_tradeGoods_marketPrice)
     TextView fragmentTradeGoodsMarketPrice;
     @BindView(R.id.fragment_tradeGoods_amount)
-    AmountView fragmentTradeGoodsAmount;
+    AmountImageView fragmentTradeGoodsAmount;
     @BindView(R.id.fragment_tradeGoods_available)
     TextView fragmentTradeGoodsAvailable;
     @BindView(R.id.fragment_tradeGoods_percentGroup)
@@ -142,8 +143,8 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     TextView fragmentTradeGoodsLogin;
     @BindView(R.id.fragment_tradeGoods_appBarLayout)
     AppBarLayout fragmentTradeGoodsAppBarLayout;
-    @BindView(R.id.fragment_tradeGoods_kline)
-    LineChart fragmentTradeGoodsKline;
+//    @BindView(R.id.fragment_tradeGoods_kline)
+//    LineChart fragmentTradeGoodsKline;
     @BindView(R.id.fragment_tradeGoods_klineTime_first)
     TextView fragmentTradeGoodsKlineTimeFirst;
     @BindView(R.id.fragment_tradeGoods_klineTime_second)
@@ -396,7 +397,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         fragmentTradeGoodsGroup.setOnCheckedChangeListener(this);
         fragmentTradeGoodsPercentGroup.setOnCheckedChangeListener(this);
         /*初始化K线图*/
-        initKLineChart();
+//        initKLineChart();
         /*设置监听，监听现货币对币的变化*/
         setSpinnerListener();
         switchLoginFrame();
@@ -439,66 +440,66 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     /**
      * 初始化k线图界面
      */
-    private void initKLineChart() {
-        int color = getResources().getColor(R.color.bg_kline);
-        /*设置图标样式*/
-        fragmentTradeGoodsKline.setBackgroundColor(color);// 设置背景
-        fragmentTradeGoodsKline.setDrawBorders(false);  //是否在折线图上添加边框
-        fragmentTradeGoodsKline.setDescription("");// 数据描述
-        fragmentTradeGoodsKline.setDescriptionColor(color);//设置描述信息的颜色
-        //fragmentTradeGoodsKline.setDescriptionPosition(); //自定义描述信息的位置
-        Log.w(TAG, fragmentTradeGoodsKline.getData() == null ? "数据为空" : "数据不为空");
-        fragmentTradeGoodsKline.setNoDataTextDescription("暂无数据");//设置空表的描述信息
-        //fragmentTradeGoodsKline.setDescriptionTextSize(10); //自定义描述信息字体大小, 最小值6f, 最大值16f
-        fragmentTradeGoodsKline.setDrawGridBackground(false); // 是否显示表格颜色
-        fragmentTradeGoodsKline.setDrawBorders(false);  // 是否绘制边线
-        /*设置图标的交互*/
-        /*1、启用/禁用交互*/
-        fragmentTradeGoodsKline.setTouchEnabled(false); // 设置是否可以触摸
-        fragmentTradeGoodsKline.setDragEnabled(false);// 是否可以拖拽
-        fragmentTradeGoodsKline.setScaleEnabled(false);// 是否可以缩放
-        fragmentTradeGoodsKline.setScaleXEnabled(false);// 启用X轴上的缩放
-        fragmentTradeGoodsKline.setScaleYEnabled(false);//启用Y轴上的缩放
-        fragmentTradeGoodsKline.setPinchZoom(false);//   是否XY同时缩放
-        fragmentTradeGoodsKline.setDoubleTapToZoomEnabled(false); //启用双击缩放
-        /*获取X轴的Axis*/
-        XAxis xAxis = fragmentTradeGoodsKline.getXAxis();
-        xAxis.setTextColor(color);
-        xAxis.setEnabled(false);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//設置 mXAxis 的位置，在底部
-        xAxis.setSpaceBetweenLabels(2); // 每個欄位的間距，default=4
-        xAxis.setDrawGridLines(false);  //不显示垂直方向的表格线
-        xAxis.setDrawAxisLine(false);    //显示xAxis边线
-        /*获取Y轴的Axis，左边和右边*/
-        YAxis mLeftYAxis = fragmentTradeGoodsKline.getAxisLeft();
-        YAxis mRightYAxis = fragmentTradeGoodsKline.getAxisRight();
-        mLeftYAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        mRightYAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        //xAxis.setLabelsToSkip(1);  // 要略過幾個 Label 才會顯示一個 Label
-        int textColor = getResources().getColor(R.color.bg_blue);
-        mLeftYAxis.setTextColor(textColor);
-        mRightYAxis.setTextColor(textColor);
-        /*mLeftYAxis.setSpaceTop(30f);   //Top 為正值所設定多出來的向上空間
-        mRightYAxis.setSpaceTop(30f);
-        mLeftYAxis.setSpaceBottom(30f);    //Bottom 為負值所設定多出來的向下空間
-        mRightYAxis.setSpaceBottom(30f);*/
-        mLeftYAxis.setDrawGridLines(false); //不显示所有的水平表格线
-        mRightYAxis.setDrawGridLines(false);
-        //mLeftYAxis.setDrawAxisLine(false);  //不显示左边的边线
-        mLeftYAxis.setEnabled(false);   //不显示左边的边线和label
-        mRightYAxis.setDrawAxisLine(false);  //显示右边的边线
-        /*mLeftYAxis.setStartAtZero(true);
-        mRightYAxis.setStartAtZero(true);*/
-        //最靠近 Label 的垂直線 AxisLine
-        mLeftYAxis.setDrawAxisLine(false);
-        mLeftYAxis.setShowOnlyMinMax(true);
-        mRightYAxis.setShowOnlyMinMax(true);
-        mLeftYAxis.setLabelCount(1, false);  //設置顯示幾個 Label 數，垂直方向行数
-        mRightYAxis.setLabelCount(1, false);
-        /*设置数据*/
-        Legend mLegend = fragmentTradeGoodsKline.getLegend(); // 设置比例图标示，就是那个一组y的value的
-        mLegend.setEnabled(false);  //异常左下角的Legend
-    }
+//    private void initKLineChart() {
+//        int color = getResources().getColor(R.color.bg_kline);
+//        /*设置图标样式*/
+//        fragmentTradeGoodsKline.setBackgroundColor(color);// 设置背景
+//        fragmentTradeGoodsKline.setDrawBorders(false);  //是否在折线图上添加边框
+//        fragmentTradeGoodsKline.setDescription("");// 数据描述
+//        fragmentTradeGoodsKline.setDescriptionColor(color);//设置描述信息的颜色
+//        //fragmentTradeGoodsKline.setDescriptionPosition(); //自定义描述信息的位置
+//        Log.w(TAG, fragmentTradeGoodsKline.getData() == null ? "数据为空" : "数据不为空");
+//        fragmentTradeGoodsKline.setNoDataTextDescription("暂无数据");//设置空表的描述信息
+//        //fragmentTradeGoodsKline.setDescriptionTextSize(10); //自定义描述信息字体大小, 最小值6f, 最大值16f
+//        fragmentTradeGoodsKline.setDrawGridBackground(false); // 是否显示表格颜色
+//        fragmentTradeGoodsKline.setDrawBorders(false);  // 是否绘制边线
+//        /*设置图标的交互*/
+//        /*1、启用/禁用交互*/
+//        fragmentTradeGoodsKline.setTouchEnabled(false); // 设置是否可以触摸
+//        fragmentTradeGoodsKline.setDragEnabled(false);// 是否可以拖拽
+//        fragmentTradeGoodsKline.setScaleEnabled(false);// 是否可以缩放
+//        fragmentTradeGoodsKline.setScaleXEnabled(false);// 启用X轴上的缩放
+//        fragmentTradeGoodsKline.setScaleYEnabled(false);//启用Y轴上的缩放
+//        fragmentTradeGoodsKline.setPinchZoom(false);//   是否XY同时缩放
+//        fragmentTradeGoodsKline.setDoubleTapToZoomEnabled(false); //启用双击缩放
+//        /*获取X轴的Axis*/
+//        XAxis xAxis = fragmentTradeGoodsKline.getXAxis();
+//        xAxis.setTextColor(color);
+//        xAxis.setEnabled(false);
+//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//設置 mXAxis 的位置，在底部
+//        xAxis.setSpaceBetweenLabels(2); // 每個欄位的間距，default=4
+//        xAxis.setDrawGridLines(false);  //不显示垂直方向的表格线
+//        xAxis.setDrawAxisLine(false);    //显示xAxis边线
+//        /*获取Y轴的Axis，左边和右边*/
+//        YAxis mLeftYAxis = fragmentTradeGoodsKline.getAxisLeft();
+//        YAxis mRightYAxis = fragmentTradeGoodsKline.getAxisRight();
+//        mLeftYAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
+//        mRightYAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
+//        //xAxis.setLabelsToSkip(1);  // 要略過幾個 Label 才會顯示一個 Label
+//        int textColor = getResources().getColor(R.color.bg_blue);
+//        mLeftYAxis.setTextColor(textColor);
+//        mRightYAxis.setTextColor(textColor);
+//        /*mLeftYAxis.setSpaceTop(30f);   //Top 為正值所設定多出來的向上空間
+//        mRightYAxis.setSpaceTop(30f);
+//        mLeftYAxis.setSpaceBottom(30f);    //Bottom 為負值所設定多出來的向下空間
+//        mRightYAxis.setSpaceBottom(30f);*/
+//        mLeftYAxis.setDrawGridLines(false); //不显示所有的水平表格线
+//        mRightYAxis.setDrawGridLines(false);
+//        //mLeftYAxis.setDrawAxisLine(false);  //不显示左边的边线
+//        mLeftYAxis.setEnabled(false);   //不显示左边的边线和label
+//        mRightYAxis.setDrawAxisLine(false);  //显示右边的边线
+//        /*mLeftYAxis.setStartAtZero(true);
+//        mRightYAxis.setStartAtZero(true);*/
+//        //最靠近 Label 的垂直線 AxisLine
+//        mLeftYAxis.setDrawAxisLine(false);
+//        mLeftYAxis.setShowOnlyMinMax(true);
+//        mRightYAxis.setShowOnlyMinMax(true);
+//        mLeftYAxis.setLabelCount(1, false);  //設置顯示幾個 Label 數，垂直方向行数
+//        mRightYAxis.setLabelCount(1, false);
+//        /*设置数据*/
+//        Legend mLegend = fragmentTradeGoodsKline.getLegend(); // 设置比例图标示，就是那个一组y的value的
+//        mLegend.setEnabled(false);  //异常左下角的Legend
+//    }
 
     /**
      * 登录状态监听
@@ -602,15 +603,17 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         /*设置买一价卖一价*/
         fragmentTradeGoodsLimitPrice.setInput(!isBuy ? firstBuyPrice : firstSalePrice);
         if (isBuy) {
+            fragmentTradeGoodsGroup.setBackgroundResource(R.mipmap.trade_buy_sale_bg_select);
             fragmentTradeGoodsTrade.setText("买入 " + currentTradeCoinName);
-            fragmentTradeGoodsTrade.setBackgroundResource(R.drawable.bg_app_color_small);
+//            fragmentTradeGoodsTrade.setBackgroundResource(R.drawable.bg_app_color_small);
             fragmentTradeGoodsPercentGroupFirst.setBackgroundResource(R.drawable.selector_radio_bg_green_grey_left);
             fragmentTradeGoodsPercentGroupSecond.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupThird.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupForth.setBackgroundResource(R.drawable.selector_radio_bg_green_grey_right);
         } else {
+            fragmentTradeGoodsGroup.setBackgroundResource(R.mipmap.trade_buy_sale_bg);
             fragmentTradeGoodsTrade.setText("卖出 " + currentTradeCoinName);
-            fragmentTradeGoodsTrade.setBackgroundResource(R.drawable.bg_corners_redsolid);
+//            fragmentTradeGoodsTrade.setBackgroundResource(R.drawable.bg_corners_redsolid);
             fragmentTradeGoodsPercentGroupFirst.setBackgroundResource(R.drawable.selector_radio_bg_red_grey_left);
             fragmentTradeGoodsPercentGroupSecond.setBackgroundResource(R.drawable.selector_radio_bg_red_grey);
             fragmentTradeGoodsPercentGroupThird.setBackgroundResource(R.drawable.selector_radio_bg_red_grey);
@@ -978,7 +981,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             saleListAdapter.clear();
             buyListAdapter.clear();
             showCurrentPrice(0.00);
-            fragmentTradeGoodsKline.clear();
+//            fragmentTradeGoodsKline.clear();
             LogUtils.w("switch", "clear and get goodsSaleGetListData");
             isFirstPrice = true;
         }
@@ -1053,9 +1056,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             return;
         }
         LineData lineData = getLineData(kLineList);
-        fragmentTradeGoodsKline.clear();
-        fragmentTradeGoodsKline.setData(lineData);
-        fragmentTradeGoodsKline.notifyDataSetChanged();
+//        fragmentTradeGoodsKline.clear();
+//        fragmentTradeGoodsKline.setData(lineData);
+//        fragmentTradeGoodsKline.notifyDataSetChanged();
         int size = kLineList.size();
         if (size <= 3){
             return;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app.com.pgy.Widgets.RatioLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_height="32dp"
+    android:focusable="true"
+    android:background="@mipmap/trade_input_bg"
+    app:ratio="6"
+    android:orientation="horizontal">
+    <app.com.pgy.Widgets.RatioHeightImageView
+        android:id="@+id/layout_widget_btnDecrease"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ratio="1"
+        android:src="@mipmap/trade_jian_select"
+        android:padding="11dp"/>
+
+    <app.com.pgy.Widgets.NumberEditText
+        android:id="@+id/layout_widget_etAmount"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColorHint="@color/txt_B8C6D2"
+        android:textColor="@color/txt_title"
+        android:minWidth="40dp"
+        android:maxLength="11"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        style="@style/EditText_default_input"
+        android:textSize="15sp"/>
+
+
+    <app.com.pgy.Widgets.RatioHeightImageView
+        android:id="@+id/layout_widget_btnIncrease"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ratio="1"
+        android:src="@mipmap/trade_jia_select"
+        android:padding="11dp"/>
+</app.com.pgy.Widgets.RatioLinearLayout>

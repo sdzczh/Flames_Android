@@ -46,10 +46,16 @@ public class ChangeTradePwActivity extends BaseActivity {
     TextView tv_verification;
     @BindView(R.id.edt_activity_change_trade_pw_verificationCode)
     EditText edt_verification;
+    @BindView(R.id.edt_activity_change_trade_pw_oldpw)
+    EditText edt_oldPw;
     @BindView(R.id.edt_activity_change_trade_pw_newpw)
     EditText edt_newPw;
     @BindView(R.id.iv_activit_change_trade_pw_pwShow)
     ImageView iv_pwShow;
+    @BindView(R.id.edt_activity_change_trade_pw_newpw1)
+    EditText edt_newPw1;
+    @BindView(R.id.iv_activit_change_trade_pw_pwShow1)
+    ImageView iv_pwShow1;
     @BindView(R.id.tv_activity_change_trade_pw_submit)
     TextView tv_submit;
 
@@ -189,6 +195,10 @@ public class ChangeTradePwActivity extends BaseActivity {
      * 去服务器修改
      */
     private void submitTradePwd2Net() {
+//        if (TextUtils.isEmpty(edt_oldPw.getText().toString().trim())){
+//            showToast("请输入原密码");
+//            return;
+//        }
         if (!ToolsUtils.isPhone(userPhoneNumber)) {
             showToast(getString(R.string.illegal_phone));
             return;
@@ -207,8 +217,13 @@ public class ChangeTradePwActivity extends BaseActivity {
             showToast(getString(R.string.illegal_password));
             return;
         }
+        if (!edt_newPw1.getText().toString().trim().equals(password)){
+            showToast("确认密码不一致");
+            return;
+        }
         showLoading(tv_submit);
         Map<String, Object> map = new HashMap<>();
+//        map.put("old", edt_oldPw.getText().toString().trim());
         map.put("password", password);
         map.put("code", verificationCode);
         map.put("codeId", verificationMarkFromNet);
