@@ -319,14 +319,8 @@ public class HomeFragment extends BaseFragment implements IUnReadMessageObserver
         Intent intent = null;
         switch (view.getId()) {
             case R.id.riv_fragment_home_headerImg:
-                if (LoginUtils.isLogin(getActivity())) {
-//                    intent = new Intent(mContext,CalanderActivity.class);
 
-                }
-                break;
             case R.id.tv_fragment_home_unlogin:
-                LoginUtils.isLogin(getActivity());
-                break;
             case R.id.tv_fragment_home_nickname:
                 if (LoginUtils.isLogin(getActivity())) {
                 }
@@ -364,7 +358,7 @@ public class HomeFragment extends BaseFragment implements IUnReadMessageObserver
                 //  跳转到资产 杠杆账户
                 if (LoginUtils.isLogin(getActivity())) {
                     intent = new Intent(mContext, MyWalletActivity.class);
-                    intent.putExtra("index", 1);
+                    intent.putExtra("index", 3);
                 }
                 break;
             case R.id.ll_fragment_home_c2c_asset:

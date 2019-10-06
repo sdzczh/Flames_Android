@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg_white">
+    android:background="#F7F8FA">
 
     <!--顶部-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/fragment_tradeGoods_appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0.5dp"
         android:orientation="vertical"
@@ -26,7 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="13dp">
                 <!--币种-->
                 <TextView
                     android:id="@+id/fragment_tradeGoods_c2cName"
@@ -340,7 +342,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="@drawable/xuxian"
-                        android:layout_marginTop="28dp"/>
+                        android:layout_marginTop="28dp"
+                        android:layerType="software"/>
                     <!--列表头部-->
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -427,31 +430,49 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="44dp">
             <!--Tab-->
             <com.androidkun.xtablayout.XTabLayout
                 android:id="@+id/fragment_tradeGoods_tab"
                 style="@style/TabLayoutTextStyle12"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 app:xTabTextAppearance="@style/TabLayoutTextStyle12"
-                app:xTabSelectedTextColor="@color/txt_title"
+                app:xTabSelectedTextColor="@color/color_66"
                 app:xTabTextColor="@color/txt_B8C6D2"
                 app:xTabTextSize="15sp"
                 app:xTabSelectedTextSize="15sp"
                 app:tabMode="fixed"
                 app:tabGravity="center"
                 app:xTabIndicatorHeight="0dp"
-                app:tabTextColor="@color/txt_B8C6D2"/>
-
+                app:tabTextColor="@color/txt_B8C6D2"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="普通委托"
+                android:textColor="@color/color_66"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"/>
             <ImageView
-                android:id="@+id/fragment_tradeGoods_refresh"
+
                 android:src="@mipmap/shuaxin_grey"
                 android:padding="10dp"
                 android:layout_marginEnd="5dp"
                 android:layout_width="35dp"
-                android:layout_height="35dp" />
+                android:layout_height="35dp"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/fragment_tradeGoods_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部委托"
+                android:textColor="@color/color_99"
+                android:textSize="11sp"
+                android:layout_marginRight="15dp"
+                android:drawableLeft="@mipmap/trade_more"
+                android:drawablePadding="5dp"/>
         </LinearLayout>
         <View
             style="@style/Line"/>

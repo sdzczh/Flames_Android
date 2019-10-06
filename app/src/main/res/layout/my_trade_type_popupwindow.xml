@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="178dp"
+        android:layout_height="113dp"
+        android:background="@mipmap/trade_type_bg"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp">
+        <RadioButton
+            android:id="@+id/rb_xianjia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/color_33"
+            android:text="  限价买入"
+            android:button="@drawable/selector_trade_type"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rb_shijia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/color_33"
+            android:text="  市价买入"
+            android:button="@drawable/selector_trade_type"
+            android:layout_marginTop="15dp"/>
+    </RadioGroup>
+</LinearLayout>

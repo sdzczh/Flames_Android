@@ -413,6 +413,7 @@
         <activity android:name=".Activitys.PersonalRenZhengActivity" />
         <activity android:name=".Activitys.HuiLvActivity" />
         <activity android:name=".Activitys.HuiLvHistoryListActivity" />
+        <activity android:name=".Activitys.TradeGoodsEntrustListActivity" />
 
         <!-- 第三方的推送 权限 广播 和服务 -->
 

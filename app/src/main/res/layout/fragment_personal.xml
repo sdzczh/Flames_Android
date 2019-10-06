@@ -124,6 +124,7 @@
             <View
                 android:layout_width="38dp"
                 android:layout_height="2dp"
+                android:layerType="software"
                 android:background="@drawable/xuxian"
                 android:rotation="90"/>
             <LinearLayout

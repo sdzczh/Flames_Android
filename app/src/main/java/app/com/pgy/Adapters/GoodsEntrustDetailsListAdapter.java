@@ -54,12 +54,12 @@ public class GoodsEntrustDetailsListAdapter extends RecyclerArrayAdapter<Entrust
             String tradeCoinName = ToolsUtils.getCoinName(entrustDetails.getOrderCoinType());
             /*时间、成交价格、成交量、成交总额*/
             entrustDetailsItemTime.setText(entrustDetails.getCreateTime());
-            entrustDetailsItemDealPriceTitle.setText("成交价("+perCoinName+")");
-            entrustDetailsItemDealPriceContent.setText(entrustDetails.getPrice());
-            entrustDetailsItemDealNumberTitle.setText("成交量("+tradeCoinName+")");
-            entrustDetailsItemDealNumberContent.setText(entrustDetails.getAmount());
-            entrustDetailsItemDealAmountTitle.setText("成交总价("+perCoinName+")");
-            entrustDetailsItemDealAmountContent.setText(entrustDetails.getTotal());
+//            entrustDetailsItemDealPriceTitle.setText("成交价("+perCoinName+")");
+            entrustDetailsItemDealPriceContent.setText(entrustDetails.getPrice()+" "+perCoinName);
+//            entrustDetailsItemDealNumberTitle.setText("成交量("+tradeCoinName+")");
+            entrustDetailsItemDealNumberContent.setText(entrustDetails.getAmount()+" "+tradeCoinName);
+//            entrustDetailsItemDealAmountTitle.setText("成交总价("+perCoinName+")");
+//            entrustDetailsItemDealAmountContent.setText(entrustDetails.getTotal());
         }
 
     }

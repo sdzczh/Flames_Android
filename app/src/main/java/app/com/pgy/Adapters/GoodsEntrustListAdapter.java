@@ -48,6 +48,7 @@ public class GoodsEntrustListAdapter extends RecyclerArrayAdapter<Entrust.ListBe
         private ImageView currentEntrustItemTypeIcon;//买入还是卖出
         private TextView currentEntrustItemType;//买入还是卖出
         private TextView currentEntrustItemC2c; //C2C名字
+        private TextView currentEntrustItemC2c1; //C2C名字
         private TextView currentEntrustItemSubmitTime;//时间
         private TextView currentEntrustItemUndo;   //撤销或者状态
         private TextView currentEntrustItemStatus;   //更多
@@ -57,23 +58,28 @@ public class GoodsEntrustListAdapter extends RecyclerArrayAdapter<Entrust.ListBe
         private TextView currentEntrustItemEntrustNumber;       //数量
         private TextView currentEntrustItemDealNumberTitle;     //成交量标题
         private TextView currentEntrustItemDealNumber;          //成交量
+        private TextView currentEntrustItemAverageNumberTitle;     //成交均价标题
+        private TextView currentEntrustItemAverageNumber;          //成交均价
 
         CurrentEntrustViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_current_entrust);
             currentEntrustItemTypeIcon = $(R.id.current_entrust_item_type_icon);
             currentEntrustItemType = $(R.id.current_entrust_item_type);
             currentEntrustItemC2c = $(R.id.current_entrust_item_c2c);
+            currentEntrustItemC2c1 = $(R.id.current_entrust_item_c2c1);
             currentEntrustItemDealNumberTitle = $(R.id.current_entrust_item_dealNumberTitle);
             currentEntrustItemEntrustPriceTitle = $(R.id.current_entrust_item_entrustPriceTitle);
             currentEntrustItemEntrustNumberTitle = $(R.id.current_entrust_item_entrustNumberTitle);
+            currentEntrustItemAverageNumberTitle = $(R.id.current_entrust_item_averageNumberTitle);
             currentEntrustItemEntrustNumber = $(R.id.current_entrust_item_entrustNumber);
             currentEntrustItemDealNumber = $(R.id.current_entrust_item_dealNumber);
+            currentEntrustItemAverageNumber = $(R.id.current_entrust_item_averageNumber);
             currentEntrustItemEntrustPrice = $(R.id.current_entrust_item_entrustPrice);
             currentEntrustItemSubmitTime = $(R.id.current_entrust_item_submitTime);
             currentEntrustItemUndo = $(R.id.current_entrust_item_undo);
             currentEntrustItemStatus = $(R.id.current_entrust_item_status);
             currentEntrustItemUndo.setOnClickListener(this);
-            currentEntrustItemStatus.setOnClickListener(this);
+//            currentEntrustItemStatus.setOnClickListener(this);
         }
 
         @Override
@@ -98,12 +104,12 @@ public class GoodsEntrustListAdapter extends RecyclerArrayAdapter<Entrust.ListBe
                         stateColor = R.color.txt_808DAC;
                         break;
                     case 1:
-                        stateName = "已成交";
+                        stateName = "完全成交";
                         stateColor = R.color.txt_app;
                         drawable = getContext().getResources().getDrawable(R.mipmap.more_blue);
                         break;
                     case 2:
-                        stateName = "已取消";
+                        stateName = "已撤销";
                         stateColor = R.color.txt_808DAC;
                         break;
                     case 3:
@@ -112,9 +118,9 @@ public class GoodsEntrustListAdapter extends RecyclerArrayAdapter<Entrust.ListBe
                         break;
                 }
                 currentEntrustItemStatus.setText(stateName);
-                currentEntrustItemStatus.setTextColor(getContext().getResources().getColor(stateColor));
+//                currentEntrustItemStatus.setTextColor(getContext().getResources().getColor(stateColor));
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-                currentEntrustItemStatus.setCompoundDrawables(null,null,drawable,null);
+//                currentEntrustItemStatus.setCompoundDrawables(null,null,drawable,null);
             }
             int perCoin = entrust.getUnitCoinType();
             int tradeCoin = entrust.getOrderCoinType();
@@ -126,35 +132,38 @@ public class GoodsEntrustListAdapter extends RecyclerArrayAdapter<Entrust.ListBe
             String price = entrust.getPrice();  //  委托价
             String amount = entrust.getAmount();    //委托量
             String dealAmount = entrust.getDealAmount();    //成交量
-            currentEntrustItemC2c.setText(tradeCoinName+"/"+perCoinName);
-            currentEntrustItemEntrustPriceTitle.setText("价格("+perCoinName+")");
-            currentEntrustItemDealNumberTitle.setText("成交量("+tradeCoinName+")");
+            currentEntrustItemC2c.setText(tradeCoinName);
+            currentEntrustItemC2c1.setText("/ "+perCoinName);
+
+
+//            currentEntrustItemEntrustPriceTitle.setText("价格("+perCoinName+")");
+//            currentEntrustItemDealNumberTitle.setText("成交量("+tradeCoinName+")");
             /*当市价买入时，中间显示为市价委托额，icon为计价币KN*/
             if (tradeType == 0 && buyOrSale == 0){
-                currentEntrustItemEntrustNumberTitle.setText("委托额("+perCoinName+")");
-                currentEntrustItemEntrustNumber.setText(price);
+                currentEntrustItemEntrustNumberTitle.setText("委托总额");
+                currentEntrustItemEntrustNumber.setText(price+" "+perCoinName);
             }else{
-                currentEntrustItemEntrustNumberTitle.setText("委托量("+tradeCoinName+")");
-                currentEntrustItemEntrustNumber.setText(amount);
+                currentEntrustItemEntrustNumberTitle.setText("委托总量");
+                currentEntrustItemEntrustNumber.setText(amount+" "+tradeCoinName);
             }
             switch (buyOrSale){
                 default:break;
                 case 0:
-                    currentEntrustItemTypeIcon.setImageResource(R.mipmap.mairu);
-//                    currentEntrustItemType.setText("买入");
-//                    currentEntrustItemType.setTextColor(getContext().getResources().getColor(R.color.txt_green));
+//                    currentEntrustItemTypeIcon.setImageResource(R.mipmap.mairu);
+                    currentEntrustItemType.setText("买");
+                    currentEntrustItemType.setBackgroundResource(R.mipmap.trade_buy_bg);
                     break;
                 case 1:
-                    currentEntrustItemTypeIcon.setImageResource(R.mipmap.maichu);
-//                    currentEntrustItemType.setText("卖出");
-//                    currentEntrustItemType.setTextColor(getContext().getResources().getColor(R.color.txt_red));
+//                    currentEntrustItemTypeIcon.setImageResource(R.mipmap.maichu);
+                    currentEntrustItemType.setText("卖");
+                    currentEntrustItemType.setBackgroundResource(R.mipmap.trade_sale_bg);
                     break;
             }
             /*限价买入、限价卖出、市价买入、市价卖出*/
             currentEntrustItemSubmitTime.setText(createTime);
             /*委托价：当为市价交易时显示市价，当为限价交易时显示为价格*/
-            currentEntrustItemEntrustPrice.setText(tradeType==0?"市价":price);
-            currentEntrustItemDealNumber.setText(dealAmount);
+            currentEntrustItemEntrustPrice.setText(tradeType==0?"市价":price+" "+perCoinName);
+            currentEntrustItemDealNumber.setText(dealAmount+" "+tradeCoinName);
         }
 
         @Override

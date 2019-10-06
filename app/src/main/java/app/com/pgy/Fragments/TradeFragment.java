@@ -15,6 +15,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.pgy.Widgets.MyLeftSecondarySpinnerList;
+import app.com.pgy.Widgets.MyTradeLeftSpinnerPopupWondow;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Adapters.ViewPagerAdapter;
@@ -196,9 +198,18 @@ public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedC
     }
 
 
-    @OnClick(R.id.view_titleMessage_frame)
-    public void onViewClicked() {
-        Utils.IntentUtils(mContext, IMMainActivity.class);
+    @OnClick({R.id.view_titleMessage_frame,R.id.iv_fragment_trade_more})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.view_titleMessage_frame:
+                Utils.IntentUtils(mContext, IMMainActivity.class);
+                break;
+            case R.id.iv_fragment_trade_more:
+                MyTradeLeftSpinnerPopupWondow spinnerCoin = new MyTradeLeftSpinnerPopupWondow(getActivity(), Preferences.getGoodsPerCoin());
+                spinnerCoin.showLeft();
+                break;
+        }
+
     }
 
     //防止第一次加载时，接收不到广播现象

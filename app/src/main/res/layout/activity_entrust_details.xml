@@ -6,7 +6,31 @@
     android:orientation="vertical">
 
     <include layout="@layout/view_personal_title"/>
-
+    <include layout="@layout/view_divider_line_10"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        <TextView
+            android:id="@+id/activity_entrustDetails_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#ff333333"
+            android:textSize="18sp"
+            />
+        <TextView
+            android:id="@+id/activity_entrustDetails_top_time"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#C4C7CC"
+            android:textSize="@dimen/font_12sp"
+            android:gravity="right"/>
+    </LinearLayout>
+    <include layout="@layout/view_divider_line"/>
     <!--头部-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,128 +48,300 @@
 
             <TextView
                 android:id="@+id/activity_entrustDetails_top_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:gravity="center"
                 android:layout_marginEnd="5dp"
-                android:textSize="@dimen/font_16sp" />
+                android:textColor="@color/white"
+                android:text="买"
+                android:background="@mipmap/trade_buy_bg"
+                android:textSize="@dimen/font_11sp" />
 
             <TextView
                 android:id="@+id/activity_entrustDetails_top_entrustType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#7A8799"
-                android:textSize="@dimen/font_16sp" />
-
+                android:textColor="@color/txt_title"
+                android:textSize="@dimen/font_15sp"
+                android:text="BTC"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_top_entrustType1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_99"
+                android:textSize="@dimen/font_12sp"
+                android:text=" / USDT"/>
 
             <TextView
-                android:id="@+id/activity_entrustDetails_top_time"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:textColor="#C4C7CC"
                 android:textSize="@dimen/font_12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="去交易"
+                android:textColor="#ff3578ef"
+                android:textSize="12sp"
+                android:drawableRight="@mipmap/more_blue"
+                android:drawablePadding="7dp"
+                android:layout_marginRight="5dp"/>
         </LinearLayout>
 
-
-        <!--第一行列表-->
         <LinearLayout
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <!--委托价-->
-            <LinearLayout
-                android:layout_weight="1.5"
-                android:gravity="start"
-                style="@style/entrust_item_frame">
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_entrustPrice_title"
-                    style="@style/entrust_item_title"
-                    android:text="委托价"/>
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_entrustPrice_content"
-                    style="@style/entrust_item_content" />
-            </LinearLayout>
-            <!--委托量-->
-            <LinearLayout
-                style="@style/entrust_item_frame">
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_entrustAmount_title"
-                    style="@style/entrust_item_title"
-                    android:text="委托量"/>
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_entrustAmount_content"
-                    style="@style/entrust_item_content"  />
-            </LinearLayout>
-
-            <!--成交量-->
-            <LinearLayout
-                android:gravity="end"
-                style="@style/entrust_item_frame">
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_tradeAmount_title"
-                    style="@style/entrust_item_title"
-                    android:text="成交量"/>
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_tradeAmount_content"
-                    style="@style/entrust_item_content" />
-            </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="委托类型"
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_top_entrustType2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="限价委托"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
         </LinearLayout>
-        <!--第二行列表-->
         <LinearLayout
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <!--成交总额-->
-            <LinearLayout
-                android:layout_weight="1.5"
-                android:gravity="start"
-                style="@style/entrust_item_frame">
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_tradeSum_title"
-                    android:text="成交总额"
-                    style="@style/entrust_item_title" />
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_tradeSum_content"
-                    style="@style/entrust_item_content" />
-            </LinearLayout>
-            <!--成交均价-->
-            <LinearLayout
-                style="@style/entrust_item_frame">
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_tradeAve_title"
-                    android:text="成交均价"
-                    style="@style/entrust_item_title" />
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_tradeAve_content"
-                    style="@style/entrust_item_content" />
-            </LinearLayout>
-            <!--手续费-->
-            <LinearLayout
-                android:gravity="end"
-                style="@style/entrust_item_frame">
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_poundage_title"
-                    android:text="手续费"
-                    style="@style/entrust_item_title" />
-
-                <TextView
-                    android:id="@+id/activity_entrustDetails_content_poundage_content"
-                    style="@style/entrust_item_content"  />
-            </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_tradeAmount_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="已成交量"
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_tradeAmount_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.01000000 BTC"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/activity_entrustDetails_content_entrustAmount_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_entrustAmount_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="委托总量 "
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_entrustAmount_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00000000 BTC"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_tradeAve_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="成交均价 "
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_tradeAve_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10187.8 USDT"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_entrustPrice_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="委托价格 "
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_entrustPrice_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10187.8 USDT"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/activity_entrustDetails_content_tradeSum_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_tradeSum_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="委托金额 "
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_tradeSum_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10187.8 USDT"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_poundage_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="手续费 "
+                android:textColor="@color/color_99"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:id="@+id/activity_entrustDetails_content_poundage_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10187.8 USDT"
+                android:textColor="@color/txt_title"
+                android:textSize="12sp"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+<!--        &lt;!&ndash;第一行列表&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            &lt;!&ndash;委托价&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1.5"-->
+<!--                android:gravity="start"-->
+<!--                style="@style/entrust_item_frame">-->
+
+<!--                <TextView-->
+<!--                    style="@style/entrust_item_title"-->
+<!--                    android:text="委托价"/>-->
+
+<!--                <TextView-->
+
+<!--                    style="@style/entrust_item_content" />-->
+<!--            </LinearLayout>-->
+<!--            &lt;!&ndash;委托量&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                style="@style/entrust_item_frame">-->
+
+<!--                <TextView-->
+<!--                    style="@style/entrust_item_title"-->
+<!--                    android:text="委托量"/>-->
+
+<!--                <TextView-->
+<!--                    style="@style/entrust_item_content"  />-->
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;成交量&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:gravity="end"-->
+<!--                style="@style/entrust_item_frame">-->
+
+<!--                <TextView-->
+<!--                    style="@style/entrust_item_title"-->
+<!--                    android:text="成交量"/>-->
+
+<!--                <TextView-->
+
+<!--                    style="@style/entrust_item_content" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--        &lt;!&ndash;第二行列表&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            &lt;!&ndash;成交总额&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1.5"-->
+<!--                android:gravity="start"-->
+<!--                style="@style/entrust_item_frame">-->
+
+<!--                <TextView-->
+<!--                    android:text="成交总额"-->
+<!--                    style="@style/entrust_item_title" />-->
+
+<!--                <TextView-->
+<!--                    style="@style/entrust_item_content" />-->
+<!--            </LinearLayout>-->
+<!--            &lt;!&ndash;成交均价&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                style="@style/entrust_item_frame">-->
+
+<!--                <TextView-->
+<!--                    android:text="成交均价"-->
+<!--                    style="@style/entrust_item_title" />-->
+
+<!--                <TextView-->
+<!--                    style="@style/entrust_item_content" />-->
+<!--            </LinearLayout>-->
+<!--            &lt;!&ndash;手续费&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:gravity="end"-->
+<!--                style="@style/entrust_item_frame">-->
+
+<!--                <TextView-->
+<!--                    android:text="手续费"-->
+<!--                    style="@style/entrust_item_title" />-->
+
+<!--                <TextView-->
+<!--                   -->
+<!--                    style="@style/entrust_item_content"  />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
 
     </LinearLayout>
 
@@ -153,12 +349,75 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="#fff0f4fa"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="成交明细"
+        android:textColor="#ff666666"
+        android:textSize="15sp"
+        android:padding="15dp"/>
+    <include layout="@layout/view_divider_line"/>
     <!--列表-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_entrustDetails_list"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:text="时间"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.9"
+                    android:layout_height="wrap_content"
+                    android:text="成交价"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="成交量
+"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_entrustDetails_list"
+                android:layout_width="match_parent"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/activity_entrustDetails_nolist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:textColor="@color/color_99"
+            android:textSize="15sp"
+            android:text="暂无成交记录"
+            android:gravity="center"
+            android:visibility="visible"/>
+    </FrameLayout>
+
 </LinearLayout>

@@ -24,6 +24,10 @@
         <item name="android:textSize">@dimen/font_15sp</item>
         <item name="android:textStyle">normal</item>
     </style>
+    <style name="TabLayoutTextStyle16">
+        <item name="android:textSize">@dimen/font_16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="TabLayoutTextStyle20">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">normal</item>
