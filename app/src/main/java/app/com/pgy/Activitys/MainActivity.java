@@ -81,8 +81,8 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(HomeFragment.newInstance());
         fragments.add(MarketFragment.getInstance());
-        fragments.add(TradeFragment.newInstance());
         fragments.add(CircleFragment.getInstance());
+        fragments.add(TradeFragment.newInstance());
         fragments.add(PersonalFragment.newInstance());
         return fragments;
     }
@@ -100,14 +100,15 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
             case R.id.activity_main_group_market:
                 switchContent(fragments.get(1));
                 break;
-                /*交易*/
-            case R.id.activity_main_group_goods:
-                switchContent(fragments.get(2));
-                break;
             /*生态*/
             case R.id.activity_main_group_circle:
+                switchContent(fragments.get(2));
+                break;
+                /*交易*/
+            case R.id.activity_main_group_goods:
                 switchContent(fragments.get(3));
                 break;
+
             /*我的*/
             case R.id.activity_main_group_mine:
                 switchContent(fragments.get(4));

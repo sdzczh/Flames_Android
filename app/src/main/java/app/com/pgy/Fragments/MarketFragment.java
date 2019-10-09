@@ -119,7 +119,7 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
     private List<Fragment> getFragments() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(MarketContentFragment.getInstance(TYPE_ONCOIN));
-//        fragments.add(MarketWorldFragment.getInstance());
+        fragments.add(MarketWorldFragment.getInstance());
         return fragments;
     }
 
@@ -128,7 +128,7 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
      */
     private List<String> getFragmentsNames() {
         List<String> names = new ArrayList<>();
-        names.add("COIN");
+        names.add("PGY");
         names.add("全球");
         return names;
     }
@@ -152,11 +152,13 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
                 if (nvp_content.getCurrentItem() != 0){
                     nvp_content.setCurrentItem(0);
                 }
+                rg_title.setBackgroundResource(R.mipmap.c2c_top_bg_1);
                 break;
             case R.id.rb_fragment_market_world:
-//                nvp_content.setCurrentItem(1);
-                showToast("玩命开发中");
-                rg_title.check(R.id.rb_fragment_market_oneCoin);
+                nvp_content.setCurrentItem(1);
+//                showToast("玩命开发中");
+//                rg_title.check(R.id.rb_fragment_market_oneCoin);
+                rg_title.setBackgroundResource(R.mipmap.c2c_top_bg_2);
                 break;
             default:
                 break;

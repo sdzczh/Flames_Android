@@ -79,7 +79,7 @@ public class MarketContentFragment extends BaseFragment {
     private List<String> getFragmentsNames() {
         List<String> names = new ArrayList<>();
 //        names.add("自选");
-        names.add("ECN");
+        names.add("PGY");
 //        names.add("DK");
         return names;
     }

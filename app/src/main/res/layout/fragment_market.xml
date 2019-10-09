@@ -5,27 +5,22 @@
     android:layout_height="match_parent"
     android:background="@color/white">
     <FrameLayout
-        style="@style/title_bg"
-        android:visibility="gone">
+        style="@style/title_bg">
 
         <RadioGroup
             android:id="@+id/rg_fragment_market_title"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:layout_width="145dp"
+            android:layout_height="29dp"
+            android:background="@mipmap/c2c_top_bg_1">
             <RadioButton
                 android:id="@+id/rb_fragment_market_oneCoin"
-                android:text="COIN"
+                android:text="PGY"
                 android:checked="true"
                 style="@style/c2cTop_tab"
                 android:textColor="@drawable/selector_font_light_blue"/>
-            <View
-                android:layout_width="1dp"
-                android:background="#CFD8E6"
-                android:layout_gravity="center"
-                android:layout_height="10dp"/>
+
             <RadioButton
                 android:id="@+id/rb_fragment_market_world"
                 android:text="全球"
@@ -36,7 +31,8 @@
         <include layout="@layout/view_title_message"/>
     </FrameLayout>
     <FrameLayout
-        style="@style/title_bg">
+        style="@style/title_bg"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_title"

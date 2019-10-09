@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!--点击和选中的时候，改变背景颜色-->
-    <item android:state_pressed="true" android:drawable="@mipmap/bottom_onecoin_select"/>
-    <item android:state_checked="false" android:drawable="@mipmap/bottom_onecoin"/>
-    <item android:state_checked="true" android:drawable="@mipmap/bottom_onecoin_select"/>
+    <item android:state_pressed="true" android:drawable="@mipmap/bottom_home_select"/>
+    <item android:state_checked="false" android:drawable="@mipmap/bottom_home"/>
+    <item android:state_checked="true" android:drawable="@mipmap/bottom_home_select"/>
 </selector>
