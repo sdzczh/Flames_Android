@@ -28,6 +28,47 @@ public class HomeInfo {
     private List<BannerInfo> banner;
     private String noticeUrl;
 
+    private MoodBean mood;
+    private String accountBalanceCny;
+
+    private List<HomeMarketBean> marketMain;
+    private List<HomeNewBean> newsList;
+
+    private String accountGuide;//账户指南
+    private String buyCoinGuide;//购买指南
+
+    public void setMarketMain(List<HomeMarketBean> marketMain) {
+        this.marketMain = marketMain;
+    }
+
+    public List<HomeMarketBean> getMarketMain() {
+        return marketMain;
+    }
+
+    public void setNewsList(List<HomeNewBean> newsList) {
+        this.newsList = newsList;
+    }
+
+    public List<HomeNewBean> getNewsList() {
+        return newsList;
+    }
+
+    public void setAccountGuide(String accountGuide) {
+        this.accountGuide = accountGuide;
+    }
+
+    public String getAccountGuide() {
+        return accountGuide;
+    }
+
+    public void setBuyCoinGuide(String buyCoinGuide) {
+        this.buyCoinGuide = buyCoinGuide;
+    }
+
+    public String getBuyCoinGuide() {
+        return buyCoinGuide;
+    }
+
     public String getTotal() {
         return total;
     }
@@ -92,6 +133,22 @@ public class HomeInfo {
         return noticeUrl;
     }
 
+    public void setMood(MoodBean mood) {
+        this.mood = mood;
+    }
+
+    public MoodBean getMood() {
+        return mood;
+    }
+
+    public void setAccountBalanceCny(String accountBalanceCny) {
+        this.accountBalanceCny = accountBalanceCny;
+    }
+
+    public String getAccountBalanceCny() {
+        return accountBalanceCny;
+    }
+
     public static class NoticeBean {
         /**
          * id : 2
@@ -120,6 +177,27 @@ public class HomeInfo {
 
         public String getAddress() {
             return address+id+".action";
+        }
+    }
+
+    public static class MoodBean {
+       String moodTop;
+       String moodBottom;
+
+        public void setMoodTop(String moodTop) {
+            this.moodTop = moodTop;
+        }
+
+        public String getMoodTop() {
+            return moodTop;
+        }
+
+        public void setMoodBottom(String moodBottom) {
+            this.moodBottom = moodBottom;
+        }
+
+        public String getMoodBottom() {
+            return moodBottom;
         }
     }
 

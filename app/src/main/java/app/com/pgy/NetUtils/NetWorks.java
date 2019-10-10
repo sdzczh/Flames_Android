@@ -148,104 +148,104 @@ public class NetWorks extends RetrofitUtils {
         /**
          * 获取最新版本信息
          */
-        @GET("/orderapi/system/update.action")
+        @GET("/system/update.action")
         Call<ResultBean<version>> getLastVersion(@Query("params") String params);
 
         /**
          * 获取配置参数
          */
-        @GET("/orderapi/system/config.action")
+        @GET("/system/config.action")
         Call<ResultBean<Configuration>> getConfig(@Query("params") String params);
 
         /**
          * 获取验证码
          */
         @FormUrlEncoded
-        @POST("/orderapi/sms/smscode.action")
+        @POST("/sms/smscode.action")
         Call<ResultBean<verficationCode>> getVerificationCode(@Field("params") String params);
 
         /**
          * 用户注册
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/register.action")
+        @POST("/user/register.action")
         Call<ResultBean> register(@Field("params") String params, @Field("key") String key);
 
         /**
          * 忘记密码
          */
         @FormUrlEncoded
-        @POST("/orderapi/pwd/login/getback.action")
+        @POST("/pwd/login/getback.action")
         Call<ResultBean> forgotPwd(@Field("params") String params, @Field("key") String key);
 
         /**
          * 修改密码
          */
         @FormUrlEncoded
-        @POST("/orderapi/pwd/login/update.action")
+        @POST("/pwd/login/update.action")
         Call<ResultBean> updatePwd(@Header("token") String token, @Field("params") String params);
 
         /**
          * 设置交易密码
          */
         @FormUrlEncoded
-        @POST("/orderapi/pwd/order/set.action")
+        @POST("/pwd/order/set.action")
         Call<ResultBean> setWithdrawPwd(@Header("token") String token, @Field("params") String params);
 
         /**
          * 验证用户实名和交易密码状态
          */
         @FormUrlEncoded
-        @POST("/orderapi/order/checkRealNameAndOrderPassWord.action")
+        @POST("/order/checkRealNameAndOrderPassWord.action")
         Call<ResultBean> isOrderPwdFlag(@Header("token") String token, @Field("params") String params);
 
         /**
          * 用户登录
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/login.action")
+        @POST("/user/login.action")
         Call<ResultBean<User>> login(@Field("params") String params, @Field("key") String key);
 
         /**
          * 用户验证码登录
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/login/phone.action")
+        @POST("/user/login/phone.action")
         Call<ResultBean<User>> loginByCode(@Field("params") String params, @Field("key") String key);
 
         /**
          * 充值提交
          */
         @FormUrlEncoded
-        @POST("/orderapi/wallets/recharge/apply")
+        @POST("/wallets/recharge/apply")
         Call<ResultBean> submitRecharge(@Header("token") String token, @Field("params") String params);
 
         /**
          * 获取充值页信息
          *///
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/recharge/info.action")
+        @GET("/wallets/recharge/info.action")
         Call<ResultBean<RechargeBean>> getRecharge(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 充值订单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/recharges/v2/list.action")
+        @GET("/recharges/v2/list.action")
         Call<ResultBean<OrderDetail>> getRechargeOrderList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 挖矿缴费列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/recharges/diglist.action")
+        @GET("/recharges/diglist.action")
         Call<ResultBean<FeeRecord>> getDigFeeRecordList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 挖矿付费
          */
         @FormUrlEncoded
-        @POST("/orderapi/recharges/dig.action")
+        @POST("/recharges/dig.action")
         Call<ResultBean> digRecharge(@Header("token") String token, @Field("params") String params);
 
 
@@ -253,77 +253,77 @@ public class NetWorks extends RetrofitUtils {
          * 转账提交
          */
         @FormUrlEncoded
-        @POST("/orderapi/transfers/apply.action")
+        @POST("/transfers/apply.action")
         Call<ResultBean> submitTransfer(@Header("token") String token, @Field("params") String params);
 
         /**
          * 转账订单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/transfers/list.action")
+        @GET("/transfers/list.action")
         Call<ResultBean<TransferOrder>> getTransferOrderList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 提现页面信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/withDraw/info.action")
+        @GET("/wallets/withDraw/info.action")
         Call<ResultBean<WithdrawBean>> getWithdrawBean(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 提现提交
          */
         @FormUrlEncoded
-        @POST("/orderapi/wallets/withDraw/apply.action")
+        @POST("/wallets/withDraw/apply.action")
         Call<ResultBean> submitWithdraw(@Header("token") String token, @Field("params") String params);
 
         /**
          * 提现订单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/withDraw/list.action")
+        @GET("/wallets/withDraw/list.action")
         Call<ResultBean<BlockAssetFlow>> getBlockWithdrawOrderList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 我的钱包列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/list.action")
+        @GET("/wallets/list.action")
         Call<ResultBean<MyWallet>> getMyWalletList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 币种余额,和人民币的兑换率
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/availBalance.action")
+        @GET("/wallets/availBalance.action")
         Call<ResultBean<CoinAvailbalance>> getCoinAvailbalance(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 法币交易发布交易界面
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/c2c/maker/walletinfo.action")
+        @GET("/c2c/maker/walletinfo.action")
         Call<ResultBean<C2CBusinessCoinAvail>> getCoinAvail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 资金划转提交
          */
         @FormUrlEncoded
-        @POST("/orderapi/wallets/transfer.action")
+        @POST("/wallets/transfer.action")
         Call<ResultBean> submitAssetsTransfer(@Header("token") String token, @Field("params") String params);
 
         /**
          * 我的现货余额，加入请求缓存
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/wallet.action")
+        @GET("/wallets/wallet.action")
         Call<ResultBean<GoodsWallet>> getMyGoodsWallet(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 现货交易--获取交易界面场景信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/order/mainpageInfo.action")
+        @GET("/order/mainpageInfo.action")
         Call<ResultBean<TradeMessage>> getTradeMessage(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
 
@@ -331,70 +331,70 @@ public class NetWorks extends RetrofitUtils {
          * 公告列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/notice/list.action")
+        @GET("/notice/list.action")
         Call<ResultBean<Notice>> getNoticeList(@Query("params") String params);
 
         /**
          * 公告列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/market/marketInit.action")
+        @GET("/market/marketInit.action")
         Call<ResultBean<PushMarketBean>> getMarketData(@Query("params") String params);
 
         /**
          * im系统通知列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/msg/systemNoticeList.action")
+        @GET("/talk/msg/systemNoticeList.action")
         Call<ResultBean<ImSystemMessage>> getImSystemMessageList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 设置头像
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/headimg.action")
+        @POST("/user/headimg.action")
         Call<ResultBean> setUserIcon(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 限价买入
          */
         @FormUrlEncoded
-        @POST("/orderapi/order/limitPriceBuy.action")
+        @POST("/order/limitPriceBuy.action")
         Call<ResultBean> limitPriceBuy(@Header("token") String token, @Field("params") String params);
 
         /**
          * 市价买入
          */
         @FormUrlEncoded
-        @POST("/orderapi/order/marketPriceBuy.action")
+        @POST("/order/marketPriceBuy.action")
         Call<ResultBean> marketPriceBuy(@Header("token") String token, @Field("params") String params);
 
         /**
          * 限价卖出
          */
         @FormUrlEncoded
-        @POST("/orderapi/order/limitPriceSale.action")
+        @POST("/order/limitPriceSale.action")
         Call<ResultBean> limitPriceSale(@Header("token") String token, @Field("params") String params);
 
         /**
          * 市价卖出
          */
         @FormUrlEncoded
-        @POST("/orderapi/order/marketPriceSale.action")
+        @POST("/order/marketPriceSale.action")
         Call<ResultBean> marketPriceSale(@Header("token") String token, @Field("params") String params);
 
         /**
          * 我的委托单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/order/orderRecord.action")
+        @GET("/order/orderRecord.action")
         Call<ResultBean<Entrust>> getMyEntrustList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 最新成交列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/orders/last.action")
+        @GET("/orders/last.action")
         Call<ResultBean<LastDealBean>> getLastDealList(@Query("params") String params, @Query("sign") String sign);
 
 
@@ -402,307 +402,307 @@ public class NetWorks extends RetrofitUtils {
          * 现货一键撤销
          */
         @FormUrlEncoded
-        @POST("/orderapi/orders/cancelall.action")
+        @POST("/orders/cancelall.action")
         Call<ResultBean> canceledAllEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 现货单个撤销
          */
         @FormUrlEncoded
-        @POST("/orderapi/order/orderCancel.action")
+        @POST("/order/orderCancel.action")
         Call<ResultBean> canceledOneEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 现货交易订单详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/order/orderDetail.action")
+        @GET("/order/orderDetail.action")
         Call<ResultBean<EntrustDetails>> getEntrustDetails(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取C2C用户详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/c2c/userinfo.action")
+        @GET("/c2c/userinfo.action")
         Call<ResultBean<C2CPersonalMessage>> getC2CPersonalBusiness(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 充值订单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/dig.action")
+        @GET("/dig/dig.action")
         Call<ResultBean> getDigPermission(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取实名认证token
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/realname/init.action")
+        @GET("/realname/init.action")
         Call<ResultBean<RealNameResult>> getRealNameToken(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取实名认证状态
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/realname/status.action")
+        @GET("/realname/status.action")
         Call<ResultBean<StringNameBean>> getRealNameStatus(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         @Multipart
-        @POST("/orderapi/file/upload.action")
+        @POST("/file/upload.action")
         Call<ResultBean<StringBean>> uploadImage(@Part("fileDir") RequestBody description, @Part() MultipartBody.Part file);
 
         /**
          * 获取未登录的出矿信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/info/notlogged.action")
+        @GET("/dig/info/notlogged.action")
         Call<ResultBean<SocketBlockList>> getUnLoggedBlock(@Query("params") String params);
 
         /**
          * 初始化登录后的挖矿信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/info/logged.action")
+        @GET("/dig/info/logged.action")
         Call<ResultBean<SocketBlockList>> getLoggedBlock(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 上传log
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/system/log.action")
+        @GET("/system/log.action")
         Call<ResultBean> uploadLog(@Query("params") String params);
 
         /**
          * C2C商家发布交易
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/maker/order.action")
+        @POST("/c2c/maker/order.action")
         Call<ResultBean> c2cPublishTrade(@Header("token") String token, @Field("params") String params);
 
         /**
          * C2C商家委托单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/c2c/maker/list.action")
+        @GET("/c2c/maker/list.action")
         Call<ResultBean<C2cBusinessEntrust>> getC2CBusinessEntrustList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * C2C商家委托单个撤销
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/maker/cancel.action")
+        @POST("/c2c/maker/cancel.action")
         Call<ResultBean> cancelC2CBusinessEntrust(@Header("token") String token, @Field("params") String params);
 
         /**
          * C2C商家委托单个开始接单或取消接单
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/maker/receipt/one.action")
+        @POST("/c2c/maker/receipt/one.action")
         Call<ResultBean> receiptC2CBusinessEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * C2C商家委托全部开始接单或取消接单
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/maker/receipt/all.action")
+        @POST("/c2c/maker/receipt/all.action")
         Call<ResultBean> receiptAllC2CBusinessEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * C2C普通用户商家列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/c2c/makerlist.action")
+        @GET("/c2c/makerlist.action")
         Call<ResultBean<C2cNormalBusiness>> getC2CNormalBusinessEntrustList(@Query("params") String params);
 
         /**
          * C2C普通用户买入
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/taker/buy.action")
+        @POST("/c2c/taker/buy.action")
         Call<ResultBean<OrderIdBean>> c2cNormalBuy(@Header("token") String token, @Field("params") String params);
 
         /**
          * C2C普通用户卖出
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/taker/sale.action")
+        @POST("/c2c/taker/sale.action")
         Call<ResultBean<OrderIdBean>> c2cNormalSale(@Header("token") String token, @Field("params") String params);
 
         /**
          * 订单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/c2c/taker/orderlist.action")
+        @GET("/c2c/taker/orderlist.action")
         Call<ResultBean<C2cNormalEntrust>> getC2CEntrustList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 绑定支付宝
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/bindalipay.action")
+        @POST("/user/bindalipay.action")
         Call<ResultBean> bindAliPay(@Header("token") String token, @Field("params") String params);
 
         /**
          * 绑定微信
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/bindwechat.action")
+        @POST("/user/bindwechat.action")
         Call<ResultBean> bindWxPay(@Header("token") String token, @Field("params") String params);
 
         /**
          * 绑定银行卡
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/bindcard.action")
+        @POST("/user/bindcard.action")
         Call<ResultBean> bindCard(@Header("token") String token, @Field("params") String params);
 
         /**
          * 银行卡列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/bank/list.action")
+        @GET("/bank/list.action")
         Call<ResultBean<BankCard>> getBankCardList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取c2c订单详情(改)
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/c2c/taker/orderinfo.action")
+        @GET("/c2c/taker/orderinfo.action")
         Call<ResultBean<C2CEntrustDetails>> getC2CEntrustDetails(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * c2c详情页确认支付
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/taker/confirm-pay.action")
+        @POST("/c2c/taker/confirm-pay.action")
         Call<ResultBean> c2cEntrustConfirmPayed(@Header("token") String token, @Field("params") String params);
 
         /**
          * c2c详情页确认收款，放币
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/taker/confirm-receipt.action")
+        @POST("/c2c/taker/confirm-receipt.action")
         Call<ResultBean> c2cEntrustConfirmReceipt(@Header("token") String token, @Field("params") String params);
 
         /**
          * 取消订单
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/taker/cancel.action")
+        @POST("/c2c/taker/cancel.action")
         Call<ResultBean> c2cEntrustCancelOrder(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 申诉客服
          */
         @FormUrlEncoded
-        @POST("/orderapi/c2c/taker/appeal.action")
+        @POST("/c2c/taker/appeal.action")
         Call<ResultBean> c2cEntrustAppeal(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 我的邀请信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/commissions/commission.action")
+        @GET("/commissions/commission.action")
         Call<ResultBean<Invitation>> getMyInvitation(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 挖矿列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/list.action")
+        @GET("/dig/list.action")
         Call<ResultBean<DigRecord>> getDigRecordList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 我的算力详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/soul/detail.action")
+        @GET("/dig/soul/detail.action")
         Call<ResultBean<MyforceInfo>> getMyCalculateForce(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
         /**
          * 我的算力详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/soul/rank.action")
+        @GET("/dig/soul/rank.action")
         Call<ResultBean<ForceRankInfo>> getForceRank(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 领取算力奖励
          */
         @FormUrlEncoded
-        @POST("/orderapi/dig/soul/sign.action")
+        @POST("/dig/soul/sign.action")
         Call<ResultBean> getCalculateForceGift(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
         /**
          * 算力流水
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/soul/flow.action")
+        @GET("/dig/soul/flow.action")
         Call<ResultBean<CalculateDetail>> getCalculateDetailList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
         /**
          * 我的挖矿资产列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/list.action")
+        @GET("/wallets/list.action")
         Call<ResultBean<MyAssets>> getMyAssetsList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 挖矿资产提现提交
          */
         @FormUrlEncoded
-        @POST("/orderapi/dig/withdraw.action")
+        @POST("/dig/withdraw.action")
         Call<ResultBean> submitMyAssetsWithdraw(@Header("token") String token, @Field("params") String params);
 
         /**
          * 自动挖矿
          */
         @FormUrlEncoded
-        @POST("/orderapi/dig/dig.action")
+        @POST("/dig/dig.action")
         Call<ResultBean<DigResult>> autoDig(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 收矿
          */
         @FormUrlEncoded
-        @POST("/orderapi/dig/collect.action")
+        @POST("/dig/collect.action")
         Call<ResultBean<BlockCollection>> getBlock(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
         /**
          * 交易挖矿
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/order/dealDigRecordList.action")
+        @GET("/order/dealDigRecordList.action")
         Call<ResultBean<BlockTradeInfo>> getBlockTrade(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
         /**
          * 单个币种详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/accountDetails.action")
+        @GET("/wallets/accountDetails.action")
         Call<ResultBean<CoinFlowDetail>> getCoinDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * k线图数据
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/bank/list.action")
+        @GET("/bank/list.action")
         Call<ResultBean<KLineBean>> getKLineDatas(@Query("params") String params, @Query("sign") String sign);
 
         /**
          * 挖矿算力奖励活动页
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/soul/pageInfo.action")
+        @GET("/dig/soul/pageInfo.action")
         Call<ResultBean<ForceUpBean>> getForceUpData(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 查看是否可领取活动奖励算力
          */
         @FormUrlEncoded
-        @POST("/orderapi/dig/soul/share/result.action")
+        @POST("/dig/soul/share/result.action")
         Call<ResultBean> submitForceShare(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 获取挖矿主页场景信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/digPageInfo.action")
+        @GET("/dig/digPageInfo.action")
         Call<ResultBean<DigPageInfo>> getDigPageInfo(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /***
@@ -718,7 +718,7 @@ public class NetWorks extends RetrofitUtils {
          * 获取最新公告
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/dig/getNewAnnouncement.action")
+        @GET("/dig/getNewAnnouncement.action")
         Call<ResultBean<BlockNoticeBean>> getNewAnnouncement();
 
 
@@ -726,112 +726,112 @@ public class NetWorks extends RetrofitUtils {
          * 获取挖矿主页场景信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/system/notice.action")
+        @GET("/system/notice.action")
         Call<ResultBean<MainDialogBean>> getMainDialog();
 
         /**
          * 查找好友
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/friends/find.action")
+        @GET("/talk/friends/find.action")
         Call<ResultBean<GetUserInfoByPhoneResponse>> findIMFriend(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取im中用户信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/friends/detail.action")
+        @GET("/talk/friends/detail.action")
         Call<ResultBean<GetFriendInfoByIDResponse>> getIMUserDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 添加好友
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/friends/add.action")
+        @POST("/talk/friends/add.action")
         Call<ResultBean> addIMFriend(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 删除好友
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/friends/delete.action")
+        @POST("/talk/friends/delete.action")
         Call<ResultBean> deleteIMFriend(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 群组聊天室列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/group/list.action ")
+        @GET("/talk/group/list.action ")
         Call<ResultBean<GetGroupResponse>> getChatRoomList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 进入群组聊天室
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/group/join.action")
+        @POST("/talk/group/join.action")
         Call<ResultBean> joinInGroup(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 退出群组聊天室
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/group/leave.action")
+        @POST("/talk/group/leave.action")
         Call<ResultBean> exitGroup(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 群组聊天室列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/friends/addlist.action")
+        @GET("/talk/friends/addlist.action")
         Call<ResultBean<UserRelationshipResponse>> getNewFriendList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 退出群组聊天室
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/friends/check.action")
+        @POST("/talk/friends/check.action")
         Call<ResultBean> checkImFriend(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 群组聊天室详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/group/detail.action")
+        @GET("/talk/group/detail.action")
         Call<ResultBean<GetGroupDetailsResponse>> getChatRoomDetails(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 群组聊天室列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/group/users.action")
+        @GET("/talk/group/users.action")
         Call<ResultBean<GetGroupMemberResponse>> getChatRoomMembers(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 取消订单
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/friends/remarkname/update.action")
+        @POST("/talk/friends/remarkname/update.action")
         Call<ResultBean> updateIMFriendRemarkName(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 我的好友列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/friends/list.action")
+        @GET("/talk/friends/list.action")
         Call<ResultBean<GetUserInfosResponse>> getMyFriendList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取im中红包详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/redpacket/detail.action")
+        @GET("/talk/redpacket/detail.action")
         Call<ResultBean<GetRedPacketStateResponse>> getRedPacketDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 获取im中转账详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/transfer/detail.action")
+        @GET("/talk/transfer/detail.action")
         Call<ResultBean<GetTransferStateResponse>> getTransferDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
 
@@ -839,42 +839,42 @@ public class NetWorks extends RetrofitUtils {
          * 发送红包
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/redpacket/send.action")
+        @POST("/talk/redpacket/send.action")
         Call<ResultBean<GetSendRedPacketResponse>> sendRedPacket(@Header("token") String token, @Field("params") String params);
 
         /**
          * 修改昵称
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/nickname/update.action")
+        @POST("/user/nickname/update.action")
         Call<ResultBean> changeNickName(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 领取红包
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/redpacket/recive.action")
+        @POST("/talk/redpacket/recive.action")
         Call<ResultBean<GetRedPacketStateResponse>> receiveRedPacket(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * IM红包记录
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/redpacket/list.action")
+        @GET("/talk/redpacket/list.action")
         Call<ResultBean<RedPackageRecord>> getRedPacketRecordList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * IM转账记录
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/transfer/list.action")
+        @GET("/talk/transfer/list.action")
         Call<ResultBean<RedPackageRecord>> getTransferRecordList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 消息免打扰
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/group/mute.action")
+        @POST("/talk/group/mute.action")
         Call<ResultBean<MuteResult>> imTalkMute(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
 
@@ -882,224 +882,224 @@ public class NetWorks extends RetrofitUtils {
          * 发送转账
          */
         @FormUrlEncoded
-        @POST("/orderapi/talk/transfer/send.action")
+        @POST("/talk/transfer/send.action")
         Call<ResultBean<GetSendRedPacketResponse>> sendTransfer(@Header("token") String token, @Field("params") String params);
 
         /**
          * I系统消息、交易通知未读消息数
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/talk/menu/msgMenu.action")
+        @GET("/talk/menu/msgMenu.action")
         Call<ResultBean<UnReadMessageCount>> getIMMessageCount(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 提现订单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/yubi/flows.action")
+        @GET("/yubi/flows.action")
         Call<ResultBean<YubibaoFlow>> getYubiBaoFlows(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 余币宝资金划转提交
          */
         @FormUrlEncoded
-        @POST("/orderapi/yubi/transfer.action ")
+        @POST("/yubi/transfer.action ")
         Call<ResultBean> submitYubibaoTransfer(@Header("token") String token, @Field("params") String params);
 
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/yubi/balance.action")
+        @GET("/yubi/balance.action")
         Call<ResultBean<YubibaoAvailbalance>> getYubibaoAvailbalance(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 杠杆交易交易界面信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/getTradePageInfo.action")
+        @GET("/leverage/getTradePageInfo.action")
         Call<ResultBean<LeverPagerInfo>> getLeverPageInf(@Header("token") String token, @Query("params") String params);
 
         /**
          * 杠杆交易买入
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/limitbuy.action")
+        @POST("/leverage/limitbuy.action")
         Call<ResultBean> leverGoodsBuy(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 杠杆交易卖出
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/limitsale.action")
+        @POST("/leverage/limitsale.action")
         Call<ResultBean> leverGoodsSale(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 杠杆交易--委托单列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/orderList.action")
+        @GET("/leverage/orderList.action")
         Call<ResultBean<LeverEntrust>> getLeverEntrustList(@Header("token") String token, @Query("params") String params);
 
         /**
          * 杠杆交易--撤销全部委托单
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/cancelall.action")
+        @POST("/leverage/cancelall.action")
         Call<ResultBean> canceledAllLeverEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 杠杆交易--撤销单个委托单
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/cancelone.action")
+        @POST("/leverage/cancelone.action")
         Call<ResultBean> canceledOneLeverEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 杠杆交易--委托单详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/orderDetail.action")
+        @GET("/leverage/orderDetail.action")
         Call<ResultBean<LeverEntrustDetails>> getLeverEntrustDetails(@Query("params") String params);
 
         /**
          * 杠杠--交易管理页面信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/getManagePageInfo.action")
+        @GET("/leverage/getManagePageInfo.action")
         Call<ResultBean<LeverManagerInfo>> getLeverManagerInfo(@Header("token") String token, @Query("params") String params);
 
         /**
          * 杠杠--获取用户某钱包某币种可用数量
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/getAvailBalance.action")
+        @GET("/leverage/getAvailBalance.action")
         Call<ResultBean<LeverAvailBalanceBean>> getLeverAvasilBalance(@Header("token") String token, @Query("params") String params);
 
         /**
          * 杠杆交易--资产转入
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/transferToLev.action")
+        @POST("/leverage/transferToLev.action")
         Call<ResultBean> leverTransferIn(@Header("token") String token, @Field("params") String params);
 
         /**
          * 杠杠--获取用户某钱包某币种可用数量
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/lendPageInfo.action")
+        @GET("/leverage/lendPageInfo.action")
         Call<ResultBean<LoanPageInfo>> getLoanPageInfo(@Header("token") String token, @Query("params") String params);
 
         /**
          * 杠杆交易--借款
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/lend.action")
+        @POST("/leverage/lend.action")
         Call<ResultBean> leverLoan(@Header("token") String token, @Field("params") String params);
 
         /**
          * 杠杆交易--查询还款记录
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/getRepaymentRecord.action")
+        @GET("/leverage/getRepaymentRecord.action")
         Call<ResultBean<LeverRepaymentInfo>> getLeverRepaymentList(@Header("token") String token, @Query("params") String params);
 
         /**
          * 杠杆交易--还款记录详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/getRepaymentDetail.action")
+        @GET("/leverage/getRepaymentDetail.action")
         Call<ResultBean<LeverRepaymentInfo.ListBean>> getLeverRepaymentInfo(@Query("params") String params);
 
         /**
          * 杠杆交易--还款
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/repay.action")
+        @POST("/leverage/repay.action")
         Call<ResultBean> leverRepayment(@Header("token") String token, @Field("params") String params);
 
         /**
          * 杠杆交易--转出
          */
         @FormUrlEncoded
-        @POST("/orderapi/leverage/transferOut.action")
+        @POST("/leverage/transferOut.action")
         Call<ResultBean> leverTransferOut(@Header("token") String token, @Field("params") String params);
 
         /**
          * 杠杆交易--查询杠杆账户可转出数量
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/leverage/getLevTranferAvail.action")
+        @GET("/leverage/getLevTranferAvail.action")
         Call<ResultBean<LeverTransferOutbean>> getLeverTransferOutBean(@Header("token") String token, @Query("params") String params);
 
         /**
          * 财务中心--首页资产信息
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/center.action")
+        @GET("/wallets/center.action")
         Call<ResultBean<FinancialInfoBean>> getFinancialCenterInfo(@Header("token") String token, @Query("params") String params);
         /**
          * 财务中心--c2c钱包详情
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/wallets/c2cDetail.action")
+        @GET("/wallets/c2cDetail.action")
         Call<ResultBean<FinancialBean>> getFinancialC2CList(@Header("token") String token, @Query("params") String params);
 
         /**
          * 获取加入社群列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/system/aboutInfo.action")
+        @GET("/system/aboutInfo.action")
         Call<ResultBean<GroupsInfo>> getGroupList(@Query("params") String params);
         /**
          * 首页（未登录）
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/homePage/out/init.action")
+        @GET("/homePage/out/init.action")
         Call<ResultBean<HomeInfo>> getHomeInfoUnLogin(@Query("params") String params);
         /**
          *首页（已登录）
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/homePage/in/init.action")
+        @GET("/homePage/in/init.action")
         Call<ResultBean<HomeInfo>> getHomeInfoLogin(@Header("token") String token,@Query("params") String params);
         /**
          * 获取个人信息性别和算力
          */
         @FormUrlEncoded
-        @POST("/orderapi/user/getCalcul.action")
+        @POST("/user/getCalcul.action")
         Call<ResultBean<MyPersonal>> getPersionalInfo(@Header("token") String token, @Field("params") String params);
 
         /**
          * 获取邀请海报
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/system/poster.action")
+        @GET("/system/poster.action")
         Call<ResultBean<ShareInfo>> getPosters(@Header("token") String token,@Query("params") String params);
 
         /**
          *Banner
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/orderapi/homePage/banner.action")
+        @GET("/homePage/banner.action")
         Call<ResultBean<CircleBanner>> getCircleBanner(@Query("params") String params);
 
         /**
          * 邀请奖励页面初始化
          */
         @FormUrlEncoded
-        @POST("/orderapi/odingbuying/reward.action")
+        @POST("/odingbuying/reward.action")
         Call<ResultBean<OrdinRewardInfo>> getOdingRewardInfo(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 邀请页面--更多历史排行
          */
         @FormUrlEncoded
-        @POST("/orderapi/odingbuying/moreRank.action")
+        @POST("/odingbuying/moreRank.action")
         Call<ResultBean<List<OdinHistoryRankBean>>> getOdinHistoryRankList(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 邀请页面--个人推广记录
          */
         @FormUrlEncoded
-        @POST("/orderapi/odingbuying/inviteList.action")
+        @POST("/odingbuying/inviteList.action")
         Call<ResultBean<List<OdinMyFollowBean>>> getOdinMyFollowList(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
 
@@ -1107,7 +1107,7 @@ public class NetWorks extends RetrofitUtils {
          * 立即购买
          */
         @FormUrlEncoded
-        @POST("/orderapi/odingbuying/buy.action")
+        @POST("/odingbuying/buy.action")
         Call<ResultBean> buyOdin(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
 
@@ -1115,7 +1115,7 @@ public class NetWorks extends RetrofitUtils {
          * 提取冻结资产（加密方式同资金划转）
          */
         @FormUrlEncoded
-        @POST("/orderapi/yubi/withdrawFrozen.action")
+        @POST("/yubi/withdrawFrozen.action")
         Call<ResultBean> submitWithdrawFrozen(@Header("token") String token, @Field("params") String params);
 
 

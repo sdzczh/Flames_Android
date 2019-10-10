@@ -14,6 +14,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
+import app.com.pgy.Fragments.HomeFragmentNew;
 import butterknife.BindView;
 import app.com.pgy.Activitys.Base.PermissionActivity;
 import app.com.pgy.Constants.Preferences;
@@ -79,7 +80,8 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
      */
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(HomeFragment.newInstance());
+//        fragments.add(HomeFragment.newInstance());
+        fragments.add(HomeFragmentNew.newInstance());
         fragments.add(MarketFragment.getInstance());
         fragments.add(CircleFragment.getInstance());
         fragments.add(TradeFragment.newInstance());
