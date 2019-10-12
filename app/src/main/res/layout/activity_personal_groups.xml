@@ -33,16 +33,19 @@
             <app.com.pgy.Widgets.PersonalItemView
                 android:id="@+id/piv_activity_personal_groups_wx"
                 style="@style/PersonalItem"
+                app:iv_item_left_icon_visible="true"
+                app:iv_item_left_icon="@mipmap/group_weixin"
                 app:tv_item_left_color="@color/txt_title"
                 app:tv_item_left_text="微信群"
                 app:tv_item_right_color="@color/txt_content"
-                app:iv_item_erweima_visible="true"
+                app:iv_item_erweima_visible="false"
                 app:tv_item_right_text="">
 
             </app.com.pgy.Widgets.PersonalItemView>
             <View
                 style="@style/PersonalLine"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:visibility="gone"/>
             <app.com.pgy.Widgets.PersonalItemView
                 android:id="@+id/piv_activity_personal_groups_gongzong"
                 style="@style/PersonalItem"
@@ -50,7 +53,8 @@
                 app:tv_item_left_text="公众号"
                 app:tv_item_right_color="@color/txt_content"
                 app:iv_item_erweima_visible="true"
-                app:tv_item_right_text="">
+                app:tv_item_right_text=""
+                android:visibility="gone">
 
             </app.com.pgy.Widgets.PersonalItemView>
             <View
@@ -59,18 +63,29 @@
             <app.com.pgy.Widgets.PersonalItemView
                 android:id="@+id/piv_activity_personal_groups_weibo"
                 style="@style/PersonalItem"
-                android:visibility="gone"
+                android:visibility="visible"
+                app:iv_item_left_icon="@mipmap/group_weibo"
+                app:iv_item_left_icon_visible="true"
                 app:tv_item_left_color="@color/txt_title"
-                app:tv_item_left_text="新浪微博"
+                app:tv_item_left_text="微博"
                 app:tv_item_right_color="@color/txt_content"
-                app:tv_item_right_text=""
-                app:iv_item_erweima_visible="true">
+                app:tv_item_right_text="">
 
             </app.com.pgy.Widgets.PersonalItemView>
             <View
                 style="@style/PersonalLine"
-                android:visibility="gone"
                 android:background="@color/white"/>
+            <app.com.pgy.Widgets.PersonalItemView
+                style="@style/PersonalItem"
+                android:visibility="visible"
+                app:iv_item_left_icon="@mipmap/group_tuite"
+                app:iv_item_left_icon_visible="true"
+                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_text="Twitter"
+                app:tv_item_right_color="@color/txt_content"
+                app:tv_item_right_text="">
+
+            </app.com.pgy.Widgets.PersonalItemView>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -32,6 +32,7 @@ public class HomeInfo {
     private String accountBalanceCny;
 
     private List<HomeMarketBean> marketMain;
+    private List<HomeMarketBean> market24h;
     private List<HomeNewBean> newsList;
 
     private String accountGuide;//账户指南
@@ -43,6 +44,14 @@ public class HomeInfo {
 
     public List<HomeMarketBean> getMarketMain() {
         return marketMain;
+    }
+
+    public void setMarket24h(List<HomeMarketBean> market24h) {
+        this.market24h = market24h;
+    }
+
+    public List<HomeMarketBean> getMarket24h() {
+        return market24h;
     }
 
     public void setNewsList(List<HomeNewBean> newsList) {

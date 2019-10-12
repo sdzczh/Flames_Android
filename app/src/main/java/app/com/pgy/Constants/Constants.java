@@ -33,7 +33,7 @@ public class Constants {
 //	public static final String WS_URL_DEBUG = "ws://192.168.1.1:1606";//ws://45.249.244.103:1606
 //	public static final String WS_URL = "ws://192.168.1.1:1606";
 	/**长连接action*/
-	public static final String SOCKET_ACTION = "huoli.com.onecoin.socket";
+	public static final String SOCKET_ACTION = "com.pgy.socket";
 	/**apk 文件存储路径*/
 	public static final String SP_DOWNLOAD_PATH = "download.path";
 }

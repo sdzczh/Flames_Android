@@ -4,20 +4,21 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Constants.StaticDatas;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getStringCallback;
+import app.com.pgy.Interfaces.spinnerSingleChooseListener;
 import app.com.pgy.Models.Beans.CoinAvailbalance;
 import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
@@ -27,6 +28,9 @@ import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.NumberEditText;
+import app.com.pgy.Widgets.YubibaoCoinspinner;
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by YX on 2018/7/12.
@@ -38,6 +42,8 @@ public class MyWalletTransferActivity extends BaseActivity {
     ImageView iv_back;
     @BindView(R.id.tv_title)
     TextView tv_title;
+    @BindView(R.id.view_line)
+    View viewLine;
     @BindView(R.id.tv_activity_mywallet_transfer_from)
     TextView tv_from;
     @BindView(R.id.tv_activity_mywallet_transfer_to)
@@ -56,10 +62,14 @@ public class MyWalletTransferActivity extends BaseActivity {
     TextView tv_coinName1;
     @BindView(R.id.tv_activity_mywallet_transfer_submit)
     TextView tv_submit;
-    @BindView(R.id.iv_activity_mywallet_transfer_from_icon)
-    ImageView iv_from;
-    @BindView(R.id.iv_activity_mywallet_transfer_to_icon)
-    ImageView iv_to;
+//    @BindView(R.id.iv_activity_mywallet_transfer_from_icon)
+//    ImageView iv_from;
+//    @BindView(R.id.iv_activity_mywallet_transfer_to_icon)
+//    ImageView iv_to;
+    @BindView(R.id.tv_activity_mywallet_transfer_coin)
+    TextView tvActivityMywalletTransferCoin;
+    @BindView(R.id.ll_activity_mywallet_transfer_coin)
+    LinearLayout llActivityMywalletTransferCoin;
     /**
      * 是否从c2c到现货，为true时表示从C2C到现货，为false时表示从现货到C2C
      */
@@ -69,6 +79,7 @@ public class MyWalletTransferActivity extends BaseActivity {
     private Configuration.CoinInfo coinInfo;
     private String availBalance;
     private Double amount;
+    private YubibaoCoinspinner coinspinner;
 
     @Override
     public int getContentViewId() {
@@ -88,11 +99,21 @@ public class MyWalletTransferActivity extends BaseActivity {
         /*从币种详情获取当前账户*/
         currentAccount = getIntent().getIntExtra("accountType", StaticDatas.ACCOUNT_GOODS);
         coinType = getIntent().getIntExtra("coinType", -1);
+
+
         if (coinType == -1) {
-            showToast("没有币种信息");
-            finish();
-            return;
+            /*获取计价币种列表，交易币种map*/
+            List<Integer> rechAndWithCoinTypeList = getConfiguration().getDealDigCoinTypes();
+            if (rechAndWithCoinTypeList != null && rechAndWithCoinTypeList.size() > 0) {
+                coinType = rechAndWithCoinTypeList.get(0);
+            }
+            if (coinType == -1) {
+                showToast("没有币种信息");
+                finish();
+                return;
+            }
         }
+
         isFromC2c = currentAccount != StaticDatas.ACCOUNT_GOODS;
         coinInfo = getCoinInfo(coinType);
         edt_amount.setDigits(coinInfo.getCalculScale());
@@ -100,6 +121,7 @@ public class MyWalletTransferActivity extends BaseActivity {
         switchTransferType(isFromC2c);
         tv_coinName.setText(coinInfo.getCoinname());
         tv_coinName1.setText(coinInfo.getCoinname());
+        tvActivityMywalletTransferCoin.setText(coinInfo.getCoinname());
     }
 
     @Override
@@ -116,14 +138,14 @@ public class MyWalletTransferActivity extends BaseActivity {
             currentAccount = StaticDatas.ACCOUNT_C2C;
             from = "法币账户";
             to = "币币账户";
-            iv_from.setImageResource(R.mipmap.fabi);
-            iv_to.setImageResource(R.mipmap.bibi);
+//            iv_from.setImageResource(R.mipmap.fabi);
+//            iv_to.setImageResource(R.mipmap.bibi);
         } else {
             currentAccount = StaticDatas.ACCOUNT_GOODS;
             from = "币币账户";
             to = "法币账户";
-            iv_to.setImageResource(R.mipmap.fabi);
-            iv_from.setImageResource(R.mipmap.bibi);
+//            iv_to.setImageResource(R.mipmap.fabi);
+//            iv_from.setImageResource(R.mipmap.bibi);
         }
         tv_from.setText(from);
         tv_to.setText(to);
@@ -132,7 +154,7 @@ public class MyWalletTransferActivity extends BaseActivity {
     }
 
     @OnClick({R.id.iv_back, R.id.iv_activity_mywallet_transfer_transferAccount, R.id.tv_activity_mywallet_transfer_chooseAll,
-            R.id.tv_activity_mywallet_transfer_submit})
+            R.id.tv_activity_mywallet_transfer_submit,R.id.ll_activity_mywallet_transfer_coin})
     public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -149,6 +171,9 @@ public class MyWalletTransferActivity extends BaseActivity {
                 break;
             case R.id.tv_activity_mywallet_transfer_submit:
                 submit();
+                break;
+            case R.id.ll_activity_mywallet_transfer_coin:
+                showSpinner();
                 break;
         }
     }
@@ -243,6 +268,37 @@ public class MyWalletTransferActivity extends BaseActivity {
                 hideLoading();
             }
         });
+    }
+
+
+    private void showSpinner() {
+        if (getConfiguration().getDealDigCoinTypes() == null || getConfiguration().getDealDigCoinTypes().size() <= 0) {
+            return;
+        }
+        if (coinspinner == null) {
+            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getConfiguration().getDealDigCoinTypes(), new spinnerSingleChooseListener() {
+                @Override
+                public void onItemClickListener(int position) {
+                    coinspinner.dismiss();
+                    if (getConfiguration().getDealDigCoinTypes().get(position) == coinType) {
+                        return;
+                    }
+                    coinType = getConfiguration().getDealDigCoinTypes().get(position);
+                    currentAccount= StaticDatas.ACCOUNT_GOODS;
+                    isFromC2c = false;
+                    coinInfo = getCoinInfo(coinType);
+                    edt_amount.setDigits(coinInfo.getCalculScale());
+                    /*初始化界面*/
+                    switchTransferType(isFromC2c);
+                    tv_coinName.setText(coinInfo.getCoinname());
+                    tv_coinName1.setText(coinInfo.getCoinname());
+                    tvActivityMywalletTransferCoin.setText(coinInfo.getCoinname());
+                }
+            });
+        }
+        if (!coinspinner.isShowing()) {
+            coinspinner.showDown(viewLine);
+        }
     }
 
 }

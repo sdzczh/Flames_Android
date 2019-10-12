@@ -1,6 +1,7 @@
 package app.com.pgy.Fragments;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -29,7 +30,13 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Activitys.Base.WebDetailActivity;
+import app.com.pgy.Activitys.MyWalletRechargeActivity;
+import app.com.pgy.Activitys.MyWalletTransferActivity;
+import app.com.pgy.Activitys.MyWalletWithdrawActivity;
+import app.com.pgy.Activitys.PersonalGroupsActivity;
+import app.com.pgy.Adapters.HomeMarketAdapter;
 import app.com.pgy.Adapters.HomeNewsAdapter;
+import app.com.pgy.Constants.Constants;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
@@ -37,8 +44,11 @@ import app.com.pgy.Models.Beans.BannerInfo;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.Models.Beans.EventBean.EventUserInfoChange;
 import app.com.pgy.Models.Beans.HomeInfo;
+import app.com.pgy.Models.Beans.HomeMarketBean;
+import app.com.pgy.Models.Beans.PushBean.PushData;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
+import app.com.pgy.Receivers.HomeMarketReceiver;
 import app.com.pgy.Utils.BannerIntentUtils;
 import app.com.pgy.Utils.ImageLoaderUtils;
 import app.com.pgy.Utils.LogUtils;
@@ -55,7 +65,7 @@ import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 /**
  * Create by Android on 2019/10/10 0010
  */
-public class HomeFragmentNew extends BaseFragment {
+public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.onListCallback {
     private final static int AUTO_SCROLL = 4 * 1000;
     private static HomeFragmentNew instance;
     @BindView(R.id.view_home_unlogin)
@@ -121,7 +131,9 @@ public class HomeFragmentNew extends BaseFragment {
     private HomeInfo mHomeInfo;
 
     private List<String> fragmentsName;
-
+    private HomeMarketAdapter marketAdapter,market24HAdapter;
+    private String scene = "354";
+    private HomeMarketReceiver receiver;
     public static HomeFragmentNew newInstance() {
         if (instance == null) {
             instance = new HomeFragmentNew();
@@ -139,6 +151,16 @@ public class HomeFragmentNew extends BaseFragment {
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+        switchScene(new PushData(scene));
+//        initMarketData();
+        if (receiver == null) {
+            receiver = new HomeMarketReceiver();
+        }
+        /*注册监听*/
+        IntentFilter filters = new IntentFilter();
+        filters.addAction(Constants.SOCKET_ACTION);
+        getLocalBroadcastManager().registerReceiver(receiver, filters);
+        receiver.setListCallback(this);
         fragmentsName = getFragmentsNames();
     }
 
@@ -153,10 +175,13 @@ public class HomeFragmentNew extends BaseFragment {
                 if (tab.getPosition() == 0){
                     rvMarket.setVisibility(View.VISIBLE);
                     rvMarket24H.setVisibility(View.GONE);
+                    scene = "354";
                 }else {
                     rvMarket.setVisibility(View.GONE);
                     rvMarket24H.setVisibility(View.VISIBLE);
+                    scene = "355";
                 }
+                switchScene(new PushData(scene));
             }
 
             @Override
@@ -217,49 +242,57 @@ public class HomeFragmentNew extends BaseFragment {
                     return false;
                 }
             });
-//解决数据加载不完的问题
+        //解决数据加载不完的问题
             rvFragmentHomeNews.setNestedScrollingEnabled(false);
             rvFragmentHomeNews.setHasFixedSize(true);
-//解决数据加载完成后, 没有停留在顶部的问题
+        //解决数据加载完成后, 没有停留在顶部的问题
             rvFragmentHomeNews.setFocusable(false);
             HomeNewsAdapter homeNewsAdapter = new HomeNewsAdapter(mContext);
             rvFragmentHomeNews.setAdapter(homeNewsAdapter);
             homeNewsAdapter.addAll(mHomeInfo.getNewsList());
-
-            rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
-                @Override
-                public boolean canScrollVertically() {
-                    //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
-                    //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
-                    return false;
-                }
-            });
-//解决数据加载不完的问题
-            rvMarket.setNestedScrollingEnabled(false);
-            rvMarket.setHasFixedSize(true);
-//解决数据加载完成后, 没有停留在顶部的问题
-            rvMarket.setFocusable(false);
-            rvMarket.setAdapter(homeNewsAdapter);
-
-            rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
-                @Override
-                public boolean canScrollVertically() {
-                    //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
-                    //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
-                    return false;
-                }
-            });
-//解决数据加载不完的问题
-            rvMarket24H.setNestedScrollingEnabled(false);
-            rvMarket24H.setHasFixedSize(true);
-//解决数据加载完成后, 没有停留在顶部的问题
-            rvMarket24H.setFocusable(false);
-            rvMarket24H.setAdapter(homeNewsAdapter);
-
         }
 
 
+    }
 
+    private void initMarket(){
+        if (mHomeInfo == null){
+            mHomeInfo = new HomeInfo();
+        }
+        rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
+            @Override
+            public boolean canScrollVertically() {
+                //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                return false;
+            }
+        });
+        //解决数据加载不完的问题
+        rvMarket.setNestedScrollingEnabled(false);
+        rvMarket.setHasFixedSize(true);
+//解决数据加载完成后, 没有停留在顶部的问题
+        rvMarket.setFocusable(false);
+        marketAdapter = new HomeMarketAdapter(mContext);
+
+        rvMarket.setAdapter(marketAdapter);
+        marketAdapter.addAll(mHomeInfo.getMarketMain());
+
+        rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
+            @Override
+            public boolean canScrollVertically() {
+                //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                return false;
+            }
+        });
+//解决数据加载不完的问题
+        rvMarket24H.setNestedScrollingEnabled(false);
+        rvMarket24H.setHasFixedSize(true);
+//解决数据加载完成后, 没有停留在顶部的问题
+        rvMarket24H.setFocusable(false);
+        market24HAdapter = new HomeMarketAdapter(mContext);
+        rvMarket24H.setAdapter(market24HAdapter);
+        market24HAdapter.addAll(mHomeInfo.getMarket24h());
     }
 
     private void updateNoice() {
@@ -402,24 +435,31 @@ public class HomeFragmentNew extends BaseFragment {
                 intent.putExtra("title", "账户指南");
                 intent.putExtra("url", mHomeInfo.getAccountGuide());
                 break;
+            case R.id.ll_fragment_home_groups:
             case R.id.ll_home_top_3:
+                //  跳转加入社群
+                intent = new Intent(mContext, PersonalGroupsActivity.class);
                 break;
             case R.id.tv_fragment_home_unlogin:
                 if (LoginUtils.isLogin(getActivity())) {
                 }
                 break;
             case R.id.iv_home_top_show:
+                isShow = !isShow;
+                updateAssetShow();
                 break;
             case R.id.ll_fragment_home_c2c_asset:
                 break;
             case R.id.ll_fragment_home_trust:
+                intent = new Intent(mContext, MyWalletTransferActivity.class);
                 break;
             case R.id.ll_fragment_home_withdraw:
+                intent = new Intent(mContext, MyWalletWithdrawActivity.class);
                 break;
             case R.id.ll_fragment_home_recharge:
+                intent = new Intent(mContext, MyWalletRechargeActivity.class);
                 break;
-            case R.id.ll_fragment_home_groups:
-                break;
+
             case R.id.mtv_fragment_home_notice:
                 // 2018/7/11 跳转到页面
                 if (mHomeInfo != null && noticeBean != null && !TextUtils.isEmpty(mHomeInfo.getNoticeUrl())) {
@@ -450,6 +490,7 @@ public class HomeFragmentNew extends BaseFragment {
             @Override
             public void onSuccess(HomeInfo homeInfo) {
                 mHomeInfo = homeInfo;
+                initMarket();
                 updateLogin();
                 updateNoice();
                 updateSlide();
@@ -461,6 +502,7 @@ public class HomeFragmentNew extends BaseFragment {
 
                 onFail(errorCode, reason);
                 mHomeInfo = null;
+                initMarket();
                 updateLogin();
                 updateNoice();
                 updateSlide();
@@ -504,6 +546,22 @@ public class HomeFragmentNew extends BaseFragment {
             EventBus.getDefault().unregister(this);
         }
         super.onDestroyView();
+    }
+
+    @Override
+    public void onMarketPgyCallback(List<HomeMarketBean> marketList) {
+        if (marketList != null && marketList.size() > 0){
+            marketAdapter.clear();
+            marketAdapter.addAll(marketList);
+        }
+    }
+
+    @Override
+    public void onMarket24HCallback(List<HomeMarketBean> marketList) {
+        if (marketList != null && marketList.size() > 0){
+            market24HAdapter.clear();
+            market24HAdapter.addAll(marketList);
+        }
     }
 
     public class SlideAdapter extends PagerAdapter {
@@ -563,7 +621,7 @@ public class HomeFragmentNew extends BaseFragment {
         /*切换底部行情页面的时候*/
         LogUtils.w("home", "home----onHiddenChanged:" + hidden);
         if (!hidden) {
-            switchScene(null);
+            switchScene(new PushData(scene));
         }
     }
 

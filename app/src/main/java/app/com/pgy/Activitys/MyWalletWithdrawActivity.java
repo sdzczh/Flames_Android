@@ -15,6 +15,8 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.com.pgy.Interfaces.spinnerSingleChooseListener;
+import app.com.pgy.Widgets.YubibaoCoinspinner;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.ScannerQRCodeActivity;
@@ -42,6 +44,8 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
     ImageView iv_back;
     @BindView(R.id.tv_title)
     TextView tv_title;
+    @BindView(R.id.view_line)
+    View viewLine;
     @BindView(R.id.tv_activity_mywallet_withdraw_avail)
     TextView tv_avail;
     @BindView(R.id.tv_activity_mywallet_withdraw_coinName1)
@@ -68,7 +72,8 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
     TextView tv_submit;
     @BindView(R.id.tv_activity_mywallet_withdraw_desc)
     TextView tv_desc;
-
+    @BindView(R.id.tv_activity_mywallet_transfer_coin)
+    TextView tvActivityMywalletTransferCoin;
     //币种、账户
     private int coinType = -1;
     private int accountType = StaticDatas.ACCOUNT_GOODS;
@@ -97,6 +102,7 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
     @Override
     protected void initView(Bundle savedInstanceState) {
         tv_title.setText(coinName+"  提币");
+        tvActivityMywalletTransferCoin.setText(coinName);
         /*添加扫描二维码回调监听*/
         setStringCallback(this);
         String notice = "温馨提示<br> 1.提币时支付的网络手续费为网络收取<br> 2.可提币金额≤账户可用余额-冻结金额";
@@ -311,6 +317,37 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
 
         @Override
         public void afterTextChanged(Editable s) {
+        }
+    }
+
+    private YubibaoCoinspinner coinspinner;
+    private void showSpinner() {
+        if (getConfiguration().getDealDigCoinTypes() == null || getConfiguration().getDealDigCoinTypes().size() <= 0) {
+            return;
+        }
+        if (coinspinner == null) {
+            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getConfiguration().getDealDigCoinTypes(), new spinnerSingleChooseListener() {
+                @Override
+                public void onItemClickListener(int position) {
+                    coinspinner.dismiss();
+                    if (getConfiguration().getDealDigCoinTypes().get(position) == coinType) {
+                        return;
+                    }
+                    coinType = getConfiguration().getDealDigCoinTypes().get(position);
+                    coinInfo = getCoinInfo(coinType);
+                    tvActivityMywalletTransferCoin.setText(coinInfo.getCoinname());
+                    LogUtils.e(TAG,"数量："+coinInfo.getWithdrawNum()+",小数："+coinInfo.getWithdrawScale());
+                    edt_amount.setHint("最小提币数量"+coinInfo.getWithdrawNum());
+                    edt_amount.setDigits(coinInfo.getWithdrawScale());
+                    /*切换币种名称*/
+                    switchCoinFrameText(coinType);
+                    tv_title.setText(coinName+"  提币");
+
+                }
+            });
+        }
+        if (!coinspinner.isShowing()) {
+            coinspinner.showDown(viewLine);
         }
     }
 

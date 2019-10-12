@@ -7,6 +7,7 @@
     android:focusableInTouchMode="true"
     android:focusable="true">
     <include layout="@layout/view_personal_title"/>
+    <include layout="@layout/view_divider_line_10"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +17,101 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="从"
+                    android:textColor="#ff999999"
+                    android:textSize="15sp"
+                    />
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="26dp"
+                    android:background="@mipmap/xuxian_v"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="到"
+                    android:textColor="#ff999999"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:id="@+id/tv_activity_mywallet_transfer_from"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:textColor="@color/txt_title"
+                        android:text="币币账户"
+                        android:layout_marginLeft="10dp"
+                        android:includeFontPadding="false"/>
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="11dp"
+                        android:src="@mipmap/home_notice_more"/>
+                </LinearLayout>
+                <include layout="@layout/view_divider_line"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:id="@+id/tv_activity_mywallet_transfer_to"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:textColor="@color/color_292d33"
+                        android:text="法币账户"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="38dp"
+                        android:includeFontPadding="false"/>
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="11dp"
+                        android:src="@mipmap/home_notice_more"/>
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_activity_mywallet_transfer_transferAccount"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@mipmap/trade_icon"
+                android:layout_marginRight="25dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:visibility="gone"
             android:layout_marginTop="44dp"
             android:layout_marginBottom="44dp">
             <ImageView
@@ -25,20 +120,14 @@
                 android:layout_height="24dp"
                 android:src="@mipmap/bibi"
                 android:layout_marginLeft="38dp"/>
-            <TextView
-                android:id="@+id/tv_activity_mywallet_transfer_from"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="@color/txt_title"
-                android:text="币币账户"
-                android:layout_marginLeft="10dp"/>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -57,17 +146,8 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@mipmap/fabi"/>
-            <TextView
-                android:id="@+id/tv_activity_mywallet_transfer_to"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/color_292d33"
-                android:text="法币账户"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="38dp"/>
+
             <ImageView
-                android:id="@+id/iv_activity_mywallet_transfer_transferAccount"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@mipmap/account_transfer"
@@ -77,24 +157,64 @@
         <include layout="@layout/view_divider_line_10"/>
 
         <LinearLayout
+            android:id="@+id/ll_activity_mywallet_transfer_coin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_title"
+                android:textSize="16sp"
+                android:text="币种选择"/>
+            <TextView
+                android:id="@+id/tv_activity_mywallet_transfer_coin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:textColor="@color/color_292d33"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="BTC"
+                android:layout_marginLeft="35dp"/>
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="11dp"
+                android:src="@mipmap/home_notice_more"
+                android:layout_marginRight="15dp"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"
+            android:layout_marginLeft="20dp"/>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:layout_marginTop="35sp">
+            android:layout_marginTop="15sp"
+            android:layout_marginBottom="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/txt_title"
-                android:textSize="15sp"
-                android:text="数量："/>
+                android:textSize="16sp"
+                android:text="划转数量"/>
             <app.com.pgy.Widgets.NumberEditText
                 android:id="@+id/edt_activity_mywallet_transfer_amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:maxLength="11"
                 android:textColor="@color/color_292d33"
                 android:background="@color/white"
@@ -105,7 +225,7 @@
                 android:inputType="numberDecimal"
                 android:singleLine="true"
                 android:maxLines="1"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="35dp"/>
             <TextView
                 android:id="@+id/tv_activity_mywallet_transfer_coinName"
                 android:layout_width="wrap_content"
@@ -119,63 +239,61 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="20dp"
-                android:background="@color/txt_app"/>
-            <TextView
-                android:id="@+id/tv_activity_mywallet_transfer_chooseAll"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:textSize="13sp"
-                android:textColor="@color/txt_app"
-                android:text="全部"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginRight="10dp"/>
+                android:background="@color/txt_app"
+                android:visibility="gone"/>
+
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/divider_line"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="13dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="最多可转"
+            android:textColor="@color/txt_808DAC"
+            android:textSize="13sp" />
+        <TextView
+            android:id="@+id/tv_activity_mywallet_transfer_avail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="24dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="可用"
-                android:textColor="@color/txt_808DAC"
-                android:textSize="13sp" />
-            <TextView
-                android:id="@+id/tv_activity_mywallet_transfer_avail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/txt_808DAC"
-                android:textSize="13sp"
-                android:text="0.00"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/tv_activity_mywallet_transfer_coinName1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/txt_808DAC"
-                android:textSize="13sp"
-                android:text="BTC"
-                android:layout_marginLeft="5dp"/>
-        </LinearLayout>
-
+            android:textColor="@color/txt_808DAC"
+            android:textSize="13sp"
+            android:text="0.00"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/tv_activity_mywallet_transfer_coinName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_808DAC"
+            android:textSize="13sp"
+            android:text="BTC"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/tv_activity_mywallet_transfer_chooseAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/txt_app"
+            android:text="全部"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
     <TextView
         android:id="@+id/tv_activity_mywallet_transfer_submit"
         style="@style/SubmitTextView"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
-        android:layout_marginTop="60dp"
-        android:text="确认划转" />
+        android:layout_marginTop="50dp"
+        android:text="确认划转"
+        android:background="@drawable/bg_app_enable_big"/>
 </LinearLayout>

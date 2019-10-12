@@ -11,8 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Interfaces.spinnerSingleChooseListener;
+import app.com.pgy.Widgets.YubibaoCoinspinner;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.PermissionActivity;
@@ -40,7 +43,8 @@ public class MyWalletRechargeActivity extends PermissionActivity {
     ImageView iv_back;
     @BindView(R.id.tv_title)
     TextView tv_title;
-
+    @BindView(R.id.view_line)
+    View viewLine;
     @BindView(R.id.edt_activity_mywallet_recharge_account)
     EditText edt_account;
     @BindView(R.id.edt_activity_mywallet_recharge_address)
@@ -58,7 +62,8 @@ public class MyWalletRechargeActivity extends PermissionActivity {
     TextView tv_copy;
     @BindView(R.id.tv_activity_mywallet_recharge_desc)
     TextView tv_desc;
-
+    @BindView(R.id.tv_activity_mywallet_transfer_coin)
+    TextView tvActivityMywalletTransferCoin;
     /**
      * 配置文件中的充值二维码、公司钱包地址
      */
@@ -89,9 +94,16 @@ public class MyWalletRechargeActivity extends PermissionActivity {
         coinType = getIntent().getIntExtra("coinType", -1);
         accountType = getIntent().getIntExtra("accountType", StaticDatas.ACCOUNT_GOODS);
         if (coinType == -1) {
-            showToast("币种信息为空");
-            finish();
-            return;
+            /*获取计价币种列表，交易币种map*/
+            List<Integer> rechAndWithCoinTypeList = getConfiguration().getDealDigCoinTypes();
+            if (rechAndWithCoinTypeList != null && rechAndWithCoinTypeList.size() > 0) {
+                coinType = rechAndWithCoinTypeList.get(0);
+            }
+            if (coinType == -1) {
+                showToast("没有币种信息");
+                finish();
+                return;
+            }
         }
         coinName = getCoinName(coinType);
         switchCoinFrameText();
@@ -100,13 +112,14 @@ public class MyWalletRechargeActivity extends PermissionActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        tv_title.setText(coinName + " 充币");
     }
 
     /**
      * 根据当前币种，设置二维码、公司钱包地址、币种名称
      */
     private void switchCoinFrameText() {
+        tv_title.setText(coinName + " 充币");
+        tvActivityMywalletTransferCoin.setText(coinName);
         if (mRechargeBean == null) {
             iv_qr.setImageResource(R.mipmap.ic_launcher);
             tv_address.setText("暂未开放充币");
@@ -130,7 +143,7 @@ public class MyWalletRechargeActivity extends PermissionActivity {
     }
 
     @OnClick({R.id.iv_back, R.id.iv_activity_mywallet_recharge_qr, R.id.tv_activity_mywallet_recharge_save,
-            R.id.tv_activity_mywallet_recharge_copy,R.id.tv_activity_mywallet_recharge_submit})
+            R.id.tv_activity_mywallet_recharge_copy,R.id.tv_activity_mywallet_recharge_submit,R.id.ll_activity_mywallet_transfer_coin})
     public void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
@@ -172,6 +185,9 @@ public class MyWalletRechargeActivity extends PermissionActivity {
                         submitRecharged(string);
                     }
                 });
+                break;
+            case R.id.ll_activity_mywallet_transfer_coin:
+                showSpinner();
                 break;
 
         }
@@ -253,4 +269,31 @@ public class MyWalletRechargeActivity extends PermissionActivity {
         }
         super.onDestroy();
     }
+
+
+    private YubibaoCoinspinner coinspinner;
+    private void showSpinner() {
+        if (getConfiguration().getDealDigCoinTypes() == null || getConfiguration().getDealDigCoinTypes().size() <= 0) {
+            return;
+        }
+        if (coinspinner == null) {
+            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getConfiguration().getDealDigCoinTypes(), new spinnerSingleChooseListener() {
+                @Override
+                public void onItemClickListener(int position) {
+                    coinspinner.dismiss();
+                    if (getConfiguration().getDealDigCoinTypes().get(position) == coinType) {
+                        return;
+                    }
+                    coinType = getConfiguration().getDealDigCoinTypes().get(position);
+                    coinName = getCoinName(coinType);
+                    switchCoinFrameText();
+                    getRecharge2Net();
+                }
+            });
+        }
+        if (!coinspinner.isShowing()) {
+            coinspinner.showDown(viewLine);
+        }
+    }
+
 }
