@@ -164,7 +164,7 @@ public class RegisterActivity extends BaseActivity {
             public void afterTextChanged(Editable editable) {
                 if (edt_tel.getText().length() < 1) {
                     iv_clear.setVisibility(View.GONE);
-                    tv_submit.setEnabled(false);
+                    tv_submit.setEnabled(true);
 
                 } else if (iv_clear.getVisibility() != View.VISIBLE) {
                     iv_clear.setVisibility(View.VISIBLE);
@@ -190,7 +190,7 @@ public class RegisterActivity extends BaseActivity {
             public void afterTextChanged(Editable editable) {
                 if (edt_password.getText().length() < 1) {
                     iv_pwShow.setVisibility(View.GONE);
-                    tv_submit.setEnabled(false);
+                    tv_submit.setEnabled(true);
 
                 } else if (iv_pwShow.getVisibility() != View.VISIBLE) {
                     iv_pwShow.setVisibility(View.VISIBLE);
@@ -238,7 +238,7 @@ public class RegisterActivity extends BaseActivity {
             public void afterTextChanged(Editable editable) {
                 if (edtActivityRegisterEmail.getText().length() < 1) {
                     ivActivityRegisterEmailclear.setVisibility(View.GONE);
-                    tv_submit.setEnabled(false);
+                    tv_submit.setEnabled(true);
 
                 } else if (ivActivityRegisterEmailclear.getVisibility() != View.VISIBLE) {
                     ivActivityRegisterEmailclear.setVisibility(View.VISIBLE);
@@ -297,7 +297,16 @@ public class RegisterActivity extends BaseActivity {
                 isPwdVisible = !isPwdVisible;
                 break;
             case R.id.tv_activity_register_submit:
-                register2Net();
+//                register2Net();
+                userPhone = edt_tel.getText().toString().trim();
+                /*如果输入的是手机号则去验证，开启倒计时*/
+                if (!ToolsUtils.isPhone(userPhone)) {
+                    showToast(getString(R.string.illegal_phone));
+                    return;
+                }
+                Intent intent2Code = new Intent(mContext,InputCodeActivity.class);
+                intent2Code.putExtra("tel",userPhone);
+                startActivityForResult(intent2Code,1);
                 break;
             case R.id.tv_activity_register_toAgreement:
                 Intent intent2Detail = new Intent(mContext, WebDetailActivity.class);
@@ -404,6 +413,14 @@ public class RegisterActivity extends BaseActivity {
                 hideLoading();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK){
+            finish();
+        }
     }
 
     @Override

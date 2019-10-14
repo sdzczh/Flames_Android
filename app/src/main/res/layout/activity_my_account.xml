@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <FrameLayout
+        style="@style/title_bg">
+        <ImageView
+            android:id="@+id/iv_activity_my_account_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/title_back"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="bottom"/>
+        <com.androidkun.xtablayout.XTabLayout
+            android:id="@+id/activity_my_account_title"
+            style="@style/TabLayoutTextStyle15"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            app:xTabDisplayNum="3"
+            app:xTabTextAppearance="@style/TabLayoutTextStyle15"
+            app:xTabSelectedTextColor="@color/txt_app"
+            app:xTabTextColor="@color/txt_B8C6D2"
+            app:xTabTextSize="16sp"
+            app:xTabSelectedTextSize="16sp"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:xTabDividerColor="@color/txt_content"
+            app:xTabDividerGravity="center"
+            app:xTabDividerWidth="0dp"
+            app:xTabDividerHeight="15dp"
+            app:tabTextColor="@color/txt_B8C6D2"
+            app:xTabIndicatorHeight="2dp"
+            app:xTabIndicatorWidth="33dp"
+            app:xTabIndicatorColor="@color/txt_app"
+            android:layout_gravity="center_horizontal|bottom" />
+
+    </FrameLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

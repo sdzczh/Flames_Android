@@ -51,6 +51,7 @@ import app.com.pgy.Models.Beans.LeverTransferOutbean;
 import app.com.pgy.Models.Beans.LoanPageInfo;
 import app.com.pgy.Models.Beans.MainDialogBean;
 import app.com.pgy.Models.Beans.MuteResult;
+import app.com.pgy.Models.Beans.MyAccount;
 import app.com.pgy.Models.Beans.MyAssets;
 import app.com.pgy.Models.Beans.Notice;
 import app.com.pgy.Models.Beans.BankCard;
@@ -283,6 +284,13 @@ public class NetWorks extends RetrofitUtils {
         @Headers(CACHE_CONTROL_NETWORK)
         @GET("/wallets/withDraw/list.action")
         Call<ResultBean<BlockAssetFlow>> getBlockWithdrawOrderList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
+
+        /**
+         * 钱包总览初始化
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @GET("/wallets/init.action")
+        Call<ResultBean<MyAccount>> getMyWalletAccount(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 我的钱包列表
@@ -1640,6 +1648,32 @@ public class NetWorks extends RetrofitUtils {
 
             @Override
             public void onFailure(Call<ResultBean<YubibaoFlow>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+
+    /**
+     * 获取用户钱包初始化
+     */
+    public static void getMyWalletAccount(String token, Map<String, Object> maps, final getBeanCallback<MyAccount> callback) {
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        String sign = ToolsUtils.getUploadSign(maps);
+        Call<ResultBean<MyAccount>> resultBeanCall = service.getMyWalletAccount(token, params, sign);
+        resultBeanCall.enqueue(new Callback<ResultBean<MyAccount>>() {
+            @Override
+            public void onResponse(Call<ResultBean<MyAccount>> call, Response<ResultBean<MyAccount>> response) {
+                ResultBean<MyAccount> responseBody = response.body();
+                setResponse(MyAccount.class, responseBody, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<MyAccount>> call, Throwable t) {
                 callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
             }
         });

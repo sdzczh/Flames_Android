@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Activitys.Base.WebDetailActivity;
+import app.com.pgy.Activitys.MyAccountActivity;
 import app.com.pgy.Activitys.MyWalletRechargeActivity;
 import app.com.pgy.Activitys.MyWalletTransferActivity;
 import app.com.pgy.Activitys.MyWalletWithdrawActivity;
@@ -214,7 +215,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             tvFragmentHomeUnlogin.setVisibility(View.VISIBLE);
             tvHomeTopTitle.setTextColor(getResources().getColor(R.color.white));
             hsvHomeTopUnlogin.setVisibility(View.VISIBLE);
-            llFragmentHomeC2cAsset.setVisibility(View.GONE);
+            llFragmentHomeC2cAsset.setVisibility(View.VISIBLE);
         }
         if (mHomeInfo.getMood() != null){
             tvFragmentHomeUp.setText(mHomeInfo.getMood().getMoodTop()+"%");
@@ -449,6 +450,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 updateAssetShow();
                 break;
             case R.id.ll_fragment_home_c2c_asset:
+                intent = new Intent(mContext, MyAccountActivity.class);
                 break;
             case R.id.ll_fragment_home_trust:
                 intent = new Intent(mContext, MyWalletTransferActivity.class);

@@ -414,6 +414,9 @@
         <activity android:name=".Activitys.HuiLvActivity" />
         <activity android:name=".Activitys.HuiLvHistoryListActivity" />
         <activity android:name=".Activitys.TradeGoodsEntrustListActivity" />
+        <activity android:name=".Activitys.InputCodeActivity" />
+        <activity android:name=".Activitys.SetPasswordActivity" />
+        <activity android:name=".Activitys.MyAccountActivity" />
 
         <!-- 第三方的推送 权限 广播 和服务 -->
 

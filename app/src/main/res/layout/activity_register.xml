@@ -244,8 +244,7 @@
                 android:background="#33ffffff"
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
-                android:layout_marginTop="48dp"
-                android:enabled="false"/>
+                android:layout_marginTop="48dp"/>
 
         </LinearLayout>
     </ScrollView>

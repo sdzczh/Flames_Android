@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:id="@+id/ll_item_my_account"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="13dp"
+    android:paddingBottom="13dp">
+    <TextView
+        android:id="@+id/tv_item_my_account_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:text="BTC"
+        android:textColor="#ff333333"
+        android:textSize="13sp"
+        />
+    <TextView
+        android:id="@+id/tv_item_my_account_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:text="0"
+        android:textColor="#ff333333"
+        android:textSize="14sp"
+        />
+    <TextView
+        android:id="@+id/tv_item_my_account_frozen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:text="冻结 0"
+        android:textColor="#ffb5b5b7"
+        android:textSize="14sp"
+        />
+    <ImageView
+        android:id="@+id/iv_item_my_account_more"
+        android:layout_width="20dp"
+        android:layout_height="23dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:src="@mipmap/circle_more" />
+</LinearLayout>
