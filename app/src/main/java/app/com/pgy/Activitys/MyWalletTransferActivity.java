@@ -103,7 +103,7 @@ public class MyWalletTransferActivity extends BaseActivity {
 
         if (coinType == -1) {
             /*获取计价币种列表，交易币种map*/
-            List<Integer> rechAndWithCoinTypeList = getConfiguration().getDealDigCoinTypes();
+            List<Integer> rechAndWithCoinTypeList = getRechAndWithCoinTypeList();
             if (rechAndWithCoinTypeList != null && rechAndWithCoinTypeList.size() > 0) {
                 coinType = rechAndWithCoinTypeList.get(0);
             }
@@ -272,18 +272,18 @@ public class MyWalletTransferActivity extends BaseActivity {
 
 
     private void showSpinner() {
-        if (getConfiguration().getDealDigCoinTypes() == null || getConfiguration().getDealDigCoinTypes().size() <= 0) {
+        if (getRechAndWithCoinTypeList() == null || getRechAndWithCoinTypeList().size() <= 0) {
             return;
         }
         if (coinspinner == null) {
-            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getConfiguration().getDealDigCoinTypes(), new spinnerSingleChooseListener() {
+            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getRechAndWithCoinTypeList(), new spinnerSingleChooseListener() {
                 @Override
                 public void onItemClickListener(int position) {
                     coinspinner.dismiss();
-                    if (getConfiguration().getDealDigCoinTypes().get(position) == coinType) {
+                    if (getRechAndWithCoinTypeList().get(position) == coinType) {
                         return;
                     }
-                    coinType = getConfiguration().getDealDigCoinTypes().get(position);
+                    coinType = getRechAndWithCoinTypeList().get(position);
                     currentAccount= StaticDatas.ACCOUNT_GOODS;
                     isFromC2c = false;
                     coinInfo = getCoinInfo(coinType);

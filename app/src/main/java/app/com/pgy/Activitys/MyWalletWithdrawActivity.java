@@ -173,6 +173,9 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
                     submit();
                 }
                 break;
+            case R.id.ll_activity_mywallet_transfer_coin:
+                showSpinner();
+                break;
         }
     }
 
@@ -322,18 +325,18 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
 
     private YubibaoCoinspinner coinspinner;
     private void showSpinner() {
-        if (getConfiguration().getDealDigCoinTypes() == null || getConfiguration().getDealDigCoinTypes().size() <= 0) {
+        if (getRechAndWithCoinTypeList() == null || getRechAndWithCoinTypeList().size() <= 0) {
             return;
         }
         if (coinspinner == null) {
-            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getConfiguration().getDealDigCoinTypes(), new spinnerSingleChooseListener() {
+            coinspinner = new YubibaoCoinspinner(getApplicationContext(), getRechAndWithCoinTypeList(), new spinnerSingleChooseListener() {
                 @Override
                 public void onItemClickListener(int position) {
                     coinspinner.dismiss();
-                    if (getConfiguration().getDealDigCoinTypes().get(position) == coinType) {
+                    if (getRechAndWithCoinTypeList().get(position) == coinType) {
                         return;
                     }
-                    coinType = getConfiguration().getDealDigCoinTypes().get(position);
+                    coinType = getRechAndWithCoinTypeList().get(position);
                     coinInfo = getCoinInfo(coinType);
                     tvActivityMywalletTransferCoin.setText(coinInfo.getCoinname());
                     LogUtils.e(TAG,"数量："+coinInfo.getWithdrawNum()+",小数："+coinInfo.getWithdrawScale());

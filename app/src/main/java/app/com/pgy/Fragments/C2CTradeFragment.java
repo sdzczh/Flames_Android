@@ -14,6 +14,7 @@ import com.androidkun.xtablayout.XTabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.R;
 import butterknife.BindView;
@@ -54,8 +55,13 @@ public class C2CTradeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        c2cCoinTypes = getC2cCoinList();
-        coinType = c2cCoinTypes.size() > 0 ? c2cCoinTypes.get(0) : 0;
+
+        coinType = Preferences.getC2CCoin();
+        if (coinType < 0){
+            c2cCoinTypes = getC2cCoinList();
+            coinType = c2cCoinTypes.size() > 0 ? c2cCoinTypes.get(0) : 0;
+        }
+
         tvTitle.setText(getCoinName(coinType)+"/CNY");
     }
 
@@ -71,8 +77,10 @@ public class C2CTradeFragment extends BaseFragment {
 
     private List<Fragment> getFragments() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, isBuy));
-        fragments.add(C2cTradeBuyOrSaleBusinessFragment.newInstance(coinType, isBuy));
+        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, true));
+        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, false));
+        fragments.add(C2CTradeOrderNormalListFragment.newInstance(coinType, true));
+        fragments.add(C2CTradeOrderNormalListFragment.newInstance(coinType, false));
         return fragments;
     }
 

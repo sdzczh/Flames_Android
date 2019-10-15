@@ -5,9 +5,16 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import app.com.pgy.Adapters.C2CNormalBuyNewAdapter;
+import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
 import butterknife.BindView;
 import app.com.pgy.Activitys.C2CEntrustDetailsActivity;
 import app.com.pgy.Activitys.C2CPersonalBusinessActivity;
@@ -44,7 +51,7 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
     private static final String TAG = "C2cTradeBuyNormalFragment";
     @BindView(R.id.fragment_baseList_list)
     EasyRecyclerView recyclerView;
-    private C2CNormalBuyAdapter adapter;
+    private C2CNormalBuyNewAdapter adapter;
     /**
      * 当前币种
      */
@@ -68,21 +75,22 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_baselist;
+        return R.layout.fragment_c2c_trade_normal;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        coinType = getArguments().getInt("coinType");
+        coinType = getArguments().getInt("coinType",-1);
         isBuy = getArguments().getBoolean("isBuy");
         LogUtils.w(TAG,"onCreate"+isBuy);
+//        coinType = Preferences.getC2CCoin();
     }
 
     @Override
     protected void initData() {
         if (adapter == null){
-            adapter = new C2CNormalBuyAdapter(mContext,isBuy,coinType);
+            adapter = new C2CNormalBuyNewAdapter(mContext,isBuy,coinType);
         }
     }
 
@@ -124,6 +132,9 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
             }
         });
         onRefresh();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     /**从服务器获取该币种的可用余额
@@ -300,5 +311,22 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
         }
         pageIndex++;
         requestData(pageIndex);
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+        super.onDestroyView();
+    }
+
+    /**
+     * 币种状态监听
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Event(EventC2cCoinChange c2cCoinChange) {
+        coinType = c2cCoinChange.getC2cCoinType();
+        onRefresh();
     }
 }
