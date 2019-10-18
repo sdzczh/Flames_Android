@@ -35,11 +35,14 @@ import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 public class InputCodeActivity extends BaseActivity {
     @BindView(R.id.tv_activity_register_verificationCode)
     TextView tv_verification;
+    @BindView(R.id.tv_activity_register_tel)
+    TextView tv_tel;
     @BindView(R.id.icv)
     VerificationCodeView icv;
 
     private String verificationMarkFromNet;
     private String userPhone;
+    private String referPhoneNumber;
     /**
      * 倒计时器,默认60s
      */
@@ -66,6 +69,7 @@ public class InputCodeActivity extends BaseActivity {
     @Override
     protected void initData() {
         userPhone = getIntent().getStringExtra("tel");
+        referPhoneNumber  = getIntent().getStringExtra("num");
         /*如果输入的是手机号则去验证，开启倒计时*/
         if (TextUtils.isEmpty(userPhone)  || !ToolsUtils.isPhone(userPhone)) {
             showToast(getString(R.string.illegal_phone));
@@ -77,6 +81,7 @@ public class InputCodeActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        tv_tel.setText("验证码已发送至****"+userPhone.substring(7,11));
         icv.setInputCompleteListener(new VerificationCodeView.InputCompleteListener() {
             @Override
             public void inputComplete() {
@@ -89,6 +94,7 @@ public class InputCodeActivity extends BaseActivity {
                 }
                 Intent intent = new Intent(mContext,SetPasswordActivity.class);
                 intent.putExtra("tel",userPhone);
+                intent.putExtra("num",referPhoneNumber);
                 intent.putExtra("code",icv.getInputContent());
                 intent.putExtra("codeNet",verificationMarkFromNet);
                 startActivityForResult(intent,1);

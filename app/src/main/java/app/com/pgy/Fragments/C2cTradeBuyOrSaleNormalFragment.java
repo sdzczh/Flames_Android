@@ -15,6 +15,7 @@ import java.util.Map;
 
 import app.com.pgy.Adapters.C2CNormalBuyNewAdapter;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
+import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import butterknife.BindView;
 import app.com.pgy.Activitys.C2CEntrustDetailsActivity;
 import app.com.pgy.Activitys.C2CPersonalBusinessActivity;
@@ -325,8 +326,9 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
      * 币种状态监听
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void Event(EventC2cCoinChange c2cCoinChange) {
-        coinType = c2cCoinChange.getC2cCoinType();
+    public void Event(EventC2cTradeCoin c2cCoinChange) {
+        coinType = c2cCoinChange.getCoinType();
+        adapter.setCoinType(coinType);
         onRefresh();
     }
 }

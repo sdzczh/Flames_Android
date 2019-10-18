@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Adapters.C2CTradeEntrustListNewAdapter;
+import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import butterknife.BindView;
 import app.com.pgy.Adapters.C2CTradeEntrustListAdapter;
 import app.com.pgy.Constants.Preferences;
@@ -41,7 +43,7 @@ import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
     @BindView(R.id.activity_baseListMargin_list)
     EasyRecyclerView recyclerView;
-    private C2CTradeEntrustListAdapter adapter;
+    private C2CTradeEntrustListNewAdapter adapter;
     private int tradeType = -1, stateType = -1;
     private int coinType;
 
@@ -65,12 +67,12 @@ public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
         /*解除顶部币对币监听*/
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
-        super.onDestroy();
+        super.onDestroyView();
     }
 
     @Override
@@ -79,7 +81,7 @@ public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
             EventBus.getDefault().register(this);
         }
         if (adapter == null) {
-            adapter = new C2CTradeEntrustListAdapter(mContext);
+            adapter = new C2CTradeEntrustListNewAdapter(mContext);
         }
     }
 
@@ -121,6 +123,14 @@ public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
         tradeType = entrustCondition.getTradeType();
         stateType = entrustCondition.getStateType();
         /*商家用户订单委托列表条件筛选*/
+        onRefresh();
+    }
+    /**
+     * 币种状态监听
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Event(EventC2cTradeCoin c2cCoinChange) {
+        coinType = c2cCoinChange.getCoinType();
         onRefresh();
     }
 

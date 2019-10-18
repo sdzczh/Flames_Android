@@ -5,22 +5,28 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.HashMap;
 import java.util.Map;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getStringCallback;
 import app.com.pgy.Models.Beans.C2CBusinessCoinAvail;
 import app.com.pgy.Models.Beans.Configuration;
+import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
+import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
@@ -28,6 +34,11 @@ import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.NumberEditText;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 import static app.com.pgy.Constants.StaticDatas.BUY;
 import static app.com.pgy.Constants.StaticDatas.SALE;
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
@@ -76,21 +87,29 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
     TextView fragmentC2cBusinessPublishServerFee;
     @BindView(R.id.fragment_c2cBusinessPublish_payTitle)
     TextView fragmentC2cBusinessPublishPayTitle;
+    @BindView(R.id.fragment_c2cBusinessPublish_availTitle)
+    TextView fragmentC2cBusinessPublishAvailTitle;
+    @BindView(R.id.fragment_c2cBusinessPublish_avail)
+    TextView fragmentC2cBusinessPublishAvail;
+    @BindView(R.id.fragment_c2cBusinessPublish_coinName)
+    TextView fragmentC2cBusinessPublishCoinName;
     private int coinType;
     private String coinName;
     private boolean isBuy;
     /**
      * 用户输入,价格、数量
      */
-    private Double price,amount,tradeAmount;
+    private Double price, amount, tradeAmount;
     private Double minPrice, maxPrice;
-    /**保证金，最小交易额,平台服务费*/
-    private String lastedPrice,marginFee,minTradeAmount,serverFee;
+    /**
+     * 保证金，最小交易额,平台服务费
+     */
+    private String availBalance,lastedPrice, marginFee, minTradeAmount, serverFee;
     /**
      * 支付方式
      */
     private int payType = -1;
-    private int aliPay = 0, wxPay = 0, cardPay = 0;
+    private int aliPay = 4, wxPay = 2, cardPay = 1;
 
     public C2cTradeBuyOrSaleBusinessFragment() {
     }
@@ -106,7 +125,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_cc_business_publish;
+        return R.layout.fragment_cc_business_publish_new;
     }
 
     @Override
@@ -120,15 +139,23 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
     @Override
     protected void initView(Bundle savedInstanceState) {
         if (isBuy) {
-            fragmentC2cBusinessPublishPriceTitle.setText("购买价格");
-            fragmentC2cBusinessPublishPayTitle.setText("支付方式");
+            fragmentC2cBusinessPublishPriceTitle.setText("买入价格");
+            fragmentC2cBusinessPublishNumberTitle.setText("买入数量");
+            fragmentC2cBusinessPublishPublish.setText("立即买入");
+            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.mipmap.c2c_trade_buy);
+//            fragmentC2cBusinessPublishPayTitle.setText("支付方式");
 //            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.drawable.bg_corners_bluesolid);
         } else {
-            fragmentC2cBusinessPublishPriceTitle.setText("出售价格");
-            fragmentC2cBusinessPublishPayTitle.setText("收款方式");
+            fragmentC2cBusinessPublishPriceTitle.setText("卖出价格");
+            fragmentC2cBusinessPublishNumberTitle.setText("卖出数量");
+            fragmentC2cBusinessPublishPublish.setText("立即卖出");
+            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.mipmap.c2c_trade_sale);
+//            fragmentC2cBusinessPublishPayTitle.setText("收款方式");
 //            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.drawable.bg_corners_darkbluesolid);
         }
-        fragmentC2cBusinessPublishNumberTitle.setText("数量("+coinName+")");
+//        fragmentC2cBusinessPublishNumberTitle.setText("数量(" + coinName + ")");
+        fragmentC2cBusinessPublishAvailTitle.setText(coinName+"  余额");
+        fragmentC2cBusinessPublishCoinName.setText(coinName);
         /*添加单选多选按钮监听*/
         fragmentC2cBusinessPublishCheckAli.setOnCheckedChangeListener(this);
         fragmentC2cBusinessPublishCheckWx.setOnCheckedChangeListener(this);
@@ -139,7 +166,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
         Configuration.CoinInfo coinInfo = getCoinInfo(coinType);
         int c2cNumScale = coinInfo.getC2cNumScale();
         int c2cPriceScale = coinInfo.getC2cPriceScale();
-        LogUtils.w(TAG,"coin:"+coinType+"number:"+c2cNumScale+",price:"+c2cPriceScale);
+        LogUtils.w(TAG, "coin:" + coinType + "number:" + c2cNumScale + ",price:" + c2cPriceScale);
         /*设置币种价格、数量的限制输入位数*/
         fragmentC2cBusinessPublishInputPrice.setDigits(c2cPriceScale);
         fragmentC2cBusinessPublishInputNumber.setDigits(c2cNumScale);
@@ -147,6 +174,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
         fragmentC2cBusinessPublishMaxPrice.setDigits(c2cNumScale);
         fragmentC2cBusinessPublishNotice.setText(Html.fromHtml("1、订单有效期为15分钟，请及时付款并点击“我已付款”。<br>" + "2、币由系统锁定托管，请安心下单。"));
         refreshView();
+
     }
 
     @Override
@@ -161,11 +189,11 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
      * 初始化界面
      */
     private void refreshView() {
-        if (coinType <=0){
+        if (coinType <= 0) {
             /*当为KN币的时候，价格定死*/
             fragmentC2cBusinessPublishInputPrice.setEnabled(false);
-            fragmentC2cBusinessPublishInputPrice.setText(isBuy?"0.99":"1.00");
-        }else{
+            fragmentC2cBusinessPublishInputPrice.setText(isBuy ? "0.99" : "1.00");
+        } else {
             fragmentC2cBusinessPublishInputPrice.setEnabled(true);
         }
         fragmentC2cBusinessPublishInputNumber.setText("");
@@ -206,21 +234,23 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
     }
 
     private void initAvailFrame(C2CBusinessCoinAvail avail) {
-        if (avail == null){
+        if (avail == null) {
             avail = new C2CBusinessCoinAvail();
         }
         /*参考价格KN为固定*/
-        lastedPrice = (TextUtils.isEmpty(avail.getLatestPrice())?"0":avail.getLatestPrice());
-        if (coinType <= 0){
-            lastedPrice = isBuy?"0.99":"1.00";
+        lastedPrice = (TextUtils.isEmpty(avail.getLatestPrice()) ? "0" : avail.getLatestPrice());
+        if (coinType <= 0) {
+            lastedPrice = isBuy ? "0.99" : "1.00";
         }
-        fragmentC2cBusinessPublishRealTimePrice.setText("参考价格："+lastedPrice+"CNY");
-        minTradeAmount = (TextUtils.isEmpty(avail.getMinDealAmt())?"0":avail.getMinDealAmt());
-        fragmentC2cBusinessPublishLimitMinPrice.setText("最小交易额"+minTradeAmount);
-        marginFee = (TextUtils.isEmpty(avail.getDeposit())?"0":avail.getDeposit());
-        fragmentC2cBusinessPublishMarginFee.setText("保证金："+marginFee+ coinName);
-        serverFee = (TextUtils.isEmpty(avail.getPlatFee())?"0":avail.getPlatFee());
-        fragmentC2cBusinessPublishServerFee.setText("平台服务费："+serverFee+"%");
+        availBalance = (TextUtils.isEmpty(avail.getAvailBalance()) ? "0" : avail.getAvailBalance());
+        fragmentC2cBusinessPublishAvail.setText(availBalance);
+        fragmentC2cBusinessPublishRealTimePrice.setText(lastedPrice + " CNY");
+        minTradeAmount = (TextUtils.isEmpty(avail.getMinDealAmt()) ? "0" : avail.getMinDealAmt());
+        fragmentC2cBusinessPublishLimitMinPrice.setText("最小交易额" + minTradeAmount);
+        marginFee = (TextUtils.isEmpty(avail.getDeposit()) ? "0" : avail.getDeposit());
+        fragmentC2cBusinessPublishMarginFee.setText("保证金：" + marginFee + coinName);
+        serverFee = (TextUtils.isEmpty(avail.getPlatFee()) ? "0" : avail.getPlatFee());
+        fragmentC2cBusinessPublishServerFee.setText(serverFee + "%");
     }
 
     /**
@@ -232,9 +262,30 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
         refreshView();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void EventCoin(EventC2cTradeCoin eventC2cTradeCoin) {
+       if (eventC2cTradeCoin.getCoinType() != coinType){
+           coinType = eventC2cTradeCoin.getCoinType();
+           coinName = getCoinName(coinType);
+           fragmentC2cBusinessPublishAvailTitle.setText(coinName+"  余额");
+           fragmentC2cBusinessPublishCoinName.setText(coinName);
+           Configuration.CoinInfo coinInfo = getCoinInfo(coinType);
+           int c2cNumScale = coinInfo.getC2cNumScale();
+           int c2cPriceScale = coinInfo.getC2cPriceScale();
+           LogUtils.w(TAG, "coin:" + coinType + "number:" + c2cNumScale + ",price:" + c2cPriceScale);
+           /*设置币种价格、数量的限制输入位数*/
+           fragmentC2cBusinessPublishInputPrice.setDigits(c2cPriceScale);
+           fragmentC2cBusinessPublishInputNumber.setDigits(c2cNumScale);
+           fragmentC2cBusinessPublishMinPrice.setDigits(c2cNumScale);
+           fragmentC2cBusinessPublishMaxPrice.setDigits(c2cNumScale);
+           refreshView();
+       }
+    }
+
+
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
@@ -242,7 +293,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
 
     @OnClick(R.id.fragment_c2cBusinessPublish_publish)
     public void onViewClicked() {
-         /*发布交易*/
+        /*发布交易*/
         if (!isLogin()) {
             showToast(R.string.unlogin);
             return;
@@ -260,7 +311,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
             showToast("请选择币种");
             return;
         }
-        if (price == null || price <= 0){
+        if (price == null || price <= 0) {
             showToast("请输入价格");
             return;
         }
@@ -269,7 +320,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
             return;
         }
         if (tradeAmount < MathUtils.string2Double(minTradeAmount)) {
-            showToast("最小交易额"+minTradeAmount);
+            showToast("最小交易额" + minTradeAmount);
             return;
         }
         String minPriceStr = fragmentC2cBusinessPublishMinPrice.getText().toString().trim();

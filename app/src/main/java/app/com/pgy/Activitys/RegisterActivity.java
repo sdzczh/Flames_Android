@@ -258,7 +258,7 @@ public class RegisterActivity extends BaseActivity {
             rbActivityRegisterByTel.setTextSize(25);
             rbActivityRegisterByEmail.setTextSize(17);
             llActivityRegisterTel.setVisibility(View.VISIBLE);
-            llActivityRegisterEmail.setVisibility(View.GONE);
+            llActivityRegisterEmail.setVisibility(View.VISIBLE);
         } else {
             rbActivityRegisterByTel.setTextSize(17);
             rbActivityRegisterByEmail.setTextSize(25);
@@ -304,8 +304,14 @@ public class RegisterActivity extends BaseActivity {
                     showToast(getString(R.string.illegal_phone));
                     return;
                 }
+                referPhoneNumber = edt_refereeTel.getText().toString().trim();
+                if (TextUtils.isEmpty(referPhoneNumber)) {
+                    showToast("请输入邀请码");
+                    return;
+                }
                 Intent intent2Code = new Intent(mContext,InputCodeActivity.class);
                 intent2Code.putExtra("tel",userPhone);
+                intent2Code.putExtra("num",userPhone);
                 startActivityForResult(intent2Code,1);
                 break;
             case R.id.tv_activity_register_toAgreement:

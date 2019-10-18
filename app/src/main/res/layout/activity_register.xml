@@ -76,7 +76,8 @@
                 android:orientation="horizontal"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="30dp"
+                android:visibility="gone">
 
                 <RadioButton
                     android:id="@+id/rb_activity_register_by_tel"
@@ -146,6 +147,7 @@
                         android:padding="5dp"
                         android:visibility="gone"/>
                 </LinearLayout>
+                <include layout="@layout/view_divider_line_white"/>
                 <LinearLayout
                     android:id="@+id/ll_activity_register_email"
                     android:layout_width="match_parent"
@@ -154,13 +156,14 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:visibility="visible">
                     <EditText
                         android:id="@+id/edt_activity_register_email"
                         style="@style/EditText16sp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:hint="邮箱"
+                        android:hint="请输入邀请码"
                         android:textSize="17sp"
                         android:layout_marginRight="5dp"
                         android:background="@color/transparent"/>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--点击和选中的时候，改变字体颜色-->
+    <item android:state_selected="true" android:color="#3075EE"/>
+    <item android:color="@color/color_33"/>
+</selector>

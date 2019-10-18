@@ -37,10 +37,13 @@ public class C2CNormalBuyNewAdapter extends RecyclerArrayAdapter<C2cNormalBusine
         this.coinType = coinType;
     }
 
+    public void setCoinType(int coinType) {
+        this.coinType = coinType;
+    }
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        return new CurrentEntrustViewHolder(parent);
     }
     class CurrentEntrustViewHolder extends BaseViewHolder<C2cNormalBusiness.ListBean> implements View.OnClickListener {
         private TextView ccNormalBuyItemUserName;

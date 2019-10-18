@@ -44,7 +44,7 @@ public class SetPasswordActivity extends BaseActivity {
     private String verificationCode;
     private String verificationMarkFromNet;
     private String password;
-
+    private String referPhoneNumber;
     @Override
     public int getContentViewId() {
         return R.layout.activity_set_password;
@@ -55,6 +55,7 @@ public class SetPasswordActivity extends BaseActivity {
         userPhone = getIntent().getStringExtra("tel");
         verificationCode = getIntent().getStringExtra("code");
         verificationMarkFromNet = getIntent().getStringExtra("codeNet");
+        referPhoneNumber  = getIntent().getStringExtra("num");
     }
 
     @Override
@@ -118,7 +119,7 @@ public class SetPasswordActivity extends BaseActivity {
         map.put("password", password);
         map.put("code", verificationCode);
         map.put("codeId", verificationMarkFromNet);
-        map.put("referPhone", "");
+        map.put("referPhone", referPhoneNumber);
         map.put("deviceNum", Preferences.getDeviceId());
         map.put("timeStamp", TimeUtils.getUpLoadTime());
         map.put("systemType", SYSTEMTYPE_ANDROID);

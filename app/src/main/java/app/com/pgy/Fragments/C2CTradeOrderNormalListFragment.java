@@ -27,6 +27,7 @@ import app.com.pgy.Fragments.Base.BaseListFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.C2cNormalEntrust;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
+import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
@@ -100,8 +101,8 @@ public class C2CTradeOrderNormalListFragment extends BaseListFragment {
      * 币种状态监听
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void Event(EventC2cCoinChange c2cCoinChange) {
-        coinType = c2cCoinChange.getC2cCoinType();
+    public void Event(EventC2cTradeCoin c2cCoinChange) {
+        coinType = c2cCoinChange.getCoinType();
         onRefresh();
     }
 

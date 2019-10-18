@@ -57,6 +57,15 @@
             android:includeFontPadding="false"
             android:layout_marginRight="15dp"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/tv_activity_register_tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证码已发送至****1234"
+        android:textColor="#ffffffff"
+        android:textSize="14sp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="15dp"/>
     <com.tuo.customview.VerificationCodeView
         android:id="@+id/icv"
         android:layout_width="match_parent"
@@ -64,7 +73,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         app:icv_et_bg_focus="@drawable/shape_icv_et_bg_focus_trans"
         app:icv_et_bg_normal="@drawable/shape_icv_et_bg_normal_tans"
         app:icv_et_divider_drawable="@drawable/shape_divider_identifying_trans"
