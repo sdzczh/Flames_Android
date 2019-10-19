@@ -82,7 +82,7 @@
                     android:text="拨打电话"
                     android:textColor="@color/txt_app"
                     android:textSize="@dimen/font_11sp"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/activity_ccEntrustDetails_top_btn_contact"
@@ -95,7 +95,7 @@
                     android:text="联系对方"
                     android:textColor="@color/txt_app"
                     android:textSize="@dimen/font_11sp"
-                    android:visibility="gone"/>
+                    android:visibility="visible"/>
 
             </LinearLayout>
 
@@ -219,7 +219,7 @@
                         android:orientation="horizontal"
                         android:paddingEnd="20dp"
                         android:paddingStart="20dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
                         android:padding="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
                         <TextView
                             android:text="交易单价(CNY)"
                             android:layout_width="wrap_content"
@@ -289,7 +289,7 @@
                         android:padding="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
                         <TextView
                             android:text="成交总额"
                             android:layout_width="wrap_content"
@@ -315,7 +315,7 @@
                 <!--代付款、请付款：支付信息，包括支付方式，收款人，账号，二维码-->
             <LinearLayout
                 android:id="@+id/activity_ccEntrustDetails_contentPay_frame"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -352,7 +352,7 @@
                 <!--订单信息-->
                 <LinearLayout
                     android:id="@+id/activity_ccEntrustDetails_contentOrder_frame"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -413,7 +413,7 @@
                 <!--底部蓝色文字提示信息-->
                 <TextView
                     android:id="@+id/activity_ccEntrustDetails_contentBottomNotice_blue"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -433,7 +433,7 @@
                     <!--申诉-->
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_complaint"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         style="@style/full_width_textView_margin15"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -444,7 +444,7 @@
                     <!--取消订单-->
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_cancelOrder"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         style="@style/full_width_textView_margin15"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -456,7 +456,7 @@
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_payed"
                         style="@style/full_width_textView_blue"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_width="0dp"
                         android:layout_weight="2"
                         android:text="我已付款"
@@ -466,7 +466,7 @@
                     <!--确认收款-->
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_receipted"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         style="@style/full_width_textView_blue"
                         android:layout_width="0dp"
                         android:layout_weight="2"
@@ -477,7 +477,7 @@
                 <!--底部黄色文字提示信息-->
                 <TextView
                     android:id="@+id/activity_ccEntrustDetails_contentBottomNotice_orange"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -491,7 +491,7 @@
             <!--对方详情-->
             <LinearLayout
                 android:id="@+id/activity_ccEntrustDetails_bottomContact_frame"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_corners_18solid"
                 android:layout_width="match_parent"
@@ -521,7 +521,7 @@
             <!--底部提醒-->
             <LinearLayout
                 android:id="@+id/activity_ccEntrustDetails_bottomNotice_frame"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_corners_18solid"

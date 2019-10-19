@@ -409,4 +409,6 @@
     <string name="lever_auto_repayment">您的借款到期后，系统会自动从账户中扣除借款产生的本金和利息，如果还款币种不足，系统会自动购买对借款币种还款。</string>
     <string name="lever_auto_loan">开启自动续借，还款时间到期后，系统将自动按照最优利率借入到期应的本金和利息。</string>
     <string name="yibijingling">COIN精灵</string>
+
+    <string name="entrust_detail_des">1. “禁止以支付宝或微信转账到银行卡的方式付款，请用网银或手机银行”；\n2.“平台不会自动扣款，请线下用网银或手机银行装张到卖家书款实名账户”\n\n请及时完成付款，并点击付款完成（有效期30分钟）。未付款并点击付款完成，经核实们将会暂停账号功能</string>
 </resources>
