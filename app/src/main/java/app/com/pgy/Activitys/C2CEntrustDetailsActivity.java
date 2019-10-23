@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Widgets.C2cTradeDialog;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.PermissionActivity;
@@ -215,14 +216,10 @@ public class C2CEntrustDetailsActivity extends PermissionActivity {
     private String userNikeName, userPhone;
     private DownTimer downTimer;
 
+
     @Override
     public int getContentViewId() {
         return R.layout.activity_c2c_entrust_details;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -871,6 +868,7 @@ public class C2CEntrustDetailsActivity extends PermissionActivity {
             }
         });
         builder.create().show();
+
     }
 
     /**

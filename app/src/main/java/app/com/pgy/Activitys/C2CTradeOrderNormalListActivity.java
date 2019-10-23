@@ -211,7 +211,7 @@ public class C2CTradeOrderNormalListActivity extends BaseListActivity {
         if (item == null){
             item = new C2cNormalEntrust.ListBean();
         }
-        Intent intent = new Intent(mContext, C2CEntrustDetailsActivity.class);
+        Intent intent = new Intent(mContext, C2CEntrustDetailsNewActivity.class);
         intent.putExtra("normalOrBusiness",NORMAL);
         intent.putExtra("entrustId",item.getId());
         startActivity(intent);

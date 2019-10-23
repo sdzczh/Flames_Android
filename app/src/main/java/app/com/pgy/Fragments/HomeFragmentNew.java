@@ -215,7 +215,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             tvFragmentHomeUnlogin.setVisibility(View.VISIBLE);
             tvHomeTopTitle.setTextColor(getResources().getColor(R.color.white));
             hsvHomeTopUnlogin.setVisibility(View.VISIBLE);
-            llFragmentHomeC2cAsset.setVisibility(View.VISIBLE);
+            llFragmentHomeC2cAsset.setVisibility(View.GONE);
         }
         if (mHomeInfo.getMood() != null){
             tvFragmentHomeUp.setText(mHomeInfo.getMood().getMoodTop()+"%");
@@ -450,16 +450,28 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 updateAssetShow();
                 break;
             case R.id.ll_fragment_home_c2c_asset:
-                intent = new Intent(mContext, MyAccountActivity.class);
+                if (LoginUtils.isLogin(getActivity())) {
+                    intent = new Intent(mContext, MyAccountActivity.class);
+
+                }
                 break;
             case R.id.ll_fragment_home_trust:
-                intent = new Intent(mContext, MyWalletTransferActivity.class);
+                if (LoginUtils.isLogin(getActivity())) {
+                    intent = new Intent(mContext, MyWalletTransferActivity.class);
+
+                }
                 break;
             case R.id.ll_fragment_home_withdraw:
-                intent = new Intent(mContext, MyWalletWithdrawActivity.class);
+                if (LoginUtils.isLogin(getActivity())) {
+                    intent = new Intent(mContext, MyWalletWithdrawActivity.class);
+
+                }
                 break;
             case R.id.ll_fragment_home_recharge:
-                intent = new Intent(mContext, MyWalletRechargeActivity.class);
+                if (LoginUtils.isLogin(getActivity())) {
+                    intent = new Intent(mContext, MyWalletRechargeActivity.class);
+
+                }
                 break;
 
             case R.id.mtv_fragment_home_notice:

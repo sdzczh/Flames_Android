@@ -65,8 +65,8 @@
     <application
         android:name=".Constants.MyApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:icon="@mipmap/home_logo"
+        android:roundIcon="@mipmap/home_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -417,6 +417,7 @@
         <activity android:name=".Activitys.InputCodeActivity" />
         <activity android:name=".Activitys.SetPasswordActivity" />
         <activity android:name=".Activitys.MyAccountActivity" />
+        <activity android:name=".Activitys.C2CEntrustDetailsNewActivity" />
 
         <!-- 第三方的推送 权限 广播 和服务 -->
 

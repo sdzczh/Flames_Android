@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Activitys.C2CEntrustDetailsNewActivity;
 import app.com.pgy.Adapters.C2CNormalBuyNewAdapter;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
 import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
@@ -204,7 +205,7 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
                 showToast("购买成功");
                 LogUtils.w(TAG, "购买成功");
                 if (info != null){
-                    Intent intent = new Intent(mContext, C2CEntrustDetailsActivity.class);
+                    Intent intent = new Intent(mContext, C2CEntrustDetailsNewActivity.class);
                     intent.putExtra("normalOrBusiness",NORMAL);
                     intent.putExtra("entrustId",info.getId());
                     startActivity(intent);
@@ -237,7 +238,7 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
                 showToast("出售成功");
                 LogUtils.w(TAG, "出售成功");
                 if (info != null){
-                    Intent intent = new Intent(mContext, C2CEntrustDetailsActivity.class);
+                    Intent intent = new Intent(mContext, C2CEntrustDetailsNewActivity.class);
                     intent.putExtra("normalOrBusiness",NORMAL);
                     intent.putExtra("entrustId",info.getId());
                     startActivity(intent);

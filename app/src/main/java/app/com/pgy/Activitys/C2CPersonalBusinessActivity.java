@@ -334,7 +334,7 @@ public class C2CPersonalBusinessActivity extends BaseActivity {
                 showToast("出售成功");
                 LogUtils.w(TAG, "出售成功");
                 if (info != null){
-                    Intent intent = new Intent(mContext, C2CEntrustDetailsActivity.class);
+                    Intent intent = new Intent(mContext, C2CEntrustDetailsNewActivity.class);
                     intent.putExtra("normalOrBusiness",NORMAL);
                     intent.putExtra("entrustId",info.getId());
                     startActivity(intent);

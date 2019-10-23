@@ -16,6 +16,7 @@ import app.com.pgy.Models.Beans.BlockCollection;
 import app.com.pgy.Models.Beans.BlockNoticeBean;
 import app.com.pgy.Models.Beans.BlockTradeInfo;
 import app.com.pgy.Models.Beans.C2CBusinessCoinAvail;
+import app.com.pgy.Models.Beans.C2CEntrustComplaintBean;
 import app.com.pgy.Models.Beans.C2CEntrustDetails;
 import app.com.pgy.Models.Beans.C2CPersonalMessage;
 import app.com.pgy.Models.Beans.C2cBusinessEntrust;
@@ -598,6 +599,13 @@ public class NetWorks extends RetrofitUtils {
         @FormUrlEncoded
         @POST("/c2c/taker/cancel.action")
         Call<ResultBean> c2cEntrustCancelOrder(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
+
+        /**
+         * 申诉初始化
+         */
+        @FormUrlEncoded
+        @POST("/c2c/appealInfo.action")
+        Call<ResultBean<C2CEntrustComplaintBean>> c2cEntrustComplaint(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
          * 申诉客服
@@ -2828,7 +2836,31 @@ public class NetWorks extends RetrofitUtils {
             }
         });
     }
+    /**
+     * c2c详情界面申诉初始化
+     */
+    public static void c2cEntrustComplaint(String token, Map<String, Object> maps, final getBeanCallback<C2CEntrustComplaintBean> callback) {
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        String sign = ToolsUtils.getUploadSign(maps);
+        Call<ResultBean<C2CEntrustComplaintBean>> resultBeanCall = service.c2cEntrustComplaint(token, params, sign);
+        resultBeanCall.enqueue(new Callback<ResultBean<C2CEntrustComplaintBean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<C2CEntrustComplaintBean>> call, Response<ResultBean<C2CEntrustComplaintBean>> response) {
+                ResultBean<C2CEntrustComplaintBean> responseBody = response.body();
+                setResponse(C2CEntrustComplaintBean.class, responseBody, callback);
+            }
 
+            @Override
+            public void onFailure(Call<ResultBean<C2CEntrustComplaintBean>> call, Throwable t) {
+                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
     /**
      * c2c详情界面申诉客服
      */

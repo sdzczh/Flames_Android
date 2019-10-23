@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Activitys.C2CEntrustDetailsNewActivity;
 import app.com.pgy.Adapters.C2CTradeOrderListNewAdapter;
 import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import butterknife.BindView;
@@ -194,7 +195,7 @@ public class C2CTradeOrderBusinessOrderListFragment extends BaseListFragment {
         if (item == null){
             item = new C2cNormalEntrust.ListBean();
         }
-        Intent intent = new Intent(mContext, C2CEntrustDetailsActivity.class);
+        Intent intent = new Intent(mContext, C2CEntrustDetailsNewActivity.class);
         intent.putExtra("normalOrBusiness",NORMAL);
         intent.putExtra("entrustId",item.getId());
         startActivity(intent);

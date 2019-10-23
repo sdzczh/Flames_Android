@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Activitys.C2CEntrustDetailsActivity;
+import app.com.pgy.Activitys.C2CEntrustDetailsNewActivity;
 import app.com.pgy.Adapters.C2CTradeOrderListAdapter;
 import app.com.pgy.Adapters.C2CTradeOrderListNewAdapter;
 import app.com.pgy.Constants.Preferences;
@@ -113,7 +114,7 @@ public class C2CTradeOrderNormalListFragment extends BaseListFragment {
         if (item == null){
             item = new C2cNormalEntrust.ListBean();
         }
-        Intent intent = new Intent(mContext, C2CEntrustDetailsActivity.class);
+        Intent intent = new Intent(mContext, C2CEntrustDetailsNewActivity.class);
         intent.putExtra("normalOrBusiness",NORMAL);
         intent.putExtra("entrustId",item.getId());
         startActivity(intent);

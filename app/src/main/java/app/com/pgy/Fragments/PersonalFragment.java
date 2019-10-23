@@ -73,7 +73,10 @@ public class PersonalFragment extends BaseFragment {
     PersonalItemView pivFragmentPersonalItemVersion;
     @BindView(R.id.tv_fragment_personal_loginout)
     TextView tvFragmentPersonalLoginout;
-    Unbinder unbinder;
+    @BindView(R.id.tv_fragment_personal_realLevel)
+    TextView tvFragmentPersonalRealLevel;
+    @BindView(R.id.tv_fragment_personal_matterLevel)
+    TextView tvFragmentPersonalMatterLeve;
     private String jinglingName, jinglingId;
 
     public static PersonalFragment newInstance() {
@@ -108,11 +111,17 @@ public class PersonalFragment extends BaseFragment {
             tv_tel.setText("UID：" + user.getUuid());
             ImageLoaderUtils.displayCircle(mContext, riv_headerImg, Preferences.getLocalUser().getHeadImg());
             tvFragmentPersonalLoginout.setVisibility(View.VISIBLE);
+            tvFragmentPersonalRealLevel.setVisibility(View.VISIBLE);
+            tvFragmentPersonalMatterLeve.setVisibility(View.VISIBLE);
+            tvFragmentPersonalRealLevel.setText("v2   实名等级");
+            tvFragmentPersonalMatterLeve.setText("奖励等级");
         } else {
             tv_nickname.setText("登录/注册");
             tv_tel.setText("欢迎来到蒲公英");
             riv_headerImg.setImageResource(R.mipmap.icon_unlogin);
             tvFragmentPersonalLoginout.setVisibility(View.GONE);
+            tvFragmentPersonalRealLevel.setVisibility(View.GONE);
+            tvFragmentPersonalMatterLeve.setVisibility(View.GONE);
         }
     }
 
@@ -265,15 +274,6 @@ public class PersonalFragment extends BaseFragment {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
-        unbinder.unbind();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
     }
 
     private String taskId;

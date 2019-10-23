@@ -42,7 +42,15 @@ public class C2CEntrustDetails {
     private String otherHeadPath;
     private String otherName;
     private Map<Integer,PayInfo> payInfo;
+    private String buyerName;
 
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
 
     public String getAmount() {
         return amount;

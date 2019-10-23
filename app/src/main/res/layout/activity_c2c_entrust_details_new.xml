@@ -111,7 +111,7 @@
                                 android:textSize="20sp"
                                 android:includeFontPadding="false"/>
                             <TextView
-                                android:id="@+id/activity_ccEntrustDetails_contentPay_payAccount"
+                                android:id="@+id/activity_ccEntrustDetails_contentPay_copyAccount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="点击内容复制"
@@ -251,7 +251,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:layout_marginRight="15dp"
+                        android:visibility="gone">
                         <LinearLayout
                             android:id="@+id/ll_buyer_info"
                             android:layout_marginTop="35dp"
@@ -317,7 +318,7 @@
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_receipted"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:text="确认收款"
+                        android:text="确认放币"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:gravity="center"
@@ -327,7 +328,8 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:includeFontPadding="false"
-                        android:paddingTop="15dp"/>
+                        android:paddingTop="15dp"
+                        android:visibility="gone"/>
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_cancelOrder"
                         android:layout_width="match_parent"
@@ -336,6 +338,7 @@
                         android:textColor="#ff868686"
                         android:textSize="18sp"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/shape_ea_line_3"
                         android:layout_marginLeft="15dp"
@@ -350,6 +353,7 @@
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:layout_marginTop="15dp"
                         android:background="@drawable/shape_ee6560_3"
                         android:layout_marginBottom="15dp"
@@ -385,6 +389,7 @@
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/shape_ee6560_3"
                         android:layout_marginLeft="15dp"
@@ -398,6 +403,7 @@
                         android:text="重新选择付款方式"
                         android:textColor="#ff868686"
                         android:textSize="18sp"
+                        android:visibility="gone"
                         android:gravity="center"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/shape_ea_line_3"
