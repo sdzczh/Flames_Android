@@ -304,7 +304,7 @@ public class RegisterActivity extends BaseActivity {
                     showToast(getString(R.string.illegal_phone));
                     return;
                 }
-                referPhoneNumber = edt_refereeTel.getText().toString().trim();
+                referPhoneNumber = edtActivityRegisterEmail.getText().toString().trim();
                 if (TextUtils.isEmpty(referPhoneNumber)) {
                     showToast("请输入邀请码");
                     return;

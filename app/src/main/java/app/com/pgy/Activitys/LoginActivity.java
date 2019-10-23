@@ -167,7 +167,7 @@ public class LoginActivity extends BaseActivity {
             public void afterTextChanged(Editable editable) {
                 if (edt_tel.getText().length() < 1){
                     iv_clear.setVisibility(View.GONE);
-                    tv_login.setEnabled(false);
+                    tv_login.setEnabled(true);
                 }else if (iv_clear.getVisibility() != View.VISIBLE){
                     iv_clear.setVisibility(View.VISIBLE);
                     if (edt_pw.getText().length() > 0){
@@ -192,7 +192,7 @@ public class LoginActivity extends BaseActivity {
             public void afterTextChanged(Editable editable) {
                 if (edt_pw.getText().length() < 1){
                     iv_show.setVisibility(View.GONE);
-                    tv_login.setEnabled(false);
+                    tv_login.setEnabled(true);
                 }else if (iv_show.getVisibility() != View.VISIBLE){
                     iv_show.setVisibility(View.VISIBLE);
                     if (edt_tel.getText().length() > 0){
