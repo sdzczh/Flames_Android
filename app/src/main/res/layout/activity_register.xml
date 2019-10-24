@@ -243,8 +243,6 @@
                 android:id="@+id/tv_activity_register_submit"
                 style="@style/SubmitTextView"
                 android:text="下一步"
-                android:textColor="#33ffffff"
-                android:background="#33ffffff"
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_marginTop="48dp"/>

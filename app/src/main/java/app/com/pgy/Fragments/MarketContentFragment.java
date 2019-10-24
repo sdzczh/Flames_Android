@@ -14,6 +14,8 @@ import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.R;
 import app.com.pgy.Widgets.NoScrollViewPager;
 
+import static app.com.pgy.Fragments.MarketFragment.TYPE_ONCOIN;
+
 /**
  * Created by YX on 2018/7/13.
  */
@@ -79,7 +81,11 @@ public class MarketContentFragment extends BaseFragment {
     private List<String> getFragmentsNames() {
         List<String> names = new ArrayList<>();
 //        names.add("自选");
-        names.add("PGY");
+        if (marketType == TYPE_ONCOIN){
+            names.add("CNHT");
+        }else {
+            names.add("USDT");
+        }
 //        names.add("DK");
         return names;
     }

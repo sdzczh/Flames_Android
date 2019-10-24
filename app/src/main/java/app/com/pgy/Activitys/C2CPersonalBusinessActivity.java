@@ -387,7 +387,7 @@ public class C2CPersonalBusinessActivity extends BaseActivity {
                 break;
                 /*联系对方*/
             case R.id.activity_ccPersonalBusiness_contact:
-                startChat();
+//                startChat();
                 break;
                 default:break;
         }

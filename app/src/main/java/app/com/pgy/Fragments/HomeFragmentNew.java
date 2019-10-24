@@ -133,6 +133,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
     private List<String> fragmentsName;
     private HomeMarketAdapter marketAdapter,market24HAdapter;
+    HomeNewsAdapter homeNewsAdapter;
     private String scene = "354";
     private HomeMarketReceiver receiver;
     public static HomeFragmentNew newInstance() {
@@ -157,6 +158,8 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         if (receiver == null) {
             receiver = new HomeMarketReceiver();
         }
+        rvMarket.setVisibility(View.VISIBLE);
+        rvMarket24H.setVisibility(View.GONE);
         /*注册监听*/
         IntentFilter filters = new IntentFilter();
         filters.addAction(Constants.SOCKET_ACTION);
@@ -195,6 +198,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
             }
         });
+
         getHomeInfo();
     }
 
@@ -248,8 +252,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             rvFragmentHomeNews.setHasFixedSize(true);
         //解决数据加载完成后, 没有停留在顶部的问题
             rvFragmentHomeNews.setFocusable(false);
-            HomeNewsAdapter homeNewsAdapter = new HomeNewsAdapter(mContext);
-            rvFragmentHomeNews.setAdapter(homeNewsAdapter);
+            if (homeNewsAdapter == null){
+                homeNewsAdapter = new HomeNewsAdapter(mContext);
+                rvFragmentHomeNews.setAdapter(homeNewsAdapter);
+            }
+            homeNewsAdapter.clear();
             homeNewsAdapter.addAll(mHomeInfo.getNewsList());
         }
 
@@ -260,40 +267,45 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         if (mHomeInfo == null){
             mHomeInfo = new HomeInfo();
         }
-        rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
-            @Override
-            public boolean canScrollVertically() {
-                //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
-                //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
-                return false;
-            }
-        });
-        //解决数据加载不完的问题
-        rvMarket.setNestedScrollingEnabled(false);
-        rvMarket.setHasFixedSize(true);
+
+        if (marketAdapter == null){
+            rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
+                @Override
+                public boolean canScrollVertically() {
+                    //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                    //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                    return false;
+                }
+            });
+            //解决数据加载不完的问题
+            rvMarket.setNestedScrollingEnabled(false);
+            rvMarket.setHasFixedSize(true);
 //解决数据加载完成后, 没有停留在顶部的问题
-        rvMarket.setFocusable(false);
-        marketAdapter = new HomeMarketAdapter(mContext);
+            rvMarket.setFocusable(false);
+            marketAdapter = new HomeMarketAdapter(mContext);
 
-        rvMarket.setAdapter(marketAdapter);
-        marketAdapter.addAll(mHomeInfo.getMarketMain());
+            rvMarket.setAdapter(marketAdapter);
+            marketAdapter.addAll(mHomeInfo.getMarketMain());
+        }
 
-        rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
-            @Override
-            public boolean canScrollVertically() {
-                //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
-                //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
-                return false;
-            }
-        });
+        if (market24HAdapter == null){
+            rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
+                @Override
+                public boolean canScrollVertically() {
+                    //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                    //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                    return false;
+                }
+            });
 //解决数据加载不完的问题
-        rvMarket24H.setNestedScrollingEnabled(false);
-        rvMarket24H.setHasFixedSize(true);
+            rvMarket24H.setNestedScrollingEnabled(false);
+            rvMarket24H.setHasFixedSize(true);
 //解决数据加载完成后, 没有停留在顶部的问题
-        rvMarket24H.setFocusable(false);
-        market24HAdapter = new HomeMarketAdapter(mContext);
-        rvMarket24H.setAdapter(market24HAdapter);
-        market24HAdapter.addAll(mHomeInfo.getMarket24h());
+            rvMarket24H.setFocusable(false);
+            market24HAdapter = new HomeMarketAdapter(mContext);
+            rvMarket24H.setAdapter(market24HAdapter);
+            market24HAdapter.addAll(mHomeInfo.getMarket24h());
+        }
     }
 
     private void updateNoice() {
@@ -398,7 +410,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 //                    .build();
 //        }
 //        slideAdapter = new SlideAdapter(slides);
-        uvp_slide.setAdapter(new SlideAdapter(null));
+        uvp_slide.setAdapter(new SlideAdapter(slides));
 
     }
 
@@ -565,16 +577,56 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     @Override
     public void onMarketPgyCallback(List<HomeMarketBean> marketList) {
         if (marketList != null && marketList.size() > 0){
-            marketAdapter.clear();
-            marketAdapter.addAll(marketList);
+            if (marketAdapter == null){
+                rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
+                    @Override
+                    public boolean canScrollVertically() {
+                        //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                        //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                        return false;
+                    }
+                });
+                //解决数据加载不完的问题
+                rvMarket.setNestedScrollingEnabled(false);
+                rvMarket.setHasFixedSize(true);
+//解决数据加载完成后, 没有停留在顶部的问题
+                rvMarket.setFocusable(false);
+                marketAdapter = new HomeMarketAdapter(mContext);
+
+                rvMarket.setAdapter(marketAdapter);
+                marketAdapter.addAll(marketList);
+            }else {
+                marketAdapter.clear();
+                marketAdapter.addAll(marketList);
+            }
         }
     }
 
     @Override
     public void onMarket24HCallback(List<HomeMarketBean> marketList) {
         if (marketList != null && marketList.size() > 0){
-            market24HAdapter.clear();
-            market24HAdapter.addAll(marketList);
+            if (market24HAdapter == null){
+                rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
+                    @Override
+                    public boolean canScrollVertically() {
+                        //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                        //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                        return false;
+                    }
+                });
+//解决数据加载不完的问题
+                rvMarket24H.setNestedScrollingEnabled(false);
+                rvMarket24H.setHasFixedSize(true);
+//解决数据加载完成后, 没有停留在顶部的问题
+                rvMarket24H.setFocusable(false);
+                market24HAdapter = new HomeMarketAdapter(mContext);
+                rvMarket24H.setAdapter(market24HAdapter);
+                market24HAdapter.addAll(marketList);
+            }else {
+                market24HAdapter.clear();
+                market24HAdapter.addAll(marketList);
+            }
+
         }
     }
 

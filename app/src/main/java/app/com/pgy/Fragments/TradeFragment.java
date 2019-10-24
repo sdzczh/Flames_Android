@@ -87,7 +87,7 @@ public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedC
     private void updateLogin() {
         if (isLogin()) {
 //            viewTitleMessageFrame.setVisibility(View.VISIBLE);
-            RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
+//            RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
         } else {
 //            viewTitleMessageFrame.setVisibility(View.GONE);
         }
@@ -113,7 +113,7 @@ public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedC
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-        RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
+//        RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
         fragmentTradeViewpager.setOffscreenPageLimit(fragments.size());
         setupViewPager(fragmentTradeViewpager);
         fragmentTradeGroup.setOnCheckedChangeListener(this);

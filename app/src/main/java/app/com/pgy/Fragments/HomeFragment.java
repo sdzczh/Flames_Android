@@ -134,7 +134,7 @@ public class HomeFragment extends BaseFragment implements IUnReadMessageObserver
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
+//        RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
         srlRefresh.setEnableLoadMore(false);
         srlRefresh.setRefreshHeader(new ClassicsHeader(getContext()));
         srlRefresh.setOnRefreshListener(new OnRefreshListener() {
@@ -168,7 +168,7 @@ public class HomeFragment extends BaseFragment implements IUnReadMessageObserver
             tv_unlogin.setVisibility(View.GONE);
             tv_nickName.setVisibility(View.VISIBLE);
 //            viewTitleMessageFrame.setVisibility(View.VISIBLE);
-            RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
+//            RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
         } else {
             riv_headerImg.setImageResource(R.mipmap.icon_unlogin);
             tv_unlogin.setVisibility(View.VISIBLE);

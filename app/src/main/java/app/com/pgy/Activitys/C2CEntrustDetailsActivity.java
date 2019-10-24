@@ -628,7 +628,7 @@ public class C2CEntrustDetailsActivity extends PermissionActivity {
                 break;
             /*联系对方*/
             case R.id.activity_ccEntrustDetails_top_btn_contact:
-                startChat();
+//                startChat();
                 break;
             /*切换支付方式*/
             case R.id.activity_ccEntrustDetails_contentPay_payType_switch:

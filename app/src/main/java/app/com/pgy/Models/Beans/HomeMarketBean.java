@@ -1,9 +1,14 @@
 package app.com.pgy.Models.Beans;
 
+import android.text.TextUtils;
+
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Create by Android on 2019/10/10 0010
  */
 public class HomeMarketBean {
+//    @SerializedName(value = "coinType",alternate = {"orderCoinType"})
     String coinType;
     String newPriceCNY;
     String chgPrice;
@@ -17,6 +22,9 @@ public class HomeMarketBean {
     }
 
     public String getCoinType() {
+        if (TextUtils.isEmpty(coinType) && !TextUtils.isEmpty(orderCoinType)){
+            return orderCoinType;
+        }
         return coinType;
     }
 

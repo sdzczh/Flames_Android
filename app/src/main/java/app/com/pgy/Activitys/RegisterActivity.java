@@ -311,7 +311,7 @@ public class RegisterActivity extends BaseActivity {
                 }
                 Intent intent2Code = new Intent(mContext,InputCodeActivity.class);
                 intent2Code.putExtra("tel",userPhone);
-                intent2Code.putExtra("num",userPhone);
+                intent2Code.putExtra("num",referPhoneNumber);
                 startActivityForResult(intent2Code,1);
                 break;
             case R.id.tv_activity_register_toAgreement:

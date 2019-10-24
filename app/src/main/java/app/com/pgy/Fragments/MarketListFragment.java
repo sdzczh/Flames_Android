@@ -48,9 +48,9 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
     public static final String SCENE_YIBI_KN = "3511";//COIN行情，kn为计价币
     public static final String SCENE_YIBI_AUTO = "3511";//COIN行情，自选
     public static final String SCENE_YIBI_DK = "3511";//COIN行情，DK为计价币
-    public static final String SCENE_WORLD_KN = "3511";//全球行情，kn为计价币
-    public static final String SCENE_WORLD_DK = "3511";//全球行情，自选
-    public static final String SCENE_WORLD_AUTO = "3511";//全球行情，DK为计价币
+    public static final String SCENE_WORLD_KN = "3512";//全球行情，kn为计价币
+    public static final String SCENE_WORLD_DK = "3512";//全球行情，自选
+    public static final String SCENE_WORLD_AUTO = "3512";//全球行情，DK为计价币
 
     @BindView(R.id.iv_fragment_marketList_tradeVolume)
     ImageView iv_volume;

@@ -61,6 +61,7 @@
                     android:textSize="11sp"
                     android:layout_marginLeft="10dp"/>
                 <ImageView
+                    android:id="@+id/fragment_tradeGoods_kline_frame"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/trade_up"
@@ -282,7 +283,6 @@
 
                     <!--K线图-->
                     <LinearLayout
-                        android:id="@+id/fragment_tradeGoods_kline_frame"
                         android:layout_width="match_parent"
                         android:orientation="vertical"
                         android:layout_height="90dp"

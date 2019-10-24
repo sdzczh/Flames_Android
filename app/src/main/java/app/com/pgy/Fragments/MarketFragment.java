@@ -96,16 +96,16 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
 
     private void updateLogin(){
         if (isLogin()){
-            viewTitleMessageFrame.setVisibility(View.VISIBLE);
-            RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
+//            viewTitleMessageFrame.setVisibility(View.VISIBLE);
+//            RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
         }else {
-            viewTitleMessageFrame.setVisibility(View.GONE);
+//            viewTitleMessageFrame.setVisibility(View.GONE);
         }
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
+//        RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
         /*初始化ViewPager的懒加载，添加几页缓存*/
         nvp_content.setOffscreenPageLimit(fragments.size());
         setupViewPager(nvp_content);
@@ -119,7 +119,7 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
     private List<Fragment> getFragments() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(MarketContentFragment.getInstance(TYPE_ONCOIN));
-        fragments.add(MarketWorldFragment.getInstance());
+        fragments.add(MarketContentFragment.getInstance(TYPE_WORLD));
         return fragments;
     }
 

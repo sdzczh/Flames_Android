@@ -13,7 +13,7 @@
         android:layout_height="40dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:visibility="gone">
+        android:visibility="visible">
         <!--交易量-->
         <LinearLayout
 
@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_fragment_marketList_tradeVolume"
-                android:text="平台/24h交易量"
+                android:text="币种"
                 android:textSize="@dimen/font_13sp"
                 android:textColor="@color/color_a1a8b3"
                 android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_fragment_marketList_riseFallRate"
-                android:text="涨跌幅"
+                android:text="24H涨跌幅"
                 android:textSize="@dimen/font_13sp"
                 android:textColor="@color/color_a1a8b3"
                 android:layout_width="wrap_content"
@@ -88,6 +88,5 @@
         android:id="@+id/rv_fragment_marketList_list"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="0dp"/>
 </LinearLayout>

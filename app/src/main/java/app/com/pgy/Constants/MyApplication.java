@@ -67,7 +67,7 @@ public class MyApplication extends MultiDexApplication {
         /*Bugly集成,第三个参数建议在测试阶段建议设置成true，发布时设置为false。*/
         CrashReport.initCrashReport(getApplicationContext(), "e87a6bb7d2", !DEBUG);
         /*融云IM集成*/
-        initRongyun();
+//        initRongyun();
         /*根据本地配置文件版本，去服务器获取最新配置文件*/
         getConfiguration(0);
     }

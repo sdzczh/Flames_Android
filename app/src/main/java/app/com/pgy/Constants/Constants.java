@@ -27,8 +27,8 @@ public class Constants {
 	/**长连接host，测试、线上*/
 	// release http://47.104.142.76:1606
 			//denbug  192.168.2.165:1606
-	public static final String WS_URL_DEBUG = "ws://47.104.142.76:1606";//ws://45.249.244.103:1606
-	public static final String WS_URL = "ws://47.104.142.76:1606";
+	public static final String WS_URL_DEBUG = "ws://47.56.87.149:1606";//ws://45.249.244.103:1606
+	public static final String WS_URL = "ws://47.56.87.149:1606";
 	//debug
 //	public static final String WS_URL_DEBUG = "ws://192.168.1.1:1606";//ws://45.249.244.103:1606
 //	public static final String WS_URL = "ws://192.168.1.1:1606";

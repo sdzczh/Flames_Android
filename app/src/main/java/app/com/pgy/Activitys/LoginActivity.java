@@ -387,10 +387,10 @@ public class LoginActivity extends BaseActivity {
      * @param user*/
     private void sendLoginMessage(User user) {
         /*同步个人消息*/
-        RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getPhone(),user.getName(), Uri.parse(user.getHeadImg())));
-        if (RongIM.getInstance() != null) {
-            RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), user.getName(), Uri.parse(user.getHeadImg())));
-        }
+//        RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getPhone(),user.getName(), Uri.parse(user.getHeadImg())));
+//        if (RongIM.getInstance() != null) {
+//            RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), user.getName(), Uri.parse(user.getHeadImg())));
+//        }
         LogUtils.w("receiver","Login发送action");
         EventBus.getDefault().post(new EventLoginState(true));
     }

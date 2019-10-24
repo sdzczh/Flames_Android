@@ -423,7 +423,7 @@ public final class Preferences {
     public static boolean clearAllUserData() {
         /*退出umeng用户统计*/
         MobclickAgent.onProfileSignOff();
-        RongIM.getInstance().logout();
+//        RongIM.getInstance().logout();
         BroadcastManager.getInstance(mAppContext).sendBroadcast(SealConst.EXIT);
         LogUtils.w("exit","用户退出");
         return setLocalUser(null) && setLocalKey("") && setLocalTradePwd("")&&setCurrentLevel(0);

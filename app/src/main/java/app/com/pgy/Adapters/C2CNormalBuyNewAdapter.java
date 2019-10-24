@@ -72,13 +72,16 @@ public class C2CNormalBuyNewAdapter extends RecyclerArrayAdapter<C2cNormalBusine
 
         @Override
         public void setData(C2cNormalBusiness.ListBean c2cNormalBusiness) {
+            if (c2cNormalBusiness == null){
+                return;
+            }
             if (isBuy) {
                 ccNormalBuyItemBuy.setText("购买");
             } else {
                 ccNormalBuyItemBuy.setText("出售");
             }
             ccNormalBuyItemUserName.setText(c2cNormalBusiness.getUserName());
-            ccNormalBuyItemAllOrders.setText(c2cNormalBusiness.getQuantity());
+            ccNormalBuyItemAllOrders.setText(c2cNormalBusiness.getQuantity()+"");
             /*根据可支付类型，确定显示哪种支付方式*/
             int payType = c2cNormalBusiness.getPayType();
             List<View> views = new ArrayList<>();

@@ -1,5 +1,6 @@
 package app.com.pgy.Fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,12 +42,16 @@ import app.com.pgy.Models.Beans.StringNameBean;
 import app.com.pgy.Models.Beans.User;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
+import app.com.pgy.Services.MyWebSocket;
 import app.com.pgy.Utils.ImageLoaderUtils;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.LoginUtils;
 import app.com.pgy.Utils.TimeUtils;
+import app.com.pgy.Widgets.ExitDialog;
 import app.com.pgy.Widgets.PersonalItemView;
+import app.com.pgy.im.SealConst;
 import app.com.pgy.im.db.Friend;
+import app.com.pgy.im.server.broadcast.BroadcastManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -125,16 +130,17 @@ public class PersonalFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.ll_fragment_personal_userinfo, R.id.riv_fragment_personal_headerImg, R.id.rl_fragment_personal_userInfo,
+    @OnClick({R.id.tv_fragment_personal_nickname,R.id.ll_fragment_personal_userinfo, R.id.riv_fragment_personal_headerImg, R.id.rl_fragment_personal_userInfo,
             R.id.piv_fragment_personal_item_wallet, R.id.piv_fragment_personal_item_safety,
             R.id.piv_fragment_personal_item_poster, R.id.piv_fragment_personal_item_group, R.id.piv_fragment_personal_item_yibi,
             R.id.piv_fragment_personal_item_system, R.id.iv_invitation, R.id.piv_fragment_personal_item_web,
             R.id.ll_fragment_personal_renzheng,R.id.piv_fragment_personal_item_help,R.id.piv_fragment_personal_item_version,
-            R.id.piv_fragment_personal_item_huilv,R.id.piv_fragment_personal_item_feelv})
+            R.id.piv_fragment_personal_item_huilv,R.id.piv_fragment_personal_item_feelv,R.id.tv_fragment_personal_loginout})
     public void onViewClick(View v) {
         Intent intent = null;
         Bundle bundle = null;
         switch (v.getId()) {
+            case R.id.tv_fragment_personal_nickname:
             case R.id.ll_fragment_personal_userinfo:
             case R.id.riv_fragment_personal_headerImg:
             case R.id.rl_fragment_personal_userInfo:
@@ -170,20 +176,20 @@ public class PersonalFragment extends BaseFragment {
                     return;
                 }
                 /*从配置文件获取COIN精灵*/
-                Configuration.YibiElve yibijingling = getConfiguration().getYibiElve();
-                if (yibijingling == null) {
-                    yibijingling = new Configuration.YibiElve();
-                }
-                jinglingId = yibijingling.getPhone();
-                jinglingName = TextUtils.isEmpty(yibijingling.getName()) ? "COIN精灵" : yibijingling.getName();
-                String headPath = yibijingling.getHeadPath();
-                RongIM.getInstance().refreshUserInfoCache(new Friend(jinglingId, jinglingName, Uri.parse(headPath)));
-                try {
-                    RongIM.getInstance().startPrivateChat(mContext, jinglingId, jinglingName);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showToast("系统异常");
-                }
+//                Configuration.YibiElve yibijingling = getConfiguration().getYibiElve();
+//                if (yibijingling == null) {
+//                    yibijingling = new Configuration.YibiElve();
+//                }
+//                jinglingId = yibijingling.getPhone();
+//                jinglingName = TextUtils.isEmpty(yibijingling.getName()) ? "COIN精灵" : yibijingling.getName();
+//                String headPath = yibijingling.getHeadPath();
+//                RongIM.getInstance().refreshUserInfoCache(new Friend(jinglingId, jinglingName, Uri.parse(headPath)));
+//                try {
+//                    RongIM.getInstance().startPrivateChat(mContext, jinglingId, jinglingName);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    showToast("系统异常");
+//                }
                 break;
             case R.id.piv_fragment_personal_item_web:
                 /*跳转COIN官网*/
@@ -220,6 +226,13 @@ public class PersonalFragment extends BaseFragment {
             case R.id.piv_fragment_personal_item_feelv:
                 int a1 = 0;
                 break;
+            case R.id.tv_fragment_personal_loginout:
+                if (!isLogin()) {
+                    showToast(R.string.unlogin);
+                    return;
+                }
+                ShowExitDialog();
+                break;
             default:
                 break;
 
@@ -230,6 +243,47 @@ public class PersonalFragment extends BaseFragment {
             }
             startActivity(intent);
         }
+    }
+    private ExitDialog exitDialog;
+
+    /**
+     * 退出
+     */
+    private void ShowExitDialog() {
+        final ExitDialog.Builder builder = new ExitDialog.Builder(mContext);
+        builder.setTitle("确定要退出当前账号？");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("确定退出",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (Preferences.clearAllUserData()) {
+                            showToast("退出登录成功");
+                            tvFragmentPersonalLoginout.setVisibility(View.GONE);
+                            sendLogoutMessage();
+                        }
+                        dialog.dismiss();
+                    }
+                });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        exitDialog = builder.create();
+        exitDialog.show();
+    }
+    /**
+     * 发送退出登录广播，在baseFragment和baseActivity中接收
+     */
+    private void sendLogoutMessage() {
+        LogUtils.w("receiver", "Setting发送退出通知");
+        EventBus.getDefault().post(new EventLoginState(false));
+        BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.EXIT);
+        MyWebSocket.getMyWebSocket().stopSocket();
+        refreshUserMessage();
     }
 
     private boolean isLogining() {

@@ -53,15 +53,16 @@
                     android:textSize="16sp"
                     android:text="BTC"
                     android:includeFontPadding="false"/>
+
                 <TextView
                     android:id="@+id/tv_item_market_list_percoin"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_b8c0cc"
-                    android:textSize="12sp"
-                    android:text="/CNY"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="4dp"
                     android:includeFontPadding="false"
-                    android:layout_marginLeft="4dp"/>
+                    android:text="/CNY"
+                    android:textColor="@color/color_b8c0cc"
+                    android:textSize="12sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

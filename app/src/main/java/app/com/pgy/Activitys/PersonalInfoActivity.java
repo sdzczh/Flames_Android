@@ -237,9 +237,9 @@ public class PersonalInfoActivity extends BaseUploadPicActivity implements getSt
                 LogUtils.w(TAG, "设置成功");
                 Preferences.setUserLogo(iconUrl);
                 EventBus.getDefault().post(new EventUserInfoChange());
-                if (RongIM.getInstance() != null) {
-                    RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), user.getName(), Uri.parse(iconUrl)));
-                }
+//                if (RongIM.getInstance() != null) {
+//                    RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), user.getName(), Uri.parse(iconUrl)));
+//                }
                 BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.CHANGEINFO);
                 updateData();
                 hideLoading();
@@ -266,8 +266,8 @@ public class PersonalInfoActivity extends BaseUploadPicActivity implements getSt
                 Preferences.saveUserName(newName);
                 EventBus.getDefault().post(new EventUserInfoChange());
                 BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.CHANGEINFO);
-                RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getPhone(), newName, Uri.parse(user.getHeadImg())));
-                RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), newName, Uri.parse(user.getHeadImg())));
+//                RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getPhone(), newName, Uri.parse(user.getHeadImg())));
+//                RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), newName, Uri.parse(user.getHeadImg())));
                 showToast("修改昵称成功");
                 LogUtils.w(TAG, "修改昵称成功");
                 hideLoading();
