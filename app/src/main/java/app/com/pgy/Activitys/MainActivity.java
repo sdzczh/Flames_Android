@@ -185,6 +185,21 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
                         activityMainGroup.check(R.id.activity_main_group_goods);
                     }
                     break;
+                case EventMainChangeState.CHANGE_TO_C2C:
+                    if (activityMainGroup.getCheckedRadioButtonId() != R.id.activity_main_group_circle){
+                        activityMainGroup.check(R.id.activity_main_group_circle);
+                    }
+                    break;
+                case EventMainChangeState.CHANGE_TO_MARK:
+                    if (activityMainGroup.getCheckedRadioButtonId() != R.id.activity_main_group_market){
+                        activityMainGroup.check(R.id.activity_main_group_market);
+                    }
+                    break;
+                case EventMainChangeState.CHANGE_TO_HOME:
+                    if (activityMainGroup.getCheckedRadioButtonId() != R.id.activity_main_group_mine){
+                        activityMainGroup.check(R.id.activity_main_group_mine);
+                    }
+                    break;
             }
         }
     }

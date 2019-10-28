@@ -35,6 +35,7 @@ public class User implements Serializable {
     private String talkToken;
     private int sex;
     private String birthday;
+    private int idStatus;
 
     private String uuid;
 
@@ -155,6 +156,14 @@ public class User implements Serializable {
 
     public String getUuid() {
         return uuid;
+    }
+
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
+
+    public int getIdStatus() {
+        return idStatus;
     }
 
     @Override

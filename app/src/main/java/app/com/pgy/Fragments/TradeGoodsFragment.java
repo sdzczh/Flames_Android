@@ -13,10 +13,10 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
@@ -24,10 +24,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.androidkun.xtablayout.XTabLayout;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -43,25 +39,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import app.com.pgy.Activitys.TradeGoodsEntrustListActivity;
-import app.com.pgy.Interfaces.getPositionCallback;
-import app.com.pgy.Models.Beans.TradeCoinMarketBean;
-import app.com.pgy.Widgets.AmountImageView;
-import app.com.pgy.Widgets.MyTradeCoinMarketPopupWindown;
-import app.com.pgy.Widgets.MyTradeTypeChoosePopupWindow;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 import app.com.pgy.Activitys.KLineActivity;
 import app.com.pgy.Activitys.LoginActivity;
 import app.com.pgy.Activitys.MainActivity;
+import app.com.pgy.Activitys.TradeGoodsEntrustListActivity;
 import app.com.pgy.Adapters.BuyOrSaleListAdapter;
 import app.com.pgy.Adapters.ViewPagerAdapter;
 import app.com.pgy.Constants.Constants;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
+import app.com.pgy.Interfaces.getPositionCallback;
 import app.com.pgy.Interfaces.getStringCallback;
 import app.com.pgy.Interfaces.spinnerSecondaryChooseListener;
 import app.com.pgy.Interfaces.spinnerSingleChooseListener;
@@ -74,6 +62,7 @@ import app.com.pgy.Models.Beans.EventBean.EventMarketScene;
 import app.com.pgy.Models.Beans.KLineBean;
 import app.com.pgy.Models.Beans.PushBean.PushData;
 import app.com.pgy.Models.Beans.PushBean.RecordsBean;
+import app.com.pgy.Models.Beans.TradeCoinMarketBean;
 import app.com.pgy.Models.Beans.TradeMessage;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
@@ -82,9 +71,14 @@ import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Utils.Utils;
-import app.com.pgy.Widgets.AmountView;
+import app.com.pgy.Widgets.AmountImageView;
 import app.com.pgy.Widgets.MyBottomSpinnerList;
-import app.com.pgy.Widgets.MyLeftSecondarySpinnerList;
+import app.com.pgy.Widgets.MyTradeCoinMarketPopupWindown;
+import app.com.pgy.Widgets.MyTradeTypeChoosePopupWindow;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 import static app.com.pgy.Constants.StaticDatas.BUY;
 import static app.com.pgy.Constants.StaticDatas.MARKET_ONECOIN;
@@ -151,8 +145,6 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     TextView fragmentTradeGoodsLogin;
     @BindView(R.id.fragment_tradeGoods_appBarLayout)
     AppBarLayout fragmentTradeGoodsAppBarLayout;
-//    @BindView(R.id.fragment_tradeGoods_kline)
-//    LineChart fragmentTradeGoodsKline;
     @BindView(R.id.fragment_tradeGoods_klineTime_first)
     TextView fragmentTradeGoodsKlineTimeFirst;
     @BindView(R.id.fragment_tradeGoods_klineTime_second)
@@ -162,7 +154,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     @BindView(R.id.titleLine)
     View titleLine;
 
-//    Unbinder unbinder;
+
+
+    //    Unbinder unbinder;
     private List<Fragment> fragments;
     private List<String> fragmentsName;
     private BuyOrSaleListAdapter buyListAdapter, saleListAdapter;
@@ -252,7 +246,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
 
     @Override
     public void onDestroy() {
-         /*解除挖矿状态监听*/
+        /*解除挖矿状态监听*/
         if (receiver != null) {
             getLocalBroadcastManager().unregisterReceiver(receiver);
         }
@@ -336,9 +330,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         return trades;
     }
 
-    private void test(){
+    private void test() {
         List<BuyOrSale.ListBean> testData = new ArrayList<>();
-        for (int i = 0;i < 5;i++){
+        for (int i = 0; i < 5; i++) {
             BuyOrSale.ListBean info = new BuyOrSale.ListBean();
             info.setPrice("1");
             info.setRate("14.29");
@@ -369,19 +363,6 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         return names;
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        // TODO: inflate a fragment view
-//        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-//        unbinder = ButterKnife.bind(this, rootView);
-//        return rootView;
-//    }
-//
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        unbinder.unbind();
-//    }
 
     public class CustomLinearLayoutManager extends LinearLayoutManager {
         private boolean isScrollEnabled = true;
@@ -536,7 +517,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         switchLoginFrame();
     }
 
-    /**当前委托撤销委托监听*/
+    /**
+     * 当前委托撤销委托监听
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event1(EventC2cCancelEntrust cancelEntrust) {
         if (cancelEntrust.isCanceled()) {
@@ -591,7 +574,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             tradeMessage = new TradeMessage();
         }
         rateOfCny = MathUtils.string2Double(tradeMessage.getRmbRate());
-                /*从服务器获取交易币可用余额、计价币可用余额*/
+        /*从服务器获取交易币可用余额、计价币可用余额*/
         String unitAvailBalance = tradeMessage.getUnit();
         perCoinAvail = MathUtils.string2Double(unitAvailBalance);
         String orderAvailBalance = tradeMessage.getOrder();
@@ -602,9 +585,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         /*设置下面输入框的小数位数*/
         setBottomInputNumber();
         if (isBuy) {
-            fragmentTradeGoodsAvailable.setText("可用 " + unitAvailBalance +" "+ currentPerCoinName);
+            fragmentTradeGoodsAvailable.setText("可用 " + unitAvailBalance + " " + currentPerCoinName);
         } else {
-            fragmentTradeGoodsAvailable.setText("可用 " + orderAvailBalance +" "+ currentTradeCoinName);
+            fragmentTradeGoodsAvailable.setText("可用 " + orderAvailBalance + " " + currentTradeCoinName);
         }
     }
 
@@ -625,7 +608,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     private void switchBuyOrSale() {
         clearPercentGroupAndInput();
         /*买入时获取可用的计价币*/
-            /*卖出时获取可用的交易币*/
+        /*卖出时获取可用的交易币*/
         refreshWallet();
         /*设置买一价卖一价*/
         fragmentTradeGoodsLimitPrice.setInput(!isBuy ? firstBuyPrice : firstSalePrice);
@@ -638,7 +621,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             fragmentTradeGoodsPercentGroupSecond.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupThird.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupForth.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
-            fragmentTradeGoodsLimitOrMarket.setText((tradePos == LIMIT?"限价":"市价")+"买入");
+            fragmentTradeGoodsLimitOrMarket.setText((tradePos == LIMIT ? "限价" : "市价") + "买入");
         } else {
             fragmentTradeGoodsGroup.setBackgroundResource(R.mipmap.trade_buy_sale_bg);
             fragmentTradeGoodsTrade.setText("卖出 " + currentTradeCoinName);
@@ -647,7 +630,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             fragmentTradeGoodsPercentGroupSecond.setBackgroundResource(R.drawable.selector_radio_bg_red_grey);
             fragmentTradeGoodsPercentGroupThird.setBackgroundResource(R.drawable.selector_radio_bg_red_grey);
             fragmentTradeGoodsPercentGroupForth.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
-            fragmentTradeGoodsLimitOrMarket.setText((tradePos == LIMIT?"限价":"市价")+"卖出");
+            fragmentTradeGoodsLimitOrMarket.setText((tradePos == LIMIT ? "限价" : "市价") + "卖出");
         }
 
     }
@@ -731,8 +714,8 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         switch (view.getId()) {
             /*切换币种*/
             case R.id.fragment_tradeGoods_c2cName:
-                if (coinMarketPopupWindown == null){
-                    coinMarketPopupWindown = new MyTradeCoinMarketPopupWindown(getActivity(),perCoinTypeList);
+                if (coinMarketPopupWindown == null) {
+                    coinMarketPopupWindown = new MyTradeCoinMarketPopupWindown(getActivity(), perCoinTypeList);
                     coinMarketPopupWindown.setSelectedPerCoinType(goodsPerCoin);
                     coinMarketPopupWindown.setSelectedTradeCoinType(goodsTradeCoin);
                     coinMarketPopupWindown.setListener(coinItemListener);
@@ -751,10 +734,10 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                         }
                     });
                 }
-                if (!coinMarketPopupWindown.isShowing()){
+                if (!coinMarketPopupWindown.isShowing()) {
 //                    coinMarketPopupWindown.showAtLocation(titleLine, Gravity.NO_GRAVITY,0,MathUtils.dip2px(mContext,75));
-                    switchScene(new PushData("3510", goodsPerCoin + "", "", ""));
-                    coinMarketPopupWindown.showAsDropDown(titleLine,-50,-2);
+                    switchScene(new PushData("3510", goodsPerCoin + "", "0", "0"));
+                    coinMarketPopupWindown.showAsDropDown(titleLine, -50, -2);
                 }
 
                 break;
@@ -763,15 +746,15 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
 //                spinnerTrade = new MyBottomSpinnerList(mContext, tradeList);
 //                spinnerTrade.setMySpinnerListener(tradeItemListener);
 //                spinnerTrade.showUp(fragmentTradeGoodsLimitOrMarket);
-                MyTradeTypeChoosePopupWindow popupWindow = new MyTradeTypeChoosePopupWindow(mContext,isBuy,tradePos);
+                MyTradeTypeChoosePopupWindow popupWindow = new MyTradeTypeChoosePopupWindow(mContext, isBuy, tradePos);
                 popupWindow.setMySpinnerListener(tradeItemListener);
-                popupWindow.showAsDropDown(fragmentTradeGoodsLimitOrMarket, DensityUtil.dp2px(18),0);
+                popupWindow.showAsDropDown(fragmentTradeGoodsLimitOrMarket, DensityUtil.dp2px(18), 0);
                 break;
-                /*登录*/
+            /*登录*/
             case R.id.fragment_tradeGoods_login:
                 Utils.IntentUtils(mContext, LoginActivity.class);
                 break;
-                /*买入或者卖出*/
+            /*买入或者卖出*/
             case R.id.fragment_tradeGoods_trade:
                 if (!isLogin()) {
                     showToast(R.string.unlogin);
@@ -813,7 +796,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                     trade(localTradePwd);
                 }
                 break;
-                /*k线图*/
+            /*k线图*/
             case R.id.fragment_tradeGoods_kline_frame:
                 Intent intent2KLine = new Intent(mContext, KLineActivity.class);
                 intent2KLine.putExtra("type", MARKET_ONECOIN);
@@ -821,7 +804,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                 intent2KLine.putExtra("perCoin", goodsPerCoin);
                 getActivity().startActivityForResult(intent2KLine, MainActivity.REQUEST_KLINE);
                 break;
-                /*选择档位*/
+            /*选择档位*/
             case R.id.fragment_tradeGoods_gear:
                 if (System.currentTimeMillis() - lastClickTime < FAST_CLICK_DELAY_TIME) {
                     return;
@@ -830,7 +813,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                 isGearTen = !isGearTen;
                 switchGearFrame();
                 break;
-                /*刷新列表*/
+            /*刷新列表*/
             case R.id.fragment_tradeGoods_refresh:
 //                refreshBottomList();
                 Intent intent2entrust = new Intent(mContext, TradeGoodsEntrustListActivity.class);
@@ -956,24 +939,24 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                 isBuy = true;
                 switchBuyOrSale();
                 break;
-                /*卖出*/
+            /*卖出*/
             case R.id.fragment_tradeGoods_group_sale:
                 isBuy = false;
                 switchBuyOrSale();
                 break;
-                /*25%*/
+            /*25%*/
             case R.id.fragment_tradeGoods_percentGroup_first:
                 fragmentTradeGoodsAmount.setInput(getPercentPriceOrAmount(0.25));
                 break;
-                /*50%*/
+            /*50%*/
             case R.id.fragment_tradeGoods_percentGroup_second:
                 fragmentTradeGoodsAmount.setInput(getPercentPriceOrAmount(0.5));
                 break;
-                /*75%*/
+            /*75%*/
             case R.id.fragment_tradeGoods_percentGroup_third:
                 fragmentTradeGoodsAmount.setInput(getPercentPriceOrAmount(0.75));
                 break;
-                /*100%*/
+            /*100%*/
             case R.id.fragment_tradeGoods_percentGroup_forth:
                 fragmentTradeGoodsAmount.setInput(getPercentPriceOrAmount(1));
                 break;
@@ -1038,7 +1021,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         }
         String gearLevel = isGearTen ? "10" : "50";
         boolean isNotSameScene = switchScene(new PushData("350", goodsPerCoin + "", goodsTradeCoin + "", gearLevel));
-        if (isNotSameScene){
+        if (isNotSameScene) {
             /*初始化长连接场景，清空列表、设置默认价格、清空K线图*/
             saleListAdapter.clear();
             buyListAdapter.clear();
@@ -1135,7 +1118,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
 
     @Override
     public void onTradeCoinMarketCallback(List<TradeCoinMarketBean> marketBeanList) {
-        if (coinMarketPopupWindown != null){
+        if (coinMarketPopupWindown != null) {
             coinMarketPopupWindown.updateMarketList(marketBeanList);
         }
     }
@@ -1154,7 +1137,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                 String selectTrade = tradeList.get(position);
                 if (!TextUtils.isEmpty(selectTrade)) {
                     tradePos = position;
-                    fragmentTradeGoodsLimitOrMarket.setText(selectTrade+(isBuy?"买入":"卖出"));
+                    fragmentTradeGoodsLimitOrMarket.setText(selectTrade + (isBuy ? "买入" : "卖出"));
                     switchLimitOrMarketPrice();
                 }
             }

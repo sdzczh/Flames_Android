@@ -29,6 +29,7 @@ import app.com.pgy.Activitys.MyWalletRechargeActivity;
 import app.com.pgy.Activitys.MyWalletTransferActivity;
 import app.com.pgy.Activitys.MyWalletWithdrawActivity;
 import app.com.pgy.Activitys.MyWalletYbbCoinInfoActivity;
+import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Adapters.MyAccountListAdapter;
 import app.com.pgy.Adapters.MyWalletListAdapter;
 import app.com.pgy.Constants.Preferences;
@@ -37,6 +38,7 @@ import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getPositionCallback;
 import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
+import app.com.pgy.Models.Beans.EventBean.EventMainChangeState;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
@@ -47,6 +49,7 @@ import butterknife.OnClick;
 
 import static app.com.pgy.Constants.StaticDatas.ACCOUNT_C2C;
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
+import static app.com.pgy.Models.Beans.EventBean.EventMainChangeState.CHANGE_TO_C2C;
 
 /**
  * Create by Android on 2019/10/14 0014
@@ -107,6 +110,7 @@ public class MyAccountFabiFragment extends BaseFragment implements getPositionCa
             R.id.tv_fragment_account_c2c_trust,R.id.btn_error_reload})
     public void onViewClicked(View view) {
         Intent intent = null;
+        boolean needFinish = false;
         switch (view.getId()) {
             case R.id.iv_fragment_account_c2c_show:
                 isShow = !isShow;
@@ -120,12 +124,18 @@ public class MyAccountFabiFragment extends BaseFragment implements getPositionCa
                 }
                 break;
             case R.id.tv_fragment_account_c2c_withdraw:
-            case R.id.ll_fragment_account_c2c_withdraw:
                 intent = new Intent(mContext, MyWalletWithdrawActivity.class);
                 break;
+            case R.id.ll_fragment_account_c2c_withdraw://order
+//                intent = new Intent(mContext, MyWalletWithdrawActivity.class);
+                EventBus.getDefault().post(new EventMainChangeState(CHANGE_TO_C2C));
+                needFinish = true;
+                break;
             case R.id.tv_fragment_account_c2c_recharge:
-            case R.id.ll_fragment_account_c2c_recharge:
                 intent = new Intent(mContext, MyWalletRechargeActivity.class);
+                break;
+            case R.id.ll_fragment_account_c2c_recharge://收款设置
+                intent = new Intent(mContext, SecuritycenterActivity.class);
                 break;
             case R.id.tv_fragment_account_c2c_trust:
             case R.id.ll_fragment_account_c2c_trust:
@@ -139,6 +149,9 @@ public class MyAccountFabiFragment extends BaseFragment implements getPositionCa
 
         if (intent != null) {
             startActivity(intent);
+            if (needFinish){
+                getActivity().finish();
+            }
         }
     }
 

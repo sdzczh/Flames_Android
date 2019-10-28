@@ -54,7 +54,8 @@ public final class Preferences {
     private static String USER_SEX = "user_sex";
     private static String USER_BIRTHDAY = "user_birthday";
     private static String USER_UUID = "user_uuid";
-    private static String USER_MARKET = "user_market";
+    private static String USER_MARKET = "user_markets";
+    private static String USER_IDSTATUS = "user_idstatus";
 
     private static String ONLY_WIFI = "only_wifi";      //仅在WiFi下
     private static String VERSION_CODE = "version_code";    //当前版本信息
@@ -197,8 +198,9 @@ public final class Preferences {
         editor.putString(USER_TALK_TOKEN,user.getTalkToken());
         editor.putString(USER_BIRTHDAY,user.getBirthday());
         editor.putString(USER_UUID,user.getUuid());
+        editor.putInt(USER_IDSTATUS,user.getIdStatus());
         editor.putInt(USER_SEX,user.getSex());
-        editor.putBoolean(USER_MARKET,false);
+        editor.putInt(USER_MARKET,0);
         Map<Integer, User.BindInfoModel> bindInfo = user.getBindInfo();
         if (bindInfo == null){
             bindInfo = new HashMap<>();
@@ -264,6 +266,7 @@ public final class Preferences {
         user.setBirthday(mSharedPreferences.getString(USER_BIRTHDAY,""));
         user.setUuid(mSharedPreferences.getString(USER_UUID,""));
         user.setSex(mSharedPreferences.getInt(USER_SEX,0));
+        user.setIdStatus(mSharedPreferences.getInt(USER_IDSTATUS,0));
         return user;
     }
 
@@ -322,13 +325,13 @@ public final class Preferences {
     }
 
 
-    public static boolean getUserMarket(){
-        return mSharedPreferences.getBoolean(USER_MARKET,false);
+    public static int getUserMarket(){
+        return mSharedPreferences.getInt(USER_MARKET,0);
     }
 
-    public static boolean setUserMarket(boolean flag){
+    public static boolean setUserMarket(int flag){
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putBoolean(USER_MARKET, flag);
+        editor.putInt(USER_MARKET, flag);
         return editor.commit();
     }
     /**

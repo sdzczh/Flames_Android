@@ -83,6 +83,7 @@ import app.com.pgy.Models.Beans.verficationCode;
 import app.com.pgy.Models.Beans.version;
 import app.com.pgy.Models.Beans.MyPersonal;
 import app.com.pgy.Models.Beans.CircleBanner;
+import app.com.pgy.Models.ListBean;
 import app.com.pgy.Models.MyforceInfo;
 import app.com.pgy.Models.ResultBean;
 import app.com.pgy.Utils.LogUtils;
@@ -1164,8 +1165,8 @@ public class NetWorks extends RetrofitUtils {
          * 获取banner列表
          */
         @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/system/poster.action")
-        Call<ResultBean<List<BannerInfo>>> getBannerList(@Header("token") String token,@Query("params") String params);
+        @GET("/homePage/banner.action")
+        Call<ResultBean<ListBean<BannerInfo>>> getBannerList(@Query("params") String params);
 
         /**
          * 获取用户绑定收款信息
@@ -4706,22 +4707,18 @@ public class NetWorks extends RetrofitUtils {
         });
     }
 
-    public static void getBannerList( String token,Map<String, Object> maps, final getBeanCallback<List<BannerInfo>> callback){
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
+    public static void getBannerList( Map<String, Object> maps, final getBeanCallback<ListBean<BannerInfo>> callback){
         String params = ToolsUtils.getBase64Params(maps);
-        Call<ResultBean<List<BannerInfo>>> resultBeanCall = service.getBannerList(token,params);
-        resultBeanCall.enqueue(new Callback<ResultBean<List<BannerInfo>>>() {
+        Call<ResultBean<ListBean<BannerInfo>>> resultBeanCall = service.getBannerList(params);
+        resultBeanCall.enqueue(new Callback<ResultBean<ListBean<BannerInfo>>>() {
             @Override
-            public void onResponse(Call<ResultBean<List<BannerInfo>>> call, Response<ResultBean<List<BannerInfo>>> response) {
-                ResultBean<List<BannerInfo>> resultBean = response.body();
-                setResponse(BannerInfo.class, resultBean, callback);
+            public void onResponse(Call<ResultBean<ListBean<BannerInfo>>> call, Response<ResultBean<ListBean<BannerInfo>>> response) {
+                ResultBean<ListBean<BannerInfo>> resultBean = response.body();
+                setResponse(resultBean, callback);
             }
 
             @Override
-            public void onFailure(Call<ResultBean<List<BannerInfo>>> call, Throwable t) {
+            public void onFailure(Call<ResultBean<ListBean<BannerInfo>>> call, Throwable t) {
                 callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
             }
         });

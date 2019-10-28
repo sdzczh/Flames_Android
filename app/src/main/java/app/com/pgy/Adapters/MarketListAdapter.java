@@ -28,6 +28,7 @@ import app.com.pgy.Utils.ToolsUtils;
 
 public class MarketListAdapter extends RecyclerArrayAdapter<PushMarketBean.ListBean> {
     private static final String TAG = "MarketListAdapter";
+    private boolean isWord=false;
     private getPositionCallback callback;
     public MarketListAdapter(Context context) {
         super(context);
@@ -39,6 +40,14 @@ public class MarketListAdapter extends RecyclerArrayAdapter<PushMarketBean.ListB
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
         return new MyMarketViewHolder(parent);
+    }
+
+    public boolean isWord() {
+        return isWord;
+    }
+
+    public void setWord(boolean word) {
+        isWord = word;
     }
 
     public void setData(List<PushMarketBean.ListBean> marketList) {
@@ -102,8 +111,14 @@ public class MarketListAdapter extends RecyclerArrayAdapter<PushMarketBean.ListB
             Configuration.CoinInfo coinInfo = ToolsUtils.getCoinInfo(marketBean.getOrderCoinType());
             ImageLoaderUtils.displayCircle(getContext(),iv_coin,coinInfo.getImgurl());
             tv_zhName.setText(marketBean.getOrderCoinCnName());
-            tv_enName.setText(marketBean.getOrderCoinName());
-            tv_percoin.setText("/"+marketBean.getUnitCoinName());
+            if (isWord){
+                tv_enName.setText(marketBean.getOrderCoinCnName());
+                tv_percoin.setText("/USDT");
+            }else {
+                tv_enName.setText(marketBean.getOrderCoinName());
+                tv_percoin.setText("/"+marketBean.getUnitCoinName());
+            }
+
             tv_volum.setText(marketBean.getSumAmount());
             tv_priceCny.setText("¥"+marketBean.getNewPriceCNY());
             tv_price.setText(marketBean.getNewPrice());

@@ -124,6 +124,10 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     View viewFragmentHomeDown;
     @BindView(R.id.ll_fragment_home_down)
     LinearLayout llFragmentHomeDown;
+    @BindView(R.id.iv_fragment_home_up)
+    ImageView ivMarkerUp;
+    @BindView(R.id.iv_fragment_home_down)
+    ImageView ivMarkerDown;
 
     private List<BannerInfo> slides;
     private boolean isShow = true;
@@ -208,13 +212,19 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         if (mHomeInfo == null){
             mHomeInfo = new HomeInfo();
         }
+        ivMarkerUp.setImageResource(R.mipmap.home_bottom_up);
+        ivMarkerDown.setImageResource(R.mipmap.home_bottom_down);
         if (isLogin()) {
             viewHomeUnlogin.setVisibility(View.GONE);
             tvFragmentHomeUnlogin.setVisibility(View.GONE);
             tvHomeTopTitle.setTextColor(getResources().getColor(R.color.black));
             hsvHomeTopUnlogin.setVisibility(View.GONE);
             llFragmentHomeC2cAsset.setVisibility(View.VISIBLE);
-
+            if (Preferences.getUserMarket() == 1){
+                ivMarkerUp.setImageResource(R.mipmap.home_bottom_up_sel);
+            }else  if (Preferences.getUserMarket() == 0){
+                ivMarkerDown.setImageResource(R.mipmap.home_bottom_down_sel);
+            }
         } else {
             viewHomeUnlogin.setVisibility(View.VISIBLE);
             tvFragmentHomeUnlogin.setVisibility(View.VISIBLE);
@@ -493,12 +503,12 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 }
                 break;
             case R.id.ll_fragment_home_up:
-                if (LoginUtils.isLogin(getActivity()) && !Preferences.getUserMarket()){
+                if (LoginUtils.isLogin(getActivity()) && Preferences.getUserMarket() <1){
                     submitChangeMarket(1);
                 }
                 break;
             case R.id.ll_fragment_home_down:
-                if (LoginUtils.isLogin(getActivity())&& !Preferences.getUserMarket()){
+                if (LoginUtils.isLogin(getActivity())&& Preferences.getUserMarket() <1){
                     submitChangeMarket(0);
                 }
                 break;
@@ -541,7 +551,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         });
     }
 
-    private void submitChangeMarket(int state){
+    private void submitChangeMarket(final int state){
         showLoading(null);
         Map<String, Object> map = new HashMap<>();
         map.put("moodState", state);
@@ -553,7 +563,12 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             public void onSuccess(HomeInfo.MoodBean o) {
                 hideLoading();
                 showToast("提交成功");
-                Preferences.setUserMarket(true);
+                Preferences.setUserMarket(state);
+                if (state == 1){
+                    ivMarkerUp.setImageResource(R.mipmap.home_bottom_up_sel);
+                }else  if (state == 0){
+                    ivMarkerDown.setImageResource(R.mipmap.home_bottom_down_sel);
+                }
                 if (o != null){
                     tvFragmentHomeUp.setText(o.getMoodTop()+"%");
                     tvFragmentHomeDown.setText(o.getMoodBottom()+"%");
@@ -700,10 +715,10 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                     public void onClick(View v) {
                         //2018/7/20 跳转 banner
 //                        BannerIntentUtils.bannerToActivity(getContext(), bannerBean);
-                        if (LoginUtils.isLogin(mContext)){
+//                        if (LoginUtils.isLogin(mContext)){
                             Intent intent = new Intent(mContext, BannerListActivity.class);
                             startActivity(intent);
-                        }
+//                        }
                     }
                 });
 

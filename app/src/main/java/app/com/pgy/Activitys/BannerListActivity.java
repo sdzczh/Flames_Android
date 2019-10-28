@@ -19,6 +19,7 @@ import app.com.pgy.Constants.StaticDatas;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.BannerInfo;
 import app.com.pgy.Models.Beans.C2cNormalEntrust;
+import app.com.pgy.Models.ListBean;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.MathUtils;
@@ -104,16 +105,16 @@ public class BannerListActivity extends BaseListActivity {
         map.put("deviceNum", Preferences.getDeviceId());
         map.put("systemType", SYSTEMTYPE_ANDROID);
         map.put("timeStamp", TimeUtils.getUpLoadTime());
-        NetWorks.getBannerList(Preferences.getAccessToken(),map, new getBeanCallback<List<BannerInfo>>() {
+        NetWorks.getBannerList(map, new getBeanCallback<ListBean<BannerInfo>>() {
             @Override
-            public void onSuccess(List<BannerInfo> list) {
+            public void onSuccess(ListBean<BannerInfo> list) {
                 hideLoading();
-                if (list == null || list.size() <= 0) {
+                if (list == null || list.getList() == null||list.getList().size() <= 0) {
                     /*再无更多数据*/
                     adapter.stopMore();
                     return;
                 }
-                adapter.addAll(list);
+                adapter.addAll(list.getList());
             }
 
             @Override

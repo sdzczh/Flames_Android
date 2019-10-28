@@ -35,6 +35,7 @@ import app.com.pgy.Activitys.MainActivity;
 import app.com.pgy.Activitys.MyWalletActivity;
 import app.com.pgy.Activitys.PersonalGroupsActivity;
 import app.com.pgy.Activitys.PersonalInfoActivity;
+import app.com.pgy.Activitys.PersonalRenZhengActivity;
 import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Activitys.SystemSettingActivity;
 import app.com.pgy.Constants.Preferences;
@@ -128,8 +129,22 @@ public class PersonalFragment extends BaseFragment {
             tvFragmentPersonalLoginout.setVisibility(View.VISIBLE);
             tvFragmentPersonalRealLevel.setVisibility(View.VISIBLE);
             tvFragmentPersonalMatterLeve.setVisibility(View.VISIBLE);
-            tvFragmentPersonalRealLevel.setText("v2   实名等级");
+            tvFragmentPersonalRealLevel.setText("实名等级");
             tvFragmentPersonalMatterLeve.setText("奖励等级");
+            if (user.getIdStatus() == 1){
+                tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level1);
+                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli1);
+            }else if (user.getIdStatus() == 2){
+                tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level2);
+                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli2);
+            }else if (user.getIdStatus() == 3){
+                tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level3);
+                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli3);
+            }else {
+                tvFragmentPersonalRealLevel.setVisibility(View.GONE);
+                tvFragmentPersonalMatterLeve.setVisibility(View.GONE);
+            }
+
         } else {
             tv_nickname.setText("登录/注册");
             tv_tel.setText("欢迎来到蒲公英");
@@ -215,11 +230,12 @@ public class PersonalFragment extends BaseFragment {
             case R.id.ll_fragment_personal_renzheng:
                 // 跳转实名认证
                 if (isLogining()){
-                    if (Preferences.getLocalUser().isIdCheckFlag()) {
-                        showToast("您已完成实名认证");
-                        return;
-                    }
-                    start2RealName();
+//                    if (Preferences.getLocalUser().isIdCheckFlag()) {
+//                        showToast("您已完成实名认证");
+//                        return;
+//                    }
+//                    start2RealName();
+                    intent = new Intent(mContext, PersonalRenZhengActivity.class);
                 }
                 break;
             case R.id.piv_fragment_personal_item_help:

@@ -13,6 +13,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Models.Beans.BannerInfo;
 import app.com.pgy.R;
+import app.com.pgy.Utils.BannerIntentUtils;
 import app.com.pgy.Utils.ImageLoaderUtils;
 
 /**
@@ -51,10 +52,12 @@ public class BannerListAdapter extends RecyclerArrayAdapter<BannerInfo> {
         @Override
         public void onClick(View v) {
             BannerInfo item = getItem(getAdapterPosition());
-            Intent intent = new Intent(mContext, WebDetailActivity.class);
-            intent.putExtra("title", item.getTitle());
-            intent.putExtra("url", item.getAddress());
-            mContext.startActivity(intent);
+//            Intent intent = new Intent(mContext, WebDetailActivity.class);
+//            intent.putExtra("title", item.getTitle());
+//            intent.putExtra("url", item.getAddress());
+//            mContext.startActivity(intent);
+            BannerIntentUtils.bannerToActivity(mContext, item);
+
         }
     }
 }

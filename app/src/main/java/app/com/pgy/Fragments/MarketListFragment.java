@@ -113,6 +113,7 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
                 scene = SCENE_YIBI_KN;
             }
         }else if (marketType == TYPE_WORLD){
+            adapter.setWord(true);
             if (coinType == COIN_TYPE_AUTO){
                 scene = SCENE_WORLD_AUTO;
             }else if (coinType == COIN_TYPE_DK){

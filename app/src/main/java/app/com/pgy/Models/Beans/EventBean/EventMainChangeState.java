@@ -7,6 +7,9 @@ package app.com.pgy.Models.Beans.EventBean;
 
 public class EventMainChangeState {
     public static final int CHANGE_TO_GOODS = 0;
+    public static final int CHANGE_TO_C2C = 1;
+    public static final int CHANGE_TO_MARK = 2;
+    public static final int CHANGE_TO_HOME = 3;
 
     int state;
     public EventMainChangeState(int state){

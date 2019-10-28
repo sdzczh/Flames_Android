@@ -22,6 +22,8 @@ import app.com.pgy.Activitys.MyWalletCoinInfoActivity;
 import app.com.pgy.Activitys.MyWalletRechargeActivity;
 import app.com.pgy.Activitys.MyWalletTransferActivity;
 import app.com.pgy.Activitys.MyWalletWithdrawActivity;
+import app.com.pgy.Activitys.SecuritycenterActivity;
+import app.com.pgy.Activitys.TradeGoodsEntrustListActivity;
 import app.com.pgy.Adapters.MyAccountListAdapter;
 import app.com.pgy.Adapters.MyWalletListAdapter;
 import app.com.pgy.Constants.Preferences;
@@ -29,6 +31,7 @@ import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getPositionCallback;
 import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
+import app.com.pgy.Models.Beans.EventBean.EventMainChangeState;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
@@ -40,6 +43,8 @@ import butterknife.OnClick;
 import static app.com.pgy.Constants.StaticDatas.ACCOUNT_C2C;
 import static app.com.pgy.Constants.StaticDatas.ACCOUNT_GOODS;
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
+import static app.com.pgy.Models.Beans.EventBean.EventMainChangeState.CHANGE_TO_C2C;
+import static app.com.pgy.Models.Beans.EventBean.EventMainChangeState.CHANGE_TO_GOODS;
 
 /**
  * Create by Android on 2019/10/14 0014
@@ -96,7 +101,8 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
     @OnClick({R.id.iv_fragment_account_trade_show, R.id.ll_fragment_account_trade_recharge,
             R.id.ll_fragment_account_trade_withdraw, R.id.ll_fragment_account_trade_trust,
             R.id.tv_fragment_account_trade_recharge, R.id.tv_fragment_account_trade_withdraw,
-            R.id.tv_fragment_account_trade_trust,R.id.btn_error_reload})
+            R.id.tv_fragment_account_trade_trust,R.id.btn_error_reload,R.id.ll_fragment_account_c2c_recharge,
+            R.id.ll_fragment_account_c2c_withdraw})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -111,13 +117,17 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
                     tvFtagmentAccountAmountCny.setText(myWallet.getTotalSumOfCny());
                 }
                 break;
-            case R.id.tv_fragment_account_trade_withdraw:
-            case R.id.ll_fragment_account_trade_withdraw:
+            case R.id.tv_fragment_account_c2c_withdraw:
                 intent = new Intent(mContext, MyWalletWithdrawActivity.class);
                 break;
-            case R.id.tv_fragment_account_trade_recharge:
-            case R.id.ll_fragment_account_trade_recharge:
+            case R.id.ll_fragment_account_c2c_withdraw://order
+                intent = new Intent(mContext, TradeGoodsEntrustListActivity.class);
+                break;
+            case R.id.tv_fragment_account_c2c_recharge:
                 intent = new Intent(mContext, MyWalletRechargeActivity.class);
+                break;
+            case R.id.ll_fragment_account_c2c_recharge://收款设置
+                intent = new Intent(mContext, SecuritycenterActivity.class);
                 break;
             case R.id.tv_fragment_account_trade_trust:
             case R.id.ll_fragment_account_trade_trust:

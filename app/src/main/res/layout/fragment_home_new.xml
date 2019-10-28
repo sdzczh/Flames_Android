@@ -411,6 +411,7 @@
                 android:gravity="center"
                 android:layout_marginTop="5dp">
                 <ImageView
+                    android:id="@+id/iv_fragment_home_up"
                     android:layout_width="14dp"
                     android:layout_height="15dp"
                     android:src="@mipmap/home_bottom_up"/>
@@ -487,6 +488,7 @@
                 android:gravity="center"
                 android:layout_marginTop="5dp">
                 <ImageView
+                    android:id="@+id/iv_fragment_home_down"
                     android:layout_width="14dp"
                     android:layout_height="15dp"
                     android:src="@mipmap/home_bottom_down"/>
