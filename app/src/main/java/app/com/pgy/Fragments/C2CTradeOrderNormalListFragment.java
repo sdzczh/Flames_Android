@@ -149,7 +149,7 @@ public class C2CTradeOrderNormalListFragment extends BaseListFragment {
         map.put("coinType", coinType);
         map.put("userRole", NORMAL);
         map.put("orderType", tradeType);
-        if (tradeType == 1){
+        if (tradeType == 0){
             map.put("state", "0,1,2");
         }else {
             map.put("state", "3,4,5");

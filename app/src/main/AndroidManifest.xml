@@ -418,6 +418,7 @@
         <activity android:name=".Activitys.SetPasswordActivity" />
         <activity android:name=".Activitys.MyAccountActivity" />
         <activity android:name=".Activitys.C2CEntrustDetailsNewActivity" />
+        <activity android:name=".Activitys.BannerListActivity" />
 
         <!-- 第三方的推送 权限 广播 和服务 -->
 

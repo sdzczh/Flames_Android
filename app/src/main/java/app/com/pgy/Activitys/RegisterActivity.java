@@ -298,21 +298,7 @@ public class RegisterActivity extends BaseActivity {
                 break;
             case R.id.tv_activity_register_submit:
 //                register2Net();
-                userPhone = edt_tel.getText().toString().trim();
-                /*如果输入的是手机号则去验证，开启倒计时*/
-                if (!ToolsUtils.isPhone(userPhone)) {
-                    showToast(getString(R.string.illegal_phone));
-                    return;
-                }
-                referPhoneNumber = edtActivityRegisterEmail.getText().toString().trim();
-                if (TextUtils.isEmpty(referPhoneNumber)) {
-                    showToast("请输入邀请码");
-                    return;
-                }
-                Intent intent2Code = new Intent(mContext,InputCodeActivity.class);
-                intent2Code.putExtra("tel",userPhone);
-                intent2Code.putExtra("num",referPhoneNumber);
-                startActivityForResult(intent2Code,1);
+                checkUuid();
                 break;
             case R.id.tv_activity_register_toAgreement:
                 Intent intent2Detail = new Intent(mContext, WebDetailActivity.class);
@@ -326,6 +312,42 @@ public class RegisterActivity extends BaseActivity {
         }
     }
 
+    private void checkUuid(){
+        userPhone = edt_tel.getText().toString().trim();
+        /*如果输入的是手机号则去验证，开启倒计时*/
+        if (!ToolsUtils.isPhone(userPhone)) {
+            showToast(getString(R.string.illegal_phone));
+            return;
+        }
+        referPhoneNumber = edtActivityRegisterEmail.getText().toString().trim();
+        if (TextUtils.isEmpty(referPhoneNumber)) {
+            showToast("请输入邀请码");
+            return;
+        }
+        showLoading(null);
+        Map<String, Object> map = new HashMap<>();
+        map.put("referPhone", referPhoneNumber);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType", SYSTEMTYPE_ANDROID);
+        NetWorks.checkUuid(map, new getBeanCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                hideLoading();
+                Intent intent2Code = new Intent(mContext,InputCodeActivity.class);
+                intent2Code.putExtra("tel",userPhone);
+                intent2Code.putExtra("num",referPhoneNumber);
+                startActivityForResult(intent2Code,1);
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                hideLoading();
+                onFail(errorCode,reason);
+            }
+        });
+
+    }
 
     private void getVerificationCode() {
         userPhone = edt_tel.getText().toString().trim();

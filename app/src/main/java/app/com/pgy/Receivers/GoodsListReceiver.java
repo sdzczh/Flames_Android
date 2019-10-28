@@ -11,6 +11,7 @@ import app.com.pgy.Models.Beans.BuyOrSale;
 import app.com.pgy.Models.Beans.KLineBean;
 import app.com.pgy.Models.Beans.PushBean.RecordsBean;
 import app.com.pgy.Models.Beans.PushBean.SocketResponseBean;
+import app.com.pgy.Models.Beans.TradeCoinMarketBean;
 import app.com.pgy.Utils.JsonUtils;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.MathUtils;
@@ -72,6 +73,8 @@ public class GoodsListReceiver extends BroadcastReceiver {
                         listCallback.onKLineListCallback(kline);
                     }
                     break;
+                case 3510:
+                    break;
             }
         }
 
@@ -83,6 +86,7 @@ public class GoodsListReceiver extends BroadcastReceiver {
         void onPriceCallback(Double price);
         void onLastDealListCallback(List<RecordsBean> lastDealList);
         void onKLineListCallback(List<KLineBean.ListBean> kLineList);
+        void onTradeCoinMarketCallback(List<TradeCoinMarketBean> marketBeanList);
     }
 
     public void setListCallback(onListCallback listCallback) {

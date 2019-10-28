@@ -33,8 +33,10 @@ import app.com.pgy.Receivers.MarketListReceiver;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.MathUtils;
 
+import static app.com.pgy.Constants.StaticDatas.MARKET_MAIN;
 import static app.com.pgy.Constants.StaticDatas.MARKET_ONECOIN;
 import static app.com.pgy.Fragments.MarketFragment.TYPE_ONCOIN;
+import static app.com.pgy.Fragments.MarketFragment.TYPE_WORLD;
 
 /**
  * Created by YX on 2018/7/13.
@@ -110,7 +112,7 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
             }else {
                 scene = SCENE_YIBI_KN;
             }
-        }else if (marketType == TYPE_ONCOIN){
+        }else if (marketType == TYPE_WORLD){
             if (coinType == COIN_TYPE_AUTO){
                 scene = SCENE_WORLD_AUTO;
             }else if (coinType == COIN_TYPE_DK){
@@ -120,7 +122,11 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
             }
         }
         LogUtils.w("switch", "resume_marketOneListVisible");
-        switchScene(new PushData(scene));
+        if (!getUserVisibleHint() || !isViewCreated) {
+            LogUtils.w("switch", "goodsSale界面不显示，不予切换场景");
+        }else {
+            switchScene(new PushData(scene));
+        }
 //        initMarketData();
         if (receiver == null) {
             receiver = new MarketListReceiver();
@@ -135,14 +141,6 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        /*第一次加载行情页面的时候*/
-//        LogUtils.w("circle","marketOneList----onResume");
-        /*第一次加载*/
-
-    }
     @Subscribe (threadMode = ThreadMode.MAIN)
     public void SwichSceneEvent(EventMarketScene event){
         if (event == null){
@@ -178,9 +176,10 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
         if (isVisibleToUser) {
             LogUtils.w("switch", "marketOneListVisible");
             switchScene(new PushData(scene));
-        } else {
-            switchScene(null);
         }
+//        else {
+//            switchScene(null);
+//        }
         super.setUserVisibleHint(isVisibleToUser);
     }
 
@@ -280,7 +279,7 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
         int tradeCoin = item.getOrderCoinType();
         int perCoin = item.getUnitCoinType();
         Intent intent2KLine = new Intent(mContext, KLineActivity.class);
-        intent2KLine.putExtra("type",MARKET_ONECOIN);
+        intent2KLine.putExtra("type",marketType);
         intent2KLine.putExtra("tradeCoin",tradeCoin);
         intent2KLine.putExtra("perCoin",perCoin);
         getActivity().startActivityForResult(intent2KLine, MainActivity.REQUEST_KLINE);
@@ -289,16 +288,25 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
 
     @Override
     public void onMarketOneListCallback(List<PushMarketBean.ListBean> marketList) {
-        hideLoading();
-        if (marketList != null && marketList.size() > 0) {
-            adapter.setData(marketList);
-            adapter.notifyDataSetChanged();
+        if (marketType == TYPE_ONCOIN){
+            hideLoading();
+            if (marketList != null && marketList.size() > 0) {
+                adapter.setData(marketList);
+                adapter.notifyDataSetChanged();
+            }
         }
+
     }
 
     @Override
     public void onMarketMainListCallback(List<PushMarketBean.ListBean> marketList) {
-
+        if (marketType == TYPE_WORLD){
+            hideLoading();
+            if (marketList != null && marketList.size() > 0) {
+                adapter.setData(marketList);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override

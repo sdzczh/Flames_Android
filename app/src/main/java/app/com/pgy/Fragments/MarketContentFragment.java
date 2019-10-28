@@ -5,9 +5,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.pgy.Models.Beans.EventBean.EventMarketScene;
+import app.com.pgy.Models.Beans.PushBean.PushData;
+import app.com.pgy.Utils.LogUtils;
 import butterknife.BindView;
 import app.com.pgy.Adapters.ViewPagerAdapter;
 import app.com.pgy.Fragments.Base.BaseFragment;
@@ -63,6 +68,7 @@ public class MarketContentFragment extends BaseFragment {
             tab_percoins.addTab(tab_percoins.newTab().setText(name));
         }
         tab_percoins.setupWithViewPager(nvp_market_list);
+
     }
 
     /**
@@ -122,6 +128,26 @@ public class MarketContentFragment extends BaseFragment {
         }else{
             switchScene(null);
         }
+    }
+
+    /**
+     * ViewPager中fragment的声明周期，切换显示不显示，刷新界面和数据接收
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (!isViewCreated) {
+            return;
+        }
+        LogUtils.w("switch","marketOne----setUserVisibleHint:"+isVisibleToUser+isViewCreated);
+        /*切换COIN和主流界面时*/
+        if (isVisibleToUser) {
+            LogUtils.w("switch", "marketOneListVisible");
+            EventBus.getDefault().post(new EventMarketScene(marketType));
+        }
+//        else {
+//            switchScene(null);
+//        }
+        super.setUserVisibleHint(isVisibleToUser);
     }
 
 }

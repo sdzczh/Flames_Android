@@ -95,10 +95,10 @@ public class MyAccountTotalFragment extends BaseFragment {
                 }else {
                     tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalanceCny());
                     tvFtagmentAccountTotalAmountCny.setText(myAccount.getAccountBalanceCny());
-                    tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C)+"");
-                    tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C)+"");
-                    tvFtagmentAccountTotalAmountTrade.setText(myAccount.getAccountList().get(ACCOUNT_GOODS)+"");
-                    tvFtagmentAccountTotalAmountTradeCny.setText(myAccount.getAccountList().get(ACCOUNT_GOODS)+"");
+                    tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
+                    tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
+                    tvFtagmentAccountTotalAmountTrade.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotal());
+                    tvFtagmentAccountTotalAmountTradeCny.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotal());
                 }
                 break;
             case R.id.ll_ftagment_account_total_withdraw:
@@ -123,10 +123,10 @@ public class MyAccountTotalFragment extends BaseFragment {
 
         tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalanceCny());
         tvFtagmentAccountTotalAmountCny.setText(myAccount.getAccountBalanceCny());
-        tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C)+"");
-        tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C)+"");
-        tvFtagmentAccountTotalAmountTrade.setText(myAccount.getAccountList().get(ACCOUNT_GOODS)+"");
-        tvFtagmentAccountTotalAmountTradeCny.setText(myAccount.getAccountList().get(ACCOUNT_GOODS)+"");
+        tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
+        tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
+        tvFtagmentAccountTotalAmountTrade.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotal());
+        tvFtagmentAccountTotalAmountTradeCny.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotal());
     }
 
     private void getAccount(){

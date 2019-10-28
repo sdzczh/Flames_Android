@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Activitys.BannerListActivity;
 import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Activitys.MyAccountActivity;
 import app.com.pgy.Activitys.MyWalletRechargeActivity;
@@ -309,17 +310,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     }
 
     private void updateNoice() {
-        if (mHomeInfo == null || mHomeInfo.getNotice() == null) {
+        if (mHomeInfo == null || TextUtils.isEmpty(mHomeInfo.getNoticeTitle())) {
             return;
         }
-        if (noticeBean == null || mHomeInfo.getNotice().getId() != noticeBean.getId() || !(mHomeInfo.getNotice().getTitle() + "").equals(noticeBean.getTitle() + "")) {
-            noticeBean = mHomeInfo.getNotice();
-            if (noticeBean == null) {
-                noticeBean = new HomeInfo.NoticeBean();
-            }
-            mtv_notice.setText(noticeBean.getTitle() + "");
-            mtv_notice.startScoll();
-        }
+        mtv_notice.setText(mHomeInfo.getNoticeTitle()+ "");
+        mtv_notice.startScoll();
     }
 
     //判断是否需要重新加载banner
@@ -434,7 +429,10 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
 
 
-    @OnClick({R.id.ll_home_top_1, R.id.ll_home_top_2, R.id.ll_home_top_3, R.id.tv_fragment_home_unlogin, R.id.iv_home_top_show, R.id.ll_fragment_home_c2c_asset, R.id.ll_fragment_home_trust, R.id.ll_fragment_home_withdraw, R.id.ll_fragment_home_recharge, R.id.ll_fragment_home_groups, R.id.mtv_fragment_home_notice, R.id.ll_fragment_home_up, R.id.ll_fragment_home_down})
+    @OnClick({R.id.ll_home_top_1, R.id.ll_home_top_2, R.id.ll_home_top_3, R.id.tv_fragment_home_unlogin,
+            R.id.iv_home_top_show, R.id.ll_fragment_home_c2c_asset, R.id.ll_fragment_home_trust,
+            R.id.ll_fragment_home_withdraw, R.id.ll_fragment_home_recharge, R.id.ll_fragment_home_groups,
+            R.id.mtv_fragment_home_notice, R.id.ll_fragment_home_up, R.id.ll_fragment_home_down})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -475,28 +473,34 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 break;
             case R.id.ll_fragment_home_withdraw:
                 if (LoginUtils.isLogin(getActivity())) {
-                    intent = new Intent(mContext, MyWalletWithdrawActivity.class);
+                    intent = new Intent(mContext, MyWalletRechargeActivity.class);
 
                 }
                 break;
             case R.id.ll_fragment_home_recharge:
                 if (LoginUtils.isLogin(getActivity())) {
-                    intent = new Intent(mContext, MyWalletRechargeActivity.class);
+                    intent = new Intent(mContext, MyWalletWithdrawActivity.class);
 
                 }
                 break;
 
             case R.id.mtv_fragment_home_notice:
                 // 2018/7/11 跳转到页面
-                if (mHomeInfo != null && noticeBean != null && !TextUtils.isEmpty(mHomeInfo.getNoticeUrl())) {
+                if (mHomeInfo != null && !TextUtils.isEmpty(mHomeInfo.getNoticeUrl())) {
                     intent = new Intent(mContext, WebDetailActivity.class);
-                    intent.putExtra("title", "");
+                    intent.putExtra("title", mHomeInfo.getNoticeTitle());
                     intent.putExtra("url", mHomeInfo.getNoticeUrl());
                 }
                 break;
             case R.id.ll_fragment_home_up:
+                if (LoginUtils.isLogin(getActivity()) && !Preferences.getUserMarket()){
+                    submitChangeMarket(1);
+                }
                 break;
             case R.id.ll_fragment_home_down:
+                if (LoginUtils.isLogin(getActivity())&& !Preferences.getUserMarket()){
+                    submitChangeMarket(0);
+                }
                 break;
         }
 
@@ -533,6 +537,38 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 updateNoice();
                 updateSlide();
                 updateAssetShow();
+            }
+        });
+    }
+
+    private void submitChangeMarket(int state){
+        showLoading(null);
+        Map<String, Object> map = new HashMap<>();
+        map.put("moodState", state);
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType", SYSTEMTYPE_ANDROID);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        NetWorks.submitChangeMarket(Preferences.getAccessToken(), map, new getBeanCallback<HomeInfo.MoodBean>() {
+            @Override
+            public void onSuccess(HomeInfo.MoodBean o) {
+                hideLoading();
+                showToast("提交成功");
+                Preferences.setUserMarket(true);
+                if (o != null){
+                    tvFragmentHomeUp.setText(o.getMoodTop()+"%");
+                    tvFragmentHomeDown.setText(o.getMoodBottom()+"%");
+                    float top = Float.parseFloat(o.getMoodTop());
+                    float down = Float.parseFloat(o.getMoodBottom());
+                    viewFragmentHomeUp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, top/100));
+                    viewFragmentHomeDown.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, down/100));
+                }
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                hideLoading();
+                onFail(errorCode,reason);
+                showToast("提交失败");
             }
         });
     }
@@ -663,7 +699,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                     @Override
                     public void onClick(View v) {
                         //2018/7/20 跳转 banner
-                        BannerIntentUtils.bannerToActivity(getContext(), bannerBean);
+//                        BannerIntentUtils.bannerToActivity(getContext(), bannerBean);
+                        if (LoginUtils.isLogin(mContext)){
+                            Intent intent = new Intent(mContext, BannerListActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 });
 

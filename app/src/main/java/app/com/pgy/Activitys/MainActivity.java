@@ -1,10 +1,16 @@
 package app.com.pgy.Activitys;
 
+import android.Manifest;
+import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -16,6 +22,8 @@ import java.util.ArrayList;
 
 import app.com.pgy.Fragments.C2CTradeFragment;
 import app.com.pgy.Fragments.HomeFragmentNew;
+import app.com.pgy.Services.DownloadService;
+import app.com.pgy.Widgets.ExitDialog;
 import butterknife.BindView;
 import app.com.pgy.Activitys.Base.PermissionActivity;
 import app.com.pgy.Constants.Preferences;
@@ -198,6 +206,114 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
         }
         super.onDestroy();
     }
+
+    private ExitDialog updateDialog;
+
+    /**更新策略*/
+    public void updateStrategy(boolean updateFlag,int updateState,int lastVersionCodeFromNet,String content,String apkUrl){
+        /*无需更新版本*/
+        if (!updateFlag){
+            showToast("已经是最新版本");
+            return;
+        }
+        switch (updateState){
+            /*提示一次更新*/
+            case 0:
+                /*有新版本了,跳出提示更新本地最新跳过版本*/
+                if (Preferences.getLastJumpVersion(lastVersionCodeFromNet)) {
+                    showUpdateVersionDialog(false,content,apkUrl);
+                    Preferences.setLastJumpVersion(lastVersionCodeFromNet);
+                }
+                break;
+            /*每次都提示更新*/
+            case 1:
+                showUpdateVersionDialog(false,content,apkUrl);
+                break;
+            /*强制更新*/
+            case 2:
+                showUpdateVersionDialog(true,content,apkUrl);
+                break;
+            /*返回值错误*/
+            default:
+                break;
+        }
+    }
+
+    /**显示更新提示*/
+    private void showUpdateVersionDialog(final boolean isForceUpdate, String content, final String apkUrl) {
+        final ExitDialog.Builder builder = new ExitDialog.Builder(mContext);
+        builder.setTitle("发现新版本");
+        builder.setMessage(content);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("立即更新",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        /*请求读写权限*/
+                        checkPermission(new PermissionActivity.CheckPermListener() {
+                            @Override
+                            public void superPermission() {
+                                LogUtils.w("permission","SplashActivity:读写权限已经获取");
+                                //downloadAPK(apkUrl,getResources().getString(R.string.app_name)+".apk");
+                                if (TextUtils.isEmpty(apkUrl)){
+                                    return;
+                                }
+                                startDownLoadService(apkUrl);
+                            }
+                        }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE);
+                    }
+                });
+        builder.setNegativeButton("暂不更新", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (!isForceUpdate) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        updateDialog = builder.create();
+        updateDialog.show();
+    }
+
+    /**开始下载服务*/
+    private void startDownLoadService(String apkUrl) {
+        showLoading(null);
+        Intent intent = new Intent(this, DownloadService.class);
+        intent.putExtra(DownloadService.BUNDLE_KEY_DOWNLOAD_URL, apkUrl);
+        isBindService = bindService(intent, conn, BIND_AUTO_CREATE);
+    }
+
+    private boolean isBindService;
+    /**下载服务回调*/
+    private ServiceConnection conn = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            DownloadService.DownloadBinder binder = (DownloadService.DownloadBinder) service;
+            DownloadService downloadService = binder.getService();
+            //接口回调，下载进度
+            downloadService.setOnProgressListener(new DownloadService.OnProgressListener() {
+                @Override
+                public void onProgress(float fraction) {
+                    LogUtils.w(TAG, "下载进度：" + fraction);
+                    //判断是否真的下载完成进行安装了，以及是否注册绑定过服务
+                    if (fraction == DownloadService.UNBIND_SERVICE && isBindService) {
+                        unbindService(conn);
+                        isBindService = false;
+                        showToast("下载完成！");
+                        hideLoading();
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            hideLoading();
+        }
+    };
 
 
 }

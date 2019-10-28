@@ -274,8 +274,8 @@ public class C2CTradeFragment extends BaseFragment {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(C2cTradeBuyOrSaleBusinessFragment.newInstance(coinType, true));
         fragments.add(C2cTradeBuyOrSaleBusinessFragment.newInstance(coinType, false));
-        fragments.add(C2CTradeOrderBusinessOrderListFragment.newInstance(coinType));
         fragments.add(C2CTradeOrderBusinessEntrustListFragment.newInstance(coinType));
+        fragments.add(C2CTradeOrderBusinessOrderListFragment.newInstance(coinType));
         return fragments;
     }
 
@@ -353,5 +353,13 @@ public class C2CTradeFragment extends BaseFragment {
         if (!coinspinner.isShowing()) {
             coinspinner.showDown(viewLine);
         }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (!isViewCreated) {
+           switchScene(null);
+        }
+        super.setUserVisibleHint(isVisibleToUser);
     }
 }

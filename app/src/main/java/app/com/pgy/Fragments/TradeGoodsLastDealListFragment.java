@@ -13,6 +13,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import java.util.List;
+
+import app.com.pgy.Models.Beans.TradeCoinMarketBean;
 import butterknife.BindView;
 import app.com.pgy.Adapters.LastDealListAdapter;
 import app.com.pgy.Constants.Constants;
@@ -158,6 +160,11 @@ public class TradeGoodsLastDealListFragment extends BaseFragment implements Good
 
     @Override
     public void onKLineListCallback(List<KLineBean.ListBean> kLineList) {
+
+    }
+
+    @Override
+    public void onTradeCoinMarketCallback(List<TradeCoinMarketBean> marketBeanList) {
 
     }
 }

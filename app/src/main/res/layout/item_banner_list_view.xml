@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <app.com.pgy.Widgets.RatioRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_banner_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:riv_corner_radius="8dp"/>
+        <TextView
+            android:id="@+id/tv_banner_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YOU MDT Unit Celebration"
+            android:textColor="#ffffffff"
+            android:textSize="27sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
+    </app.com.pgy.Widgets.RatioRelativeLayout>
+</LinearLayout>

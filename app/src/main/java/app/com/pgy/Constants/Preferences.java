@@ -54,6 +54,7 @@ public final class Preferences {
     private static String USER_SEX = "user_sex";
     private static String USER_BIRTHDAY = "user_birthday";
     private static String USER_UUID = "user_uuid";
+    private static String USER_MARKET = "user_market";
 
     private static String ONLY_WIFI = "only_wifi";      //仅在WiFi下
     private static String VERSION_CODE = "version_code";    //当前版本信息
@@ -197,6 +198,7 @@ public final class Preferences {
         editor.putString(USER_BIRTHDAY,user.getBirthday());
         editor.putString(USER_UUID,user.getUuid());
         editor.putInt(USER_SEX,user.getSex());
+        editor.putBoolean(USER_MARKET,false);
         Map<Integer, User.BindInfoModel> bindInfo = user.getBindInfo();
         if (bindInfo == null){
             bindInfo = new HashMap<>();
@@ -319,6 +321,16 @@ public final class Preferences {
         return mSharedPreferences.getLong(DOWNLOAD_REFERNECE, 0);
     }
 
+
+    public static boolean getUserMarket(){
+        return mSharedPreferences.getBoolean(USER_MARKET,false);
+    }
+
+    public static boolean setUserMarket(boolean flag){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putBoolean(USER_MARKET, flag);
+        return editor.commit();
+    }
     /**
      * 判断是否显示欢迎
      * @return

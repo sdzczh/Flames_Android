@@ -1,9 +1,13 @@
 package app.com.pgy.Fragments;
 
+import android.Manifest;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +25,13 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.com.pgy.Activitys.Base.EasyPermissions;
+import app.com.pgy.Activitys.Base.PermissionActivity;
 import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Activitys.HuiLvActivity;
 import app.com.pgy.Activitys.InVitationActivity;
 import app.com.pgy.Activitys.LoginActivity;
+import app.com.pgy.Activitys.MainActivity;
 import app.com.pgy.Activitys.MyWalletActivity;
 import app.com.pgy.Activitys.PersonalGroupsActivity;
 import app.com.pgy.Activitys.PersonalInfoActivity;
@@ -40,8 +47,10 @@ import app.com.pgy.Models.Beans.EventBean.EventUserInfoChange;
 import app.com.pgy.Models.Beans.RealNameResult;
 import app.com.pgy.Models.Beans.StringNameBean;
 import app.com.pgy.Models.Beans.User;
+import app.com.pgy.Models.Beans.version;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
+import app.com.pgy.Services.DownloadService;
 import app.com.pgy.Services.MyWebSocket;
 import app.com.pgy.Utils.ImageLoaderUtils;
 import app.com.pgy.Utils.LogUtils;
@@ -105,6 +114,7 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        pivFragmentPersonalItemVersion.setRightTxt("V"+Preferences.getVersionName());
         switchScene(null);
         refreshUserMessage();
     }
@@ -213,18 +223,21 @@ public class PersonalFragment extends BaseFragment {
                 }
                 break;
             case R.id.piv_fragment_personal_item_help:
-                if (isLogining()) {
-
-                }
+                intent = new Intent(mContext, WebDetailActivity.class);
+                intent.putExtra("title", "帮助中心");
+                intent.putExtra("url", getConfiguration().getC2cHelpDocUrl());
                 break;
             case R.id.piv_fragment_personal_item_version:
-                if (isLogining())
+                // 版本更新
+                getUpdateVersionInfor( Preferences.getVersionCode());
                 break;
             case R.id.piv_fragment_personal_item_huilv:
                 intent = new Intent(mContext, HuiLvActivity.class);
                 break;
             case R.id.piv_fragment_personal_item_feelv:
-                int a1 = 0;
+                intent = new Intent(mContext, WebDetailActivity.class);
+                intent.putExtra("title", "费率详情");
+                intent.putExtra("url", getConfiguration().getRateDocUrl());
                 break;
             case R.id.tv_fragment_personal_loginout:
                 if (!isLogin()) {
@@ -417,6 +430,54 @@ public class PersonalFragment extends BaseFragment {
             }
         });
 
+    }
+
+
+    private boolean updateFlag = false;
+    /**更新状态，0是提示一次更新，1是每次都提示更新，2是强制更新*/
+    private int updateState;
+    /**服务器返回的最新版本*/
+    private int lastVersionCodeFromNet;
+    private String content;
+    private String apkUrl;
+
+    /**从服务器获取版本信息*/
+    private void getUpdateVersionInfor(int currentVersionCode) {
+        showLoading(pivFragmentPersonalItemVersion);
+        Map<String,Object> map = new HashMap<>();
+        map.put("version",currentVersionCode);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType",SYSTEMTYPE_ANDROID);
+        NetWorks.getLastVersion(map, new getBeanCallback<version>() {
+            @Override
+            public void onSuccess(version version) {
+                hideLoading();
+                /*获取服务器端最新的版本号、是否更新、更新模式、更新提示内容、apk下载地址*/
+                lastVersionCodeFromNet = version.getUpdateVersion();
+                updateFlag = version.getUpdateFlag();
+                updateState = version.getUpdateType();
+                content = version.getContent();
+                apkUrl = version.getApkUrl();
+                if (getActivity() instanceof MainActivity){
+                    ((MainActivity)getActivity()).updateStrategy(updateFlag,updateState,lastVersionCodeFromNet,content,apkUrl);
+                }
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                hideLoading();
+                onFail(errorCode, reason);
+            }
+        });
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (!isViewCreated) {
+            switchScene(null);
+        }
+        super.setUserVisibleHint(isVisibleToUser);
     }
 
 }

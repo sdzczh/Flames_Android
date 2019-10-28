@@ -160,7 +160,7 @@
                     android:visibility="visible">
                     <EditText
                         android:id="@+id/edt_activity_register_email"
-                        style="@style/EditText16sp"
+                        style="@style/EditText16spSignNum"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:hint="请输入邀请码"

@@ -17,12 +17,14 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getStringCallback;
+import app.com.pgy.Models.Beans.BindInfo;
 import app.com.pgy.Models.Beans.C2CBusinessCoinAvail;
 import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
@@ -298,7 +300,47 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
             showToast(R.string.unlogin);
             return;
         }
-        submit();
+        getBindList();
+    }
+
+    public void getBindList(){
+        showLoading(null);
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType", SYSTEMTYPE_ANDROID);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        NetWorks.getBindList(Preferences.getAccessToken(),map, new getBeanCallback<List<BindInfo>>() {
+            @Override
+            public void onSuccess(List<BindInfo> list) {
+                hideLoading();
+              if (list == null || list.size() < 1){
+                  showToast("请先绑定收款方式");
+                  return;
+              }
+              for (BindInfo bindInfo : list){
+                  if (bindInfo.getType() == 0){
+                      payType += aliPay;
+                  }
+                  if (bindInfo.getType() == 1){
+                      payType +=wxPay;
+                  }
+
+                  if (bindInfo.getType() == 2){
+                      payType +=cardPay;
+                  }
+              }
+              submit();
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                hideLoading();
+                onFail(errorCode, reason);
+                /*List<C2cNormalEntrust.ListBean> c2CTradeOrder = DefaultData.getC2CTradeOrder(tradeType, stateType);
+                adapter.addAll(c2CTradeOrder);*/
+            }
+        });
     }
 
 
@@ -339,7 +381,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
             showToast("最大总价不能小于最小总价");
             return;
         }
-        payType = aliPay + wxPay + cardPay;
+//        payType = aliPay + wxPay + cardPay;
         if (payType <= 0) {
             showToast("请至少选择一种支付方式");
             return;

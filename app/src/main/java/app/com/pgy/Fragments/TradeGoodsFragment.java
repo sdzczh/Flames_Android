@@ -13,10 +13,12 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -42,7 +44,10 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Activitys.TradeGoodsEntrustListActivity;
+import app.com.pgy.Interfaces.getPositionCallback;
+import app.com.pgy.Models.Beans.TradeCoinMarketBean;
 import app.com.pgy.Widgets.AmountImageView;
+import app.com.pgy.Widgets.MyTradeCoinMarketPopupWindown;
 import app.com.pgy.Widgets.MyTradeTypeChoosePopupWindow;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -154,7 +159,10 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     TextView fragmentTradeGoodsKlineTimeSecond;
     @BindView(R.id.fragment_tradeGoods_klineTime_third)
     TextView fragmentTradeGoodsKlineTimeThird;
-    Unbinder unbinder;
+    @BindView(R.id.titleLine)
+    View titleLine;
+
+//    Unbinder unbinder;
     private List<Fragment> fragments;
     private List<String> fragmentsName;
     private BuyOrSaleListAdapter buyListAdapter, saleListAdapter;
@@ -166,8 +174,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     /**
      * 切换币种监听
      */
-    private MyLeftSecondarySpinnerList spinnerCoin;
+//    private MyLeftSecondarySpinnerList spinnerCoin;
     private spinnerSecondaryChooseListener coinItemListener;
+    private MyTradeCoinMarketPopupWindown coinMarketPopupWindown;
     private List<Integer> perCoinTypeList;
     private Map<Integer, List<Integer>> tradeCoinTypeMap;
     /**
@@ -360,19 +369,19 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         return names;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        // TODO: inflate a fragment view
+//        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+//        unbinder = ButterKnife.bind(this, rootView);
+//        return rootView;
+//    }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        unbinder.unbind();
+//    }
 
     public class CustomLinearLayoutManager extends LinearLayoutManager {
         private boolean isScrollEnabled = true;
@@ -722,9 +731,32 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         switch (view.getId()) {
             /*切换币种*/
             case R.id.fragment_tradeGoods_c2cName:
-                spinnerCoin = new MyLeftSecondarySpinnerList(mContext, perCoinTypeList, tradeCoinTypeMap);
-                spinnerCoin.setListener(coinItemListener);
-                spinnerCoin.showLeft();
+                if (coinMarketPopupWindown == null){
+                    coinMarketPopupWindown = new MyTradeCoinMarketPopupWindown(getActivity(),perCoinTypeList);
+                    coinMarketPopupWindown.setSelectedPerCoinType(goodsPerCoin);
+                    coinMarketPopupWindown.setSelectedTradeCoinType(goodsTradeCoin);
+                    coinMarketPopupWindown.setListener(coinItemListener);
+                    coinMarketPopupWindown.setPerChangeListener(new getPositionCallback() {
+                        @Override
+                        public void getPosition(int pos) {
+                            //切换场景
+
+                        }
+                    });
+                    coinMarketPopupWindown.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            //切换场景
+                            switchCoinFrame();
+                        }
+                    });
+                }
+                if (!coinMarketPopupWindown.isShowing()){
+//                    coinMarketPopupWindown.showAtLocation(titleLine, Gravity.NO_GRAVITY,0,MathUtils.dip2px(mContext,75));
+                    switchScene(new PushData("3510", goodsPerCoin + "", "", ""));
+                    coinMarketPopupWindown.showAsDropDown(titleLine,-50,-2);
+                }
+
                 break;
             /*选择限价还是市价*/
             case R.id.fragment_tradeGoods_limitOrMarket:
@@ -1099,6 +1131,13 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
 //        fragmentTradeGoodsKlineTimeFirst.setText(firstBean!=null?TimeUtils.dateToString(firstBean.getTimestamp(),"HH:mm"):"");
 //        fragmentTradeGoodsKlineTimeSecond.setText(middleBean!=null?TimeUtils.dateToString(middleBean.getTimestamp(),"HH:mm"):"");
 //        fragmentTradeGoodsKlineTimeThird.setText(lastBean!=null?TimeUtils.dateToString(lastBean.getTimestamp(),"HH:mm"):"");
+    }
+
+    @Override
+    public void onTradeCoinMarketCallback(List<TradeCoinMarketBean> marketBeanList) {
+        if (coinMarketPopupWindown != null){
+            coinMarketPopupWindown.updateMarketList(marketBeanList);
+        }
     }
 
     /**

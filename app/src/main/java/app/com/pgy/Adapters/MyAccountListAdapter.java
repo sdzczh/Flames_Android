@@ -32,7 +32,7 @@ public class MyAccountListAdapter extends RecyclerArrayAdapter<MyWallet.ListBean
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        return new MyAccountViewHolder(parent);
     }
 
     class MyAccountViewHolder extends BaseViewHolder<MyWallet.ListBean> implements View.OnClickListener {

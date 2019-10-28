@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.jude.easyrecyclerview.decoration.DividerDecoration;
 
+import app.com.pgy.Activitys.MyAccountActivity;
 import app.com.pgy.Activitys.MyWalletActivity;
 import app.com.pgy.Activitys.MyWalletCoinInfoActivity;
 import app.com.pgy.Activitys.MyWalletTransferActivity;
@@ -154,8 +155,7 @@ public class MyTradeLeftSpinnerPopupWondow extends PopupWindow implements View.O
             case R.id.tv_trade_left_spinner_mingxi:
                 // 跳转到资产 币币账户
                 if (LoginUtils.isLogin(mActivity)) {
-                    intent = new Intent(mActivity, MyWalletActivity.class);
-                    intent.putExtra("index", 0);
+                    intent = new Intent(mActivity, MyAccountActivity.class);
                 }
                 break;
             case R.id.tv_trade_left_spinner_trust:

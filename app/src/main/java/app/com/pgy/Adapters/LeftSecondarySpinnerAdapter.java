@@ -1,6 +1,7 @@
 package app.com.pgy.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -17,12 +18,16 @@ import app.com.pgy.Utils.ToolsUtils;
  */
 public class LeftSecondarySpinnerAdapter extends RecyclerArrayAdapter<Integer> {
     private getPositionCallback mOnItemClickListener;
-
+    private int selectCoin;
     public LeftSecondarySpinnerAdapter(Context context) {
         super(context);
     }
     public void setOnItemClickListener(getPositionCallback listener) {
         this.mOnItemClickListener = listener;
+    }
+
+    public void setSelectCoin(int selectCoin) {
+        this.selectCoin = selectCoin;
     }
 
     @Override
@@ -41,8 +46,13 @@ public class LeftSecondarySpinnerAdapter extends RecyclerArrayAdapter<Integer> {
 
         @Override
         public void setData(Integer coinType) {
-            String coinName = ToolsUtils.getCoinName(coinType);
-            this.coinName.setText(coinName);
+            String coinName1 = ToolsUtils.getCoinName(coinType);
+            this.coinName.setText(coinName1);
+            if (selectCoin == coinType){
+                coinName.setTextColor(Color.parseColor("#098DE6"));
+            }else {
+                coinName.setTextColor(Color.parseColor("#333333"));
+            }
         }
 
         @Override

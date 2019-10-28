@@ -148,7 +148,7 @@
                 android:src="@mipmap/tel_clear"
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
         </LinearLayout>
 
         <include layout="@layout/view_divider_line_white"/>
@@ -158,6 +158,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:visibility="visible">
             <EditText
@@ -233,7 +234,7 @@
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            />
+            android:visibility="gone"/>
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"

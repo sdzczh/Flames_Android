@@ -32,6 +32,7 @@ import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
+import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.TimeUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -89,10 +90,8 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
         if (!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
         }
-        getMyWalletFromNet();
+//        getMyWalletFromNet();
     }
-
-
 
     @OnClick({R.id.iv_fragment_account_trade_show, R.id.ll_fragment_account_trade_recharge,
             R.id.ll_fragment_account_trade_withdraw, R.id.ll_fragment_account_trade_trust,
@@ -165,7 +164,30 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
             }
         });
     }
+    private boolean isFirstVisible = true;
+    private boolean isFragmentVisible;
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isFragmentVisible = isVisibleToUser;
 
+        //当 View 创建完成切 用户可见的时候请求 且仅当是第一次对用户可见的时候请求自动数据
+        if (isVisibleToUser && isViewCreated && isFirstVisible) {
+            getMyWalletFromNet();
+            isFirstVisible = false;
+
+        }
+
+        // 由于每次可见都需要刷新所以我们只需要判断  Fragment 展示在用户面面前了，view 初始化完成了 然后即可以请求数据了
+//        if (isVisibleToUser && isViewCreated) {
+//            // Log.e(TAG, "每次都可见数据  requestDataAutoRefresh");
+//            requestDataAutoRefresh();
+//        }
+//
+//        if (!isVisibleToUser && isViewCreated) {
+//            stopRefresh();
+//        }
+    }
 
     private void updateAccount(MyWallet wallets){
         mAdapter.clear();

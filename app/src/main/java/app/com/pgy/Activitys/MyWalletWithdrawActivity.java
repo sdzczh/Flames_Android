@@ -13,6 +13,7 @@ import android.widget.TextView;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Interfaces.spinnerSingleChooseListener;
@@ -118,12 +119,20 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
     protected void initData() {
         coinType = getIntent().getIntExtra("coinType", -1);
         accountType = getIntent().getIntExtra("accountType", StaticDatas.ACCOUNT_GOODS);
-        coinInfo = getCoinInfo(coinType);
-        if (coinType == -1){
-            showToast("没有币种信息");
-            finish();
-            return;
+
+        if (coinType == -1) {
+            /*获取计价币种列表，交易币种map*/
+            List<Integer> rechAndWithCoinTypeList = getRechAndWithCoinTypeList();
+            if (rechAndWithCoinTypeList != null && rechAndWithCoinTypeList.size() > 0) {
+                coinType = rechAndWithCoinTypeList.get(0);
+            }
+            if (coinType == -1) {
+                showToast("没有币种信息");
+                finish();
+                return;
+            }
         }
+        coinInfo = getCoinInfo(coinType);
         if (coinInfo == null){
             showToast("获取币种信息失败");
             finish();
@@ -150,7 +159,7 @@ public class MyWalletWithdrawActivity extends ScannerQRCodeActivity implements g
     }
 
     @OnClick({R.id.iv_back,R.id.iv_activity_mywallet_withdraw_scan,R.id.tv_activity_mywallet_withdraw_chooseAll,
-            R.id.tv_activity_mywallet_withdraw_submit})
+            R.id.tv_activity_mywallet_withdraw_submit,R.id.ll_activity_mywallet_transfer_coin})
     public void onViewClick(View view){
         switch (view.getId()){
             case R.id.iv_back:

@@ -11,6 +11,8 @@ import java.util.Map;
 import app.com.pgy.Constants.MyApplication;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Interfaces.getBeanCallback;
+import app.com.pgy.Models.Beans.BannerInfo;
+import app.com.pgy.Models.Beans.BindInfo;
 import app.com.pgy.Models.Beans.BlockAssetFlow;
 import app.com.pgy.Models.Beans.BlockCollection;
 import app.com.pgy.Models.Beans.BlockNoticeBean;
@@ -64,6 +66,7 @@ import app.com.pgy.Models.Beans.OrdinRewardInfo;
 import app.com.pgy.Models.Beans.PushMarketBean;
 import app.com.pgy.Models.Beans.RealNameResult;
 import app.com.pgy.Models.Beans.RechargeBean;
+import app.com.pgy.Models.Beans.RenZhengBean;
 import app.com.pgy.Models.Beans.ResponseBean.LastDealBean;
 import app.com.pgy.Models.Beans.ShareInfo;
 import app.com.pgy.Models.Beans.StringBean;
@@ -172,6 +175,12 @@ public class NetWorks extends RetrofitUtils {
         @FormUrlEncoded
         @POST("/user/register.action")
         Call<ResultBean> register(@Field("params") String params, @Field("key") String key);
+        /**
+         * 校验推荐人id是否存在
+         */
+        @FormUrlEncoded
+        @POST("/user/checkUuid.action")
+        Call<ResultBean> checkUuid(@Field("params") String params);
 
         /**
          * 忘记密码
@@ -1135,6 +1144,35 @@ public class NetWorks extends RetrofitUtils {
         Call<ResultBean> submitWithdrawFrozen(@Header("token") String token, @Field("params") String params);
 
 
+        /**
+         * 修改市场情绪（每人每天只能选择一个 点击一次 点击后按钮失效）
+         */
+        @FormUrlEncoded
+        @POST("/homePage/changeMood.action")
+        Call<ResultBean<HomeInfo.MoodBean>> submitChangeMarket(@Header("token") String token, @Field("params") String params);
+
+
+        /**
+         * 身份认证页面信息初始化
+         */
+        @FormUrlEncoded
+        @POST("/realname/getInfo.action")
+        Call<ResultBean<RenZhengBean>> initRenZheng(@Header("token") String token, @Field("params") String params);
+
+
+        /**
+         * 获取banner列表
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @GET("/system/poster.action")
+        Call<ResultBean<List<BannerInfo>>> getBannerList(@Header("token") String token,@Query("params") String params);
+
+        /**
+         * 获取用户绑定收款信息
+         */
+        @FormUrlEncoded
+        @POST("/user/getBindInfo.action")
+        Call<ResultBean<List<BindInfo>>> getBindList(@Header("token") String token, @Field("params") String params);
     }
 
     /**
@@ -1208,6 +1246,28 @@ public class NetWorks extends RetrofitUtils {
         String upLoadKey = ToolsUtils.getUpLoadKey(myKey);
         String params = ToolsUtils.getAESParams(maps, myKey);
         Call<ResultBean> resultBeanCall = service.register(params, upLoadKey);
+        resultBeanCall.enqueue(new Callback<ResultBean>() {
+            @Override
+            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
+                ResultBean responseBody = response.body();
+                setResponseWithNoData(responseBody, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean> call, Throwable t) {
+                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    /**
+     * 校验推荐人id是否存在
+     */
+    public static void checkUuid(Map<String, Object> maps, final getBeanCallback callback) {
+        String params = ToolsUtils.getBase64Params(maps);
+
+        Call<ResultBean> resultBeanCall = service.checkUuid(params);
         resultBeanCall.enqueue(new Callback<ResultBean>() {
             @Override
             public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
@@ -4592,6 +4652,101 @@ public class NetWorks extends RetrofitUtils {
     }
 
 
+    /**
+     * 资金划转修改市场情绪（每人每天只能选择一个 点击一次 点击后按钮失效）提交
+     */
+    public static void submitChangeMarket(String token, Map<String, Object> maps, final getBeanCallback<HomeInfo.MoodBean> callback) {
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        Preferences.init(MyApplication.getInstance().getApplicationContext());
+        String key = Preferences.getLocalKey();
+        String params = ToolsUtils.getAESParams(maps, key);
+        Call<ResultBean<HomeInfo.MoodBean>> resultBeanCall = service.submitChangeMarket(token, params);
+        resultBeanCall.enqueue(new Callback<ResultBean<HomeInfo.MoodBean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<HomeInfo.MoodBean>> call, Response<ResultBean<HomeInfo.MoodBean>> response) {
+                ResultBean<HomeInfo.MoodBean> responseBody = response.body();
+                setResponse(HomeInfo.MoodBean.class,responseBody, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<HomeInfo.MoodBean>> call, Throwable t) {
+                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    /**
+     * 资金划转修改市场情绪（每人每天只能选择一个 点击一次 点击后按钮失效）提交
+     */
+    public static void initRenZheng(String token, Map<String, Object> maps, final getBeanCallback<RenZhengBean> callback) {
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        Preferences.init(MyApplication.getInstance().getApplicationContext());
+        String key = Preferences.getLocalKey();
+        String params = ToolsUtils.getAESParams(maps, key);
+        Call<ResultBean<RenZhengBean>> resultBeanCall = service.initRenZheng(token, params);
+        resultBeanCall.enqueue(new Callback<ResultBean<RenZhengBean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<RenZhengBean>> call, Response<ResultBean<RenZhengBean>> response) {
+                ResultBean<RenZhengBean> responseBody = response.body();
+                setResponse(RenZhengBean.class,responseBody, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<RenZhengBean>> call, Throwable t) {
+                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void getBannerList( String token,Map<String, Object> maps, final getBeanCallback<List<BannerInfo>> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<List<BannerInfo>>> resultBeanCall = service.getBannerList(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<List<BannerInfo>>>() {
+            @Override
+            public void onResponse(Call<ResultBean<List<BannerInfo>>> call, Response<ResultBean<List<BannerInfo>>> response) {
+                ResultBean<List<BannerInfo>> resultBean = response.body();
+                setResponse(BannerInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<List<BannerInfo>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void getBindList( String token,Map<String, Object> maps, final getBeanCallback<List<BindInfo>> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<List<BindInfo>>> resultBeanCall = service.getBindList(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<List<BindInfo>>>() {
+            @Override
+            public void onResponse(Call<ResultBean<List<BindInfo>>> call, Response<ResultBean<List<BindInfo>>> response) {
+                ResultBean<List<BindInfo>> resultBean = response.body();
+                setResponse(BindInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<List<BindInfo>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
 
 
     /**

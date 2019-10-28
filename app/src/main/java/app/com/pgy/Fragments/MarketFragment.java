@@ -181,6 +181,29 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
             }
         }
     }
+
+    /**
+     * ViewPager中fragment的声明周期，切换显示不显示，刷新界面和数据接收
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (!isViewCreated) {
+            return;
+        }
+        LogUtils.w("switch","marketOne----setUserVisibleHint:"+isVisibleToUser+isViewCreated);
+        /*切换COIN和主流界面时*/
+        if (isVisibleToUser) {
+            if (nvp_content.getCurrentItem() == 0){
+                EventBus.getDefault().post(new EventMarketScene(EventMarketScene.TYPE_MARKET_YIBI));
+            }else if (nvp_content.getCurrentItem() == 1){
+                EventBus.getDefault().post(new EventMarketScene(EventMarketScene.TYPE_MARKET_WORlD));
+            }
+        }
+//        else {
+//            switchScene(null);
+//        }
+        super.setUserVisibleHint(isVisibleToUser);
+    }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void kLineSceneDestory(EventKLineSceneDestroy event) {
         if (event != null && event.isDestory()) {

@@ -33,7 +33,7 @@ public class HuiLvActivity extends BaseActivity {
     @Override
     protected void initData() {
         tvTitle.setText("汇率概览");
-        tvTitleRight.setVisibility(View.VISIBLE);
+//        tvTitleRight.setVisibility(View.VISIBLE);
     }
 
     @Override

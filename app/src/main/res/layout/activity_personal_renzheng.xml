@@ -20,12 +20,15 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="28dp"/>
             <LinearLayout
+                android:id="@+id/ll_activity_renzheng_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
                 <TextView
+                    android:id="@+id/tv_activity_renzheng_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="张无忌"
@@ -33,6 +36,7 @@
                     android:textSize="12sp"
                     />
                 <TextView
+                    android:id="@+id/tv_activity_renzheng_tel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="120****010"
@@ -46,7 +50,7 @@
                     android:text="我的权限"
                     android:textColor="#ff3075ee"
                     android:textSize="12sp"
-                    />
+                   android:visibility="gone" />
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -83,7 +87,8 @@
                         android:id="@+id/ll_activity_renzheng_one_finished"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
                         <ImageView
                             android:layout_width="15dp"
                             android:layout_height="15dp"
@@ -113,6 +118,7 @@
                     android:layerType="software"
                     android:layout_marginTop="10dp"/>
                 <TextView
+                    android:id="@+id/tv_activity_renzheng_content1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="认证后可以提币，24小时限额 100 BTC\n认证后可以法币交易，单笔限额 2000 CNY"
@@ -148,6 +154,7 @@
                         android:id="@+id/ll_activity_renzheng_two_finished"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:orientation="horizontal">
                         <ImageView
                             android:layout_width="15dp"
@@ -171,6 +178,7 @@
                         android:text="去认证"
                         android:background="@mipmap/renzheng_btn_bg"/>
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_activity_renzheng_desc2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -186,6 +194,7 @@
                     android:layerType="software"
                     android:layout_marginTop="10dp"/>
                 <TextView
+                    android:id="@+id/tv_activity_renzheng_content2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="增加提币额度，24小时限额 300 BTC\n增加法币交易额度，单笔限额 1000000 CNY "
@@ -219,6 +228,7 @@
                         android:layout_weight="1"/>
                     <LinearLayout
                         android:id="@+id/ll_activity_renzheng_three_finished"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -244,6 +254,7 @@
                         android:text="去认证"
                         android:background="@mipmap/renzheng_btn_bg"/>
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_activity_renzheng_desc3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -259,6 +270,7 @@
                     android:layerType="software"
                     android:layout_marginTop="10dp"/>
                 <TextView
+                    android:id="@+id/tv_activity_renzheng_content3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="增加提币额度，24小时限额 300 BTC\n增加法币交易额度，单笔限额 5000000 CNY"

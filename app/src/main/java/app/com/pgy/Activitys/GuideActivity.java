@@ -69,6 +69,8 @@ public class GuideActivity extends BaseActivity {
     class YindaoPagerAdapter extends PagerAdapter{
 
         int[] imgs = {R.mipmap.yindao1,R.mipmap.yindao2,R.mipmap.yindao3};
+        int[] imgsText = {R.mipmap.yindao1_text,R.mipmap.yindao2_text,R.mipmap.yindao3_text};
+        int[] imgsIn = {R.mipmap.yindao1_indactor,R.mipmap.yindao2_indactor,R.mipmap.yindao3_indactor};
         Context mContext;
         public YindaoPagerAdapter(Context context){
             this.mContext = context;
@@ -86,9 +88,13 @@ public class GuideActivity extends BaseActivity {
         public Object instantiateItem(ViewGroup container, int position) {
             View view = View.inflate(mContext,R.layout.view_guide_page,null);
             ImageView iv = view.findViewById(R.id.iv_guide_bg);
+            ImageView ivText = view.findViewById(R.id.guide_text);
+            ImageView ivIn = view.findViewById(R.id.guide_indactor);
             TextView tv = view.findViewById(R.id.guide_login);
             if (position < imgs.length){
                 iv.setImageResource(imgs[position]);
+                ivText.setImageResource(imgsText[position]);
+                ivIn.setImageResource(imgsIn[position]);
             }
             if (position == imgs.length-1){
                 tv.setVisibility(View.VISIBLE);

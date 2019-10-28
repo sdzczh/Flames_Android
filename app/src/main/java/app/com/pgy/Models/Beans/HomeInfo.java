@@ -27,7 +27,7 @@ public class HomeInfo {
     private NoticeBean notice;
     private List<BannerInfo> banner;
     private String noticeUrl;
-
+    private String noticeTitle;
     private MoodBean mood;
     private String accountBalanceCny;
 
@@ -142,6 +142,14 @@ public class HomeInfo {
         return noticeUrl;
     }
 
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle;
+    }
+
+    public String getNoticeTitle() {
+        return noticeTitle;
+    }
+
     public void setMood(MoodBean mood) {
         this.mood = mood;
     }
@@ -157,6 +165,7 @@ public class HomeInfo {
     public String getAccountBalanceCny() {
         return accountBalanceCny;
     }
+
 
     public static class NoticeBean {
         /**

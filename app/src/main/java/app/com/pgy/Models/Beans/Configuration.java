@@ -48,11 +48,12 @@ public class Configuration implements Serializable{
     private String yubibaoHelpUrl;
     private String withdrawDocUrl;  //提现帮助
     private String rechargeDocUrl;  //充值帮助文档
-    private String rateDocUrl;  //费率文档
+    private String rateDocUrl;  //费率文档 rateDocUrl
     private String indexUrl;  //官网
     private String dealDigDocUrl;//交易挖矿帮助文档
     private YibiElve yibiElve;
     private List<Integer> dealDigCoinTypes;/*交易挖矿币种币种*/
+    private String  c2cHelpDocUrl;
 
     public YibiElve getYibiElve() {
         return yibiElve;
@@ -100,6 +101,14 @@ public class Configuration implements Serializable{
 
     public String getRateDocUrl() {
         return rateDocUrl;
+    }
+
+    public void setC2cHelpDocUrl(String c2cHelpDocUrl) {
+        this.c2cHelpDocUrl = c2cHelpDocUrl;
+    }
+
+    public String getC2cHelpDocUrl() {
+        return c2cHelpDocUrl;
     }
 
     public String getYubibaoHelpUrl() {

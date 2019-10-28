@@ -12,6 +12,7 @@ import app.com.pgy.Activitys.BindAliActivity;
 import app.com.pgy.Activitys.BindBankActivity;
 import app.com.pgy.Activitys.BindWeixinActivity;
 import app.com.pgy.Activitys.ChangeTradePwActivity;
+import app.com.pgy.Activitys.PersonalRenZhengActivity;
 import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.Services.MyWebSocket;
@@ -494,7 +495,7 @@ public class ErrorHandler {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Utils.IntentUtils(mContext,SecuritycenterActivity.class);
+                        Utils.IntentUtils(mContext, PersonalRenZhengActivity.class);
                         dialog.dismiss();
                     }
                 });

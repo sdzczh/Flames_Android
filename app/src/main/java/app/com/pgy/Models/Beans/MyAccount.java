@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class MyAccount {
     String accountBalanceCny;
-    Map<Integer,String> accountList;
+    Map<Integer,ListBean> accountList;
 
     public void setAccountBalanceCny(String accountBalanceCny) {
         this.accountBalanceCny = accountBalanceCny;
@@ -19,14 +19,26 @@ public class MyAccount {
         return accountBalanceCny;
     }
 
-    public void setAccountList(Map<Integer, String> accountList) {
+    public void setAccountList(Map<Integer, ListBean> accountList) {
         this.accountList = accountList;
     }
 
-    public Map<Integer, String> getAccountList() {
+    public Map<Integer, ListBean> getAccountList() {
         if (accountList == null){
             accountList = new HashMap<>();
         }
         return accountList;
+    }
+
+    public static class ListBean{
+        String total;
+
+        public void setTotal(String total) {
+            this.total = total;
+        }
+
+        public String getTotal() {
+            return total;
+        }
     }
 }
