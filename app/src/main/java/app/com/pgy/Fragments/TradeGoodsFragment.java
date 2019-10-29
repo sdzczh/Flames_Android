@@ -1145,6 +1145,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         coinItemListener = new spinnerSecondaryChooseListener() {
             @Override
             public void onItemClickListener(int perCoin, int tradeCoin) {
+
                 if (perCoin == goodsPerCoin && tradeCoin == goodsTradeCoin) {
                     LogUtils.w("coin", "不做操作");
                     return;

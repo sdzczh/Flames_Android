@@ -37,7 +37,7 @@ public class TradeCoinMarketOrderCoinAdapter extends RecyclerArrayAdapter<TradeC
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        return new OrderCoinViewHolder(parent);
     }
 
     class OrderCoinViewHolder extends BaseViewHolder<TradeCoinMarketBean> implements View.OnClickListener{

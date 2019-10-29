@@ -114,18 +114,21 @@ public class C2CTradeEntrustListNewAdapter extends RecyclerArrayAdapter<C2cBusin
                     } else {
                         itemCcTradeEntrustStartOrCancelOrder.setText("开始委托");
                     }
+                    itemCcTradeEntrustState.setVisibility(View.GONE);
                     break;
                 /*已完成*/
                 case 1:
                     itemCcTradeEntrustBottomFrame.setVisibility(View.GONE);
                     stateStr = "已完成";
 //                    stateColor = R.color.txt_01C18B;
+                    itemCcTradeEntrustState.setVisibility(View.VISIBLE);
                     break;
                 /*已撤销*/
                 case 2:
                     itemCcTradeEntrustBottomFrame.setVisibility(View.GONE);
                     stateStr = "已撤销";
                     stateColor = R.color.txt_808DAC;
+                    itemCcTradeEntrustState.setVisibility(View.VISIBLE);
                     break;
             }
             itemCcTradeEntrustState.setText(stateStr);

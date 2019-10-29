@@ -94,11 +94,17 @@ public class MyTradeCoinMarketPopupWindown extends PopupWindow {
             @Override
             public void getPosition(int pos) {
                 selectedTradeCoinType = marketAdapter.getItem(pos).getOrderCoinType();
+                if (selectedTradeCoinType != -1){
+                    marketAdapter.setSelectcoin(selectedTradeCoinType);
+                    marketAdapter.notifyDataSetChanged();
+                }
                 if (listener != null) {
                     listener.onItemClickListener(selectedPerCoinType, selectedTradeCoinType);
                 }
+               dismiss();
             }
         });
+        rvMarketList.setAdapter(marketAdapter);
     }
 
     public void updateMarketList(List<TradeCoinMarketBean> list){

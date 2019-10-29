@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import app.com.pgy.Constants.Constants;
@@ -74,6 +75,17 @@ public class GoodsListReceiver extends BroadcastReceiver {
                     }
                     break;
                 case 3510:
+                    List<TradeCoinMarketBean> tradeCoinList = JsonUtils.stringToArray(response.getInfo(),TradeCoinMarketBean [].class);
+                    if (tradeCoinList == null){
+                        tradeCoinList = new ArrayList<>();
+                        LogUtils.w("tradeCoinList","pgy行情解析失败");
+                    }else {
+                        LogUtils.w("tradeCoinList",tradeCoinList.toString());
+                    }
+                    if (listCallback != null) {
+                        LogUtils.w("marketOneList","size:"+tradeCoinList.size());
+                        listCallback.onTradeCoinMarketCallback(tradeCoinList);
+                    }
                     break;
             }
         }
