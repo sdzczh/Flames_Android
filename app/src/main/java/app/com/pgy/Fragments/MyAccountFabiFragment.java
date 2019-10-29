@@ -149,9 +149,9 @@ public class MyAccountFabiFragment extends BaseFragment implements getPositionCa
 
         if (intent != null) {
             startActivity(intent);
-            if (needFinish){
-                getActivity().finish();
-            }
+        }
+        if (needFinish){
+            getActivity().finish();
         }
     }
 

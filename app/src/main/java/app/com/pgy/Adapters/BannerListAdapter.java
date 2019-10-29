@@ -15,6 +15,7 @@ import app.com.pgy.Models.Beans.BannerInfo;
 import app.com.pgy.R;
 import app.com.pgy.Utils.BannerIntentUtils;
 import app.com.pgy.Utils.ImageLoaderUtils;
+import app.com.pgy.Widgets.RatioImageView;
 
 /**
  * Create by Android on 2019/10/28 0028
@@ -29,11 +30,11 @@ public class BannerListAdapter extends RecyclerArrayAdapter<BannerInfo> {
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        return new BannerListViewHolder(parent);
     }
 
     class BannerListViewHolder extends BaseViewHolder<BannerInfo> implements View.OnClickListener{
-        RoundedImageView riv;
+        RatioImageView riv;
         TextView tvTitle;
         public BannerListViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_banner_list_view);
@@ -46,7 +47,7 @@ public class BannerListAdapter extends RecyclerArrayAdapter<BannerInfo> {
         @Override
         public void setData(BannerInfo data) {
             tvTitle.setText(data.getTitle());
-            ImageLoaderUtils.displayCircle(getContext(),riv,data.getImgpath());
+            ImageLoaderUtils.display(getContext(),riv,data.getImgpath());
         }
 
         @Override

@@ -4,14 +4,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <app.com.pgy.Widgets.RatioRelativeLayout
+    <app.com.pgy.Widgets.RoundAngleFrameLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        app:framelayout_radius="8dp">
+        <app.com.pgy.Widgets.RatioImageView
             android:id="@+id/iv_banner_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:riv_corner_radius="8dp"/>
+            android:layout_height="wrap_content"
+            app:ratio="2.462"/>
         <TextView
             android:id="@+id/tv_banner_title"
             android:layout_width="match_parent"
@@ -19,9 +23,9 @@
             android:text="YOU MDT Unit Celebration"
             android:textColor="#ffffffff"
             android:textSize="27sp"
-            android:layout_centerInParent="true"
+            android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"/>
-    </app.com.pgy.Widgets.RatioRelativeLayout>
+    </app.com.pgy.Widgets.RoundAngleFrameLayout>
 </LinearLayout>

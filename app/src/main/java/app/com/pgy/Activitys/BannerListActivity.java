@@ -1,6 +1,8 @@
 package app.com.pgy.Activitys;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Activitys.Base.BaseListActivity;
 import app.com.pgy.Adapters.BannerListAdapter;
 import app.com.pgy.Constants.Preferences;
@@ -33,36 +36,20 @@ import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 /**
  * Create by Android on 2019/10/28 0028
  */
-public class BannerListActivity extends BaseListActivity {
+public class BannerListActivity extends BaseActivity {
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.activity_baselist_list)
-    EasyRecyclerView activityBaselistList;
+    RecyclerView activityBaselistList;
 
     BannerListAdapter adapter;
 
     @Override
-    protected void onListItemClick(int position) {
-
-    }
-
-    @Override
-    public void onRefresh() {
-        adapter.clear();
-        if (!checkNetworkState()) {
-            showToast(R.string.notHaveNet);
-            activityBaselistList.setRefreshing(false);
-            return;
-        }
-        requestData();
-    }
-
-    @Override
     public int getContentViewId() {
-        return R.layout.activity_base_list;
+        return R.layout.activity_banner_list;
     }
 
     @Override
@@ -70,6 +57,7 @@ public class BannerListActivity extends BaseListActivity {
         if (adapter == null) {
             adapter = new BannerListAdapter(mContext);
         }
+
     }
 
     @Override
@@ -81,18 +69,9 @@ public class BannerListActivity extends BaseListActivity {
                 finish();
             }
         });
-        init(activityBaselistList,adapter);
+        activityBaselistList.setLayoutManager(new LinearLayoutManager(mContext));
+        activityBaselistList.setAdapter(adapter);
         activityBaselistList.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.transparent), MathUtils.dip2px(mContext,15)));
-    }
-
-    @Override
-    public void onLoadMore() {
-        adapter.clear();
-        if (!checkNetworkState()) {
-            showToast(R.string.notHaveNet);
-            activityBaselistList.setRefreshing(false);
-            return;
-        }
         requestData();
     }
 

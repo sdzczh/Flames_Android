@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import app.com.pgy.Fragments.C2CTradeFragment;
 import app.com.pgy.Fragments.HomeFragmentNew;
+import app.com.pgy.Models.Beans.EventBean.EventC2cFragment;
 import app.com.pgy.Services.DownloadService;
 import app.com.pgy.Widgets.ExitDialog;
 import butterknife.BindView;
@@ -188,6 +189,7 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
                 case EventMainChangeState.CHANGE_TO_C2C:
                     if (activityMainGroup.getCheckedRadioButtonId() != R.id.activity_main_group_circle){
                         activityMainGroup.check(R.id.activity_main_group_circle);
+                        EventBus.getDefault().post(new EventC2cFragment(2));
                     }
                     break;
                 case EventMainChangeState.CHANGE_TO_MARK:

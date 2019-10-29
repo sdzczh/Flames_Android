@@ -142,9 +142,9 @@ public class PersonalRenZhengActivity extends BaseActivity {
             llActivityRenzhengInfo.setVisibility(View.VISIBLE);
             tvActivityRenzhengName.setText(renZhengBean.getUserName());
             tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
-            tvActivityRenzhengContent1.setText("认证后可以提币，24小时限额 "+renZhengBean.getWithdrawQuota1()+" "+"\\n认证后可以法币交易，单笔限额 "+renZhengBean.getC2cQuota1()+" CNY");
-            tvActivityRenzhengContent2.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota2()+" "+"\\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota2()+" CNY");
-            tvActivityRenzhengContent3.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota3()+" "+"\\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota3()+" CNY");
+            tvActivityRenzhengContent1.setText("认证后可以提币，24小时限额 "+renZhengBean.getWithdrawQuota1()+" "+"\n认证后可以法币交易，单笔限额 "+renZhengBean.getC2cQuota1()+" CNY");
+            tvActivityRenzhengContent2.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota2()+" "+"\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota2()+" CNY");
+            tvActivityRenzhengContent3.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota3()+" "+"\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota3()+" CNY");
             //身份认证等级 0未认证 1一级 2二级 3三级
             tvActivityRenzhengTo1.setVisibility(View.GONE);
             llActivityRenzhengOneFinished.setVisibility(View.GONE);

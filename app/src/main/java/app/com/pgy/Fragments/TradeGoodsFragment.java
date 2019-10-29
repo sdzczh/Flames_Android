@@ -3,6 +3,8 @@ package app.com.pgy.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
@@ -585,9 +587,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         /*设置下面输入框的小数位数*/
         setBottomInputNumber();
         if (isBuy) {
-            fragmentTradeGoodsAvailable.setText("可用 " + unitAvailBalance + " " + currentPerCoinName);
+            fragmentTradeGoodsAvailable.setText(perCoinAvail + " " + currentPerCoinName);
         } else {
-            fragmentTradeGoodsAvailable.setText("可用 " + orderAvailBalance + " " + currentTradeCoinName);
+            fragmentTradeGoodsAvailable.setText(tradeCoinAvail + " " + currentTradeCoinName);
         }
     }
 
@@ -735,9 +737,19 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                     });
                 }
                 if (!coinMarketPopupWindown.isShowing()) {
-//                    coinMarketPopupWindown.showAtLocation(titleLine, Gravity.NO_GRAVITY,0,MathUtils.dip2px(mContext,75));
                     switchScene(new PushData("3510", goodsPerCoin + "", "0", "0"));
-                    coinMarketPopupWindown.showAsDropDown(titleLine, -50, -2);
+                    if (Build.VERSION.SDK_INT >= 24) {
+                        Rect visibleFrame = new Rect();
+                        titleLine.getGlobalVisibleRect(visibleFrame);
+                        int height = titleLine.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                        coinMarketPopupWindown.setHeight(height);
+                        coinMarketPopupWindown.showAsDropDown(titleLine, -50, -2);
+                    } else {
+                        coinMarketPopupWindown.showAsDropDown(titleLine, -50, -2);
+                    }
+//                    coinMarketPopupWindown.showAtLocation(titleLine, Gravity.NO_GRAVITY,0,MathUtils.dip2px(mContext,75));
+
+//                    coinMarketPopupWindown.showAsDropDown(titleLine, -50, -2);
                 }
 
                 break;

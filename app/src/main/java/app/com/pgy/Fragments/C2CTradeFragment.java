@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ import app.com.pgy.Adapters.ViewPagerAdapter;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.spinnerSingleChooseListener;
+import app.com.pgy.Models.Beans.EventBean.EventC2cFragment;
 import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import app.com.pgy.R;
 import app.com.pgy.Widgets.CoinTypeListPopupwindow;
@@ -29,6 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.rong.imlib.IFwLogCallback;
 
 import static app.com.pgy.Constants.StaticDatas.BUSINESS;
 import static app.com.pgy.Constants.StaticDatas.NORMAL;
@@ -102,6 +106,9 @@ public class C2CTradeFragment extends BaseFragment {
         }
 
         tvTitle.setText(getCoinName(coinType) + "/CNY");
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -361,5 +368,26 @@ public class C2CTradeFragment extends BaseFragment {
            switchScene(null);
         }
         super.setUserVisibleHint(isVisibleToUser);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void ChangeEvent(EventC2cFragment event){
+        if (event != null){
+            if (role == NORMAL){
+               vpContent.setCurrentItem(event.getIndex());
+            }else {
+                vpContent2.setCurrentItem(event.getIndex());
+            }
+
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this);
+        }
     }
 }
