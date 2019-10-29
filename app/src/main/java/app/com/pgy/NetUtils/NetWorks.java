@@ -1174,6 +1174,13 @@ public class NetWorks extends RetrofitUtils {
         @FormUrlEncoded
         @POST("/user/getBindInfo.action")
         Call<ResultBean<List<BindInfo>>> getBindList(@Header("token") String token, @Field("params") String params);
+
+        /**
+         * 获取二维码内容
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @GET("/web/downloadInfo.action")
+        Call<ResultBean<String>> getShareQrCode(@Query("params") String params);
     }
 
     /**
@@ -4740,6 +4747,25 @@ public class NetWorks extends RetrofitUtils {
 
             @Override
             public void onFailure(Call<ResultBean<List<BindInfo>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+
+
+    public static void getShareQrCode( Map<String, Object> maps, final getBeanCallback<String> callback){
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<String>> resultBeanCall = service.getShareQrCode(params);
+        resultBeanCall.enqueue(new Callback<ResultBean<String>>() {
+            @Override
+            public void onResponse(Call<ResultBean<String>> call, Response<ResultBean<String>> response) {
+                ResultBean<String> resultBean = response.body();
+                setResponse(resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<String>> call, Throwable t) {
                 callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
             }
         });

@@ -10,6 +10,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import app.com.pgy.Models.Beans.EventBean.EventGoodsEntrustChange;
 import butterknife.BindView;
 import app.com.pgy.Activitys.GoodsEntrustDetailsActivity;
 import app.com.pgy.Adapters.GoodsEntrustListAdapter;
@@ -90,6 +92,16 @@ public class TradeGoodsHistoryListFragment extends BaseListFragment{
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(EventGoodsCoinChange goodsCoinChange) {
+        perCoin = goodsCoinChange.getPerCoinType();
+        tradeCoin = goodsCoinChange.getTradeCoinType();
+        onRefresh();
+    }
+
+    /**
+     * 币种状态监听
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Event1(EventGoodsEntrustChange goodsCoinChange) {
         perCoin = goodsCoinChange.getPerCoinType();
         tradeCoin = goodsCoinChange.getTradeCoinType();
         onRefresh();

@@ -1,6 +1,7 @@
 package app.com.pgy.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -10,6 +11,7 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.Models.Beans.HomeMarketBean;
 import app.com.pgy.R;
+import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.ToolsUtils;
 
 /**
@@ -40,6 +42,24 @@ public class HomeMarketAdapter extends RecyclerArrayAdapter<HomeMarketBean> {
             tvCoin.setText(coinInfo.getCoinname());
             tvPrice.setText("￥"+data.getNewPriceCNY());
             tvRose.setText(data.getChgPrice()+"%");
+            String chgPrice = data.getChgPrice();
+            double rateOrFall = MathUtils.string2Double(chgPrice);
+            if (rateOrFall > 0){
+                /*涨*/
+                tvRose.setBackgroundResource(R.drawable.bg_corners_52cca3);
+                tvRose.setText("+"+chgPrice+"%");
+                tvPrice.setTextColor(Color.parseColor("#4DB872"));
+            }else if (rateOrFall < 0){
+                /*跌*/
+                tvRose.setBackgroundResource(R.drawable.bg_corners_fff766);
+                tvRose.setText(chgPrice+"%");
+                tvPrice.setTextColor(Color.parseColor("#F66950"));
+            }else{
+                /*平*/
+                tvRose.setBackgroundResource(R.drawable.bg_corners_c4c7cc);
+                tvPrice.setTextColor(Color.parseColor("#c4c7cc"));
+                tvRose.setText("+0.00%");
+            }
         }
     }
 

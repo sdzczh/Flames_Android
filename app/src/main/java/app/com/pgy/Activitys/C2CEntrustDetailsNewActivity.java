@@ -216,7 +216,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        tvTitle.setText("订单详情");
 
     }
 
@@ -447,7 +447,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 activityCcEntrustDetailsTopOrderState.setLeftTxt("待确认");
                 activityCcEntrustDetailsTopOrderState.setRightTxt(details.getInactiveTime());
                 /*显示拨打电话、订单信息、黄色提示信息、交易提醒*/
-                tvTitleRight.setVisibility(View.VISIBLE);
+//                tvTitleRight.setVisibility(View.VISIBLE);
 
                 switch (buyOrSale) {
                     default:
@@ -598,6 +598,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 ivPayTypeAccountQrcode.setVisibility(View.VISIBLE);
                 llPayTypeAccountBank.setVisibility(View.GONE);
                 erwermaUrl = currentPayInfo.getImgurl();
+                llPayTypeAccount.setBackgroundResource(R.mipmap.ali_pay_bg);
                 break;
             case WECHART:
                 ivPayTypeAccountIcon.setImageResource(R.mipmap.wx_pay_white);
@@ -606,6 +607,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 ivPayTypeAccountQrcode.setVisibility(View.VISIBLE);
                 llPayTypeAccountBank.setVisibility(View.GONE);
                 erwermaUrl = currentPayInfo.getImgurl();
+                llPayTypeAccount.setBackgroundResource(R.mipmap.wx_pay_bg);
                 break;
             case BANKCARD:
                 ivPayTypeAccountIcon.setImageResource(R.mipmap.card_pay_white);
@@ -615,6 +617,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 tvPayTypeAccountBranch.setText(currentPayInfo.getBranchName());
                 ivPayTypeAccountQrcode.setVisibility(View.GONE);
                 llPayTypeAccountBank.setVisibility(View.VISIBLE);
+                llPayTypeAccount.setBackgroundResource(R.mipmap.card_pay_bg);
                 break;
             default:
                 break;

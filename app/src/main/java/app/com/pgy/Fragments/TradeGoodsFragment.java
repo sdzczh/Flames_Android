@@ -616,7 +616,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         if (isBuy) {
             fragmentTradeGoodsGroup.setBackgroundResource(R.mipmap.trade_buy_sale_bg_select);
             fragmentTradeGoodsTrade.setText("买入 " + currentTradeCoinName);
-//            fragmentTradeGoodsTrade.setBackgroundResource(R.drawable.bg_app_color_small);
+            fragmentTradeGoodsTrade.setBackgroundResource(R.mipmap.buy_trade_bg_new);
             fragmentTradeGoodsPercentGroupFirst.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupSecond.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupThird.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
@@ -625,7 +625,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         } else {
             fragmentTradeGoodsGroup.setBackgroundResource(R.mipmap.trade_buy_sale_bg);
             fragmentTradeGoodsTrade.setText("卖出 " + currentTradeCoinName);
-//            fragmentTradeGoodsTrade.setBackgroundResource(R.drawable.bg_corners_redsolid);
+            fragmentTradeGoodsTrade.setBackgroundResource(R.mipmap.sale_trade_bg_new);
             fragmentTradeGoodsPercentGroupFirst.setBackgroundResource(R.drawable.selector_radio_bg_green_grey);
             fragmentTradeGoodsPercentGroupSecond.setBackgroundResource(R.drawable.selector_radio_bg_red_grey);
             fragmentTradeGoodsPercentGroupThird.setBackgroundResource(R.drawable.selector_radio_bg_red_grey);

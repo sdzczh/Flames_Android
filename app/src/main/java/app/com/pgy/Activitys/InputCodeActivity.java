@@ -98,6 +98,10 @@ public class InputCodeActivity extends BaseActivity {
                 intent.putExtra("code",icv.getInputContent());
                 intent.putExtra("codeNet",verificationMarkFromNet);
                 startActivityForResult(intent,1);
+                if (timer != null) {
+                    timer.cancel();
+//                    timer = null;
+                }
             }
 
             @Override

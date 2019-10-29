@@ -69,7 +69,7 @@ public class C2CTradeEntrustListNewAdapter extends RecyclerArrayAdapter<C2cBusin
         private LinearLayout itemCcTradeEntrustBottomFrame;
 
         CurrentEntrustViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_cc_trade_entrust);
+            super(parent, R.layout.item_cc_trade_entrust_new);
             itemCcTradeEntrustType = $(R.id.item_ccTradeEntrust_type);
             itemCcTradeEntrustCoinName = $(R.id.item_ccTradeEntrust_coinName);
             itemCcTradeEntrustSubmitTime = $(R.id.item_ccTradeEntrust_submitTime);

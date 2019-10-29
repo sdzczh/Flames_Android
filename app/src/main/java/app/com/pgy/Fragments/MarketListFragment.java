@@ -276,6 +276,9 @@ public class MarketListFragment extends BaseFragment implements getPositionCallb
     /**点击item跳转k线图*/
     @Override
     public void getPosition(int pos) {
+        if (marketType == TYPE_WORLD){
+            return;
+        }
         PushMarketBean.ListBean item = adapter.getItem(pos);
         int tradeCoin = item.getOrderCoinType();
         int perCoin = item.getUnitCoinType();

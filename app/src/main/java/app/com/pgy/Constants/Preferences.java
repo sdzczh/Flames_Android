@@ -200,7 +200,7 @@ public final class Preferences {
         editor.putString(USER_UUID,user.getUuid());
         editor.putInt(USER_IDSTATUS,user.getIdStatus());
         editor.putInt(USER_SEX,user.getSex());
-        editor.putInt(USER_MARKET,0);
+        editor.putInt(USER_MARKET,-1);
         Map<Integer, User.BindInfoModel> bindInfo = user.getBindInfo();
         if (bindInfo == null){
             bindInfo = new HashMap<>();
@@ -326,7 +326,7 @@ public final class Preferences {
 
 
     public static int getUserMarket(){
-        return mSharedPreferences.getInt(USER_MARKET,0);
+        return mSharedPreferences.getInt(USER_MARKET,-1);
     }
 
     public static boolean setUserMarket(int flag){

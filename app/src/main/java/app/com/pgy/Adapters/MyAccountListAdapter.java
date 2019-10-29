@@ -50,13 +50,13 @@ public class MyAccountListAdapter extends RecyclerArrayAdapter<MyWallet.ListBean
         @Override
         public void setData(MyWallet.ListBean myWallet) {
             Configuration.CoinInfo coinInfo = ToolsUtils.getCoinInfo(myWallet.getCoinType());
-            tvAmount.setText(coinInfo.getCoinname());
+            tvName.setText(coinInfo.getCoinname());
 
             /*可用余额*/
             tvAmount.setText(myWallet.getTotalBalance());
             /*折合人民币*/
 //            tv_total_cny.setText(myWallet.getTotalOfCny());
-
+            tvFrozen.setText(myWallet.getFrozenBalance());
         }
 
         @Override

@@ -36,6 +36,7 @@ import app.com.pgy.Activitys.MyWalletActivity;
 import app.com.pgy.Activitys.PersonalGroupsActivity;
 import app.com.pgy.Activitys.PersonalInfoActivity;
 import app.com.pgy.Activitys.PersonalRenZhengActivity;
+import app.com.pgy.Activitys.PosterNewActivity;
 import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Activitys.SystemSettingActivity;
 import app.com.pgy.Constants.Preferences;
@@ -189,7 +190,7 @@ public class PersonalFragment extends BaseFragment {
             case R.id.piv_fragment_personal_item_poster:
                 // 2018/7/7 跳转邀请海报
                 if (isLogining()) {
-                    intent = new Intent(mContext, InVitationActivity.class);
+                    intent = new Intent(mContext, PosterNewActivity.class);
                 }
                 break;
             case R.id.piv_fragment_personal_item_group:

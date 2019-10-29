@@ -41,7 +41,7 @@ public  class SimpleUtils {
     public static boolean saveBitmapToSdCard(Context context, Bitmap mybitmap, String name){
         boolean result = false;
         //创建位图保存目录
-        String path = Environment.getExternalStorageDirectory() + "/1000ttt/";
+        String path = Environment.getExternalStorageDirectory() + "/pgyttt/";
         File sd = new File(path);
         if (!sd.exists()){
             sd.mkdir();

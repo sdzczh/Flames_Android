@@ -49,6 +49,7 @@ public class MyWallet{
         private String totalBalance;
         private String totalOfCny;
         private int coinType;
+        private String frozenBalance;
 
         public void setCnName(String cnName) {
             this.cnName = cnName;
@@ -80,6 +81,14 @@ public class MyWallet{
 
         public String getTotalOfCny() {
             return totalOfCny;
+        }
+
+        public void setFrozenBalance(String frozenBalance) {
+            this.frozenBalance = frozenBalance;
+        }
+
+        public String getFrozenBalance() {
+            return frozenBalance;
         }
     }
 }
