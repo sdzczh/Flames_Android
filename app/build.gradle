@@ -30,7 +30,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 26
         /*2019年7月29日 1  1.0.0 xu*/
-        versionCode 1
+        versionCode 10
         versionName "1.0.0"
         multiDexEnabled true
 
@@ -103,12 +103,12 @@ dependencies {
 //    compile files('libs/umeng_shareboard_widget.jar')
 //    compile files('libs/SocialSDK_WeChat_Simplify.jar')
 //    compile files('libs/SocialSDK_QQ_Simplify.jar')
-    compile(name: 'FaceLivenessSDK-2.1.5.2', ext: 'aar')
-    compile(name: 'rpsdk-2.0.0.22', ext: 'aar')
-    compile(name: 'SecurityGuardSDK-external-release-5.4.38', ext: 'aar')
-    compile(name: 'SecurityBodySDK-external-release-5.4.28', ext: 'aar')
-    compile(name: 'NoCaptchaSDK-external-release-5.4.18', ext: 'aar')
-    compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
+    compile(name: 'FaceLivenessOpen-2.1.6.15', ext: 'aar')
+    compile(name: 'rpsdk-3.1.0.1', ext: 'aar')
+    compile(name: 'SecurityGuardSDK-external-release-5.4.9901', ext: 'aar')
+    compile(name: 'SecurityBodySDK-external-release-5.4.79', ext: 'aar')
+    compile(name: 'NoCaptchaSDK-external-release-5.4.33', ext: 'aar')
+    compile(name: 'oss-android-sdk-2.9.2', ext: 'aar')
     /*compile files('libs/okhttp-3.2.0.jar')*/
     /*compile files('libs/okio-1.6.0.jar')*/
     compile files('libs/windvane-min-8.0.3.2.3.jar')

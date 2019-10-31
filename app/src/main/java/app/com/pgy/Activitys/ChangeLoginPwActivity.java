@@ -230,15 +230,6 @@ public class ChangeLoginPwActivity extends BaseActivity {
 //            showToast(getString(R.string.illegal_phone));
 //            return;
 //        }
-        if (TextUtils.isEmpty(verificationMarkFromNet)) {
-            showToast(R.string.getVerificationFirst);
-            return;
-        }
-        verificationCode = edt_verification.getText().toString().trim();
-        if (!ToolsUtils.isVerificationCode(verificationCode)) {
-            showToast(getString(R.string.illegal_verification));
-            return;
-        }
         password = edt_newPw.getText().toString().trim();
         if (!ToolsUtils.isDigitalAndWord(password)) {
             showToast(getString(R.string.illegal_password));
@@ -248,6 +239,16 @@ public class ChangeLoginPwActivity extends BaseActivity {
             showToast("确认密码不正确");
             return;
         }
+        if (TextUtils.isEmpty(verificationMarkFromNet)) {
+            showToast(R.string.getVerificationFirst);
+            return;
+        }
+        verificationCode = edt_verification.getText().toString().trim();
+        if (!ToolsUtils.isVerificationCode(verificationCode)) {
+            showToast(getString(R.string.illegal_verification));
+            return;
+        }
+
         showLoading(tv_submit);
         Map<String, Object> map = new HashMap<>();
         map.put("password", password);

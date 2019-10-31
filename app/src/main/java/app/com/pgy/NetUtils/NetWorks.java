@@ -4785,13 +4785,27 @@ public class NetWorks extends RetrofitUtils {
             callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
             return;
         }
-        String params = ToolsUtils.getBase64Params(maps);
+        Preferences.init(MyApplication.getInstance().getApplicationContext());
+        String myKey = Preferences.getLocalKey();
+        String params = ToolsUtils.getAESParams(maps, myKey);
+//        String params = ToolsUtils.getBase64Params(maps);
         Call<ResultBean> resultBeanCall = service.renzhengFirst(token,params);
         resultBeanCall.enqueue(new Callback<ResultBean>() {
             @Override
             public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
                 ResultBean<String> resultBean = response.body();
-                setResponseWithNoData(resultBean, callback);
+//                setResponseWithNoData(resultBean, callback);
+                if (resultBean == null) {
+                    /*若返回值为空，说明访问路径错误或连接发生错误*/
+                    resultBean = new ResultBean<>();
+                }
+                /*成功返回*/
+                if (resultBean.getCode() == ErrorHandler.RESPONSE_SUCCESS) {
+                    /*code正确，则成功*/
+                    callback.onSuccess(null);
+                } else {
+                    callback.onError(resultBean.getCode(), resultBean.getData());
+                }
             }
 
             @Override

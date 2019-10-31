@@ -408,7 +408,7 @@ public class PersonalFragment extends BaseFragment {
     private void start2Certification(String verifyToken) {
         RPSDK.start(verifyToken, mContext, new RPSDK.RPCompletedListener() {
             @Override
-            public void onAuditResult(RPSDK.AUDIT audit) {
+            public void onAuditResult(RPSDK.AUDIT audit, String s) {
                 LogUtils.w("realName", "阿里认证结果：" + audit);
                 if (TextUtils.isEmpty(taskId)) {
                     return;

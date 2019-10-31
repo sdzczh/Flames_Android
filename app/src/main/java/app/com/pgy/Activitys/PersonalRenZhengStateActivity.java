@@ -72,12 +72,14 @@ public class PersonalRenZhengStateActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
+                setResult(RESULT_OK);
                 finish();
                 break;
             case R.id.tv_state_tofabi:
                 EventBus.getDefault().post(new EventMainChangeState(CHANGE_TO_C2C));
                 Intent intent1 = new Intent();
                 intent1.putExtra("state",0);
+                intent1.putExtra("finish",true);
                 setResult(RESULT_OK,intent1);
                 finish();
                 break;
@@ -88,5 +90,11 @@ public class PersonalRenZhengStateActivity extends BaseActivity {
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        finish();
     }
 }

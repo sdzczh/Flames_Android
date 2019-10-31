@@ -100,10 +100,14 @@ public class PersonalRenZhengFirstActivity extends BaseActivity {
             @Override
             public void onError(int errorCode, String reason) {
                 hideLoading();
+//                onFail(errorCode, reason);
+                showToast(reason);
+
                 if (errorCode == 30039){
-                    toStateActivity(false);
+//                    toStateActivity(false);
+//                    showToast(reason);
                 }else {
-                    onFail(errorCode, reason);
+
                 }
             }
         });

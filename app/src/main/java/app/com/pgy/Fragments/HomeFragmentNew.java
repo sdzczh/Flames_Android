@@ -3,6 +3,7 @@ package app.com.pgy.Fragments;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidkun.xtablayout.XTabLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import org.greenrobot.eventbus.EventBus;
@@ -128,6 +133,8 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     ImageView ivMarkerUp;
     @BindView(R.id.iv_fragment_home_down)
     ImageView ivMarkerDown;
+    @BindView(R.id.srl_fragment_home_refresh)
+    SmartRefreshLayout srlRefresh;
 
     private List<BannerInfo> slides;
     private boolean isShow = true;
@@ -175,6 +182,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+
         for (String name : fragmentsName) {
             stabFragmentHomeMarket.addTab(stabFragmentHomeMarket.newTab().setText(name));
         }
@@ -203,8 +211,15 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
             }
         });
-
-        getHomeInfo();
+        srlRefresh.setEnableLoadMore(false);
+        srlRefresh.setRefreshHeader(new ClassicsHeader(getContext()));
+        srlRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                getHomeInfo();
+            }
+        });
+        srlRefresh.autoRefresh();
     }
 
 
@@ -529,6 +544,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         NetWorks.getHome(Preferences.getAccessToken(), map, new getBeanCallback<HomeInfo>() {
             @Override
             public void onSuccess(HomeInfo homeInfo) {
+                srlRefresh.finishRefresh(true);
                 mHomeInfo = homeInfo;
                 initMarket();
                 updateLogin();
@@ -539,7 +555,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
             @Override
             public void onError(int errorCode, String reason) {
-
+                srlRefresh.finishRefresh(false);
                 onFail(errorCode, reason);
                 mHomeInfo = null;
                 initMarket();
