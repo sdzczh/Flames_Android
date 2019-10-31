@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
@@ -56,7 +57,7 @@ public class PosterNewActivity extends PermissionActivity {
     @BindView(R.id.ll_activity_posters_share_save)
     LinearLayout llActivityPostersShareSave;
     @BindView(R.id.tv_activity_posters_share_cancel)
-    LinearLayout tvActivityPostersShareCancel;
+    TextView tvActivityPostersShareCancel;
     private String qrCode;
     @Override
     public int getContentViewId() {
@@ -245,4 +246,11 @@ public class PosterNewActivity extends PermissionActivity {
         }
         return type;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hideLoading();
+    }
+
 }

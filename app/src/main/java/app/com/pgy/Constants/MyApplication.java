@@ -80,7 +80,7 @@ public class MyApplication extends MultiDexApplication {
          *
          * 1106805242：kdG9Al02koh2tHhy
          * */
-        PlatformConfig.setWeixin("wx5d1d50cdcb937ca1","acc9b27f503b0bd5241a1a6c3b656ba8");
+        PlatformConfig.setWeixin("wx8d7486d6ff89998b","edd55e87062b379010cf193b57d3804d");
 //        PlatformConfig.setQQZone("1106805242","kdG9Al02koh2tHhy");
     }
 

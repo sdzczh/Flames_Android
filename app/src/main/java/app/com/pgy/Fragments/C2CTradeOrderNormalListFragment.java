@@ -78,8 +78,8 @@ public class C2CTradeOrderNormalListFragment extends BaseListFragment {
         if (adapter == null) {
             adapter = new C2CTradeOrderListNewAdapter(mContext);
         }
-
-        coinType =  getArguments().getInt("coinType");
+        coinType = Preferences.getC2CCoin();
+//        coinType =  getArguments().getInt("coinType");
         tradeType = getArguments().getInt("tradeType",0);
     }
 
@@ -103,6 +103,7 @@ public class C2CTradeOrderNormalListFragment extends BaseListFragment {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(EventC2cTradeCoin c2cCoinChange) {
+        LogUtils.e("C2CTradeOrderNormalListFragment",tradeType+"收到广播");
         coinType = c2cCoinChange.getCoinType();
         onRefresh();
     }

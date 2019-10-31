@@ -420,6 +420,8 @@
         <activity android:name=".Activitys.C2CEntrustDetailsNewActivity" />
         <activity android:name=".Activitys.BannerListActivity" />
         <activity android:name=".Activitys.PosterNewActivity" />
+        <activity android:name=".Activitys.PersonalRenZhengFirstActivity" />
+        <activity android:name=".Activitys.PersonalRenZhengStateActivity" />
 
         <!-- 第三方的推送 权限 广播 和服务 -->
 

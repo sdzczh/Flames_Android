@@ -25,7 +25,10 @@ import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.spinnerSingleChooseListener;
 import app.com.pgy.Models.Beans.EventBean.EventC2cFragment;
 import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
+import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.R;
+import app.com.pgy.Utils.LogUtils;
+import app.com.pgy.Utils.LoginUtils;
 import app.com.pgy.Widgets.CoinTypeListPopupwindow;
 import app.com.pgy.im.utils.Resource;
 import butterknife.BindView;
@@ -103,6 +106,10 @@ public class C2CTradeFragment extends BaseFragment {
         if (coinType < 0) {
             c2cCoinTypes = getC2cCoinList();
             coinType = c2cCoinTypes.size() > 0 ? c2cCoinTypes.get(0) : 0;
+            if (coinType < 0){
+                coinType = 8;
+            }
+            Preferences.setC2CCoin(coinType);
         }
 
         tvTitle.setText(getCoinName(coinType) + "/CNY");
@@ -124,10 +131,44 @@ public class C2CTradeFragment extends BaseFragment {
                         hideLineView(1);
                         break;
                     case R.id.rb_fragment_trade_c2c_tab3:
-                        hideLineView(2);
+                        if (LoginUtils.isLogin(getActivity())){
+                            hideLineView(2);
+                        }else {
+                            switch (vpContent.getCurrentItem()) {
+                                case 0:
+                                    rbFragmentTradeC2cTab1.setChecked(true);
+                                    break;
+                                case 1:
+                                    rbFragmentTradeC2cTab2.setChecked(true);
+                                    break;
+                                case 2:
+                                    rbFragmentTradeC2cTab3.setChecked(true);
+                                    break;
+                                case 3:
+                                    rbFragmentTradeC2cTab4.setChecked(true);
+                                    break;
+                            }
+                        }
                         break;
                     case R.id.rb_fragment_trade_c2c_tab4:
-                        hideLineView(3);
+                        if (LoginUtils.isLogin(getActivity())){
+                            hideLineView(3);
+                        }else {
+                            switch (vpContent.getCurrentItem()) {
+                                case 0:
+                                    rbFragmentTradeC2cTab1.setChecked(true);
+                                    break;
+                                case 1:
+                                    rbFragmentTradeC2cTab2.setChecked(true);
+                                    break;
+                                case 2:
+                                    rbFragmentTradeC2cTab3.setChecked(true);
+                                    break;
+                                case 3:
+                                    rbFragmentTradeC2cTab4.setChecked(true);
+                                    break;
+                            }
+                        }
                         break;
                 }
             }
@@ -148,10 +189,18 @@ public class C2CTradeFragment extends BaseFragment {
                         rbFragmentTradeC2cTab2.setChecked(true);
                         break;
                     case 2:
-                        rbFragmentTradeC2cTab3.setChecked(true);
+                        if (LoginUtils.isLogin(getActivity())){
+                            rbFragmentTradeC2cTab3.setChecked(true);
+                        }else {
+                            vpContent.setCurrentItem(1);
+                        }
                         break;
                     case 3:
-                        rbFragmentTradeC2cTab4.setChecked(true);
+                        if (LoginUtils.isLogin(getActivity())){
+                            rbFragmentTradeC2cTab4.setChecked(true);
+                        }else {
+                            vpContent.setCurrentItem(0);
+                        }
                         break;
                 }
             }
@@ -177,7 +226,9 @@ public class C2CTradeFragment extends BaseFragment {
                         rbFragmentTradeC2cTab2.setChecked(true);
                         break;
                     case 2:
+
                         rbFragmentTradeC2cTab3.setChecked(true);
+
                         break;
                     case 3:
                         rbFragmentTradeC2cTab4.setChecked(true);
@@ -306,14 +357,17 @@ public class C2CTradeFragment extends BaseFragment {
                 }
                 break;
             case R.id.tv_tradeC2C_business:
-                showRoleLayout(false);
-                if (role != BUSINESS){
-                    role = BUSINESS;
-                    tvTradeC2CBusiness.setSelected(true);
-                    tvTradeC2CNormal.setSelected(false);
-                    activityTradeC2CTitleRight.setText("商家");
-                    updateBusiness();
+                if (LoginUtils.isLogin(getActivity())){
+                    showRoleLayout(false);
+                    if (role != BUSINESS){
+                        role = BUSINESS;
+                        tvTradeC2CBusiness.setSelected(true);
+                        tvTradeC2CNormal.setSelected(false);
+                        activityTradeC2CTitleRight.setText("商家");
+                        updateBusiness();
+                    }
                 }
+
                 break;
             case R.id.ll_tradeC2C_role:
                 showRoleLayout(false);
@@ -351,6 +405,7 @@ public class C2CTradeFragment extends BaseFragment {
                         return;
                     }
                     coinType = getC2cCoinList().get(position);
+                    Preferences.setC2CCoin(coinType);
                     tvTitle.setText(getCoinName(coinType) + "/CNY");
                     EventBus.getDefault().post(new EventC2cTradeCoin(coinType));
                 }
@@ -380,6 +435,23 @@ public class C2CTradeFragment extends BaseFragment {
                 vpContent2.setCurrentItem(event.getIndex());
             }
 
+        }
+    }
+
+    /**
+     * 登录状态监听
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Event(EventLoginState loginState) {
+        LogUtils.e(TAG, "首页是否登录==" + loginState.isLoged());
+        if (!isLogin()){
+            if (role != NORMAL){
+                tvTradeC2CBusiness.setSelected(false);
+                tvTradeC2CNormal.setSelected(true);
+                role = NORMAL;
+                activityTradeC2CTitleRight.setText("普通");
+                updateNormal();
+            }
         }
     }
 

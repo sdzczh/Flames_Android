@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Models.Beans.EventBean.EventGoodsEntrustChange;
+import app.com.pgy.Models.Beans.EventBean.EventTradeCancelAll;
 import butterknife.BindView;
 import app.com.pgy.Adapters.GoodsEntrustListAdapter;
 import app.com.pgy.Constants.Preferences;
@@ -61,14 +62,6 @@ public class TradeGoodsCurrentEntrustListFragment extends BaseListFragment imple
         return R.layout.fragment_baselist;
     }
 
-    @Override
-    public void onDestroy() {
-        /*解除顶部币对币监听*/
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
-        super.onDestroy();
-    }
 
     @Override
     protected void initData() {
@@ -204,5 +197,51 @@ public class TradeGoodsCurrentEntrustListFragment extends BaseListFragment imple
                 hideLoading();
             }
         });
+    }
+
+    private void cancelAll(){
+//        if (adapter.getAllData().size()  < 1){
+//            return;
+//        }
+        String ids = "";
+        for ( Entrust.ListBean item :adapter.getAllData()){
+            ids += item.getId()+",";
+        }
+        ids = ids.substring(0,ids.length()-1);
+        showLoading(null);
+        Map<String, Object> map = new HashMap<>();
+        map.put("ids", ids);
+        map.put("deviceNum", Preferences.getDeviceId());
+        map.put("systemType", StaticDatas.SYSTEMTYPE_ANDROID);
+        map.put("timeStamp", TimeUtils.getUpLoadTime());
+        NetWorks.canceledAllEntrust(Preferences.getAccessToken(), map, new getBeanCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                hideLoading();
+                showToast("撤销当前委托成功");
+                LogUtils.w(TAG, "撤销当前委托成功");
+                EventBus.getDefault().post(new EventC2cCancelEntrust(true));
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                onFail(errorCode, reason);
+                hideLoading();
+            }
+        });
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void cancelEvent(EventTradeCancelAll event){
+        if (event != null && event.isCancel()){
+            cancelAll();
+        }
+    }
+    @Override
+    public void onDestroyOptionsMenu() {
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+        super.onDestroyOptionsMenu();
     }
 }

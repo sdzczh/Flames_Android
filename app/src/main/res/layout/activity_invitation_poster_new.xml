@@ -24,57 +24,63 @@
             android:layout_marginBottom="10dp"
             android:text="推荐给好友"/>
     </FrameLayout>
-    <LinearLayout
-        android:id="@+id/ll_activity_posters_share_view"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@mipmap/poster_popup_bg"
-        android:gravity="center_horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/ll_activity_posters_share_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/poster_logo"
-            android:layout_marginTop="65dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="全球领先的数字资产交易平台"
-            android:textColor="#ffffffff"
-            android:textSize="21sp"
-            android:layout_marginTop="20dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="安全 · 稳定 · 可信"
-            android:textColor="#99ffffff"
-            android:textSize="12sp"
-            android:layout_marginTop="15dp"/>
-        <FrameLayout
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:background="@mipmap/poster_qr_bg"
-            android:layout_marginTop="60dp">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@mipmap/poster_popup_bg"
+            android:gravity="center_horizontal">
             <ImageView
-                android:id="@+id/iv_activity_posters_share_qrcode"
-                android:layout_width="114dp"
-                android:layout_height="114dp"
-                android:layout_gravity="center"/>
-        </FrameLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描二维码即可下载PGY APP"
-            android:textColor="#ffffffff"
-            android:textSize="12sp"
-            android:layout_marginTop="15dp"/>
-    </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/poster_logo"
+                android:layout_marginTop="65dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全球领先的数字资产交易平台"
+                android:textColor="#ffffffff"
+                android:textSize="21sp"
+                android:layout_marginTop="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="安全 · 稳定 · 可信"
+                android:textColor="#99ffffff"
+                android:textSize="12sp"
+                android:layout_marginTop="15dp"/>
+            <FrameLayout
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:background="@mipmap/poster_qr_bg"
+                android:layout_marginTop="60dp">
+                <ImageView
+                    android:id="@+id/iv_activity_posters_share_qrcode"
+                    android:layout_width="114dp"
+                    android:layout_height="114dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扫描二维码即可下载PGY APP"
+                android:textColor="#ffffffff"
+                android:textSize="12sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="50dp"/>
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="95dp"

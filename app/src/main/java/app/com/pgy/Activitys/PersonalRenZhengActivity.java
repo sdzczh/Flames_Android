@@ -1,5 +1,6 @@
 package app.com.pgy.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,6 +22,7 @@ import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import app.com.pgy.Models.Beans.RealNameResult;
 import app.com.pgy.Models.Beans.RenZhengBean;
 import app.com.pgy.Models.Beans.StringNameBean;
+import app.com.pgy.Models.Beans.User;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
@@ -101,14 +103,14 @@ public class PersonalRenZhengActivity extends BaseActivity {
             case R.id.tv_activity_renzheng_to1:
                 // 跳转实名认证
                 if (LoginUtils.isLogin(this)){
-                    if (Preferences.getLocalUser().isIdCheckFlag()) {
-                        showToast("您已完成实名认证");
-                        return;
-                    }
-                    start2RealName();
+                    Intent intent = new Intent(mContext,PersonalRenZhengFirstActivity.class);
+                    startActivityForResult(intent,600);
                 }
                 break;
             case R.id.tv_activity_renzheng_to2:
+                if (LoginUtils.isLogin(this)){
+                    start2RealName();
+                }
                 break;
             case R.id.tv_activity_renzheng_to3:
                 break;
@@ -139,9 +141,10 @@ public class PersonalRenZhengActivity extends BaseActivity {
 
     private void updateView(RenZhengBean renZhengBean){
         if (renZhengBean != null){
+            Preferences.saveUserIdStatus(renZhengBean.getAuthState());
+            EventBus.getDefault().post(new EventRealName(true));
             llActivityRenzhengInfo.setVisibility(View.VISIBLE);
-            tvActivityRenzhengName.setText(renZhengBean.getUserName());
-            tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
+
             tvActivityRenzhengContent1.setText("认证后可以提币，24小时限额 "+renZhengBean.getWithdrawQuota1()+" "+"\n认证后可以法币交易，单笔限额 "+renZhengBean.getC2cQuota1()+" CNY");
             tvActivityRenzhengContent2.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota2()+" "+"\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota2()+" CNY");
             tvActivityRenzhengContent3.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota3()+" "+"\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota3()+" CNY");
@@ -155,18 +158,26 @@ public class PersonalRenZhengActivity extends BaseActivity {
             llActivityRenzhengThreeFinished.setVisibility(View.GONE);
             tvActivityRenzhengDesc3.setVisibility(View.GONE);
             if (renZhengBean.getAuthState() == 0){
+                tvActivityRenzhengName.setText("未认证");
+                tvActivityRenzhengTel.setText("");
                 tvActivityRenzhengTo1.setVisibility(View.VISIBLE);
                 tvActivityRenzhengDesc2.setVisibility(View.VISIBLE);
                 tvActivityRenzhengDesc3.setVisibility(View.VISIBLE);
             }else if (renZhengBean.getAuthState() == 1){
+                tvActivityRenzhengName.setText(renZhengBean.getUserName());
+                tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
                 llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
                 tvActivityRenzhengTo2.setVisibility(View.VISIBLE);
                 tvActivityRenzhengDesc3.setVisibility(View.VISIBLE);
             }else if (renZhengBean.getAuthState() == 2){
+                tvActivityRenzhengName.setText(renZhengBean.getUserName());
+                tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
                 llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
                 llActivityRenzhengTwoFinished.setVisibility(View.VISIBLE);
                 tvActivityRenzhengTo3.setVisibility(View.VISIBLE);
             }else if (renZhengBean.getAuthState() == 3){
+                tvActivityRenzhengName.setText(renZhengBean.getUserName());
+                tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
                 llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
                 llActivityRenzhengTwoFinished.setVisibility(View.VISIBLE);
                 llActivityRenzhengThreeFinished.setVisibility(View.VISIBLE);
@@ -179,6 +190,7 @@ public class PersonalRenZhengActivity extends BaseActivity {
      * 去请求实名认证token
      */
     private void start2RealName() {
+        showLoading(tvTitle);
         Map<String, Object> map = new HashMap<>();
         map.put("deviceNum", Preferences.getDeviceId());
         map.put("systemType", SYSTEMTYPE_ANDROID);
@@ -186,6 +198,7 @@ public class PersonalRenZhengActivity extends BaseActivity {
         NetWorks.getRealNameToken(Preferences.getAccessToken(), map, new getBeanCallback<RealNameResult>() {
             @Override
             public void onSuccess(RealNameResult realNameResult) {
+                hideLoading();
                 if (realNameResult == null) {
                     realNameResult = new RealNameResult();
                 }
@@ -202,6 +215,7 @@ public class PersonalRenZhengActivity extends BaseActivity {
 
             @Override
             public void onError(int errorCode, String reason) {
+                hideLoading();
                 onFail(errorCode, reason);
                 /*网络错误*/
             }
@@ -249,7 +263,9 @@ public class PersonalRenZhengActivity extends BaseActivity {
                 Preferences.saveUserName(realNameStatus.getName());
                 LogUtils.w("realName", "userName:" + realNameStatus.getName());
                 Preferences.setIsHasRealName(true);
+                Preferences.saveUserIdStatus(2);
                 EventBus.getDefault().post(new EventRealName(true));
+                initRezheng();
             }
 
             @Override
@@ -262,5 +278,22 @@ public class PersonalRenZhengActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 600 && resultCode == RESULT_OK){
+            if (data != null){
+                if (!data.getBooleanExtra("finish",false)){
+                    if (data.getIntExtra("state",0) == 1){
+                        start2RealName();
+                    }else {
+                        initRezheng();
+                    }
+                }else {
+                    finish();
+                }
 
+            }
+        }
+    }
 }

@@ -252,10 +252,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         if (receiver != null) {
             getLocalBroadcastManager().unregisterReceiver(receiver);
         }
-        /*解除顶部币对币监听*/
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
+
         super.onDestroy();
     }
 
@@ -1267,5 +1264,15 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         if (getUserVisibleHint() && event.getType() == EventMarketScene.TYPE_TRADE_GOODS) {
             getListDataFromNet();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        /*解除顶部币对币监听*/
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+        super.onDestroyView();
+
     }
 }

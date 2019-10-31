@@ -83,20 +83,20 @@ public class PersonalGroupsActivity extends PermissionActivity {
                 }
             }
         });
-        piv_wx.getErweimaView().setOnClickListener(new View.OnClickListener() {
+        piv_wx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (WxGroup != null){
+                if (WxGroup != null && !TextUtils.isEmpty(WxGroup.getImgpath())){
                     showView(WxGroup.getImgpath(),"蒲公英官方微信群");
                 }else {
                     showToast("获取数据为空！");
                 }
             }
         });
-        piv_gongzong.getErweimaView().setOnClickListener(new View.OnClickListener() {
+        piv_gongzong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (GZGroup != null){
+                if (GZGroup != null&& !TextUtils.isEmpty(GZGroup.getImgpath())){
                     showView(GZGroup.getImgpath(),"蒲公英官方公众号");
                 }else {
                     showToast("获取数据为空！");
@@ -180,10 +180,10 @@ public class PersonalGroupsActivity extends PermissionActivity {
                 if (groupsInfo.getList() == null){
                     groupsInfo.setList(new HashMap<Integer, GroupsInfo.Group>());
                 }
-                QQGroup = groupsInfo.getList().get(0);
+//                QQGroup = groupsInfo.getList().get(0);
                 WxGroup = groupsInfo.getList().get(1);
                 GZGroup = groupsInfo.getList().get(2);
-                WbGroup = groupsInfo.getList().get(3);
+//                WbGroup = groupsInfo.getList().get(3);
                 updateView();
             }
 

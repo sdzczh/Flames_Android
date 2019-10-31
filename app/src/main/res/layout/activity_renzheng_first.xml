@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txt_bg">
+    <include layout="@layout/view_personal_title"/>
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/title_text"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="30dp"
+        android:text="请输入身份信息"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="20dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <app.com.pgy.Widgets.PersonalItemInputView
+                    android:id="@+id/piiv_activity_renzheng_name"
+                    style="@style/PersonalInputItem"
+                    app:tv_input_item_left_text="姓名"
+                    app:tv_input_item_left_color="@color/txt_title"
+                    app:edt_input_item_right_hint="姓名"
+                    app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
+                    app:edt_input_item_right_color="@color/txt_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp">
+
+                </app.com.pgy.Widgets.PersonalItemInputView>
+                <include layout="@layout/view_divider_line"/>
+                <app.com.pgy.Widgets.PersonalItemInputView
+                    android:id="@+id/piiv_activity_renzheng_code"
+                    style="@style/PersonalInputItem"
+                    app:tv_input_item_left_text="身份证号"
+                    app:tv_input_item_left_color="@color/txt_title"
+                    app:edt_input_item_right_hint="身份证号"
+                    android:layout_marginLeft="10dp"
+                    app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
+                    app:edt_input_item_right_color="@color/txt_content"
+                    android:layout_marginBottom="5dp">
+
+                </app.com.pgy.Widgets.PersonalItemInputView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/tv_activity_renzheng_submit"
+        style="@style/SubmitTextView"
+        android:text="提交"
+        android:layout_marginBottom="34dp"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

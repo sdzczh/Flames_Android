@@ -131,14 +131,6 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        coinType = getArguments().getInt("coinType");
-        coinName = getCoinName(coinType);
-        isBuy = getArguments().getBoolean("isBuy");
-    }
-
-    @Override
     protected void initView(Bundle savedInstanceState) {
         if (isBuy) {
             fragmentC2cBusinessPublishPriceTitle.setText("买入价格");
@@ -181,6 +173,9 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
 
     @Override
     protected void initData() {
+        coinType = Preferences.getC2CCoin();
+        coinName = getCoinName(coinType);
+        isBuy = getArguments().getBoolean("isBuy");
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
@@ -266,7 +261,8 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void EventCoin(EventC2cTradeCoin eventC2cTradeCoin) {
-       if (eventC2cTradeCoin.getCoinType() != coinType){
+        LogUtils.e("C2cTradeBuyOrSaleBusinessFragment",isBuy+"收到广播");
+        if (eventC2cTradeCoin.getCoinType() != coinType){
            coinType = eventC2cTradeCoin.getCoinType();
            coinName = getCoinName(coinType);
            fragmentC2cBusinessPublishAvailTitle.setText(coinName+"  余额");

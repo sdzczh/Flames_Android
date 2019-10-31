@@ -340,6 +340,14 @@ public class PersonalFragment extends BaseFragment {
     public void EventUserInfoCHange(EventUserInfoChange change) {
         refreshUserMessage();
     }
+    /**
+     * 用户信息改变状态监听
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void EventUserRealnameCHange(EventRealName change) {
+        refreshUserMessage();
+    }
+
 
 
     @Override

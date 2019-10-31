@@ -17,6 +17,7 @@ import app.com.pgy.Activitys.C2CEntrustDetailsNewActivity;
 import app.com.pgy.Adapters.C2CNormalBuyNewAdapter;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCoinChange;
 import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
+import app.com.pgy.Utils.LoginUtils;
 import butterknife.BindView;
 import app.com.pgy.Activitys.C2CEntrustDetailsActivity;
 import app.com.pgy.Activitys.C2CPersonalBusinessActivity;
@@ -81,16 +82,10 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        coinType = getArguments().getInt("coinType",-1);
+    protected void initData() {
+        coinType = Preferences.getC2CCoin();
         isBuy = getArguments().getBoolean("isBuy");
         LogUtils.w(TAG,"onCreate"+isBuy);
-//        coinType = Preferences.getC2CCoin();
-    }
-
-    @Override
-    protected void initData() {
         if (adapter == null){
             adapter = new C2CNormalBuyNewAdapter(mContext,isBuy,coinType);
         }
@@ -102,7 +97,7 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
         adapter.setPositionCallback(new clickHeadCallback() {
             @Override
             public void clickHead(int pos) {
-                if (!isLogin()){
+                if (!LoginUtils.isLogin(getActivity())){
                     showToast(R.string.unlogin);
                     return;
                 }
@@ -328,6 +323,7 @@ public class C2cTradeBuyOrSaleNormalFragment extends BaseListFragment {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(EventC2cTradeCoin c2cCoinChange) {
+        LogUtils.e("C2cTradeBuyOrSaleNormalFragment",isBuy+"收到广播");
         coinType = c2cCoinChange.getCoinType();
         adapter.setCoinType(coinType);
         onRefresh();

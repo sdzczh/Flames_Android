@@ -277,6 +277,16 @@ public final class Preferences {
         return editor.commit();
     }
 
+    /**将个人信息昵称缓存在本地*/
+    public static boolean saveUserIdStatus(int id){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putInt(USER_IDSTATUS,id);
+        return editor.commit();
+    }
+    public static int getUserIdStatus(){
+        return mSharedPreferences.getInt(USER_IDSTATUS, 0);
+    }
+
     /**将个人信息手机号缓存在本地*/
     public static boolean saveUserPhone(String phone){
         SharedPreferences.Editor editor = mSharedPreferences.edit();

@@ -421,7 +421,7 @@ public class NetWorks extends RetrofitUtils {
          * 现货一键撤销
          */
         @FormUrlEncoded
-        @POST("/orders/cancelall.action")
+        @POST("/order/allOrderCancel.action")
         Call<ResultBean> canceledAllEntrust(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
@@ -1181,6 +1181,13 @@ public class NetWorks extends RetrofitUtils {
         @Headers(CACHE_CONTROL_NETWORK)
         @GET("/web/downloadInfo.action")
         Call<ResultBean<String>> getShareQrCode(@Query("params") String params);
+
+        /**
+         * 一级实名认证
+         */
+        @FormUrlEncoded
+        @POST("/realname/level1.action")
+        Call<ResultBean> renzhengFirst(@Header("token") String token, @Field("params") String params);
     }
 
     /**
@@ -4770,6 +4777,32 @@ public class NetWorks extends RetrofitUtils {
             }
         });
     }
+
+
+
+    public static void renzhengFirst(String token, Map<String, Object> maps, final getBeanCallback callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean> resultBeanCall = service.renzhengFirst(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean>() {
+            @Override
+            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
+                ResultBean<String> resultBean = response.body();
+                setResponseWithNoData(resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+
+
 
 
     /**

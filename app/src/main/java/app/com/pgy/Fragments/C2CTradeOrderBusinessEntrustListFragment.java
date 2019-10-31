@@ -56,12 +56,6 @@ public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        coinType = getArguments().getInt("coinType");
-    }
-
-    @Override
     public int getContentViewId() {
         return R.layout.fragment_baselist_margin;
     }
@@ -77,6 +71,7 @@ public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
 
     @Override
     protected void initData() {
+        coinType = Preferences.getC2CCoin();
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
@@ -130,6 +125,7 @@ public class C2CTradeOrderBusinessEntrustListFragment extends BaseListFragment {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(EventC2cTradeCoin c2cCoinChange) {
+        LogUtils.e("C2CTradeOrderBusinessEntrustListFragment",tradeType+"收到广播");
         coinType = c2cCoinChange.getCoinType();
         onRefresh();
     }

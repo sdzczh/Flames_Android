@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.androidkun.xtablayout.XTabLayout;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,7 @@ import app.com.pgy.Adapters.ViewPagerAdapter;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.TradeGoodsCurrentEntrustListFragment;
 import app.com.pgy.Fragments.TradeGoodsHistoryListFragment;
+import app.com.pgy.Models.Beans.EventBean.EventTradeCancelAll;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
 import butterknife.BindView;
@@ -138,6 +141,7 @@ public class TradeGoodsEntrustListActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_title_right:
+                EventBus.getDefault().post(new EventTradeCancelAll(true));
                 break;
         }
     }

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Models.Beans.EventBean.EventC2cCancelEntrust;
 import app.com.pgy.Models.Beans.EventBean.EventGoodsEntrustChange;
 import butterknife.BindView;
 import app.com.pgy.Activitys.GoodsEntrustDetailsActivity;
@@ -69,14 +70,12 @@ public class TradeGoodsHistoryListFragment extends BaseListFragment{
         }
     }
 
-
     @Override
-    public void onDestroy() {
-        /*解除顶部币对币监听*/
+    public void onDestroyView() {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
-        super.onDestroy();
+        super.onDestroyView();
     }
 
     @Override
@@ -105,6 +104,13 @@ public class TradeGoodsHistoryListFragment extends BaseListFragment{
         perCoin = goodsCoinChange.getPerCoinType();
         tradeCoin = goodsCoinChange.getTradeCoinType();
         onRefresh();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Event2(EventC2cCancelEntrust event) {
+        if (event != null && event.isCanceled()){
+            onRefresh();
+        }
     }
 
     @Override
