@@ -61,7 +61,8 @@
             </app.com.pgy.Widgets.PersonalItemView>
             <View
                 style="@style/PersonalLine"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:visibility="gone"/>
             <app.com.pgy.Widgets.PersonalItemView
                 android:id="@+id/piv_activity_personal_groups_weibo"
                 style="@style/PersonalItem"
@@ -77,7 +78,8 @@
             </app.com.pgy.Widgets.PersonalItemView>
             <View
                 style="@style/PersonalLine"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:visibility="gone"/>
             <app.com.pgy.Widgets.PersonalItemView
                 style="@style/PersonalItem"
                 android:visibility="gone"

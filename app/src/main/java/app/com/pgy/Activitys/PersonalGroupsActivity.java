@@ -79,7 +79,7 @@ public class PersonalGroupsActivity extends PermissionActivity {
                 if (QQGroup != null){
                     showView(QQGroup.getImgpath(),"蒲公英官方QQ群");
                 }else {
-                    showToast("获取数据为空！");
+                    showToast("正在开发中！");
                 }
             }
         });
@@ -89,7 +89,7 @@ public class PersonalGroupsActivity extends PermissionActivity {
                 if (WxGroup != null && !TextUtils.isEmpty(WxGroup.getImgpath())){
                     showView(WxGroup.getImgpath(),"蒲公英官方微信群");
                 }else {
-                    showToast("获取数据为空！");
+                    showToast("正在开发中！");
                 }
             }
         });
@@ -99,7 +99,7 @@ public class PersonalGroupsActivity extends PermissionActivity {
                 if (GZGroup != null&& !TextUtils.isEmpty(GZGroup.getImgpath())){
                     showView(GZGroup.getImgpath(),"蒲公英官方公众号");
                 }else {
-                    showToast("获取数据为空！");
+                    showToast("正在开发中！");
                 }
             }
         });
@@ -109,7 +109,7 @@ public class PersonalGroupsActivity extends PermissionActivity {
                 if (WbGroup != null){
                     showView(WbGroup.getImgpath(),"蒲公英官方微博");
                 }else {
-                    showToast("获取数据为空！");
+                    showToast("正在开发中！");
                 }
             }
         });

@@ -1,6 +1,8 @@
 package app.com.pgy.Activitys;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.com.pgy.Activitys.Base.BaseActivity;
+import app.com.pgy.Activitys.Base.PermissionActivity;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.EventBean.EventRealName;
@@ -39,7 +42,7 @@ import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 /**
  * Create by YX on 2019/9/27 0027
  */
-public class PersonalRenZhengActivity extends BaseActivity {
+public class PersonalRenZhengActivity extends PermissionActivity {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.tv_title)
@@ -85,7 +88,15 @@ public class PersonalRenZhengActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        //身份认证等级 0未认证 1一级 2二级 3三级
+        tvActivityRenzhengTo1.setVisibility(View.GONE);
+        llActivityRenzhengOneFinished.setVisibility(View.GONE);
+        tvActivityRenzhengTo2.setVisibility(View.GONE);
+        llActivityRenzhengTwoFinished.setVisibility(View.GONE);
+        tvActivityRenzhengDesc2.setVisibility(View.GONE);
+        tvActivityRenzhengTo3.setVisibility(View.GONE);
+        llActivityRenzhengThreeFinished.setVisibility(View.GONE);
+        tvActivityRenzhengDesc3.setVisibility(View.GONE);
     }
 
     @Override
@@ -108,9 +119,7 @@ public class PersonalRenZhengActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_activity_renzheng_to2:
-                if (LoginUtils.isLogin(this)){
-                    start2RealName();
-                }
+                doRealName();
                 break;
             case R.id.tv_activity_renzheng_to3:
                 showToast("暂未开放");
@@ -187,6 +196,19 @@ public class PersonalRenZhengActivity extends BaseActivity {
         }
     }
 
+    private void doRealName(){
+        if (LoginUtils.isLogin(this)){
+            /*请求读写权限*/
+            checkPermission(new PermissionActivity.CheckPermListener() {
+                @Override
+                public void superPermission() {
+                    start2RealName();
+                }
+            }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        }
+    }
+
     private String taskId;
     /**
      * 去请求实名认证token
@@ -235,14 +257,14 @@ public class PersonalRenZhengActivity extends BaseActivity {
                 if (TextUtils.isEmpty(taskId)) {
                     return;
                 }
-                getRealNameState(taskId);
+
                 if (audit == RPSDK.AUDIT.AUDIT_PASS) { //认证通过
                     //showToast("认证通过");
-
+                    getRealNameState(taskId);
                 } else if (audit == RPSDK.AUDIT.AUDIT_FAIL) { //认证不通过
-                    //showToast("认证不通过");
+                    showToast("认证不通过");
                 } else if (audit == RPSDK.AUDIT.AUDIT_NOT) { //未认证，用户取消
-                    //showToast("未认证，用户取消");
+                    showToast("未认证，用户取消");
                 }
             }
         });
@@ -280,13 +302,13 @@ public class PersonalRenZhengActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 600 && resultCode == RESULT_OK){
             if (data != null){
                 if (!data.getBooleanExtra("finish",false)){
                     if (data.getIntExtra("state",0) == 1){
-                        start2RealName();
+                        doRealName();
                     }else {
                         initRezheng();
                     }
