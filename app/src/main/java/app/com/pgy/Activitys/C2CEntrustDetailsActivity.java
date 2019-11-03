@@ -936,7 +936,7 @@ public class C2CEntrustDetailsActivity extends PermissionActivity {
                     @Override
                     public void superPermission() {
                         LogUtils.w("permission", "BaseUploadPicActivity:读写权限已经获取");
-                        String picName = "COIN收款人" + activityCcEntrustDetailsContentPayPayerName.getRightText() + "的二维码";
+                        String picName = "PGY收款人" + activityCcEntrustDetailsContentPayPayerName.getRightText() + "的二维码";
                         FileUtils.saveBmp2Gallery(mContext, erweimaBitmap, picName);
                     }
                 }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);

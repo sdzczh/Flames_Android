@@ -389,9 +389,15 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         activityCcEntrustDetailsContentOrderNumber.setRightTxt(details.getAmount()+" "+ coinName);
 
         payInfo = details.getPayInfo();
-        initPayAccount(payInfo);
+
         /*获取默认的支付类型0支付宝 1微信 2银行卡，若没有则设为支付宝支付*/
+        if (payInfo != null && payInfo.size() > 0){
+            for (int key : payInfo.keySet()){
+                currentPayType = payInfo.get(key).getType();
+            }
+        }
         currentPayType = ALIPAY;
+        initPayAccount(payInfo);
         /*交易类型 0买入 1卖出*/
         int buyOrSale = details.getOrderType();
         /*订单状态，0代付款 1待确认 2冻结 3已完成 4已取消 5超时取消*/
@@ -904,7 +910,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                     @Override
                     public void superPermission() {
                         LogUtils.w("permission", "BaseUploadPicActivity:读写权限已经获取");
-                        String picName = "COIN收款人" + tvPayTypeAccountName.getText() + "的二维码";
+                        String picName = "PGY收款人" + tvPayTypeAccountName.getText() + "的二维码";
                         FileUtils.saveBmp2Gallery(mContext, erweimaBitmap, picName);
                     }
                 }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -943,7 +949,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                     @Override
                     public void superPermission() {
                         LogUtils.w("permission", "BaseUploadPicActivity:读写权限已经获取");
-                        String picName = "COIN收款人" + payInfo.getName() + "的二维码";
+                        String picName = "PGY收款人" + payInfo.getName() + "的二维码";
                         FileUtils.saveBmp2Gallery(mContext, erweimaBitmap, picName);
                     }
                 }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);

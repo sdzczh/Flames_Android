@@ -365,7 +365,7 @@
             app:iv_item_left_icon_visible="true"
             app:iv_item_left_icon="@mipmap/personal_yibi"
             app:tv_item_left_color="@color/color_525a66"
-            app:tv_item_left_text="COIN精灵"
+            app:tv_item_left_text="PGY精灵"
             app:iv_item_next_visible="true"
             android:visibility="gone"/>
 

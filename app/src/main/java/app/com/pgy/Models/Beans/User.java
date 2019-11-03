@@ -36,6 +36,7 @@ public class User implements Serializable {
     private int sex;
     private String birthday;
     private int idStatus;
+    private int referStatus;
 
     private String uuid;
 
@@ -164,6 +165,14 @@ public class User implements Serializable {
 
     public int getIdStatus() {
         return idStatus;
+    }
+
+    public void setReferStatus(int referStatus) {
+        this.referStatus = referStatus;
+    }
+
+    public int getReferStatus() {
+        return referStatus;
     }
 
     @Override

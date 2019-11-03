@@ -21,7 +21,7 @@
             android:includeFontPadding="false"
             android:textColor="@color/color_292d33"
             android:textSize="20sp"
-            android:text="COIN邀请返佣"/>
+            android:text="PGY邀请返佣"/>
         <TextView
             android:id="@+id/tv_2"
             android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:includeFontPadding="false"
             android:textSize="16sp"
             android:textColor="@color/color_7a8799"
-            android:text="邀您加入COIN，长按识别二维码"
+            android:text="邀您加入PGY，长按识别二维码"
             android:layout_below="@+id/tv_1"
             android:layout_marginTop="7dp"/>
         <ImageView

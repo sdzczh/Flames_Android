@@ -134,15 +134,21 @@ public class PersonalFragment extends BaseFragment {
             tvFragmentPersonalMatterLeve.setText("奖励等级");
             if (user.getIdStatus() == 1){
                 tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level1);
-                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli1);
             }else if (user.getIdStatus() == 2){
                 tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level2);
-                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli2);
             }else if (user.getIdStatus() == 3){
                 tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level3);
-                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli3);
             }else {
                 tvFragmentPersonalRealLevel.setVisibility(View.GONE);
+            }
+
+            if (user.getReferStatus() == 1){
+                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli1);
+            }else if (user.getReferStatus() == 2){
+                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli2);
+            }else if (user.getReferStatus() == 3){
+                tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli3);
+            }else {
                 tvFragmentPersonalMatterLeve.setVisibility(View.GONE);
             }
 
@@ -207,7 +213,7 @@ public class PersonalFragment extends BaseFragment {
 //                    yibijingling = new Configuration.YibiElve();
 //                }
 //                jinglingId = yibijingling.getPhone();
-//                jinglingName = TextUtils.isEmpty(yibijingling.getName()) ? "COIN精灵" : yibijingling.getName();
+//                jinglingName = TextUtils.isEmpty(yibijingling.getName()) ? "PGY精灵" : yibijingling.getName();
 //                String headPath = yibijingling.getHeadPath();
 //                RongIM.getInstance().refreshUserInfoCache(new Friend(jinglingId, jinglingName, Uri.parse(headPath)));
 //                try {
@@ -218,7 +224,7 @@ public class PersonalFragment extends BaseFragment {
 //                }
                 break;
             case R.id.piv_fragment_personal_item_web:
-                /*跳转COIN官网*/
+                /*跳转PGY官网*/
                 intent = new Intent(mContext, WebDetailActivity.class);
                 intent.putExtra("title", "蒲公英官网");
                 intent.putExtra("url", getConfiguration().getIndexUrl());

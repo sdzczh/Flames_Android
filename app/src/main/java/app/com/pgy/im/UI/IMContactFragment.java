@@ -127,7 +127,7 @@ public class IMContactFragment extends BaseFragment implements View.OnClickListe
         }
         String headPath = yibijingling.getHeadPath();
         ImageLoaderUtils.displayCircle(mContext,ivYbAvatar,headPath);
-        jinglingName = TextUtils.isEmpty(yibijingling.getName())?"COIN精灵":yibijingling.getName();
+        jinglingName = TextUtils.isEmpty(yibijingling.getName())?"PGY精灵":yibijingling.getName();
         ivYbName.setText(jinglingName);
         jinglingId = yibijingling.getPhone();
         RongIM.getInstance().refreshUserInfoCache(new Friend(jinglingId,jinglingName, Uri.parse(headPath)));
