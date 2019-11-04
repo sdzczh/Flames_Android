@@ -56,5 +56,5 @@
         android:textSize="11sp"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
-        android:text="COIN红包"/>
+        android:text="PGY红包"/>
 </LinearLayout>

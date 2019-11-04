@@ -37,7 +37,7 @@
                     android:includeFontPadding="false"
                     android:textColor="@color/color_292d33"
                     android:textSize="13sp"
-                    android:text="COIN邀请返佣"
+                    android:text="PGY邀请返佣"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:ellipsize="end"/>
@@ -48,7 +48,7 @@
                     android:includeFontPadding="false"
                     android:textSize="9sp"
                     android:textColor="@color/color_7a8799"
-                    android:text="邀您加入COIN，长按识别二维码"
+                    android:text="邀您加入PGY，长按识别二维码"
                     android:layout_below="@+id/tv1"
                     android:layout_marginTop="4dp"
                     android:maxLines="1"

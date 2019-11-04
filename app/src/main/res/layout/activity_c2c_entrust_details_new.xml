@@ -82,9 +82,9 @@
                         android:id="@+id/activity_ccEntrustDetails_top_orderState"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/color_33"
+                        app:tv_item_left_color="@color/red"
                         app:tv_item_left_text="未付款"
-                        app:tv_item_right_color="@color/color_33"
+                        app:tv_item_right_color="@color/red"
                         app:tv_item_right_text="29m37s"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>

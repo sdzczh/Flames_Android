@@ -52,7 +52,7 @@ public class ZhuanPanViewActivity extends Activity {
 
 
     private void initView() {
-        titleView.setTitle("COIN转盘");
+        titleView.setTitle("PGY转盘");
         titleView.setBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

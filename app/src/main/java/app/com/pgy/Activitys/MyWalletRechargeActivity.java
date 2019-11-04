@@ -166,7 +166,7 @@ public class MyWalletRechargeActivity extends PermissionActivity {
                     @Override
                     public void superPermission() {
                         LogUtils.w("permission","BaseUploadPicActivity:读写权限已经获取");
-                        FileUtils.saveBmp2Gallery(MyWalletRechargeActivity.this,bitmap,"COIN充币二维码_" + coinName);
+                        FileUtils.saveBmp2Gallery(MyWalletRechargeActivity.this,bitmap,"PGY充币二维码_" + coinName);
                     }
                 }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE);
                 break;

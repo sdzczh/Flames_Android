@@ -56,6 +56,7 @@ public final class Preferences {
     private static String USER_UUID = "user_uuid";
     private static String USER_MARKET = "user_markets";
     private static String USER_IDSTATUS = "user_idstatus";
+    private static String USER_REFERSTATUS = "user_referstatus";
 
     private static String ONLY_WIFI = "only_wifi";      //仅在WiFi下
     private static String VERSION_CODE = "version_code";    //当前版本信息
@@ -199,6 +200,7 @@ public final class Preferences {
         editor.putString(USER_BIRTHDAY,user.getBirthday());
         editor.putString(USER_UUID,user.getUuid());
         editor.putInt(USER_IDSTATUS,user.getIdStatus());
+        editor.putInt(USER_REFERSTATUS,user.getReferStatus());
         editor.putInt(USER_SEX,user.getSex());
         editor.putInt(USER_MARKET,-1);
         Map<Integer, User.BindInfoModel> bindInfo = user.getBindInfo();
@@ -267,6 +269,7 @@ public final class Preferences {
         user.setUuid(mSharedPreferences.getString(USER_UUID,""));
         user.setSex(mSharedPreferences.getInt(USER_SEX,0));
         user.setIdStatus(mSharedPreferences.getInt(USER_IDSTATUS,0));
+        user.setReferStatus(mSharedPreferences.getInt(USER_REFERSTATUS,0));
         return user;
     }
 
@@ -286,6 +289,7 @@ public final class Preferences {
     public static int getUserIdStatus(){
         return mSharedPreferences.getInt(USER_IDSTATUS, 0);
     }
+
 
     /**将个人信息手机号缓存在本地*/
     public static boolean saveUserPhone(String phone){

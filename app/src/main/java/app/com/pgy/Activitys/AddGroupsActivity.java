@@ -84,17 +84,17 @@ public class AddGroupsActivity extends PermissionActivity {
             }
             desc = "QQ群号："+group.getKeyval()+"\n" +
                     "第一步：用QQ扫码或搜索QQ群号加入官方QQ群；\n" +
-                    "第二步：将QQ群聊天页面截图，加上个人COIN会员账号（即注册手机号）一起发到公众号里进行人工审核；\n" +
+                    "第二步：将QQ群聊天页面截图，加上个人PGY会员账号（即注册手机号）一起发到公众号里进行人工审核；\n" +
                     "第三步：公众号组核对无误后增加用户算力，算力到账通知将以短信形式发送。";
         }else if (type == 1){
             desc = "扫码添加客服为好友\n" +
                     "第一步：请扫码添加客服为好友，让客服拉你加入官方微信群；\n" +
-                    "第二步：将微信群聊天页面截图，加上个人COIN会员账号（即注册手机号）一起发到公众号里进行人工审核；\n" +
+                    "第二步：将微信群聊天页面截图，加上个人PGY会员账号（即注册手机号）一起发到公众号里进行人工审核；\n" +
                     "第三步：公众号组核对无误后增加用户算力，算力到账通知将以短信形式发送。";
         }else if (type == 2){
-            desc = "公众号：COIN生态社区\n" +
-                    "第一步：扫码或微信搜索“COIN生态社区”公众号，并关注；\n" +
-                    "第二步：将公众号对话截图，加上个人COIN会员账号（即注册手机号）一起发到公众号里进行人工审核；\n" +
+            desc = "公众号：PGY生态社区\n" +
+                    "第一步：扫码或微信搜索“PGY生态社区”公众号，并关注；\n" +
+                    "第二步：将公众号对话截图，加上个人PGY会员账号（即注册手机号）一起发到公众号里进行人工审核；\n" +
                     "第三步：公众号组核对无误后增加用户算力，算力到账通知将以短信形式发送。";
         }
     }
@@ -110,7 +110,7 @@ public class AddGroupsActivity extends PermissionActivity {
                 if (group == null || TextUtils.isEmpty(group.getImgpath())){
                     return;
                 }
-                savePicture(group.getImgpath(),tvTitle.getText()+"COIN"+groupName+"二维码");
+                savePicture(group.getImgpath(),tvTitle.getText()+"PGY"+groupName+"二维码");
                 break;
         }
     }

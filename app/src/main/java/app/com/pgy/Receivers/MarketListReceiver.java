@@ -34,7 +34,7 @@ public class MarketListReceiver extends BroadcastReceiver {
                     List<PushMarketBean.ListBean> marketOneListStr = JsonUtils.stringToArray(response.getInfo(),PushMarketBean.ListBean [].class);
                     if (marketOneListStr == null){
                         marketOneListStr = new ArrayList<>();
-                        LogUtils.w("marketOneList","COIN行情解析失败");
+                        LogUtils.w("marketOneList","PGY行情解析失败");
                     }else {
                         LogUtils.w("marketOneList",marketOneListStr.toString());
                     }

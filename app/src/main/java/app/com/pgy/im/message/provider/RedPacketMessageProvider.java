@@ -193,9 +193,9 @@ public class RedPacketMessageProvider extends IContainerItemProvider.MessageProv
         String title = redPacketMessage.getContent();
         tv_title.setText(title);
         if (redPacketMessage.getPacketType() == 0){
-            tv_bottom.setText("COIN红包");
+            tv_bottom.setText("PGY红包");
         }else {
-            tv_bottom.setText("COIN拼手气红包");
+            tv_bottom.setText("PGY拼手气红包");
         }
     }
 

@@ -337,7 +337,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
     protected void initView(Bundle savedInstanceState) {
         String tradeCoinName = getCoinName(tradeCoin);
         String perCoinName = getCoinName(perCoin);
-        activityKLineTitleTitle.setText((mType == MARKET_ONECOIN ? "COIN" : "主流") + tradeCoinName + "/" + perCoinName);
+        activityKLineTitleTitle.setText(tradeCoinName + "/" + perCoinName);
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         /*添加Layout*/
