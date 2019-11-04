@@ -367,7 +367,7 @@ public class ErrorHandler {
                 showToast("实名认证年龄不合法");
                 break;
             case RESPONSE_ERROR_BUSINESS_REALNAMEIDEXIT:
-                showToast("身份证号已被使用");
+                showToast("身份证号已经在其他账号认证");
                 break;
             case RESPONSE_ERROR_BUSINESS_REALNAMELIMIT:
                 showToast("当天认证次数已到上限");

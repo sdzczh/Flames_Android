@@ -241,6 +241,7 @@
                         android:gravity="center_vertical"
                         android:layout_height="wrap_content">
                         <TextView
+                            android:id="@+id/fragment_tradeGoods_tradeAmount_title"
                             android:text="可买 "
                             android:textColor="#B5B5B7"
                             android:textSize="12sp"

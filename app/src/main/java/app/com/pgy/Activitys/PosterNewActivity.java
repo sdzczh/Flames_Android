@@ -106,7 +106,7 @@ public class PosterNewActivity extends PermissionActivity {
         map.put("deviceNum", Preferences.getDeviceId());
         map.put("systemType", SYSTEMTYPE_ANDROID);
         map.put("timeStamp", TimeUtils.getUpLoadTime());
-        NetWorks.getShareQrCode( map, new getBeanCallback<String>() {
+        NetWorks.getShareQrCode(Preferences.getAccessToken(), map, new getBeanCallback<String>() {
             @Override
             public void onSuccess(String o) {
                 hideLoading();

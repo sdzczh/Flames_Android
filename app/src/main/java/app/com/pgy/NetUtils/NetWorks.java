@@ -1178,9 +1178,9 @@ public class NetWorks extends RetrofitUtils {
         /**
          * 获取二维码内容
          */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/web/downloadInfo.action")
-        Call<ResultBean<String>> getShareQrCode(@Query("params") String params);
+        @FormUrlEncoded
+        @POST("/web/getQCodeInfo.action")
+        Call<ResultBean<String>> getShareQrCode(@Header("token") String token,@Field("params") String params);
 
         /**
          * 一级实名认证
@@ -4761,9 +4761,13 @@ public class NetWorks extends RetrofitUtils {
 
 
 
-    public static void getShareQrCode( Map<String, Object> maps, final getBeanCallback<String> callback){
+    public static void getShareQrCode(String token,Map<String, Object> maps, final getBeanCallback<String> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
         String params = ToolsUtils.getBase64Params(maps);
-        Call<ResultBean<String>> resultBeanCall = service.getShareQrCode(params);
+        Call<ResultBean<String>> resultBeanCall = service.getShareQrCode(token,params);
         resultBeanCall.enqueue(new Callback<ResultBean<String>>() {
             @Override
             public void onResponse(Call<ResultBean<String>> call, Response<ResultBean<String>> response) {

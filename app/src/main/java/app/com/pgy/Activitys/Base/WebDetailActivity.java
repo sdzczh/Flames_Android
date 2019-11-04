@@ -59,13 +59,18 @@ public class WebDetailActivity extends BaseWebViewActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 if(newProgress==100){
-                    activityWebDetailProgressBar.setVisibility(View.GONE);//加载完网页进度条消失
-                    hideLoading();
+                    if (activityWebDetailProgressBar != null){{
+                        activityWebDetailProgressBar.setVisibility(View.GONE);//加载完网页进度条消失
+                        hideLoading();
+                    }}
+
                 }
                 else{
-                    showLoading(null);
-                    activityWebDetailProgressBar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
-                    activityWebDetailProgressBar.setProgress(newProgress);//设置进度值
+                    if (activityWebDetailProgressBar != null){{
+                        showLoading(null);
+                        activityWebDetailProgressBar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
+                        activityWebDetailProgressBar.setProgress(newProgress);//设置进度值
+                    }}
                 }
             }
         });
