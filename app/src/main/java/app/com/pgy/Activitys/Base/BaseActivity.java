@@ -21,6 +21,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import app.com.pgy.Activitys.PersonalRenZhengActivity;
+import app.com.pgy.Utils.Utils;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import app.com.pgy.Activitys.MainActivity;
@@ -379,14 +382,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**弹出先实名认证对话框*/
     protected void showSetRealNameFirstDialog(){
         final ExitDialog.Builder builder = new ExitDialog.Builder(mContext);
-        builder.setTitle("请先进行实名认证");
+        builder.setTitle("请先去实名认证");
         builder.setCancelable(true);
 
         builder.setPositiveButton("去设置",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Utils.IntentUtils(mContext,SecurityCenterActivity.class);
+                        Utils.IntentUtils(mContext, PersonalRenZhengActivity.class);
                         dialog.dismiss();
                     }
                 });

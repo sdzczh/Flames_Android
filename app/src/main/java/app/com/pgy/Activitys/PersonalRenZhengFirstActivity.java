@@ -72,7 +72,7 @@ public class PersonalRenZhengFirstActivity extends BaseActivity {
 
     private void submit() {
         /*获取输入的内容*/
-        String userName = piivActivityRenzhengName.getRightTxt();
+        final String userName = piivActivityRenzhengName.getRightTxt();
         if (TextUtils.isEmpty(userName)) {
             showToast("请输入姓名");
             return;
@@ -92,6 +92,10 @@ public class PersonalRenZhengFirstActivity extends BaseActivity {
         NetWorks.renzhengFirst(Preferences.getAccessToken(), map, new getBeanCallback() {
             @Override
             public void onSuccess(Object o) {
+                Preferences.saveUserName(userName);
+                if (Preferences.getUserIdStatus() < 1){
+                    Preferences.saveUserIdStatus(1);
+                }
                 EventBus.getDefault().post(new EventRealName(true));
                 toStateActivity(true);
 

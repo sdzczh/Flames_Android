@@ -6,10 +6,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.BaseUploadPicActivity;
@@ -41,8 +48,8 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
     ImageView iv_back;
     @BindView(R.id.tv_title)
     TextView tv_title;
-    @BindView(R.id.piiv_activity_bind_ali_name)
-    PersonalItemInputView piiv_name;
+    @BindView(R.id.tv_username)
+    TextView tv_username;
     @BindView(R.id.piiv_activity_bind_ali)
     PersonalItemInputView piiv_ali;
     @BindView(R.id.iv_activity_bind_ali_addImg)
@@ -78,10 +85,14 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
      */
     @Override
     protected void initData() {
+        if (Preferences.getUserIdStatus() < 1){
+            showSetRealNameFirstDialog();
+        }
         tv_title.setText("绑定支付宝");
         typesList = new ArrayList<>();
         typesList.add("相机");
         typesList.add("从相册选择");
+        tv_username.setText(Preferences.getUserName());
         /*是否绑定支付宝*/
         User.BindInfoModel aliPayInfo = Preferences.getUserPayInfo(StaticDatas.ALIPAY);
         if (aliPayInfo == null){
@@ -89,8 +100,7 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
         }
         /*如果有绑定信息，则设置在界面上*/
         userName = aliPayInfo.getName();
-        piiv_name.setRightTxt(userName);
-        piiv_name.getEdt().setSelection(TextUtils.isEmpty(userName)?0:userName.length());
+        tv_username.setText(userName);
         userAccount = aliPayInfo.getAccount();
         piiv_ali.setRightTxt(userAccount);
         piiv_ali.getEdt().setSelection(TextUtils.isEmpty(userAccount)?0:userAccount.length());
@@ -102,8 +112,11 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
         piiv_ali.getEdt().setFilters(new InputFilter[]{EdittextUtils.getAli(getApplicationContext()),new InputFilter.LengthFilter(20)});
-        piiv_name.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext()),new InputFilter.LengthFilter(10)});
+//        piiv_name.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext()),new InputFilter.LengthFilter(10)});
 
         /*添加MineIconFragment中的头像修改成功监听*/
         setStringCallback(this);
@@ -172,7 +185,7 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
      * 提交三方绑定
      */
     private void submit() {
-        userName = piiv_name.getRightTxt();
+        userName = tv_username.getText().toString().trim();
         if (TextUtils.isEmpty(userName)){
             showToast("请输入收款人姓名");
             return;
@@ -245,5 +258,22 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
     public void getString(String string) {
         erWeiMaUrl = string;
         ImageLoaderUtils.display(mContext,iv_add,erWeiMaUrl,R.mipmap.add_erweima);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void RealNameEvent(EventRealName event){
+        LogUtils.e(TAG,"接受到广播");
+        if (event != null && event.getSuccess()){
+            tv_username.setText(Preferences.getUserName());
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 }

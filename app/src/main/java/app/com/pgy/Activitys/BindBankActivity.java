@@ -7,8 +7,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.BaseActivity;
@@ -39,8 +46,8 @@ public class BindBankActivity extends BaseActivity {
     PersonalItemInputView piiv_bankName;
     @BindView(R.id.piiv_activity_bind_bankcard_branchBankName)
     PersonalItemInputView piiv_branchName;
-    @BindView(R.id.piiv_activity_bind_bankcard_userName)
-    PersonalItemInputView piiv_userName;
+    @BindView(R.id.tv_username)
+    TextView tvUserName;
     @BindView(R.id.piiv_activity_bind_bankcard_cardNum)
     PersonalItemInputView piiv_cardNum;
     @BindView(R.id.tv_activity_bind_bankcard_submit)
@@ -63,18 +70,25 @@ public class BindBankActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
         tv_title.setText("绑定银行卡");
         piiv_bankName.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext())});
         piiv_branchName.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext())});
         piiv_cardNum.getEdt().setInputType(InputType.TYPE_CLASS_NUMBER);
-        piiv_userName.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext()),new InputFilter.LengthFilter(10)});
+
 
     }
 
     @Override
     protected void initData() {
+        if (Preferences.getUserIdStatus() < 1){
+            showSetRealNameFirstDialog();
+        }
         /*是否绑定支付宝*/
         User.BindInfoModel cardPayInfo = Preferences.getUserPayInfo(StaticDatas.BANKCARD);
+        tvUserName.setText(Preferences.getUserName());
         if (cardPayInfo == null){
             return;
         }
@@ -84,7 +98,7 @@ public class BindBankActivity extends BaseActivity {
         branchName = cardPayInfo.getBranchName();
         piiv_branchName.setRightTxt(branchName);
         userName = cardPayInfo.getName();
-        piiv_userName.setRightTxt(userName);
+        tvUserName.setText(userName);
         cardNum = cardPayInfo.getAccount();
         piiv_cardNum.setRightTxt(cardNum);
         isBindCard = !TextUtils.isEmpty(cardPayInfo.getAccount());
@@ -118,7 +132,7 @@ public class BindBankActivity extends BaseActivity {
             showToast("请输入所在支行信息");
             return;
         }
-        userName = piiv_userName.getRightTxt();
+        userName = tvUserName.getText().toString().trim();
         if (TextUtils.isEmpty(userName)) {
             showToast("请填写开户姓名");
             return;
@@ -177,9 +191,20 @@ public class BindBankActivity extends BaseActivity {
             }
         });
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void RealNameEvent(EventRealName event){
+        LogUtils.e(TAG,"接受到广播");
+        if (event != null && event.getSuccess()){
+            tvUserName.setText(Preferences.getUserName());
+        }
+    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 }

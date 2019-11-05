@@ -279,6 +279,9 @@ public final class Preferences {
         editor.putString(USER_NAME,nikeName);
         return editor.commit();
     }
+    public static String getUserName(){
+        return mSharedPreferences.getString(USER_NAME,"");
+    }
 
     /**将个人信息昵称缓存在本地*/
     public static boolean saveUserIdStatus(int id){

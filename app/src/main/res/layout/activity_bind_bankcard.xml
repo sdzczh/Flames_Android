@@ -48,15 +48,32 @@
                 </app.com.pgy.Widgets.PersonalItemInputView>
                 <View style="@style/PersonalLine"
                     android:layout_marginBottom="10dp"/>
-                <app.com.pgy.Widgets.PersonalItemInputView
-                    android:id="@+id/piiv_activity_bind_bankcard_userName"
-                    style="@style/PersonalInputItem"
-                    app:tv_input_item_left_text="开户姓名"
-                    app:tv_input_item_left_color="@color/txt_title"
-                    app:edt_input_item_right_hint="请输入开户姓名"
-                    app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
-                    app:edt_input_item_right_color="@color/txt_content">
-                </app.com.pgy.Widgets.PersonalItemInputView>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/txt_title"
+                        android:text="开户姓名"
+                        android:includeFontPadding="false"/>
+
+                    <TextView
+                        android:id="@+id/tv_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="@color/txt_content"
+                        android:text="请输入"
+                        android:maxLength="20"
+                        android:textColorHint="@color/color_c4c7cc"
+                        android:background="@color/white"
+                        android:layout_marginRight="20dp"/>
+                </LinearLayout>
                 <View style="@style/PersonalLine"
                     android:layout_marginBottom="10dp"/>
                 <app.com.pgy.Widgets.PersonalItemInputView

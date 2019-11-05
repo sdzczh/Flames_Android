@@ -4808,7 +4808,7 @@ public class NetWorks extends RetrofitUtils {
                     /*code正确，则成功*/
                     callback.onSuccess(null);
                 } else {
-                    callback.onError(resultBean.getCode(), resultBean.getData());
+                    callback.onError(resultBean.getCode(),TextUtils.isEmpty( resultBean.getData())?resultBean.getMsg(): resultBean.getData());
                 }
             }
 
