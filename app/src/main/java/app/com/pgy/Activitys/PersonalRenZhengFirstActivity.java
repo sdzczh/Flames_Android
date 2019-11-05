@@ -92,7 +92,7 @@ public class PersonalRenZhengFirstActivity extends BaseActivity {
         NetWorks.renzhengFirst(Preferences.getAccessToken(), map, new getBeanCallback() {
             @Override
             public void onSuccess(Object o) {
-                Preferences.saveUserName(userName);
+                Preferences.saveUserRealName(userName);
                 if (Preferences.getUserIdStatus() < 1){
                     Preferences.saveUserIdStatus(1);
                 }

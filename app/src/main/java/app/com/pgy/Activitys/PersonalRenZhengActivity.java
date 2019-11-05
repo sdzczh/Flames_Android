@@ -283,7 +283,7 @@ public class PersonalRenZhengActivity extends PermissionActivity {
                 hideLoading();
                 showToast("实名认证成功");
                 LogUtils.w("realName", "getRealNameState：" + realNameStatus.toString());
-                Preferences.saveUserName(realNameStatus.getName());
+                Preferences.saveUserRealName(realNameStatus.getName());
                 LogUtils.w("realName", "userName:" + realNameStatus.getName());
                 Preferences.setIsHasRealName(true);
                 Preferences.saveUserIdStatus(2);

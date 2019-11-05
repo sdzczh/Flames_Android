@@ -92,7 +92,7 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
         typesList = new ArrayList<>();
         typesList.add("相机");
         typesList.add("从相册选择");
-        tv_username.setText(Preferences.getUserName());
+        tv_username.setText(Preferences.getUserRealName());
         /*是否绑定支付宝*/
         User.BindInfoModel aliPayInfo = Preferences.getUserPayInfo(StaticDatas.ALIPAY);
         if (aliPayInfo == null){
@@ -264,7 +264,7 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
     public void RealNameEvent(EventRealName event){
         LogUtils.e(TAG,"接受到广播");
         if (event != null && event.getSuccess()){
-            tv_username.setText(Preferences.getUserName());
+            tv_username.setText(Preferences.getUserRealName());
         }
     }
 

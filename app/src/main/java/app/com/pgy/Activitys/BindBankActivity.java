@@ -88,7 +88,7 @@ public class BindBankActivity extends BaseActivity {
         }
         /*是否绑定支付宝*/
         User.BindInfoModel cardPayInfo = Preferences.getUserPayInfo(StaticDatas.BANKCARD);
-        tvUserName.setText(Preferences.getUserName());
+        tvUserName.setText(Preferences.getUserRealName());
         if (cardPayInfo == null){
             return;
         }
@@ -195,7 +195,7 @@ public class BindBankActivity extends BaseActivity {
     public void RealNameEvent(EventRealName event){
         LogUtils.e(TAG,"接受到广播");
         if (event != null && event.getSuccess()){
-            tvUserName.setText(Preferences.getUserName());
+            tvUserName.setText(Preferences.getUserRealName());
         }
     }
 

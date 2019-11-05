@@ -57,6 +57,7 @@ public final class Preferences {
     private static String USER_MARKET = "user_markets";
     private static String USER_IDSTATUS = "user_idstatus";
     private static String USER_REFERSTATUS = "user_referstatus";
+    private static String USER_REALNAME = "real_name";    //用户姓名
 
     private static String ONLY_WIFI = "only_wifi";      //仅在WiFi下
     private static String VERSION_CODE = "version_code";    //当前版本信息
@@ -190,6 +191,7 @@ public final class Preferences {
         editor.putString(ACCESS_TOKEN, user.getToken());
         editor.putBoolean(USER_STATE_DIG, user.isDigFlag());
         editor.putString(USER_NAME, user.getName());
+        editor.putString(USER_REALNAME, user.getUsername());
         editor.putString(USER_PHONE, user.getPhone());
         editor.putString(USER_LOGO, user.getHeadImg());
         editor.putString(USER_ALIPAY, user.getAlipayNum());
@@ -260,6 +262,7 @@ public final class Preferences {
         User user = new User();
         user.setHeadImg(mSharedPreferences.getString(USER_LOGO,""));
         user.setName(mSharedPreferences.getString(USER_NAME,""));
+        user.setUsername(mSharedPreferences.getString(USER_REALNAME,""));
         user.setPhone(mSharedPreferences.getString(USER_PHONE,""));
         user.setAlipayNum(mSharedPreferences.getString(USER_ALIPAY,""));
         user.setIdCheckFlag(mSharedPreferences.getBoolean(HAS_REALNAME,false));
@@ -274,6 +277,15 @@ public final class Preferences {
     }
 
     /**将个人信息昵称缓存在本地*/
+    public static boolean saveUserRealName(String realName){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(USER_REALNAME,realName);
+        return editor.commit();
+    }
+    public static String getUserRealName(){
+        return mSharedPreferences.getString(USER_REALNAME,"");
+    }
+
     public static boolean saveUserName(String nikeName){
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString(USER_NAME,nikeName);
@@ -282,6 +294,7 @@ public final class Preferences {
     public static String getUserName(){
         return mSharedPreferences.getString(USER_NAME,"");
     }
+
 
     /**将个人信息昵称缓存在本地*/
     public static boolean saveUserIdStatus(int id){

@@ -39,6 +39,7 @@ public class User implements Serializable {
     private int referStatus;
 
     private String uuid;
+    private String username;
 
     public String getTalkToken() {
         return talkToken;
@@ -173,6 +174,14 @@ public class User implements Serializable {
 
     public int getReferStatus() {
         return referStatus;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     @Override
