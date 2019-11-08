@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
                         android:textColor="@color/txt_content"
-                        android:text="请输入"
+                        android:text=""
                         android:maxLength="20"
                         android:textColorHint="@color/color_c4c7cc"
                         android:background="@color/white"

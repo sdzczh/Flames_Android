@@ -40,8 +40,8 @@ public class BindWeixinActivity extends BaseUploadPicActivity implements getStri
     ImageView iv_back;
     @BindView(R.id.tv_title)
     TextView tv_title;
-    @BindView(R.id.piiv_activity_bind_weixin_name)
-    PersonalItemInputView piiv_name;
+    @BindView(R.id.tv_username)
+    TextView tv_username;
     @BindView(R.id.piiv_activity_bind_weixin)
     PersonalItemInputView piiv_wx;
     @BindView(R.id.iv_activity_bind_weixin_addImg)
@@ -76,19 +76,23 @@ public class BindWeixinActivity extends BaseUploadPicActivity implements getStri
      */
     @Override
     protected void initData() {
+        if (Preferences.getUserIdStatus() < 1){
+            showSetRealNameFirstDialog();
+        }
         tv_title.setText("绑定微信");
         typesList = new ArrayList<>();
         typesList.add("相机");
         typesList.add("从相册选择");
+        tv_username.setText(Preferences.getUserRealName());
         /*是否绑定支付宝*/
         User.BindInfoModel wxPayInfo = Preferences.getUserPayInfo(StaticDatas.WECHART);
         if (wxPayInfo == null){
             return;
         }
         /*如果有绑定信息，则设置在界面上*/
-        userName = wxPayInfo.getName();
-        piiv_name.setRightTxt(userName);
-        piiv_name.getEdt().setSelection(TextUtils.isEmpty(userName)?0:userName.length());
+//        userName = wxPayInfo.getName();
+//        piiv_name.setRightTxt(userName);
+//        piiv_name.getEdt().setSelection(TextUtils.isEmpty(userName)?0:userName.length());
         userAccount = wxPayInfo.getAccount();
         piiv_wx.setRightTxt(userAccount);
         piiv_wx.getEdt().setSelection(TextUtils.isEmpty(userAccount)?0:userAccount.length());
@@ -101,7 +105,7 @@ public class BindWeixinActivity extends BaseUploadPicActivity implements getStri
     @Override
     protected void initView(Bundle savedInstanceState) {
         piiv_wx.getEdt().setFilters(new InputFilter[]{EdittextUtils.getWechat(getApplicationContext()),new InputFilter.LengthFilter(20)});
-        piiv_name.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext()),new InputFilter.LengthFilter(10)});
+//        piiv_name.getEdt().setFilters(new InputFilter[]{EdittextUtils.getNoEmoji(getApplicationContext()),new InputFilter.LengthFilter(10)});
 
         /*添加MineIconFragment中的头像修改成功监听*/
         setStringCallback(this);
@@ -170,7 +174,7 @@ public class BindWeixinActivity extends BaseUploadPicActivity implements getStri
      * 提交三方绑定
      */
     private void submit() {
-        userName = piiv_name.getRightTxt();
+        userName = tv_username.getText().toString().trim();
         if (TextUtils.isEmpty(userName)){
             showToast("请输入收款人姓名");
             return;

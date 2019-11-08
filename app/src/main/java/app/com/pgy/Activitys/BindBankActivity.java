@@ -98,7 +98,7 @@ public class BindBankActivity extends BaseActivity {
         branchName = cardPayInfo.getBranchName();
         piiv_branchName.setRightTxt(branchName);
         userName = cardPayInfo.getName();
-        tvUserName.setText(userName);
+//        tvUserName.setText(userName);
         cardNum = cardPayInfo.getAccount();
         piiv_cardNum.setRightTxt(cardNum);
         isBindCard = !TextUtils.isEmpty(cardPayInfo.getAccount());

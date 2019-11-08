@@ -100,7 +100,7 @@ public class BindAliActivity extends BaseUploadPicActivity implements getStringC
         }
         /*如果有绑定信息，则设置在界面上*/
         userName = aliPayInfo.getName();
-        tv_username.setText(userName);
+//        tv_username.setText(userName);
         userAccount = aliPayInfo.getAccount();
         piiv_ali.setRightTxt(userAccount);
         piiv_ali.getEdt().setSelection(TextUtils.isEmpty(userAccount)?0:userAccount.length());

@@ -4814,7 +4814,7 @@ public class NetWorks extends RetrofitUtils {
 
             @Override
             public void onFailure(Call<ResultBean> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, "网络错误");
             }
         });
     }
