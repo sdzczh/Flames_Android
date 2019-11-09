@@ -169,7 +169,7 @@ public class C2cTradeDialog extends Dialog {
 
 
             tvOrderNo.setText(TextUtils.isEmpty(orderNo)?"":orderNo);
-            tvcoinName.setText(TextUtils.isEmpty(coinName)?"":orderNo+"/CNY");
+            tvcoinName.setText(TextUtils.isEmpty(coinName)?"":coinName+"/CNY");
             tvAmount.setText(TextUtils.isEmpty(amount)?"":amount+"CNY");
             tvAction.setText(TextUtils.isEmpty(action)?"":action);
            if (!TextUtils.isEmpty(desc)){

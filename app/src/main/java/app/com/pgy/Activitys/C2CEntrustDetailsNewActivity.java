@@ -414,6 +414,9 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         if (payInfo != null && payInfo.size() > 0){
             for (int key : payInfo.keySet()){
                 currentPayType = payInfo.get(key).getType();
+                if (currentPayType == ALIPAY){
+                    break;
+                }
             }
         }
         initPayAccount(payInfo);
@@ -421,6 +424,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         int buyOrSale = details.getOrderType();
         /*订单状态，0代付款 1待确认 2冻结 3已完成 4已取消 5超时取消*/
         int state = details.getState();
+        switchPayTypeFrame(currentPayType, payInfo);
         switch (state) {
             /*代付款状态*/
             case 0:
@@ -448,7 +452,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                     }
                 });
                 llPayTypeAccountBg.setVisibility(View.VISIBLE);
-                switchPayTypeFrame(currentPayType, payInfo);
+
                 switch (buyOrSale) {
                     default:
                     case BUY:
@@ -520,7 +524,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                     case SALE:
                         llSalerBg.setVisibility(View.VISIBLE);
                         llBuyerInfo.setVisibility(View.VISIBLE);
-                        tvBuyerName.setText(details.getBuyerName());
+                        tvBuyerName.setText(details.getOtherName());
                         break;
                 }
                 break;
@@ -579,7 +583,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
             tvPayTypeAliName.setText(aliPayInfo.getName());
             tvPayTypeAliAccount.setText(aliPayInfo.getAccount());
             llPayTypeAli.setVisibility(View.VISIBLE);
-            if (aliPayInfo.getType() == 1){
+            if (aliPayInfo.getType() == 0){
                 tvSalerPaytype.setText("支付宝");
             }
 
@@ -600,7 +604,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
             tvPayTypeCardBank.setText(cardPayInfo.getBankName());
             tvPayTypeCardBranch.setText(cardPayInfo.getBranchName());
             tvPayTypeCardNum.setText(cardPayInfo.getAccount());
-            if (cardPayInfo.getType() == 1){
+            if (cardPayInfo.getType() == 2){
                 tvSalerPaytype.setText("银行卡");
             }
         }

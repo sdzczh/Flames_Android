@@ -328,7 +328,6 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:includeFontPadding="false"
-                        android:paddingTop="15dp"
                         android:visibility="gone"/>
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_cancelOrder"
@@ -360,7 +359,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:includeFontPadding="false"
-                        android:paddingTop="15dp"/>
+                        />
                     <LinearLayout
                         android:id="@+id/activity_ccEntrustDetails_contentBottomBtn_buyDesbg"
                         android:layout_width="match_parent"
@@ -395,7 +394,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:includeFontPadding="false"
-                        android:paddingTop="15dp"/>
+                        />
                     <TextView
                         android:id="@+id/activity_ccEntrustDetails_contentPay_payType_switch"
                         android:layout_width="match_parent"
@@ -409,7 +408,6 @@
                         android:background="@drawable/shape_ea_line_3"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:paddingTop="10dp"
                         android:includeFontPadding="false"
                         android:layout_marginBottom="15dp"/>
                 </LinearLayout>

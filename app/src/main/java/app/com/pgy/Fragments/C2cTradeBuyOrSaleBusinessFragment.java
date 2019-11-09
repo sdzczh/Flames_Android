@@ -314,6 +314,7 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
                   showToast("请先绑定收款方式");
                   return;
               }
+              payType = 0;
               for (BindInfo bindInfo : list){
                   if (bindInfo.getType() == 0){
                       payType += aliPay;

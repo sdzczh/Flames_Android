@@ -30,8 +30,8 @@ android {
         minSdkVersion 19
         targetSdkVersion 26
         /*2019年7月29日 1  1.0.0 xu*/
-        versionCode 15
-        versionName "1.0.4"
+        versionCode 16
+        versionName "1.0.5"
         multiDexEnabled true
 
         ndk {
