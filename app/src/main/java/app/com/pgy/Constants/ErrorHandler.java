@@ -120,6 +120,7 @@ public class ErrorHandler {
     public static final int RESPONSE_ERROR_BUSINESS_BUYORDERNUMBERTOP = 30067;    //买入订单数量已到上限
 
     public static final int RESPONSE_ERROR_BUSINESS_FINISHED = 30072;    //这个任务今天已经完成啦，请明天再来
+    public static final int RESPONSE_ERROR_BUSINESS_BUZU = 30106;    //余额不足以提现，请保证在转出后资金大于系统奖励金额。系统奖励金额在%s次交易挖矿后解冻
 
     /**
      * 系统错误：40001-49999
@@ -411,7 +412,9 @@ public class ErrorHandler {
             case RESPONSE_ERROR_BUSINESS_FINISHED:
                 showToast("这个任务今天已经完成啦，请明天再来");
                 break;
-
+//            case RESPONSE_ERROR_BUSINESS_BUZU:
+//                showToast(reason);
+//                break;
             case RESPONSE_ERROR_SYSTEM_ERROR:
                 showToast("系统小憩了一下，请重试！");
                 break;
@@ -569,7 +572,7 @@ public class ErrorHandler {
             return;
         }
         if (TextUtils.isEmpty(message)) {
-            ToastUtils.ShortToast(mContext, "错误为空字符串");
+//            ToastUtils.ShortToast(mContext, "错误为空字符串");
         } else {
             MyToast.showToast(mContext,message);
         }

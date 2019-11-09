@@ -2,7 +2,9 @@ package app.com.pgy.Activitys;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -224,7 +226,8 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
             R.id.activity_ccEntrustDetails_contentBottomBtn_cancelOrder, R.id.activity_ccEntrustDetails_contentBottomBtn_complaint,
             R.id.activity_ccEntrustDetails_contentPay_copyAccount,
             R.id.activity_ccEntrustDetails_contentBottomBtn_payed, R.id.activity_ccEntrustDetails_contentPay_payType_switch,
-            R.id.iv_pay_type_ali_qrcode, R.id.ll_pay_type_ali, R.id.iv_pay_type_wx_qrcode, R.id.ll_pay_type_wx, R.id.ll_pay_type_card})
+            R.id.iv_pay_type_ali_qrcode, R.id.ll_pay_type_ali, R.id.iv_pay_type_wx_qrcode, R.id.ll_pay_type_wx, R.id.ll_pay_type_card,
+            R.id.tv_pay_type_account_name,R.id.tv_pay_type_account_bank,R.id.tv_pay_type_account_branch,R.id.tv_pay_type_account_num})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -259,8 +262,8 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
 
             case R.id.activity_ccEntrustDetails_contentPay_copyAccount:
                 /*复制支付宝、微信、银行账号*/
-                String accountNumber = tvPayTypeAccountNum.getText().toString();
-                copyMessage(accountNumber);
+//                String accountNumber = tvPayTypeAccountNum.getText().toString();
+//                copyMessage(accountNumber);
                 break;
             /*我已支付*/
             case R.id.activity_ccEntrustDetails_contentBottomBtn_payed:
@@ -303,6 +306,22 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
 //                intent2Business.putExtra("phone", userPhone);
 //                startActivity(intent2Business);
 //                break;
+            case R.id.tv_pay_type_account_num:
+                /*复制支付宝、微信、银行账号*/
+                copyMessage(tvPayTypeAccountNum.getText().toString());
+                break;
+            case R.id.tv_pay_type_account_name:
+                /*复制支付宝、微信、银行账号*/
+                copyMessage(tvPayTypeAccountName.getText().toString());
+                break;
+            case R.id.tv_pay_type_account_bank:
+                /*复制支付宝、微信、银行账号*/
+                copyMessage(tvPayTypeAccountBank.getText().toString());
+                break;
+            case R.id.tv_pay_type_account_branch:
+                /*复制支付宝、微信、银行账号*/
+                copyMessage(tvPayTypeAccountBranch.getText().toString());
+                break;
         }
     }
 
@@ -389,6 +408,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         activityCcEntrustDetailsContentOrderNumber.setRightTxt(details.getAmount()+" "+ coinName);
 
         payInfo = details.getPayInfo();
+        currentPayType = ALIPAY;
 
         /*获取默认的支付类型0支付宝 1微信 2银行卡，若没有则设为支付宝支付*/
         if (payInfo != null && payInfo.size() > 0){
@@ -396,7 +416,6 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 currentPayType = payInfo.get(key).getType();
             }
         }
-        currentPayType = ALIPAY;
         initPayAccount(payInfo);
         /*交易类型 0买入 1卖出*/
         int buyOrSale = details.getOrderType();
@@ -598,6 +617,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         }
         switch (payType) {
             case ALIPAY:
+                tvPayTypeAccountTitle.setText("支付宝账号");
                 ivPayTypeAccountIcon.setImageResource(R.mipmap.ali_pay_white);
                 tvPayTypeAccountName.setText(currentPayInfo.getName());
                 tvPayTypeAccountNum.setText(currentPayInfo.getAccount());
@@ -607,6 +627,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 llPayTypeAccount.setBackgroundResource(R.mipmap.ali_pay_bg);
                 break;
             case WECHART:
+                tvPayTypeAccountTitle.setText("微信账号");
                 ivPayTypeAccountIcon.setImageResource(R.mipmap.wx_pay_white);
                 tvPayTypeAccountName.setText(currentPayInfo.getName());
                 tvPayTypeAccountNum.setText(currentPayInfo.getAccount());
@@ -616,6 +637,7 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
                 llPayTypeAccount.setBackgroundResource(R.mipmap.wx_pay_bg);
                 break;
             case BANKCARD:
+                tvPayTypeAccountTitle.setText("银行卡号");
                 ivPayTypeAccountIcon.setImageResource(R.mipmap.card_pay_white);
                 tvPayTypeAccountName.setText(currentPayInfo.getName());
                 tvPayTypeAccountNum.setText(currentPayInfo.getAccount());
@@ -743,8 +765,11 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         if (TextUtils.isEmpty(str)) {
             return;
         }
-        ClipboardManager cms = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        cms.setText(str);
+        ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+// 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("simple text", str);
+// 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
         showToast("复制成功");
     }
 

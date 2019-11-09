@@ -13,7 +13,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Adapters.ViewPagerAdapter;
@@ -22,7 +21,6 @@ import app.com.pgy.Fragments.TradeGoodsCurrentEntrustListFragment;
 import app.com.pgy.Fragments.TradeGoodsHistoryListFragment;
 import app.com.pgy.Models.Beans.EventBean.EventTradeCancelAll;
 import app.com.pgy.R;
-import app.com.pgy.Utils.LogUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -39,16 +37,19 @@ public class TradeGoodsEntrustListActivity extends BaseActivity {
     TextView tvTitleRight;
     @BindView(R.id.vp_content)
     ViewPager vpContent;
+    @BindView(R.id.tv_coin_name)
+    TextView tvCoinName;
 
     /**
      * 选中的现货的计价币交易币
      */
     private int goodsPerCoin, goodsTradeCoin;
     private List<Integer> perCoinTypeList;
-//    private Map<Integer, List<Integer>> tradeCoinTypeMap;
+    //    private Map<Integer, List<Integer>> tradeCoinTypeMap;
     private List<Fragment> fragments;
     private List<String> fragmentsName;
     private int index = 0;
+
     @Override
     public int getContentViewId() {
         return R.layout.activity_trade_goods_entrustlist;
@@ -56,7 +57,7 @@ public class TradeGoodsEntrustListActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        index = getIntent().getIntExtra("index",0);
+        index = getIntent().getIntExtra("index", 0);
         /*初始化现货中计价币、交易币的位置，从本地获取*/
         goodsPerCoin = Preferences.getGoodsPerCoin();
         goodsTradeCoin = Preferences.getGoodsTradeCoin();
@@ -73,6 +74,7 @@ public class TradeGoodsEntrustListActivity extends BaseActivity {
             goodsTradeCoin = (tradeCoins != null && tradeCoins.size() > 0) ? tradeCoins.get(0) : 0;
             Preferences.setGoodsTradeCoin(goodsTradeCoin);
         }
+        tvCoinName.setText(getCoinName(goodsTradeCoin)+"/"+getCoinName(goodsPerCoin));
         /*初始化所有fragment*/
         fragments = getFragments();
         fragmentsName = getFragmentsNames();
@@ -95,9 +97,9 @@ public class TradeGoodsEntrustListActivity extends BaseActivity {
         titleTab.addOnTabSelectedListener(new XTabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(XTabLayout.Tab tab) {
-                if (tab.getPosition() == 0){
+                if (tab.getPosition() == 0) {
                     tvTitleRight.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     tvTitleRight.setVisibility(View.GONE);
                 }
             }
@@ -109,14 +111,14 @@ public class TradeGoodsEntrustListActivity extends BaseActivity {
 
             @Override
             public void onTabReselected(XTabLayout.Tab tab) {
-                if (tab.getPosition() == 0){
+                if (tab.getPosition() == 0) {
                     tvTitleRight.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     tvTitleRight.setVisibility(View.GONE);
                 }
             }
         });
-        if (index != 0){
+        if (index != 0) {
             vpContent.setCurrentItem(1);
         }
     }
