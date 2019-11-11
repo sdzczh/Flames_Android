@@ -127,7 +127,7 @@ public class PersonalFragment extends BaseFragment {
         if (isLogin()) {
             User user = Preferences.getLocalUser();
             tv_nickname.setText(user.getName());
-            tv_uuid.setText(user.getUuid()+"");
+            tv_uuid.setText("["+user.getUuid()+"]");
             tv_tel.setText("UID：" + user.getUuid());
             ImageLoaderUtils.displayCircle(mContext, riv_headerImg, Preferences.getLocalUser().getHeadImg());
             tvFragmentPersonalLoginout.setVisibility(View.VISIBLE);

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 
 import java.io.File;
@@ -49,7 +50,12 @@ public abstract class BaseUploadPicActivity extends PermissionActivity {
             public void superPermission() {
                 LogUtils.w("permission","BaseUploadPicActivity:获取相机权限");
                 Intent openCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                tempUri = Uri.fromFile(new File(FileUtils.getLocalPath(), "image.jpg"));
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+                    tempUri =  FileProvider.getUriForFile(mContext, "app.com.pgy.fileprovider",new File(FileUtils.getLocalPath(), "image.jpg"));
+                } else{
+                    tempUri = Uri.fromFile(new File(FileUtils.getLocalPath(), "image.jpg"));
+                }
+
                 // 指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
                 openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
                 startActivityForResult(openCameraIntent, TAKE_PICTURE);

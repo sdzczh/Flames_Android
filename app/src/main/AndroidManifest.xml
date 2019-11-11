@@ -349,7 +349,7 @@
         <!-- 融云IM -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="app.com.pgy.FileProvider"
+            android:authorities="app.com.pgy.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

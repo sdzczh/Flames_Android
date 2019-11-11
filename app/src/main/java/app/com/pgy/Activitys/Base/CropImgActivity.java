@@ -3,7 +3,9 @@ package app.com.pgy.Activitys.Base;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.FileProvider;
 import android.view.View;
 import android.widget.TextView;
 
@@ -95,7 +97,12 @@ public class CropImgActivity extends BaseActivity implements View.OnClickListene
         if (!cropFile.exists()) {
             cropFile.delete();
         }
-        Uri destination = Uri.fromFile(cropFile);
+        Uri destination;
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+            destination =  FileProvider.getUriForFile(mContext, "app.com.pgy.fileprovider",cropFile);
+        } else{
+            destination = Uri.fromFile(cropFile);
+        }
         if(CropUtil.saveOutput(CropImgActivity.this, destination, bitmap, 100)){
             setResult(Activity.RESULT_OK,getIntent().putExtra("file",cache));
         }else{

@@ -9,7 +9,9 @@ import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.RecyclerView;
 import android.util.LruCache;
 import android.view.View;
@@ -63,7 +65,12 @@ public  class SimpleUtils {
 
                     //update gallery
                     Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                    Uri uri = Uri.fromFile(file);
+                    Uri uri;
+                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+                        uri =  FileProvider.getUriForFile(context, "app.com.pgy.fileprovider",file);
+                    } else{
+                        uri = Uri.fromFile(file);
+                    }
                     intent.setData(uri);
                     context.sendBroadcast(intent);
 //                    Toast.makeText(context, "保存成功", Toast.LENGTH_SHORT).show();

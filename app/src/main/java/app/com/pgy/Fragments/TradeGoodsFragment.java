@@ -402,7 +402,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         fragmentTradeGoodsLimitPrice.addTextChangedListener(watcher);
         fragmentTradeGoodsAmount.addTextChangedListener(watcher);
         /*初始化交易方式、档位、深度位置，默认为列表最后一个*/
-        tradePos = LIMIT;
+        tradePos = MARKET;
         fragmentTradeGoodsGroup.setOnCheckedChangeListener(this);
         fragmentTradeGoodsPercentGroup.setOnCheckedChangeListener(this);
         /*初始化K线图*/

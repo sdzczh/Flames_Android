@@ -7,8 +7,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -344,7 +346,12 @@ public class FileUtils {
             MediaStore.Images.Media.insertImage(context.getContentResolver(),
                     bmp, fileName, null);
             Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            Uri uri = Uri.fromFile(file);
+            Uri uri;
+            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+                uri =  FileProvider.getUriForFile(context, "app.com.pgy.fileprovider",file);
+            } else{
+                uri = Uri.fromFile(file);
+            }
             intent.setData(uri);
             context.sendBroadcast(intent);
             MyToast.showToast(context,picName+"保存入图册成功");
