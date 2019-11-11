@@ -83,6 +83,8 @@ public class PersonalFragment extends BaseFragment {
     RoundedImageView riv_headerImg;
     @BindView(R.id.tv_fragment_personal_nickname)
     TextView tv_nickname;
+    @BindView(R.id.tv_fragment_personal_uuid)
+    TextView tv_uuid;
     @BindView(R.id.tv_fragment_personal_tel)
     TextView tv_tel;
     @BindView(R.id.piv_fragment_personal_item_version)
@@ -125,6 +127,7 @@ public class PersonalFragment extends BaseFragment {
         if (isLogin()) {
             User user = Preferences.getLocalUser();
             tv_nickname.setText(user.getName());
+            tv_uuid.setText(user.getUuid()+"");
             tv_tel.setText("UID：" + user.getUuid());
             ImageLoaderUtils.displayCircle(mContext, riv_headerImg, Preferences.getLocalUser().getHeadImg());
             tvFragmentPersonalLoginout.setVisibility(View.VISIBLE);
@@ -155,6 +158,7 @@ public class PersonalFragment extends BaseFragment {
         } else {
             tv_nickname.setText("登录/注册");
             tv_tel.setText("欢迎来到蒲公英");
+            tv_uuid.setText("");
             riv_headerImg.setImageResource(R.mipmap.icon_unlogin);
             tvFragmentPersonalLoginout.setVisibility(View.GONE);
             tvFragmentPersonalRealLevel.setVisibility(View.GONE);
