@@ -203,6 +203,7 @@ public class MathUtils {
         if (TextUtils.isEmpty(text)){
             return  0.00;
         }
+
         if (text.startsWith(".")){
             result = Double.parseDouble("0"+text);
         }else{
@@ -230,7 +231,7 @@ public class MathUtils {
     }
 
     /*弃用，将double转string使用上面的formatdouble2String*/
-    private static String Double2String(Double dou){
+    public static String Double2String(Double dou){
         String result = "0.00";
         if (dou == null || dou < 0){
             return result;

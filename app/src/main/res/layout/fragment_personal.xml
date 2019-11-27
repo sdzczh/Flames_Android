@@ -117,14 +117,47 @@
             android:gravity="center_vertical"
             android:background="@color/white">
             <LinearLayout
-                android:id="@+id/piv_fragment_personal_item_safety"
+                android:id="@+id/piv_fragment_personal_item_myteam"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="25dp"
-                android:layout_marginLeft="19dp">
+                android:layout_marginLeft="17dp">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/personal_myteam"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/txt_all9"
+                    android:text="我的团队"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="9dp"/>
+            </LinearLayout>
+            <View
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@mipmap/personal_xuxian2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+            <!--<View-->
+                <!--android:layout_width="2dp"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layerType="software"-->
+                <!--android:background="@drawable/xuxian"-->
+                <!--android:rotation="90"/>-->
+            <LinearLayout
+                android:id="@+id/piv_fragment_personal_item_safety"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="25dp">
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="25dp"
@@ -138,12 +171,18 @@
                     android:includeFontPadding="false"
                     android:layout_marginTop="9dp"/>
             </LinearLayout>
+            <!--<View-->
+                <!--android:layout_width="10dp"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layerType="software"-->
+                <!--android:background="@drawable/xuxian"-->
+                <!--android:rotation="90"/>-->
             <View
-                android:layout_width="38dp"
-                android:layout_height="2dp"
-                android:layerType="software"
-                android:background="@drawable/xuxian"
-                android:rotation="90"/>
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@mipmap/personal_xuxian2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
             <LinearLayout
                 android:id="@+id/ll_fragment_personal_renzheng"
                 android:layout_width="0dp"
@@ -152,7 +191,7 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="25dp"
-                android:layout_marginRight="19dp">
+                android:layout_marginRight="17dp">
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="25dp"

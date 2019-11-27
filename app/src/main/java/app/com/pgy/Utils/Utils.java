@@ -33,6 +33,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.NetworkInterface;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
@@ -42,6 +43,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+
+import static app.com.pgy.im.utils.DateUtils.dateToString;
+import static app.com.pgy.im.utils.DateUtils.stringToDate;
 
 
 /**
@@ -472,5 +476,25 @@ public class Utils {
             }
         }
         return result;
+    }
+
+    // long类型转换为String类型
+    // currentTime要转换的long类型的时间
+    // formatType要转换的string类型的时间格式
+    public static String longToString(long currentTime, String formatType)
+            throws ParseException {
+        Date date = longToDate(currentTime, formatType); // long类型转成Date类型
+        String strTime = dateToString(date, formatType); // date类型转成String
+        return strTime;
+    }
+    // long转换为Date类型
+    // currentTime要转换的long类型的时间
+    // formatType要转换的时间格式yyyy-MM-dd HH:mm:ss//yyyy年MM月dd日 HH时mm分ss秒
+    public static Date longToDate(long currentTime, String formatType)
+            throws ParseException {
+        Date dateOld = new Date(currentTime); // 根据long类型的毫秒数生命一个date类型的时间
+        String sDateTime = dateToString(dateOld, formatType); // 把date类型的时间转换为string
+        Date date = stringToDate(sDateTime, formatType); // 把String类型转换为Date类型
+        return date;
     }
 }

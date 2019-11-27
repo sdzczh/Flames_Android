@@ -12,6 +12,8 @@ import java.util.Map;
 public class Configuration implements Serializable{
 
     private String agreenmentUrl;     /*协议*/
+
+    private List<Integer> mortgageList;/*当前抵押挖矿币种*/
     private List<Integer> c2cCoin;/*c2c交易币种*/
     private Map<Integer,CoinInfo> coinInfo; /*币种信息*/
     private String contactusUrl;      /*联系我们*/
@@ -208,6 +210,14 @@ public class Configuration implements Serializable{
 
     public void setC2cCoin(List<Integer> c2cCoin) {
         this.c2cCoin = c2cCoin;
+    }
+
+    public List<Integer> getMortgageList() {
+        return mortgageList;
+    }
+
+    public void setMortgageList(List<Integer> mortgageList) {
+        this.mortgageList = mortgageList;
     }
 
     public void setCoinInfo(Map<Integer, CoinInfo> coinInfo) {

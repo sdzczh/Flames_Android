@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_direct_grade"
+            android:layout_width="18sp"
+            android:layout_height="18sp"
+            android:background="@drawable/bg_myteam_grade1"
+            android:gravity="center"
+            android:text="V0"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="italic|bold" />
+
+        <TextView
+            android:id="@+id/tv_direct_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:text="张三丰"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_direct_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_weight="1"
+            android:text="13912345678"
+            android:textColor="#C6C6CA"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_direct_grade2"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:background="@drawable/bg_myteam_grade2"
+            android:gravity="center"
+            android:text="Lv0"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="italic|bold" />
+
+        <TextView
+            android:id="@+id/tv_direct_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="等级奖励"
+            android:textColor="#3075EE"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_direct_time"
+        android:text="注册日期："
+        android:layout_marginTop="9dp"
+        android:textSize="12sp"
+        android:textColor="#C6C6CA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

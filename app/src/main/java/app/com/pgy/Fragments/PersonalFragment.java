@@ -1,17 +1,13 @@
 package app.com.pgy.Fragments;
 
-import android.Manifest;
-import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,14 +21,12 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.com.pgy.Activitys.Base.EasyPermissions;
-import app.com.pgy.Activitys.Base.PermissionActivity;
 import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Activitys.HuiLvActivity;
-import app.com.pgy.Activitys.InVitationActivity;
 import app.com.pgy.Activitys.LoginActivity;
 import app.com.pgy.Activitys.MainActivity;
 import app.com.pgy.Activitys.MyWalletActivity;
+import app.com.pgy.Activitys.MyteamActivity;
 import app.com.pgy.Activitys.PersonalGroupsActivity;
 import app.com.pgy.Activitys.PersonalInfoActivity;
 import app.com.pgy.Activitys.PersonalRenZhengActivity;
@@ -42,7 +36,6 @@ import app.com.pgy.Activitys.SystemSettingActivity;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
-import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import app.com.pgy.Models.Beans.EventBean.EventUserInfoChange;
@@ -52,7 +45,6 @@ import app.com.pgy.Models.Beans.User;
 import app.com.pgy.Models.Beans.version;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
-import app.com.pgy.Services.DownloadService;
 import app.com.pgy.Services.MyWebSocket;
 import app.com.pgy.Utils.ImageLoaderUtils;
 import app.com.pgy.Utils.LogUtils;
@@ -61,13 +53,11 @@ import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.ExitDialog;
 import app.com.pgy.Widgets.PersonalItemView;
 import app.com.pgy.im.SealConst;
-import app.com.pgy.im.db.Friend;
 import app.com.pgy.im.server.broadcast.BroadcastManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import io.rong.imkit.RongIM;
 
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
@@ -95,6 +85,9 @@ public class PersonalFragment extends BaseFragment {
     TextView tvFragmentPersonalRealLevel;
     @BindView(R.id.tv_fragment_personal_matterLevel)
     TextView tvFragmentPersonalMatterLeve;
+    @BindView(R.id.piv_fragment_personal_item_myteam)
+    LinearLayout pivFragmentPersonalItemMyteam;
+    Unbinder unbinder;
     private String jinglingName, jinglingId;
 
     public static PersonalFragment newInstance() {
@@ -118,7 +111,7 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        pivFragmentPersonalItemVersion.setRightTxt("V"+Preferences.getVersionName());
+        pivFragmentPersonalItemVersion.setRightTxt("V" + Preferences.getVersionName());
         switchScene(null);
         refreshUserMessage();
     }
@@ -127,7 +120,7 @@ public class PersonalFragment extends BaseFragment {
         if (isLogin()) {
             User user = Preferences.getLocalUser();
             tv_nickname.setText(user.getName());
-            tv_uuid.setText("["+user.getUuid()+"]");
+            tv_uuid.setText("[" + user.getUuid() + "]");
             tv_tel.setText("UID：" + user.getUuid());
             ImageLoaderUtils.displayCircle(mContext, riv_headerImg, Preferences.getLocalUser().getHeadImg());
             tvFragmentPersonalLoginout.setVisibility(View.VISIBLE);
@@ -135,23 +128,23 @@ public class PersonalFragment extends BaseFragment {
             tvFragmentPersonalMatterLeve.setVisibility(View.VISIBLE);
             tvFragmentPersonalRealLevel.setText("实名等级");
             tvFragmentPersonalMatterLeve.setText("奖励等级");
-            if (user.getIdStatus() == 1){
+            if (user.getIdStatus() == 1) {
                 tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level1);
-            }else if (user.getIdStatus() == 2){
+            } else if (user.getIdStatus() == 2) {
                 tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level2);
-            }else if (user.getIdStatus() == 3){
+            } else if (user.getIdStatus() == 3) {
                 tvFragmentPersonalRealLevel.setBackgroundResource(R.mipmap.personal_level3);
-            }else {
+            } else {
                 tvFragmentPersonalRealLevel.setVisibility(View.GONE);
             }
 
-            if (user.getReferStatus() == 1){
+            if (user.getReferStatus() == 1) {
                 tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli1);
-            }else if (user.getReferStatus() == 2){
+            } else if (user.getReferStatus() == 2) {
                 tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli2);
-            }else if (user.getReferStatus() == 3){
+            } else if (user.getReferStatus() == 3) {
                 tvFragmentPersonalMatterLeve.setBackgroundResource(R.mipmap.personal_level_jiangli3);
-            }else {
+            } else {
                 tvFragmentPersonalMatterLeve.setVisibility(View.GONE);
             }
 
@@ -166,12 +159,12 @@ public class PersonalFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.tv_fragment_personal_nickname,R.id.ll_fragment_personal_userinfo, R.id.riv_fragment_personal_headerImg, R.id.rl_fragment_personal_userInfo,
+    @OnClick({R.id.tv_fragment_personal_nickname,R.id.piv_fragment_personal_item_myteam, R.id.ll_fragment_personal_userinfo, R.id.riv_fragment_personal_headerImg, R.id.rl_fragment_personal_userInfo,
             R.id.piv_fragment_personal_item_wallet, R.id.piv_fragment_personal_item_safety,
             R.id.piv_fragment_personal_item_poster, R.id.piv_fragment_personal_item_group, R.id.piv_fragment_personal_item_yibi,
             R.id.piv_fragment_personal_item_system, R.id.iv_invitation, R.id.piv_fragment_personal_item_web,
-            R.id.ll_fragment_personal_renzheng,R.id.piv_fragment_personal_item_help,R.id.piv_fragment_personal_item_version,
-            R.id.piv_fragment_personal_item_huilv,R.id.piv_fragment_personal_item_feelv,R.id.tv_fragment_personal_loginout})
+            R.id.ll_fragment_personal_renzheng, R.id.piv_fragment_personal_item_help, R.id.piv_fragment_personal_item_version,
+            R.id.piv_fragment_personal_item_huilv, R.id.piv_fragment_personal_item_feelv, R.id.tv_fragment_personal_loginout})
     public void onViewClick(View v) {
         Intent intent = null;
         Bundle bundle = null;
@@ -191,7 +184,12 @@ public class PersonalFragment extends BaseFragment {
                     intent.putExtra("index", 0);
                 }
                 break;
-            case R.id.piv_fragment_personal_item_safety:
+            case R.id.piv_fragment_personal_item_myteam:
+                if (isLogining()) {
+                    intent = new Intent(mContext, MyteamActivity.class);
+                }
+                break;
+                case R.id.piv_fragment_personal_item_safety:
                 if (isLogining()) {
                     intent = new Intent(mContext, SecuritycenterActivity.class);
                 }
@@ -240,7 +238,7 @@ public class PersonalFragment extends BaseFragment {
 
             case R.id.ll_fragment_personal_renzheng:
                 // 跳转实名认证
-                if (isLogining()){
+                if (isLogining()) {
 //                    if (Preferences.getLocalUser().isIdCheckFlag()) {
 //                        showToast("您已完成实名认证");
 //                        return;
@@ -256,7 +254,7 @@ public class PersonalFragment extends BaseFragment {
                 break;
             case R.id.piv_fragment_personal_item_version:
                 // 版本更新
-                getUpdateVersionInfor( Preferences.getVersionCode());
+                getUpdateVersionInfor(Preferences.getVersionCode());
                 break;
             case R.id.piv_fragment_personal_item_huilv:
                 intent = new Intent(mContext, HuiLvActivity.class);
@@ -284,6 +282,7 @@ public class PersonalFragment extends BaseFragment {
             startActivity(intent);
         }
     }
+
     private ExitDialog exitDialog;
 
     /**
@@ -315,6 +314,7 @@ public class PersonalFragment extends BaseFragment {
         exitDialog = builder.create();
         exitDialog.show();
     }
+
     /**
      * 发送退出登录广播，在baseFragment和baseActivity中接收
      */
@@ -350,6 +350,7 @@ public class PersonalFragment extends BaseFragment {
     public void EventUserInfoCHange(EventUserInfoChange change) {
         refreshUserMessage();
     }
+
     /**
      * 用户信息改变状态监听
      */
@@ -357,7 +358,6 @@ public class PersonalFragment extends BaseFragment {
     public void EventUserRealnameCHange(EventRealName change) {
         refreshUserMessage();
     }
-
 
 
     @Override
@@ -376,9 +376,11 @@ public class PersonalFragment extends BaseFragment {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+        unbinder.unbind();
     }
 
     private String taskId;
+
     /**
      * 去请求实名认证token
      */
@@ -469,21 +471,27 @@ public class PersonalFragment extends BaseFragment {
 
 
     private boolean updateFlag = false;
-    /**更新状态，0是提示一次更新，1是每次都提示更新，2是强制更新*/
+    /**
+     * 更新状态，0是提示一次更新，1是每次都提示更新，2是强制更新
+     */
     private int updateState;
-    /**服务器返回的最新版本*/
+    /**
+     * 服务器返回的最新版本
+     */
     private int lastVersionCodeFromNet;
     private String content;
     private String apkUrl;
 
-    /**从服务器获取版本信息*/
+    /**
+     * 从服务器获取版本信息
+     */
     private void getUpdateVersionInfor(int currentVersionCode) {
         showLoading(pivFragmentPersonalItemVersion);
-        Map<String,Object> map = new HashMap<>();
-        map.put("version",currentVersionCode);
+        Map<String, Object> map = new HashMap<>();
+        map.put("version", currentVersionCode);
         map.put("timeStamp", TimeUtils.getUpLoadTime());
         map.put("deviceNum", Preferences.getDeviceId());
-        map.put("systemType",SYSTEMTYPE_ANDROID);
+        map.put("systemType", SYSTEMTYPE_ANDROID);
         NetWorks.getLastVersion(map, new getBeanCallback<version>() {
             @Override
             public void onSuccess(version version) {
@@ -494,8 +502,8 @@ public class PersonalFragment extends BaseFragment {
                 updateState = version.getUpdateType();
                 content = version.getContent();
                 apkUrl = version.getApkUrl();
-                if (getActivity() instanceof MainActivity){
-                    ((MainActivity)getActivity()).updateStrategy(updateFlag,updateState,lastVersionCodeFromNet,content,apkUrl);
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).updateStrategy(updateFlag, updateState, lastVersionCodeFromNet, content, apkUrl);
                 }
             }
 
@@ -513,6 +521,14 @@ public class PersonalFragment extends BaseFragment {
             switchScene(null);
         }
         super.setUserVisibleHint(isVisibleToUser);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
     }
 
 }

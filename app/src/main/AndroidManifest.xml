@@ -2,75 +2,65 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="app.com.pgy">
-
     <!-- 网络 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <!--<uses-permission android:name="android.permission.GET_TASKS" />-->
+    <uses-permission android:name="android.permission.READ_SMS" /> <!-- <uses-permission android:name="android.permission.GET_TASKS" /> -->
     <!-- 在SDCard中创建与删除文件权限 -->
-    <!--<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />-->
+    <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> -->
     <!-- 友盟权限 -->
-    <!--<uses-permission android:name="android.permission.READ_LOGS" />-->
+    <!-- <uses-permission android:name="android.permission.READ_LOGS" /> -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- zxing -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- zxing -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
     <uses-feature android:name="android.hardware.camera" /> <!-- 使用照相机权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
     <!-- VISIBILITY_HIDDEN表示不显示任何通知栏提示的权限 -->
-    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-    <!-- DownloadManager -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> <!-- DownloadManager -->
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
-
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-
-    <!-- ⼩米 配置开始 < -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" /> <!-- ⼩米 配置开始 < -->
     <permission
         android:name="app.com.pgy.permission.MIPUSH_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="app.com.pgy.permission.MIPUSH_RECEIVE" />
-    <!-- ⼩米 配置结束 < -->
+    <uses-permission android:name="app.com.pgy.permission.MIPUSH_RECEIVE" /> <!-- ⼩米 配置结束 < -->
     <!-- GCM 配置开始 < -->
     <permission
         android:name="app.com.pgy.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="app.com.pgy.permission.C2D_MESSAGE" />
-    <!-- GCM 配置结束 < -->
+    <uses-permission android:name="app.com.pgy.permission.C2D_MESSAGE" /> <!-- GCM 配置结束 < -->
     <!-- 华为 配置开始 < -->
     <!-- HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限 -->
     <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
     <!-- 检测wifi状态 -->
     <!-- 为了获取用户手机的IMEI，用来唯一的标识用户。 -->
-
-
     <!-- 如果是安卓8.0，应用编译配置的targetSdkVersion>=26，请务必添加以下权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-    <!-- 华为 配置结束 < -->
     <application
         android:name=".Constants.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/home_logo_top"
-        android:roundIcon="@mipmap/home_logo_top"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/home_logo_top"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
+        <activity android:name=".Activitys.MortgageorderActivity"></activity>
+        <activity android:name=".Activitys.MortgagecommitActivity" />
+        <activity android:name=".Activitys.MortgageActivity" />
+        <activity android:name=".Activitys.DirectlistActivity" />
+        <activity android:name=".Activitys.MyteamActivity" />
         <activity
             android:name=".Activitys.SplashActivity"
             android:screenOrientation="portrait"
@@ -155,78 +145,78 @@
         <activity
             android:name=".Activitys.BindBankActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activitys.PersonalGroupsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.PostersActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".im.UI.IMMainActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".im.UI.IMMainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyWalletActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyWalletTransferActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyWalletWithdrawActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyWalletRechargeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.BlockActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.ForceScoreUpActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.AddGroupsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MineForceActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.ForceRankActivity"
-            android:screenOrientation="portrait"/>
-         <activity
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Activitys.ForceInfoListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.BlockAssetsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.YubibaoOutActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.YubibaoInActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyWalletCoinInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyWalletYbbCoinInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.BlockAssetsCoininfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.BlockWithdrawActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.YubibaoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.ZhuanPanViewActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.BlockTradeActviity"
-            android:screenOrientation="portrait"/>
-        <!--<activity-->
-        <!--android:name=".Activitys.BlockTradeActviity"-->
-        <!--android:screenOrientation="portrait"/>-->
+            android:screenOrientation="portrait" /> <!-- <activity -->
+        <!-- android:name=".Activitys.BlockTradeActviity" -->
+        <!-- android:screenOrientation="portrait"/> -->
         <activity
             android:name=".im.UI.AddFriendActivity"
             android:screenOrientation="portrait" />
@@ -287,8 +277,7 @@
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
-        </activity>
-        <!-- 会话列表 -->
+        </activity> <!-- 会话列表 -->
         <activity
             android:name=".im.UI.ConversationListActivity"
             android:launchMode="singleTask"
@@ -304,8 +293,7 @@
                     android:path="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>
-        </activity>
-        <!-- 聚合会话列表 -->
+        </activity> <!-- 聚合会话列表 -->
         <activity
             android:name=".im.UI.SubConversationListActivity"
             android:launchMode="singleTask"
@@ -322,8 +310,8 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-
-        <!--<receiver
+        <!--
+<receiver
             android:name="im.SealNotificationReceiver"
             android:exported="true"
             android:enabled="true">
@@ -334,19 +322,16 @@
                 <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
                 <action android:name="io.rong.push.intent.THIRD_PARTY_PUSH_STATE" />
             </intent-filter>
-        </receiver>-->
-
+        </receiver>
+        -->
         <!-- 长连接服务 -->
         <service
             android:name=".Services.HeartbeatService"
             android:label="QServer"
             android:persistent="true" />
 
-        <receiver android:name=".Receivers.AlarmReceiver" />
-        <!-- 新包下载 -->
-        <service android:name=".Services.DownloadService" />
-
-        <!-- 融云IM -->
+        <receiver android:name=".Receivers.AlarmReceiver" /> <!-- 新包下载 -->
+        <service android:name=".Services.DownloadService" /> <!-- 融云IM -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="app.com.pgy.fileprovider"
@@ -355,44 +340,34 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/rc_file_path" />
-        </provider>
-
-        <!-- 友盟分享 -->
+        </provider> <!-- 友盟分享 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a614588b27b0a4cdd0003b8" />
-
-        <!-- 多渠道打包 -->
+            android:value="5a614588b27b0a4cdd0003b8" /> <!-- 多渠道打包 -->
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}" />
-
-        <!-- Umeng分享 -->
+            android:value="${UMENG_CHANNEL_VALUE}" /> <!-- Umeng分享 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!--<activity-->
-            <!--android:name="com.umeng.qq.tencent.AuthActivity"-->
-            <!--android:launchMode="singleTask"-->
-            <!--android:noHistory="true">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<category android:name="android.intent.category.BROWSABLE" />-->
-
-                <!--<data android:scheme="tencent1106805242" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity-->
-            <!--android:name="com.umeng.qq.tencent.AssistActivity"-->
-            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
-
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- <activity -->
+        <!-- android:name="com.umeng.qq.tencent.AuthActivity" -->
+        <!-- android:launchMode="singleTask" -->
+        <!-- android:noHistory="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+        <!-- <data android:scheme="tencent1106805242" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name="com.umeng.qq.tencent.AssistActivity" -->
+        <!-- android:configChanges="orientation|keyboardHidden|screenSize" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@android:style/Theme.Translucent.NoTitleBar" /> -->
         <!-- 解决华为移动服务升级问题的透明界面（必须声明） -->
         <activity
             android:name="com.huawei.android.hms.agent.common.HMSAgentActivity"
@@ -421,11 +396,7 @@
         <activity android:name=".Activitys.BannerListActivity" />
         <activity android:name=".Activitys.PosterNewActivity" />
         <activity android:name=".Activitys.PersonalRenZhengFirstActivity" />
-        <activity android:name=".Activitys.PersonalRenZhengStateActivity" />
-
-        <!-- 第三方的推送 权限 广播 和服务 -->
-
-
+        <activity android:name=".Activitys.PersonalRenZhengStateActivity" /> <!-- 第三方的推送 权限 广播 和服务 -->
         <!-- 小米 配置开始 < -->
         <service
             android:name="com.xiaomi.push.service.XMPushService"
@@ -436,16 +407,12 @@
             android:exported="true" />
         <service
             android:name="com.xiaomi.mipush.sdk.MessageHandleService"
-            android:enabled="true" />
-        <!-- 注：此service必须在2.2.5版本以后（包括2.2.5版本）加入 -->
-
+            android:enabled="true" /> <!-- 注：此service必须在2.2.5版本以后（包括2.2.5版本）加入 -->
         <service
             android:name="com.xiaomi.push.service.XMJobService"
             android:enabled="true"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <!-- 注：此service必须在3.0.1版本以后（包括3.0.1版本）加入 -->
-
+            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 注：此service必须在3.0.1版本以后（包括3.0.1版本）加入 -->
         <receiver
             android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver"
             android:exported="true">
@@ -475,8 +442,6 @@
                 <action android:name="com.xiaomi.mipush.ERROR" />
             </intent-filter>
         </receiver>
-        <!-- 小米 配置结束 < -->
-
     </application>
 
 </manifest>

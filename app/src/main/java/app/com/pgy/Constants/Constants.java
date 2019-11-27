@@ -19,11 +19,14 @@ public class Constants {
 	public static final String ROOT_PHOTO_PATH = "/data/data/com/myphoto/";
 	/**短连接host，测试、线上*/
 	// release
-	public static final String HTTP_URL = "http://47.56.87.149:5880";
-	public static final String HTTP_URL_DEBUG = "http://47.56.87.149:5880";
+//	public static final String HTTP_URL = "http://47.56.87.149:5880";
+//	public static final String HTTP_URL_DEBUG = "http://47.56.87.149:5880";
 	//debug
 //	public static final String HTTP_URL = "http://192.168.1.1:8080";
 //	public static final String HTTP_URL_DEBUG = "http://192.168.1.1:8080";
+	//debug
+	public static final String HTTP_URL = "http://api.pgy.pub";
+	public static final String HTTP_URL_DEBUG = "http://api.pgy.pub";
 	/**长连接host，测试、线上*/
 	// release http://47.104.142.76:1606
 			//denbug  192.168.2.165:1606

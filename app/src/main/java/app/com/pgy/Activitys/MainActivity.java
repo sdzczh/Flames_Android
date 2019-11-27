@@ -100,6 +100,13 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
     }
 
 
+    /**
+     * 用于首页币币挖矿调用 跳转fragment
+     */
+    public  void goGoods(){
+        rb_goods.setChecked(true);
+    }
+
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {

@@ -322,7 +322,51 @@
                             android:layout_marginTop="5dp"/>
                     </LinearLayout>
                 </LinearLayout>
-                <include layout="@layout/view_divider_line"/>
+                
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp">
+                    <LinearLayout
+                        android:id="@+id/ll_home_bibi"
+                        android:layout_weight="1"
+                        android:background="@mipmap/home_bibi"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:text="币币挖矿"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="9dp"
+                            android:textSize="16.67sp"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_home_diya"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:background="@mipmap/home_diya"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:text="抵押挖矿"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="9dp"
+                            android:textSize="16.67sp"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!--<include layout="@layout/view_divider_line"/>-->
+
+
+
                 <app.com.pgy.Widgets.MarqueeTextView
                     android:id="@+id/mtv_fragment_home_notice"
                     android:layout_width="match_parent"

@@ -115,6 +115,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         return coinInfo;
     }
 
+    /**获取当前抵押挖矿币种*/
+    protected List<Integer> getMortgageList (){
+        List<Integer> mortgageList = configuration.getMortgageList();
+        if (mortgageList == null){
+            mortgageList = new ArrayList<>();
+        }
+        return mortgageList;
+    }
+
     /**获取C2C顶部列表*/
     protected List<Integer> getC2cCoinList(){
         List<Integer> c2cPerCoins = configuration.getC2cCoin();

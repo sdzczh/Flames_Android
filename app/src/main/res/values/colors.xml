@@ -41,6 +41,7 @@
     <color name="bg_half">#40000000</color>
     <color name="bg_db">#DBDBDB</color>
     <color name="bg_dig">#c1ddf3</color>
+    <color name="pb_blue">#FF3075EE</color>
 
     <!--字体-->
     <!--卖出辅助色-->

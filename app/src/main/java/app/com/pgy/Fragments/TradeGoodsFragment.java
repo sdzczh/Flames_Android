@@ -31,11 +31,13 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
+import com.umeng.commonsdk.debug.D;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -206,8 +208,8 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     /**
      * 交易币可用币数、计价币可用余额
      */
-    private Double tradeCoinAvail = 0.00;
-    private Double perCoinAvail = 0.00;
+    private double tradeCoinAvail = 0.00;
+    private double perCoinAvail = 0.00;
     private Double rateOfCny = 0.00;
     /**
      * 买一价、卖一价
@@ -539,7 +541,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             fragmentTradeGoodsLogin.setVisibility(View.VISIBLE);
             tradeCoinAvail = 0.00;
             perCoinAvail = 0.00;
-            fragmentTradeGoodsAvailable.setText("可用  0.00  " + currentPerCoinName);
+            fragmentTradeGoodsAvailable.setText("0.00  " + currentPerCoinName);
         }
     }
 
@@ -585,10 +587,11 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         fragmentTradeGoodsLimitPrice.setDigits(tradePriceNum);
         /*设置下面输入框的小数位数*/
         setBottomInputNumber();
+//        String v = MathUtils.formatDoubleNumber()
         if (isBuy) {
-            fragmentTradeGoodsAvailable.setText(perCoinAvail + " " + currentPerCoinName);
+            fragmentTradeGoodsAvailable.setText(unitAvailBalance + " " + currentPerCoinName);
         } else {
-            fragmentTradeGoodsAvailable.setText(tradeCoinAvail + " " + currentTradeCoinName);
+            fragmentTradeGoodsAvailable.setText(orderAvailBalance  + " " + currentTradeCoinName);
         }
     }
 

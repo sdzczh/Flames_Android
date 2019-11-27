@@ -31,6 +31,8 @@ import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.Models.Beans.DigPageInfo;
 import app.com.pgy.Models.Beans.DigRecord;
 import app.com.pgy.Models.Beans.DigResult;
+import app.com.pgy.Models.Beans.DirectlistBean;
+import app.com.pgy.Models.Beans.DirectlistBean2;
 import app.com.pgy.Models.Beans.Entrust;
 import app.com.pgy.Models.Beans.EntrustDetails;
 import app.com.pgy.Models.Beans.FeeRecord;
@@ -53,9 +55,14 @@ import app.com.pgy.Models.Beans.LeverRepaymentInfo;
 import app.com.pgy.Models.Beans.LeverTransferOutbean;
 import app.com.pgy.Models.Beans.LoanPageInfo;
 import app.com.pgy.Models.Beans.MainDialogBean;
+import app.com.pgy.Models.Beans.MortgageBean;
+import app.com.pgy.Models.Beans.MortgageinfoBean;
+import app.com.pgy.Models.Beans.MortgageorderBean;
 import app.com.pgy.Models.Beans.MuteResult;
 import app.com.pgy.Models.Beans.MyAccount;
 import app.com.pgy.Models.Beans.MyAssets;
+import app.com.pgy.Models.Beans.MyteamBean;
+import app.com.pgy.Models.Beans.MyteamBean2;
 import app.com.pgy.Models.Beans.Notice;
 import app.com.pgy.Models.Beans.BankCard;
 import app.com.pgy.Models.Beans.OdinHistoryRankBean;
@@ -1188,6 +1195,56 @@ public class NetWorks extends RetrofitUtils {
         @FormUrlEncoded
         @POST("/realname/level1.action")
         Call<ResultBean> renzhengFirst(@Header("token") String token, @Field("params") String params);
+
+        /**
+         * 团队页面初始化
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @POST("/team/init.action")
+        Call<ResultBean<MyteamBean2>> initmyteam(@Header("token") String token, @Query("params") String params);
+
+        /**
+         * 直推团队列表
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @POST("/team/directList.action")
+        Call<ResultBean<List<DirectlistBean2>>> directteamlist(@Header("token") String token, @Query("params") String params);
+
+        /**
+         * 团队列表
+         */
+        @FormUrlEncoded
+        @POST("/team/list.action")
+        Call<ResultBean> myteamlist(@Header("token") String token, @Query("params") String params);
+
+
+        /**
+         * 抵押挖矿初始化
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @POST("/mortgage/init.action")
+        Call<ResultBean<MortgageBean>> initmortgage(@Header("token") String token, @Query("params") String params);
+
+        /**
+         * 抵押确认详情页
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @POST("/mortgage/info.action")
+        Call<ResultBean<MortgageinfoBean>> mortgageinfo(@Header("token") String token, @Query("params") String params);
+
+        /**
+         * 抵押确认提交
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @POST("/mortgage/commit.action")
+        Call<ResultBean> mortgageconmit(@Header("token") String token, @Query("params") String params);
+
+        /**
+         * 抵押列表
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+        @POST("/mortgage/list.action")
+        Call<ResultBean<List<MortgageorderBean>>> mortgagelist(@Header("token") String token, @Query("params") String params);
     }
 
     /**
@@ -4819,6 +4876,144 @@ public class NetWorks extends RetrofitUtils {
         });
     }
 
+
+    public static void initmyteam(String token,Map<String, Object> maps, final getBeanCallback<MyteamBean2> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<MyteamBean2>> resultBeanCall = service.initmyteam(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<MyteamBean2>>() {
+            @Override
+            public void onResponse(Call<ResultBean<MyteamBean2>> call, Response<ResultBean<MyteamBean2>> response) {
+                ResultBean<MyteamBean2> resultBean = response.body();
+                setResponse(BindInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<MyteamBean2>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void directteamlist(String token,Map<String, Object> maps, final getBeanCallback<List<DirectlistBean2>> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<List<DirectlistBean2>>> resultBeanCall = service.directteamlist(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<List<DirectlistBean2>>>() {
+            @Override
+            public void onResponse(Call<ResultBean<List<DirectlistBean2>>> call, Response<ResultBean<List<DirectlistBean2>>> response) {
+                ResultBean<List<DirectlistBean2>> resultBean = response.body();
+                setResponse(BindInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<List<DirectlistBean2>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void initmortgage(String token,Map<String, Object> maps, final getBeanCallback<MortgageBean> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<MortgageBean>> resultBeanCall = service.initmortgage(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<MortgageBean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<MortgageBean>> call, Response<ResultBean<MortgageBean>> response) {
+                ResultBean<MortgageBean> resultBean = response.body();
+                setResponse(BindInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<MortgageBean>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+    public static void mortgageinfo(String token,Map<String, Object> maps, final getBeanCallback<MortgageinfoBean> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<MortgageinfoBean>> resultBeanCall = service.mortgageinfo(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<MortgageinfoBean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<MortgageinfoBean>> call, Response<ResultBean<MortgageinfoBean>> response) {
+                ResultBean<MortgageinfoBean> resultBean = response.body();
+                setResponse(BindInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<MortgageinfoBean>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void mortgageconmit(String token,Map<String, Object> maps, final getBeanCallback callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean> resultBeanCall = service.mortgageconmit(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean>() {
+            @Override
+            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
+//                ResultBean resultBean = response.body();
+//                setResponse(BindInfo.class, resultBean, callback);
+                ResultBean<String> resultBean = response.body();
+//                setResponseWithNoData(resultBean, callback);
+                if (resultBean == null) {
+                    /*若返回值为空，说明访问路径错误或连接发生错误*/
+                    resultBean = new ResultBean<>();
+                }
+                /*成功返回*/
+                if (resultBean.getCode() == ErrorHandler.RESPONSE_SUCCESS) {
+                    /*code正确，则成功*/
+                    callback.onSuccess(null);
+                } else {
+                    callback.onError(resultBean.getCode(),TextUtils.isEmpty( resultBean.getData())?resultBean.getMsg(): resultBean.getData());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void mortgagelist(String token,Map<String, Object> maps, final getBeanCallback<List<MortgageorderBean>> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean<List<MortgageorderBean>>> resultBeanCall = service.mortgagelist(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<List<MortgageorderBean>>>() {
+            @Override
+            public void onResponse(Call<ResultBean<List<MortgageorderBean>>> call, Response<ResultBean<List<MortgageorderBean>>> response) {
+                ResultBean<List<MortgageorderBean>> resultBean = response.body();
+                setResponse(BindInfo.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<List<MortgageorderBean>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
 
 
 

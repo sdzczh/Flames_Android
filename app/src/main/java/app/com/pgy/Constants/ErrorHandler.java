@@ -169,6 +169,9 @@ public class ErrorHandler {
             default:
                 showToast(reason);
                 break;
+            case RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT:
+                showToast("请求超时");
+                break;
             /*android端token为空*/
             case RESPONSE_ERROR_ANDROID_UNLOGIN:
                 if (DEBUG){

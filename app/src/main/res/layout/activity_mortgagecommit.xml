@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Activitys.MortgagecommitActivity">
+
+    <FrameLayout style="@style/title_bg">
+
+        <ImageView
+            android:id="@+id/ll_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:padding="5dp"
+            android:src="@mipmap/title_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_text"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:drawableRight="@mipmap/xiala_xiao"
+            android:drawablePadding="5dp"
+            android:text="抵押挖矿(PGY)" />
+
+        <TextView
+            android:id="@+id/tv_title_right"
+            style="@style/title_text"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="抵押订单"
+            android:textColor="#FF666666"
+            android:textSize="17sp" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@mipmap/diya_top"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_everyday_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="预计每日收益(PGY)"
+            android:textColor="#FFFFFFFF"
+            android:textSize="13.33sp" />
+
+        <TextView
+            android:id="@+id/tv_yesterday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="0.00"
+            android:textColor="#FFFFFFFF"
+            android:textSize="27.33sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前日利率≈"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11.33sp" />
+
+            <TextView
+                android:id="@+id/tv_todayrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textColor="#FFFFC65E"
+                android:textSize="11.33sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_diya_bizhongyue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="PGY 可用余额"
+        android:textColor="#FF333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_diya_yue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="0.00"
+        android:textColor="#FF111111"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_gray_ring"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="抵押数量"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edt_diya_num"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="1000 PGY起"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_diya_numall"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="抵押期限"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_diya_date1"
+            android:layout_marginLeft="15dp"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@mipmap/bg_date_b"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_diya_date2"
+            android:layout_marginLeft="7dp"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@mipmap/bg_date_w"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_diya_date3"
+            android:layout_marginLeft="7dp"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@mipmap/bg_date_w"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_date"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@mipmap/diya_warning" />
+
+        <TextView
+            android:id="@+id/tv_diya_earningsdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="预计0月0日计算收益，赎回需要完成抵押合约"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_agreement"
+            android:layout_marginLeft="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="7dp"
+            android:src="@mipmap/diya_butongyi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="同意"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="抵押挖矿协议"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="，并知晓页面展示预期收益不代表实际收益承诺"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_diya_enter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@mipmap/bg_diya_enter"
+        android:gravity="center"
+        android:text="确认抵押"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18sp" />
+
+
+</LinearLayout>

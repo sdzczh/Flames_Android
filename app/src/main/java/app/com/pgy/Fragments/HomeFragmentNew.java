@@ -5,11 +5,9 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +34,8 @@ import java.util.Map;
 
 import app.com.pgy.Activitys.BannerListActivity;
 import app.com.pgy.Activitys.Base.WebDetailActivity;
+import app.com.pgy.Activitys.MainActivity;
+import app.com.pgy.Activitys.MortgageActivity;
 import app.com.pgy.Activitys.MyAccountActivity;
 import app.com.pgy.Activitys.MyWalletRechargeActivity;
 import app.com.pgy.Activitys.MyWalletTransferActivity;
@@ -49,23 +49,22 @@ import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.BannerInfo;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
-import app.com.pgy.Models.Beans.EventBean.EventUserInfoChange;
 import app.com.pgy.Models.Beans.HomeInfo;
 import app.com.pgy.Models.Beans.HomeMarketBean;
 import app.com.pgy.Models.Beans.PushBean.PushData;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Receivers.HomeMarketReceiver;
-import app.com.pgy.Utils.BannerIntentUtils;
 import app.com.pgy.Utils.ImageLoaderUtils;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.LoginUtils;
-import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.MarqueeTextView;
 import app.com.pgy.Widgets.banner.ScalePageTransformer;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
@@ -135,6 +134,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     ImageView ivMarkerDown;
     @BindView(R.id.srl_fragment_home_refresh)
     SmartRefreshLayout srlRefresh;
+    @BindView(R.id.ll_home_bibi)
+    LinearLayout llHomeBibi;
+    @BindView(R.id.ll_home_diya)
+    LinearLayout llHomeDiya;
+    Unbinder unbinder;
 
     private List<BannerInfo> slides;
     private boolean isShow = true;
@@ -144,10 +148,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     private HomeInfo mHomeInfo;
 
     private List<String> fragmentsName;
-    private HomeMarketAdapter marketAdapter,market24HAdapter;
+    private HomeMarketAdapter marketAdapter, market24HAdapter;
     HomeNewsAdapter homeNewsAdapter;
     private String scene = "354";
     private HomeMarketReceiver receiver;
+
     public static HomeFragmentNew newInstance() {
         if (instance == null) {
             instance = new HomeFragmentNew();
@@ -189,11 +194,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         stabFragmentHomeMarket.addOnTabSelectedListener(new XTabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(XTabLayout.Tab tab) {
-                if (tab.getPosition() == 0){
+                if (tab.getPosition() == 0) {
                     rvMarket.setVisibility(View.VISIBLE);
                     rvMarket24H.setVisibility(View.GONE);
                     scene = "354";
-                }else {
+                } else {
                     rvMarket.setVisibility(View.GONE);
                     rvMarket24H.setVisibility(View.VISIBLE);
                     scene = "355";
@@ -224,7 +229,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
 
     private void updateLogin() {
-        if (mHomeInfo == null){
+        if (mHomeInfo == null) {
             mHomeInfo = new HomeInfo();
         }
         ivMarkerUp.setImageResource(R.mipmap.home_bottom_up);
@@ -235,9 +240,9 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             tvHomeTopTitle.setTextColor(getResources().getColor(R.color.black));
             hsvHomeTopUnlogin.setVisibility(View.GONE);
             llFragmentHomeC2cAsset.setVisibility(View.VISIBLE);
-            if (Preferences.getUserMarket() == 1){
+            if (Preferences.getUserMarket() == 1) {
                 ivMarkerUp.setImageResource(R.mipmap.home_bottom_up_sel);
-            }else  if (Preferences.getUserMarket() == 0){
+            } else if (Preferences.getUserMarket() == 0) {
                 ivMarkerDown.setImageResource(R.mipmap.home_bottom_down_sel);
             }
         } else {
@@ -247,25 +252,25 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             hsvHomeTopUnlogin.setVisibility(View.VISIBLE);
             llFragmentHomeC2cAsset.setVisibility(View.GONE);
         }
-        if (mHomeInfo.getMood() != null){
-            tvFragmentHomeUp.setText(mHomeInfo.getMood().getMoodTop()+"%");
-            tvFragmentHomeDown.setText(mHomeInfo.getMood().getMoodBottom()+"%");
+        if (mHomeInfo.getMood() != null) {
+            tvFragmentHomeUp.setText(mHomeInfo.getMood().getMoodTop() + "%");
+            tvFragmentHomeDown.setText(mHomeInfo.getMood().getMoodBottom() + "%");
             float top = Float.parseFloat(mHomeInfo.getMood().getMoodTop());
             float down = Float.parseFloat(mHomeInfo.getMood().getMoodBottom());
-            viewFragmentHomeUp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, top/100));
-            viewFragmentHomeDown.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, down/100));
-        }else {
+            viewFragmentHomeUp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, top / 100));
+            viewFragmentHomeDown.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, down / 100));
+        } else {
             tvFragmentHomeUp.setText("100%");
             tvFragmentHomeDown.setText("0%");
             viewFragmentHomeUp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f));
             viewFragmentHomeDown.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f));
 //                tvFragmentHomeDown.
         }
-        if (mHomeInfo.getNewsList() == null || mHomeInfo.getNewsList().size() < 1){
+        if (mHomeInfo.getNewsList() == null || mHomeInfo.getNewsList().size() < 1) {
             rvFragmentHomeNews.setVisibility(View.GONE);
-        }else {
+        } else {
             rvFragmentHomeNews.setVisibility(View.VISIBLE);
-            rvFragmentHomeNews.setLayoutManager(new LinearLayoutManager(mContext){
+            rvFragmentHomeNews.setLayoutManager(new LinearLayoutManager(mContext) {
                 @Override
                 public boolean canScrollVertically() {
                     //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
@@ -273,12 +278,12 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                     return false;
                 }
             });
-        //解决数据加载不完的问题
+            //解决数据加载不完的问题
             rvFragmentHomeNews.setNestedScrollingEnabled(false);
             rvFragmentHomeNews.setHasFixedSize(true);
-        //解决数据加载完成后, 没有停留在顶部的问题
+            //解决数据加载完成后, 没有停留在顶部的问题
             rvFragmentHomeNews.setFocusable(false);
-            if (homeNewsAdapter == null){
+            if (homeNewsAdapter == null) {
                 homeNewsAdapter = new HomeNewsAdapter(mContext);
                 rvFragmentHomeNews.setAdapter(homeNewsAdapter);
             }
@@ -289,13 +294,13 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
     }
 
-    private void initMarket(){
-        if (mHomeInfo == null){
+    private void initMarket() {
+        if (mHomeInfo == null) {
             mHomeInfo = new HomeInfo();
         }
 
-        if (marketAdapter == null){
-            rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
+        if (marketAdapter == null) {
+            rvMarket.setLayoutManager(new LinearLayoutManager(mContext) {
                 @Override
                 public boolean canScrollVertically() {
                     //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
@@ -314,8 +319,8 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             marketAdapter.addAll(mHomeInfo.getMarketMain());
         }
 
-        if (market24HAdapter == null){
-            rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
+        if (market24HAdapter == null) {
+            rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext) {
                 @Override
                 public boolean canScrollVertically() {
                     //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
@@ -338,7 +343,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         if (mHomeInfo == null || TextUtils.isEmpty(mHomeInfo.getNoticeTitle())) {
             return;
         }
-        mtv_notice.setText(mHomeInfo.getNoticeTitle()+ "");
+        mtv_notice.setText(mHomeInfo.getNoticeTitle() + "");
         mtv_notice.startScoll();
     }
 
@@ -400,23 +405,23 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
 
     private void updateSlide() {
-        if (mHomeInfo == null){
+        if (mHomeInfo == null) {
             return;
         }
-        if (slides != null && !isUpdateSlide()){
+        if (slides != null && !isUpdateSlide()) {
             return;
         }
         slides = mHomeInfo.getBanner();
-        if (slides == null ||  slides.size() < 1){
+        if (slides == null || slides.size() < 1) {
             return;
         }
 //        if (slideAdapter == null) {
-            uvp_slide.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
-            uvp_slide.setMultiScreen(1f);
-            uvp_slide.setItemRatio(1.0f);
-            uvp_slide.setAutoMeasureHeight(true);
-            uvp_slide.setAutoScroll(AUTO_SCROLL);
-            uvp_slide.setPageTransformer(true, new ScalePageTransformer());
+        uvp_slide.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
+        uvp_slide.setMultiScreen(1f);
+        uvp_slide.setItemRatio(1.0f);
+        uvp_slide.setAutoMeasureHeight(true);
+        uvp_slide.setAutoScroll(AUTO_SCROLL);
+        uvp_slide.setPageTransformer(true, new ScalePageTransformer());
 //            uvp_slide.setItemMargin(DensityUtil.dp2px(15f),0,DensityUtil.dp2px(15f),0);
 //            uvp_slide.initIndicator();
 //            uvp_slide.getIndicator()
@@ -453,14 +458,23 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     }
 
 
-
     @OnClick({R.id.ll_home_top_1, R.id.ll_home_top_2, R.id.ll_home_top_3, R.id.tv_fragment_home_unlogin,
             R.id.iv_home_top_show, R.id.ll_fragment_home_c2c_asset, R.id.ll_fragment_home_trust,
             R.id.ll_fragment_home_withdraw, R.id.ll_fragment_home_recharge, R.id.ll_fragment_home_groups,
-            R.id.mtv_fragment_home_notice, R.id.ll_fragment_home_up, R.id.ll_fragment_home_down})
+            R.id.mtv_fragment_home_notice, R.id.ll_fragment_home_up, R.id.ll_fragment_home_down,
+            R.id.ll_home_diya, R.id.ll_home_bibi})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
+            case R.id.ll_home_bibi:
+                MainActivity parentActivity = (MainActivity) getActivity();
+                parentActivity.goGoods();
+                break;
+            case R.id.ll_home_diya:
+                if (LoginUtils.isLogin(getActivity())) {
+                    intent = new Intent(mContext, MortgageActivity.class);
+                }
+                break;
             case R.id.ll_home_top_1:
                 intent = new Intent(mContext, WebDetailActivity.class);
                 intent.putExtra("title", "买币指南");
@@ -518,12 +532,12 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 }
                 break;
             case R.id.ll_fragment_home_up:
-                if (LoginUtils.isLogin(getActivity()) && Preferences.getUserMarket() <1){
+                if (LoginUtils.isLogin(getActivity()) && Preferences.getUserMarket() < 1) {
                     submitChangeMarket(1);
                 }
                 break;
             case R.id.ll_fragment_home_down:
-                if (LoginUtils.isLogin(getActivity())&& Preferences.getUserMarket() <1){
+                if (LoginUtils.isLogin(getActivity()) && Preferences.getUserMarket() < 1) {
                     submitChangeMarket(0);
                 }
                 break;
@@ -567,7 +581,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         });
     }
 
-    private void submitChangeMarket(final int state){
+    private void submitChangeMarket(final int state) {
         showLoading(null);
         Map<String, Object> map = new HashMap<>();
         map.put("moodState", state);
@@ -580,30 +594,29 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 hideLoading();
                 showToast("提交成功");
                 Preferences.setUserMarket(state);
-                if (state == 1){
+                if (state == 1) {
                     ivMarkerUp.setImageResource(R.mipmap.home_bottom_up_sel);
-                }else  if (state == 0){
+                } else if (state == 0) {
                     ivMarkerDown.setImageResource(R.mipmap.home_bottom_down_sel);
                 }
-                if (o != null){
-                    tvFragmentHomeUp.setText(o.getMoodTop()+"%");
-                    tvFragmentHomeDown.setText(o.getMoodBottom()+"%");
+                if (o != null) {
+                    tvFragmentHomeUp.setText(o.getMoodTop() + "%");
+                    tvFragmentHomeDown.setText(o.getMoodBottom() + "%");
                     float top = Float.parseFloat(o.getMoodTop());
                     float down = Float.parseFloat(o.getMoodBottom());
-                    viewFragmentHomeUp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, top/100));
-                    viewFragmentHomeDown.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, down/100));
+                    viewFragmentHomeUp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, top / 100));
+                    viewFragmentHomeDown.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, down / 100));
                 }
             }
 
             @Override
             public void onError(int errorCode, String reason) {
                 hideLoading();
-                onFail(errorCode,reason);
+                onFail(errorCode, reason);
                 showToast("提交失败");
             }
         });
     }
-
 
 
     /**
@@ -639,13 +652,14 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             EventBus.getDefault().unregister(this);
         }
         super.onDestroyView();
+        unbinder.unbind();
     }
 
     @Override
     public void onMarketPgyCallback(List<HomeMarketBean> marketList) {
-        if (marketList != null && marketList.size() > 0){
-            if (marketAdapter == null){
-                rvMarket.setLayoutManager(new LinearLayoutManager(mContext){
+        if (marketList != null && marketList.size() > 0) {
+            if (marketAdapter == null) {
+                rvMarket.setLayoutManager(new LinearLayoutManager(mContext) {
                     @Override
                     public boolean canScrollVertically() {
                         //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
@@ -662,7 +676,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
                 rvMarket.setAdapter(marketAdapter);
                 marketAdapter.addAll(marketList);
-            }else {
+            } else {
                 marketAdapter.clear();
                 marketAdapter.addAll(marketList);
             }
@@ -671,9 +685,9 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 
     @Override
     public void onMarket24HCallback(List<HomeMarketBean> marketList) {
-        if (marketList != null && marketList.size() > 0){
-            if (market24HAdapter == null){
-                rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext){
+        if (marketList != null && marketList.size() > 0) {
+            if (market24HAdapter == null) {
+                rvMarket24H.setLayoutManager(new LinearLayoutManager(mContext) {
                     @Override
                     public boolean canScrollVertically() {
                         //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
@@ -689,12 +703,20 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                 market24HAdapter = new HomeMarketAdapter(mContext);
                 rvMarket24H.setAdapter(market24HAdapter);
                 market24HAdapter.addAll(marketList);
-            }else {
+            } else {
                 market24HAdapter.clear();
                 market24HAdapter.addAll(marketList);
             }
 
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
     }
 
     public class SlideAdapter extends PagerAdapter {
@@ -732,8 +754,8 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
                         //2018/7/20 跳转 banner
 //                        BannerIntentUtils.bannerToActivity(getContext(), bannerBean);
 //                        if (LoginUtils.isLogin(mContext)){
-                            Intent intent = new Intent(mContext, BannerListActivity.class);
-                            startActivity(intent);
+                        Intent intent = new Intent(mContext, BannerListActivity.class);
+                        startActivity(intent);
 //                        }
                     }
                 });

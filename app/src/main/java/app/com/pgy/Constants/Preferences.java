@@ -66,6 +66,7 @@ public final class Preferences {
     private static String GOODS_COIN_TRADE = "c2c_coin_trade"; //c2c交易币
     private static String GOODS_COIN_PER = "c2c_coin_per"; //c2c计价币
     private static String C2C_COIN = "c2c_coin"; //c2c当前币种
+    private static String DIYA_COIN = "diya_coin"; //当前抵押币种
     private static String DOWNLOAD_REFERNECE ="download_reference"; //下载更新apk
     private static String CURRENT_ENTRUST_REFRESH = "currentEntrust_hasNewData";    //是否有新当前委托数据
     private static String HISTORY_ENTRUST_REFRESH = "historyEntrust_hasNewData";    //是否有新历史委托数据
@@ -519,6 +520,22 @@ public final class Preferences {
     public static boolean setC2CCoin(int c2cCoin){
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putInt(C2C_COIN,c2cCoin);
+        return editor.commit();
+    }
+
+    /**
+     * 从本地获取本地抵押币种
+     */
+    public static int getDiyaCoin() {
+        return mSharedPreferences.getInt(DIYA_COIN, StaticDatas.COIN_ALL);
+    }
+
+    /**
+     *将当前抵押币种存在本地
+     */
+    public static boolean setDiyaCoin(int diyaCoin){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putInt(DIYA_COIN,diyaCoin);
         return editor.commit();
     }
 
