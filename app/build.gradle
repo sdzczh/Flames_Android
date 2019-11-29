@@ -29,6 +29,7 @@ android {
         applicationId "app.com.pgy"
         minSdkVersion 19
         targetSdkVersion 26
+
         /*2019年7月29日 1  1.0.0 xu*/
         versionCode 22
         versionName "1.1.1"
