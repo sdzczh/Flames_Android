@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
+import java.text.DecimalFormat;
+
 import app.com.pgy.Utils.MeasureUtil;
 
 /**
@@ -39,7 +41,7 @@ public class TextProgressBar extends ProgressBar
     @Override
     public void setProgress(int progress)
     {
-        setText(progress);
+//        setText(progress);
         super.setProgress(progress);
 
     }
@@ -69,5 +71,14 @@ public class TextProgressBar extends ProgressBar
     {
         int i = (int) ((progress * 1.0f / this.getMax()) * 100);
         this.str = String.valueOf(i) + "%";
+    }
+
+    // 设置文字内容
+    public void setText2(double progress)
+    {
+        DecimalFormat dfs = new DecimalFormat("0.00");
+
+//        int i = (int) ((progress * 1.0f / this.getMax()) * 100);
+        this.str =dfs.format(progress) + "%";
     }
 }

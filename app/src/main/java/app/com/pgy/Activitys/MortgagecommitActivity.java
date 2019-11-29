@@ -80,6 +80,7 @@ public class MortgagecommitActivity extends BaseActivity {
     private double postamount;
     private boolean agreement = false;//是否同意抵押合约
     private String agreement1 = "";//协议weburl
+    private boolean isChange = false;//输入数量是否经过整千处理
 
     @Override
     public int getContentViewId() {
@@ -93,6 +94,11 @@ public class MortgagecommitActivity extends BaseActivity {
 //        Bundle bundle = getIntent().getExtras();
 //        coinType = bundle.getInt("coinType");
         coinType = Preferences.getDiyaCoin();
+        tvTitle.setText("抵押挖矿(" + getCoinName(coinType) + ")");
+        tvEverydayInfo.setText("预计每日收益("+getCoinName(coinType)+")");
+        edtDiyaNum.setHint("1000 "+getCoinName(coinType)+"起");
+        tvDiyaBizhongyue.setText(getCoinName(coinType) + " 可用余额");
+
         getData();
 
 //        edtDiyaNum.
@@ -154,7 +160,9 @@ public class MortgagecommitActivity extends BaseActivity {
 
                 } else {
                     if (agreement) {
-                        mortgageconmit();
+                        if (!isChange) {
+                            mortgageconmit();
+                        }
                     } else {
                         showToast("请先阅读并同意抵押挖矿协议");
                     }
@@ -217,6 +225,7 @@ public class MortgagecommitActivity extends BaseActivity {
      * 计算预计每日收益
      */
     private void calculate() {
+        isChange = false;
         String strDiyanum = edtDiyaNum.getText().toString();
         int intDiyanum = 0;
 
@@ -226,11 +235,13 @@ public class MortgagecommitActivity extends BaseActivity {
             if (intDiyanum < 1000) {
                 Toast.makeText(mContext, "抵押数量必须是1000的整数倍", Toast.LENGTH_SHORT).show();
                 strDiyanum = "1000";
+                isChange = true;
             } else {
                 if (!strDiyanum.substring(strDiyanum.length() - 3, strDiyanum.length()).equals("000")) {
                     strDiyanum = intDiyanum + "";
                     strDiyanum = strDiyanum.substring(0, strDiyanum.length() - 3) + "000";
                     Toast.makeText(mContext, "抵押数量必须是1000的整数倍", Toast.LENGTH_SHORT).show();
+                    isChange = true;
                 }
             }
             intDiyanum = Integer.parseInt(strDiyanum);

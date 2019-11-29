@@ -90,6 +90,7 @@ public class MortgageActivity extends BaseActivity {
         ButterKnife.bind(this);
         Preferences.setDiyaCoin(coinType);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         diglistAdapter = new DiglistAdapter(R.layout.item_diglist, mlist);
 

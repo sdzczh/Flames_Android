@@ -62,6 +62,8 @@ public class MortgageorderActivity extends BaseActivity {
 //        Bundle bundle = getIntent().getExtras();
 //        coinType = bundle.getInt("coinType");
         coinType = Preferences.getDiyaCoin();
+        tvTitleRight.setText(getCoinName(coinType));
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mortgageorderAdapter = new MortgageorderAdapter(R.layout.item_mortgageorder, mlist);
