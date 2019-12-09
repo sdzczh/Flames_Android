@@ -102,10 +102,10 @@ public class MyAccountTotalFragment extends BaseFragment {
                 }
                 break;
             case R.id.ll_ftagment_account_total_withdraw:
-                intent = new Intent(mContext, MyWalletWithdrawActivity.class);
+                intent = new Intent(mContext, MyWalletRechargeActivity.class);
                 break;
             case R.id.ll_ftagment_account_total_recharge:
-                intent = new Intent(mContext, MyWalletRechargeActivity.class);
+                intent = new Intent(mContext, MyWalletWithdrawActivity.class);
                 break;
             case R.id.ll_ftagment_account_total_trust:
                 intent = new Intent(mContext, MyWalletTransferActivity.class);

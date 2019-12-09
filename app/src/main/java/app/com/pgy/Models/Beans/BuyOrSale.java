@@ -21,6 +21,7 @@ public class BuyOrSale{
      * sales : []
      */
 
+    private String rmbRate;
     private String price;
     private List<ListBean> buys;
     private List<RecordsBean> records;
@@ -67,7 +68,13 @@ public class BuyOrSale{
         this.records = records;
     }
 
+    public void setRmbRate(String rmbRate) {
+        this.rmbRate = rmbRate;
+    }
 
+    public String getRmbRate() {
+        return rmbRate;
+    }
 
     public static class ListBean implements Serializable{
 

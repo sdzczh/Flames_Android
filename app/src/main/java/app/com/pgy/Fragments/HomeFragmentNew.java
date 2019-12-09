@@ -2,6 +2,8 @@ package app.com.pgy.Fragments;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -513,7 +515,6 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             case R.id.ll_fragment_home_withdraw:
                 if (LoginUtils.isLogin(getActivity())) {
                     intent = new Intent(mContext, MyWalletRechargeActivity.class);
-
                 }
                 break;
             case R.id.ll_fragment_home_recharge:

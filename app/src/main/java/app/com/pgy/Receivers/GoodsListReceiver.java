@@ -25,6 +25,7 @@ public class GoodsListReceiver extends BroadcastReceiver {
     private static final String TAG = "GoodsListReceiver";
     private onListCallback listCallback;
     private Double currentPrice = 0.00;
+    private Double rmbRate=0.00;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -50,11 +51,12 @@ public class GoodsListReceiver extends BroadcastReceiver {
                     /*实时价格不为空，则回调*/
                     if (buyOrSaleList.getPrice() != null) {
                         currentPrice = MathUtils.string2Double(buyOrSaleList.getPrice());
+                        rmbRate = MathUtils.string2Double(buyOrSaleList.getRmbRate());
                         if (currentPrice != null) {
                         /*回调市价*/
-                            listCallback.onPriceCallback(currentPrice);
+                            listCallback.onPriceCallback(currentPrice,rmbRate);
                         } else {
-                            listCallback.onPriceCallback(0.00);
+                            listCallback.onPriceCallback(0.00,0.00);
                         }
                     }
                     List<BuyOrSale.ListBean> buyOrders = buyOrSaleList.getBuys();
@@ -95,7 +97,7 @@ public class GoodsListReceiver extends BroadcastReceiver {
     public interface onListCallback{
         void onBuyListCallback(List<BuyOrSale.ListBean> buyList);
         void onSaleListCallback(List<BuyOrSale.ListBean> saleList);
-        void onPriceCallback(Double price);
+        void onPriceCallback(Double price,Double rmbRate);
         void onLastDealListCallback(List<RecordsBean> lastDealList);
         void onKLineListCallback(List<KLineBean.ListBean> kLineList);
         void onTradeCoinMarketCallback(List<TradeCoinMarketBean> marketBeanList);

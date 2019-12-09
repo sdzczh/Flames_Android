@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bg_dark"
+    android:background="#161B2F"
     android:orientation="vertical">
 
     <!--标题栏-->
     <FrameLayout
         style="@style/title_bg"
-        android:background="@color/bg_dark">
+        android:background="@mipmap/kline_top_bg">
 
         <ImageView
             android:id="@+id/activity_kLine_title_back"
@@ -59,7 +59,8 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingEnd="10dp"
-                android:paddingStart="10dp">
+                android:paddingStart="10dp"
+                android:background="@mipmap/kline_top_bg">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -93,24 +94,37 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:id="@+id/activity_kLine_top_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="13dp"
+                            android:text="+0.0%"
+                            android:gravity="center"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_10sp"
+                            android:background="@color/txt_green"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/txt_green"
+                            android:textSize="@dimen/font_12sp"
+                            android:layout_marginLeft="15dp"/>
                         <!--折合人民币-->
                         <TextView
                             android:id="@+id/activity_kLine_top_cny"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="≈0.00CNY"
-                            android:textColor="@color/txt_kline"
+                            android:text="￥74613.73"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="10dp"
                             android:textSize="@dimen/font_12sp" />
                         <!--站跌幅-->
-                        <TextView
-                            android:id="@+id/activity_kLine_top_percent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="+0.0%"
-                            android:textColor="@color/txt_green"
-                            android:textSize="@dimen/font_12sp" />
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -126,8 +140,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|start"
-                        android:text="高"
-                        android:textColor="@color/txt_kline"
+                        android:text="24h最高"
+                        android:textColor="#5B76A5"
                         android:textSize="@dimen/font_10sp" />
 
                     <TextView
@@ -136,15 +150,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|end"
                         android:text="0.00"
-                        android:textColor="@color/txt_white"
+                        android:textColor="#87A3D2"
                         android:textSize="@dimen/font_10sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|start"
-                        android:text="低"
-                        android:textColor="@color/txt_kline"
+                        android:text="24h最低"
+                        android:textColor="#5B76A5"
                         android:textSize="@dimen/font_10sp" />
 
                     <TextView
@@ -153,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|end"
                         android:text="0.00"
-                        android:textColor="@color/txt_white"
+                        android:textColor="#87A3D2"
                         android:textSize="@dimen/font_10sp" />
 
                     <TextView
@@ -161,7 +175,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
                         android:text="24H量"
-                        android:textColor="@color/txt_kline"
+                        android:textColor="#5B76A5"
                         android:textSize="@dimen/font_10sp" />
 
                     <TextView
@@ -170,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"
                         android:text="0.00"
-                        android:textColor="@color/txt_white"
+                        android:textColor="#87A3D2"
                         android:textSize="@dimen/font_10sp" />
                 </FrameLayout>
 
@@ -182,16 +196,19 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"
+                android:visibility="gone"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#ff081724" />
+                android:background="#ff081724"
+                android:visibility="gone"/>
             <!--成交价分时图-->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="320dp">
+                android:layout_height="320dp"
+                android:visibility="gone">
                 <!--<include layout="@layout/layout_klinechart_price_ma"/>-->
                 <include layout="@layout/layout_kline_chart_market"/>
                 <app.com.pgy.Widgets.mychart.MyCombinedChart
@@ -199,10 +216,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </FrameLayout>
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scrollbarSize="0dp"
+                android:background="@color/transparent"/>
             <!--成交量分时图-->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="80dp"
+                android:visibility="gone">
 
                 <include layout="@layout/layout_klinechart_vol_ma" />
 
@@ -261,33 +285,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ff263040"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/activity_kLine_chart_buy"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_corners_greensolid"
+            android:background="#4DB874"
             android:gravity="center"
             android:text="买入"
             android:textColor="@color/txt_white"
-            android:textSize="@dimen/font_14sp" />
-
-        <View
-            android:layout_width="20dp"
-            android:layout_height="1dp" />
-
+            android:textSize="@dimen/font_15sp" />
         <TextView
             android:id="@+id/activity_kLine_chart_sale"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_corners_redsolid"
+            android:background="#ED6660"
             android:gravity="center"
             android:text="卖出"
             android:textColor="@color/txt_white"
-            android:textSize="@dimen/font_14sp" />
+            android:textSize="@dimen/font_15sp" />
     </LinearLayout>
 </LinearLayout>

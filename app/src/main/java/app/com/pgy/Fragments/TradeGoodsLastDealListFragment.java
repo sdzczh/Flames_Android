@@ -146,7 +146,7 @@ public class TradeGoodsLastDealListFragment extends BaseFragment implements Good
     }
 
     @Override
-    public void onPriceCallback(Double price) {
+    public void onPriceCallback(Double price,Double rmbRate) {
 
     }
 

@@ -135,4 +135,5 @@
     <color name="txt_7a">#7A8799</color>
     <color name="bg_kline">#F0F4FA</color>
     <color name="f0">#F0F4FA</color>
+    <color name="test">#ff00ff</color>
 </resources>

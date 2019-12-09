@@ -58,6 +58,7 @@ import app.com.pgy.Interfaces.getStringCallback;
 import app.com.pgy.Interfaces.spinnerSecondaryChooseListener;
 import app.com.pgy.Interfaces.spinnerSingleChooseListener;
 import app.com.pgy.Models.Beans.BuyOrSale;
+import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCancelEntrust;
 import app.com.pgy.Models.Beans.EventBean.EventGoodsChange;
 import app.com.pgy.Models.Beans.EventBean.EventGoodsCoinChange;
@@ -578,9 +579,9 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         }
         rateOfCny = MathUtils.string2Double(tradeMessage.getRmbRate());
         /*从服务器获取交易币可用余额、计价币可用余额*/
-        String unitAvailBalance = tradeMessage.getUnit();
+        String unitAvailBalance = TextUtils.isEmpty(tradeMessage.getUnit())?"0.00":tradeMessage.getUnit();
         perCoinAvail = MathUtils.string2Double(unitAvailBalance);
-        String orderAvailBalance = tradeMessage.getOrder();
+        String orderAvailBalance = TextUtils.isEmpty(tradeMessage.getOrder())?"0.00":tradeMessage.getOrder();
         tradeCoinAvail = MathUtils.string2Double(orderAvailBalance);
         tradeAmountNum = tradeMessage.getAmountScale();
         tradePriceNum = tradeMessage.getPriceScale();
@@ -729,7 +730,7 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
                         @Override
                         public void getPosition(int pos) {
                             //切换场景
-
+                            switchScene(new PushData("3510", pos + "", "0", "0"));
                         }
                     });
                     coinMarketPopupWindown.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -1090,7 +1091,8 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
      * 当前最新成交价格监听
      */
     @Override
-    public void onPriceCallback(Double price) {
+    public void onPriceCallback(Double price,Double rmbRate) {
+        rateOfCny = rmbRate;
         showCurrentPrice(price);
     }
 
@@ -1272,6 +1274,14 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
             getListDataFromNet();
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void AssetsChangeEvent(EventAssetsChange event){
+        if (event != null){
+            refreshWallet();
+        }
+    }
+
 
     @Override
     public void onDestroyView() {

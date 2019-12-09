@@ -77,11 +77,16 @@ public class MyTradeCoinMarketPopupWindown extends PopupWindow {
         coinAdapter.setOnItemClickListener(new getPositionCallback() {
             @Override
             public void getPosition(int pos) {
-                selectedPerCoinType = tradeCoins.get(pos);
-                //切换场景
-                if (perChangeListener != null){
-                    perChangeListener.getPosition(selectedPerCoinType);
+                if (selectedPerCoinType != tradeCoins.get(pos)){
+                    selectedPerCoinType = tradeCoins.get(pos);
+                    coinAdapter.setSelectCoin(selectedPerCoinType);
+                    coinAdapter.notifyDataSetChanged();
+                    //切换场景
+                    if (perChangeListener != null){
+                        perChangeListener.getPosition(selectedPerCoinType);
+                    }
                 }
+
             }
         });
         coinAdapter.setSelectCoin(selectedPerCoinType);
@@ -109,6 +114,7 @@ public class MyTradeCoinMarketPopupWindown extends PopupWindow {
 
     public void updateMarketList(List<TradeCoinMarketBean> list){
         if (list == null || list.size() < 1){
+            marketAdapter.clear();
             return;
         }else {
             if (marketAdapter != null){

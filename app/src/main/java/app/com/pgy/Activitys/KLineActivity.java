@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,7 +18,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -148,6 +153,10 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
     LinearLayout activityKLineBuyOrSaleFrame;
     @BindView(R.id.activity_kLine_bottom_tab)
     TabLayout activityKLineBottomTab;
+
+    @BindView(R.id.webView)
+    WebView webViewK;
+
     private KLineTimeAdapter adapter;
     private List<KLineTime> kLineTimes;
     /**
@@ -270,6 +279,68 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
         mData = new DataParse();
         kLineDatas = new ArrayList<>();
         switchTime();
+        initWebview();
+    }
+
+    private void initWebview(){
+
+        webViewK.getSettings().setJavaScriptEnabled(true);
+//        webViewK.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+//        webViewK.getSettings().setUseWideViewPort(true);
+//        webViewK.getSettings().setLoadWithOverviewMode(true);
+//        webViewK.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        webViewK.getSettings().setTextZoom(100);
+        webViewK.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // TODO Auto-generated method stub
+                view.loadUrl(url);
+                return true;
+            }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+//                    super.onReceivedSslError(view, handler, error);
+            }
+        });
+        webViewK.getSettings().setDefaultTextEncodingName("utf-8");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            webViewK.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+        } else {
+            webViewK.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+        }
+
+        String info ="<body style=\"margin:0;padding:0\">"+
+                "<div class=\"tradingview-widget-container\">\n" +
+                "  <div id=\"tradingview_fc1f4\"></div>\n" +
+//                "  <div class=\"tradingview-widget-copyright\"><a href=\"https://cn.tradingview.com/symbols/HUOBI-BTCUSDT/\" rel=\"noopener\" target=\"_blank\"><span class=\"blue-text\">BTCUSDT图表</span></a>由TradingView提供</div>\n" +
+                "  <script type=\"text/javascript\" src=\"https://s3.tradingview.com/tv.js\"></script>\n" +
+                "  <script type=\"text/javascript\">\n" +
+                "  new TradingView.widget(\n" +
+                "  {\n" +
+                "  \"width\": %d,\n" +
+                "  \"height\": %d,\n" +
+//                "  \"autosize\":true,\n" +
+                "  \"symbol\": \"HUOBI:%sUSDT\",\n" +
+                "  \"interval\": \"60\",\n" +
+                "  \"timezone\": \"Asia/Hong_Kong\",\n" +
+                "  \"theme\": \"Dark\",\n" +
+                "  \"style\": \"1\",\n" +
+                "  \"locale\": \"zh_CN\",\n" +
+                "  \"toolbar_bg\": \"#f1f3f6\",\n" +
+                "  \"enable_publishing\": false,\n" +
+                "  \"hide_legend\": true,\n" +
+                "  \"save_image\": false,\n" +
+                "  \"container_id\": \"tradingview_fc1f4\"\n" +
+                "}\n" +
+                "  );\n" +
+                "  </script>\n" +
+                "</div>\n"+
+                "</body>";
+        String data = String.format(info,MathUtils.getWidthInDp(this),320,getCoinName(tradeCoin));//
+        webViewK.loadData(data,"text/html; charset=utf-8", "utf-8");
+//        webViewK.loadUrl("http://47.56.87.149:8888/static/demo.html");
     }
 
     /**
@@ -975,8 +1046,8 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
     private void initTopView(KLineBean.MarketBean market) {
         LogUtils.w(TAG, "market:" + market.toString());
         String newPrice = market.getNewPrice();
-        activityKLineTopPrice.setText(newPrice);
-        activityKLineTopCny.setText("≈" + market.getNewPriceCNY() + "CNY");
+        activityKLineTopPrice.setText("$"+newPrice);
+        activityKLineTopCny.setText("￥" + market.getNewPriceCNY());
         /*获取增跌幅*/
         String chgPrice = market.getChgPrice();
         if (MathUtils.string2Double(chgPrice) >= 0) {
