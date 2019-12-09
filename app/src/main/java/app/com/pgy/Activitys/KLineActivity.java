@@ -1054,12 +1054,12 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
             activityKLineTopPrice.setTextColor(getResources().getColor(R.color.txt_green));
             activityKLineTopPriceImg.setImageResource(R.mipmap.arrow_rise);
             activityKLineTopPercent.setText("+" + chgPrice + "%");
-            activityKLineTopPercent.setTextColor(getResources().getColor(R.color.txt_green));
+            activityKLineTopPercent.setBackgroundColor(getResources().getColor(R.color.txt_green));
         } else {
             activityKLineTopPrice.setTextColor(getResources().getColor(R.color.txt_red));
             activityKLineTopPriceImg.setImageResource(R.mipmap.arrow_fall);
             activityKLineTopPercent.setText(chgPrice + "%");
-            activityKLineTopPercent.setTextColor(getResources().getColor(R.color.txt_red));
+            activityKLineTopPercent.setBackgroundColor(getResources().getColor(R.color.txt_red));
         }
         activityKLineTopMax.setText(market.getHigh());
         activityKLineTopMin.setText(market.getLow());
