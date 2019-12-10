@@ -93,7 +93,7 @@ public class MyAccountTotalFragment extends BaseFragment {
                     tvFtagmentAccountTotalAmountTrade.setText("****");
                     tvFtagmentAccountTotalAmountTradeCny.setText("****");
                 }else {
-                    tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalanceCny());
+                    tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalance());
                     tvFtagmentAccountTotalAmountCny.setText(myAccount.getAccountBalanceCny());
                     tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
                     tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
@@ -121,7 +121,7 @@ public class MyAccountTotalFragment extends BaseFragment {
     private void updateAccount(MyAccount myAccount){
        this.myAccount = myAccount;
 
-        tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalanceCny());
+        tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalance());
         tvFtagmentAccountTotalAmountCny.setText(myAccount.getAccountBalanceCny());
         tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
         tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());

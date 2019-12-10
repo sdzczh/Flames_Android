@@ -112,7 +112,7 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
                     tvFtagmentAccountAmountCny.setText("****");
 
                 }else {
-                    tvFtagmentAccountAmount.setText(myWallet.getTotalSumOfCny());
+                    tvFtagmentAccountAmount.setText(myWallet.getTotalSum());
                     tvFtagmentAccountAmountCny.setText(myWallet.getTotalSumOfCny());
                 }
                 break;
@@ -209,7 +209,7 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
 
             }else {
                 tvFtagmentAccountAmountCny.setText(""+ myWallet.getTotalSumOfCny());
-                tvFtagmentAccountAmount.setText(""+ myWallet.getTotalSumOfCny());
+                tvFtagmentAccountAmount.setText(""+ myWallet.getTotalSum());
             }
         }else {
             tvFtagmentAccountAmountCny.setText("0.00");

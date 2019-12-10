@@ -9,6 +9,7 @@ import java.util.Map;
  */
 public class MyAccount {
     String accountBalanceCny;
+    String accountBalance;
     Map<Integer,ListBean> accountList;
 
     public void setAccountBalanceCny(String accountBalanceCny) {
@@ -17,6 +18,14 @@ public class MyAccount {
 
     public String getAccountBalanceCny() {
         return accountBalanceCny;
+    }
+
+    public void setAccountBalance(String accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    public String getAccountBalance() {
+        return accountBalance;
     }
 
     public void setAccountList(Map<Integer, ListBean> accountList) {

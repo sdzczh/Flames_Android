@@ -429,6 +429,7 @@ public class Configuration implements Serializable{
         private int c2cPriceScale;        //法币价格小数位数
         private int yubiScale;          //余币宝计算小数位数
         private String minC2cTransNum;      //最低法币交易金额;
+        private String relycoin;//图标币种名
 
 
         public int getC2cPriceScale() {
@@ -535,7 +536,13 @@ public class Configuration implements Serializable{
             this.cnname = cnname;
         }
 
+        public void setRelycoin(String relycoin) {
+            this.relycoin = relycoin;
+        }
 
+        public String getRelycoin() {
+            return relycoin;
+        }
 
         @Override
         public String toString() {

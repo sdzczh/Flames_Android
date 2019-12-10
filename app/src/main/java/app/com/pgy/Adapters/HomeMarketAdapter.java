@@ -38,7 +38,7 @@ public class HomeMarketAdapter extends RecyclerArrayAdapter<HomeMarketBean> {
 
         @Override
         public void setData(HomeMarketBean data) {
-            Configuration.CoinInfo coinInfo = ToolsUtils.getCoinInfo(Integer.parseInt(data.getCoinType()));
+            Configuration.CoinInfo coinInfo = ToolsUtils.getCoinInfo(MathUtils.string2Integer(data.getCoinType()));
             tvCoin.setText(coinInfo.getCoinname());
             tvPrice.setText("￥"+data.getNewPriceCNY());
             tvRose.setText(data.getChgPrice()+"%");

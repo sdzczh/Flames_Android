@@ -29,7 +29,8 @@ public class HomeInfo {
     private String noticeUrl;
     private String noticeTitle;
     private MoodBean mood;
-    private String accountBalanceCny;
+    private String accountBalanceCny;//总资产折合RMB价格
+    private String accountBalance;
 
     private List<HomeMarketBean> marketMain;
     private List<HomeMarketBean> market24h;
@@ -166,6 +167,13 @@ public class HomeInfo {
         return accountBalanceCny;
     }
 
+    public void setAccountBalance(String accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    public String getAccountBalance() {
+        return accountBalance;
+    }
 
     public static class NoticeBean {
         /**

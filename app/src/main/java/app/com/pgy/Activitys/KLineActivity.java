@@ -13,6 +13,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -290,20 +291,20 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
 //        webViewK.getSettings().setLoadWithOverviewMode(true);
 //        webViewK.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 //        webViewK.getSettings().setTextZoom(100);
-        webViewK.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                // TODO Auto-generated method stub
-                view.loadUrl(url);
-                return true;
-            }
-
-            @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.proceed();
-//                    super.onReceivedSslError(view, handler, error);
-            }
-        });
+//        webViewK.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                // TODO Auto-generated method stub
+//                view.loadUrl(url);
+//                return true;
+//            }
+//
+//            @Override
+//            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+//                handler.proceed();
+////                    super.onReceivedSslError(view, handler, error);
+//            }
+//        });
         webViewK.getSettings().setDefaultTextEncodingName("utf-8");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webViewK.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
@@ -338,7 +339,8 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
                 "  </script>\n" +
                 "</div>\n"+
                 "</body>";
-        String data = String.format(info,MathUtils.getWidthInDp(this),320,getCoinName(tradeCoin));//
+        String klineCoin = TextUtils.isEmpty(getCoinInfo(tradeCoin).getRelycoin())?getCoinName(tradeCoin):getCoinInfo(tradeCoin).getRelycoin();
+        String data = String.format(info,MathUtils.getWidthInDp(this),320,klineCoin);//
         webViewK.loadData(data,"text/html; charset=utf-8", "utf-8");
 //        webViewK.loadUrl("http://47.56.87.149:8888/static/demo.html");
     }

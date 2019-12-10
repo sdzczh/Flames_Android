@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MyWallet{
     private String totalSumOfCny;
+    private String totalSum;
     private int accountType;
     private List<ListBean> list;
 
@@ -19,6 +20,14 @@ public class MyWallet{
 
     public void setList(List<ListBean> list) {
         this.list = list;
+    }
+
+    public void setTotalSum(String totalSum) {
+        this.totalSum = totalSum;
+    }
+
+    public String getTotalSum() {
+        return totalSum;
     }
 
     public String getTotalSumOfCny() {

@@ -450,7 +450,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
             if (mHomeInfo == null) {
                 mHomeInfo = new HomeInfo();
             }
-            tvFragmentHomeTotalAsset.setText(mHomeInfo.getAccountBalanceCny());
+            tvFragmentHomeTotalAsset.setText(mHomeInfo.getAccountBalance());
             tvFragmentHomeTotalAsset1.setText(mHomeInfo.getAccountBalanceCny());
         } else {
             iv_show.setImageResource(R.mipmap.pw_unshow);
