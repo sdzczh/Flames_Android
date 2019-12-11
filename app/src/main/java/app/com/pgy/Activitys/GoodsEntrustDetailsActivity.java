@@ -9,10 +9,13 @@ import android.widget.TextView;
 
 import com.jude.easyrecyclerview.decoration.DividerDecoration;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.com.pgy.Models.Beans.EventBean.EventGoodsToTrade;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.BaseActivity;
@@ -259,8 +262,16 @@ public class GoodsEntrustDetailsActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.iv_back)
-    public void onViewClicked() {
-        GoodsEntrustDetailsActivity.this.finish();
+    @OnClick({R.id.iv_back,R.id.activity_entrustDetails_top_toTrade})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.iv_back:
+                GoodsEntrustDetailsActivity.this.finish();
+                break;
+            case R.id.activity_entrustDetails_top_toTrade:
+                EventBus.getDefault().post(new EventGoodsToTrade());
+                finish();
+                break;
+        }
     }
 }

@@ -80,6 +80,7 @@
                 android:textColor="#C4C7CC"
                 android:textSize="@dimen/font_12sp" />
             <TextView
+                android:id="@+id/activity_entrustDetails_top_toTrade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="去交易"

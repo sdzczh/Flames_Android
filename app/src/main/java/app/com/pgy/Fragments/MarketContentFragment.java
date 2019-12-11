@@ -88,7 +88,7 @@ public class MarketContentFragment extends BaseFragment {
         List<String> names = new ArrayList<>();
 //        names.add("自选");
         if (marketType == TYPE_ONCOIN){
-            names.add("CNHT");
+            names.add("USDT");
         }else {
             names.add("USDT");
         }

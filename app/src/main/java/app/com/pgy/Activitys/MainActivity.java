@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import app.com.pgy.Fragments.C2CTradeFragment;
 import app.com.pgy.Fragments.HomeFragmentNew;
 import app.com.pgy.Models.Beans.EventBean.EventC2cFragment;
+import app.com.pgy.Models.Beans.EventBean.EventGoodsToTrade;
 import app.com.pgy.Services.DownloadService;
 import app.com.pgy.Widgets.ExitDialog;
 import butterknife.BindView;
@@ -214,6 +215,12 @@ public class MainActivity extends PermissionActivity implements RadioGroup.OnChe
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void EventGoodsToTrade(EventGoodsToTrade event){
+        if (activityMainGroup.getCheckedRadioButtonId() != R.id.activity_main_group_goods){
+            activityMainGroup.check(R.id.activity_main_group_goods);
+        }
+    }
 
     @Override
     protected void onDestroy() {

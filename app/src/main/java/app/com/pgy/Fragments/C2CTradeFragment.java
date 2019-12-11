@@ -112,7 +112,7 @@ public class C2CTradeFragment extends BaseFragment {
             Preferences.setC2CCoin(coinType);
         }
 
-        tvTitle.setText(getCoinName(coinType) + "/CNY");
+        tvTitle.setText(getCoinName(coinType));
         if (!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
         }
@@ -406,7 +406,7 @@ public class C2CTradeFragment extends BaseFragment {
                     }
                     coinType = getC2cCoinList().get(position);
                     Preferences.setC2CCoin(coinType);
-                    tvTitle.setText(getCoinName(coinType) + "/CNY");
+                    tvTitle.setText(getCoinName(coinType));
                     EventBus.getDefault().post(new EventC2cTradeCoin(coinType));
                 }
             });

@@ -190,7 +190,11 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
             /*当为KN币的时候，价格定死*/
             fragmentC2cBusinessPublishInputPrice.setEnabled(false);
             fragmentC2cBusinessPublishInputPrice.setText(isBuy ? "0.99" : "1.00");
-        } else {
+        }else if (coinType == 9){
+            fragmentC2cBusinessPublishInputPrice.setEnabled(false);
+            fragmentC2cBusinessPublishInputPrice.setText(isBuy ? "7.02" : "7.00");
+        }
+        else {
             fragmentC2cBusinessPublishInputPrice.setEnabled(true);
         }
         fragmentC2cBusinessPublishInputNumber.setText("");
@@ -238,6 +242,10 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
         lastedPrice = (TextUtils.isEmpty(avail.getLatestPrice()) ? "0" : avail.getLatestPrice());
         if (coinType <= 0) {
             lastedPrice = isBuy ? "0.99" : "1.00";
+        }
+        if (coinType == 9){
+            lastedPrice = isBuy ? "7.02" : "7.00";
+
         }
         availBalance = (TextUtils.isEmpty(avail.getAvailBalance()) ? "0" : avail.getAvailBalance());
         fragmentC2cBusinessPublishAvail.setText(availBalance);

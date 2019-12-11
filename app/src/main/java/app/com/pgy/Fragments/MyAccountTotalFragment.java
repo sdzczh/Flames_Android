@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +23,7 @@ import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Constants.StaticDatas;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
+import app.com.pgy.Models.Beans.EventBean.EventAccountChange;
 import app.com.pgy.Models.Beans.MyAccount;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
@@ -79,7 +82,8 @@ public class MyAccountTotalFragment extends BaseFragment {
         getAccount();
     }
 
-    @OnClick({R.id.iv_ftagment_account_total_show, R.id.ll_ftagment_account_total_withdraw, R.id.ll_ftagment_account_total_recharge, R.id.ll_ftagment_account_total_trust})
+    @OnClick({R.id.iv_ftagment_account_total_show, R.id.ll_ftagment_account_total_withdraw, R.id.ll_ftagment_account_total_recharge,
+            R.id.ll_ftagment_account_total_trust, R.id.ll_ftagment_account_total_fabi, R.id.ll_ftagment_account_total_bibi})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -110,6 +114,12 @@ public class MyAccountTotalFragment extends BaseFragment {
             case R.id.ll_ftagment_account_total_trust:
                 intent = new Intent(mContext, MyWalletTransferActivity.class);
                 break;
+            case  R.id.ll_ftagment_account_total_fabi:
+                EventBus.getDefault().post(new EventAccountChange(1));
+                break;
+            case  R.id.ll_ftagment_account_total_bibi:
+                EventBus.getDefault().post(new EventAccountChange(2));
+                break;
         }
 
 
@@ -124,9 +134,9 @@ public class MyAccountTotalFragment extends BaseFragment {
         tvFtagmentAccountTotalAmount.setText(myAccount.getAccountBalance());
         tvFtagmentAccountTotalAmountCny.setText(myAccount.getAccountBalanceCny());
         tvFtagmentAccountTotalAmountC2c.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
-        tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotal());
+        tvFtagmentAccountTotalAmountC2cCny.setText(myAccount.getAccountList().get(ACCOUNT_C2C).getTotalCny());
         tvFtagmentAccountTotalAmountTrade.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotal());
-        tvFtagmentAccountTotalAmountTradeCny.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotal());
+        tvFtagmentAccountTotalAmountTradeCny.setText(myAccount.getAccountList().get(ACCOUNT_GOODS).getTotalCny());
     }
 
     private void getAccount(){

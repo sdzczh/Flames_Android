@@ -31,6 +31,7 @@ import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getPositionCallback;
 import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
+import app.com.pgy.Models.Beans.EventBean.EventGoodsToTrade;
 import app.com.pgy.Models.Beans.EventBean.EventMainChangeState;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
@@ -247,7 +248,10 @@ public class MyAccountBibiFragment extends BaseFragment implements getPositionCa
         }
     }
 
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void EventGoodsToTrade(EventGoodsToTrade event){
+        getActivity().finish();
+    }
     @Override
     public void onDestroyView() {
         if (EventBus.getDefault().isRegistered(this)){

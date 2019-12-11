@@ -41,6 +41,7 @@ public class MyAccount {
 
     public static class ListBean{
         String total;
+        String totalCny;
 
         public void setTotal(String total) {
             this.total = total;
@@ -48,6 +49,14 @@ public class MyAccount {
 
         public String getTotal() {
             return total;
+        }
+
+        public void setTotalCny(String totalCny) {
+            this.totalCny = totalCny;
+        }
+
+        public String getTotalCny() {
+            return totalCny;
         }
     }
 }

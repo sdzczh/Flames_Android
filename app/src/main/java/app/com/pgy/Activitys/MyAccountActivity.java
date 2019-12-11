@@ -8,6 +8,10 @@ import android.widget.ImageView;
 
 import com.androidkun.xtablayout.XTabLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +27,7 @@ import app.com.pgy.Fragments.MyAccountTotalFragment;
 import app.com.pgy.Fragments.TradeGoodsCurrentEntrustListFragment;
 import app.com.pgy.Fragments.TradeGoodsHistoryListFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
+import app.com.pgy.Models.Beans.EventBean.EventAccountChange;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
@@ -67,6 +72,9 @@ public class MyAccountActivity extends BaseActivity {
             }
         });
         initViewpagerView();
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
     }
 
 
@@ -113,4 +121,18 @@ public class MyAccountActivity extends BaseActivity {
         return names;
     }
 
+    @Subscribe(threadMode =  ThreadMode.MAIN)
+    public void AccountChangeEvent(EventAccountChange eventAccountChange){
+        if (eventAccountChange != null && eventAccountChange.getIndex() != vpContent.getCurrentItem()){
+            vpContent.setCurrentItem(eventAccountChange.getIndex());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this);
+        }
+    }
 }

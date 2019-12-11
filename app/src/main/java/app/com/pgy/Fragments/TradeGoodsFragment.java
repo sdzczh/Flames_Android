@@ -62,6 +62,7 @@ import app.com.pgy.Models.Beans.EventBean.EventAssetsChange;
 import app.com.pgy.Models.Beans.EventBean.EventC2cCancelEntrust;
 import app.com.pgy.Models.Beans.EventBean.EventGoodsChange;
 import app.com.pgy.Models.Beans.EventBean.EventGoodsCoinChange;
+import app.com.pgy.Models.Beans.EventBean.EventGoodsToTrade;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.Models.Beans.EventBean.EventMarketScene;
 import app.com.pgy.Models.Beans.KLineBean;
@@ -1015,7 +1016,15 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         if (isVisibleToUser) {
             LogUtils.w("fragment", "刷新买入界面");
             LogUtils.w("switch", "goodsBuyVisible");
-            getListDataFromNet();
+
+            if (Preferences.getGoodsPerCoin() == goodsPerCoin && Preferences.getGoodsTradeCoin() == goodsTradeCoin) {
+                LogUtils.w("coin", "不做操作");
+                getListDataFromNet();
+            }else {
+                goodsPerCoin = Preferences.getGoodsPerCoin();
+                goodsTradeCoin = Preferences.getGoodsTradeCoin();
+                switchCoinFrame();
+            }
         } else {
             hideSoftKeyboard(TradeGoodsFragment.this.getParentFragment().getActivity());
         }
@@ -1280,6 +1289,16 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         if (event != null){
             refreshWallet();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void EventGoodsToTrade(EventGoodsToTrade event){
+        if (coinMarketPopupWindown.isShowing()) {
+            coinMarketPopupWindown.dismiss();
+        }
+        goodsPerCoin = Preferences.getGoodsPerCoin();
+        goodsTradeCoin = Preferences.getGoodsTradeCoin();
+        switchCoinFrame();
     }
 
 
