@@ -426,8 +426,8 @@ public class C2CEntrustDetailsNewActivity extends PermissionActivity {
         int state = details.getState();
         switchPayTypeFrame(currentPayType, payInfo);
         switch (state) {
-            /*代付款状态*/
-            case 0:
+                /*代付款状态*/
+                case 0:
                 /*显示支付信息、底部联系对方、底部交易提醒*/
                 tvTitleRight.setVisibility(View.GONE);
                 activityCcEntrustDetailsTopOrderState.setLeftTxt("未付款");

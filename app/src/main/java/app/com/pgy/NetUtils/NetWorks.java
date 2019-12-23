@@ -93,6 +93,7 @@ import app.com.pgy.Models.Beans.CircleBanner;
 import app.com.pgy.Models.ListBean;
 import app.com.pgy.Models.MyforceInfo;
 import app.com.pgy.Models.ResultBean;
+import app.com.pgy.Models.TakerinitBean;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.ToolsUtils;
 import app.com.pgy.Constants.ErrorHandler;
@@ -1245,6 +1246,22 @@ public class NetWorks extends RetrofitUtils {
         @Headers(CACHE_CONTROL_NETWORK)
         @POST("/mortgage/list.action")
         Call<ResultBean<List<MortgageorderBean>>> mortgagelist(@Header("token") String token, @Query("params") String params);
+
+        /**
+         * 法币验证是否可进入商家页面
+         */
+//        @Headers(CACHE_CONTROL_NETWORK)
+        @FormUrlEncoded
+        @POST("/c2c/ismaker.action")
+        Call<ResultBean<Boolean>> ismaker(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
+
+        /**
+         * 法币页面初始化
+         */
+        @Headers(CACHE_CONTROL_NETWORK)
+//        @FormUrlEncoded
+        @GET("/c2c/taker/init.action")
+        Call<ResultBean<TakerinitBean>> initTaker(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
     }
 
     /**
@@ -4939,6 +4956,8 @@ public class NetWorks extends RetrofitUtils {
             }
         });
     }
+
+
     public static void mortgageinfo(String token,Map<String, Object> maps, final getBeanCallback<MortgageinfoBean> callback){
         if (TextUtils.isEmpty(token)) {
             callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
@@ -4994,6 +5013,7 @@ public class NetWorks extends RetrofitUtils {
         });
     }
 
+
     public static void mortgagelist(String token,Map<String, Object> maps, final getBeanCallback<List<MortgageorderBean>> callback){
         if (TextUtils.isEmpty(token)) {
             callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
@@ -5010,6 +5030,52 @@ public class NetWorks extends RetrofitUtils {
 
             @Override
             public void onFailure(Call<ResultBean<List<MortgageorderBean>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void ismaker(String token,Map<String, Object> maps, final getBeanCallback<Boolean> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        String sign = ToolsUtils.getUploadSign(maps);
+
+        Call<ResultBean<Boolean>> resultBeanCall = service.ismaker(token,params,sign);
+        resultBeanCall.enqueue(new Callback<ResultBean<Boolean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<Boolean>> call, Response<ResultBean<Boolean>> response) {
+                ResultBean<Boolean> resultBean = response.body();
+                setResponse(resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<Boolean>> call, Throwable t) {
+                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
+    public static void initTaker(String token,Map<String, Object> maps, final getBeanCallback<TakerinitBean> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        String sign = ToolsUtils.getUploadSign(maps);
+        Call<ResultBean<TakerinitBean>> resultBeanCall = service.initTaker(token,params,sign);
+        resultBeanCall.enqueue(new Callback<ResultBean<TakerinitBean>>() {
+            @Override
+            public void onResponse(Call<ResultBean<TakerinitBean>> call, Response<ResultBean<TakerinitBean>> response) {
+                ResultBean<TakerinitBean> resultBean = response.body();
+                setResponse(TakerinitBean.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<TakerinitBean>> call, Throwable t) {
                 callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
             }
         });

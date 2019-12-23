@@ -17,15 +17,19 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import app.com.pgy.Adapters.ViewPagerAdapter;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
+import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.spinnerSingleChooseListener;
 import app.com.pgy.Models.Beans.EventBean.EventC2cFragment;
 import app.com.pgy.Models.Beans.EventBean.EventC2cTradeCoin;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
+import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.LoginUtils;
@@ -321,8 +325,11 @@ public class C2CTradeFragment extends BaseFragment {
 
     private List<Fragment> getNormalFragments() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, true));
-        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, false));
+//        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, true));
+//        fragments.add(C2cTradeBuyOrSaleNormalFragment.newInstance(coinType, false));
+        //versionName "1.1.4"后 法币普通用户买卖界面改动
+        fragments.add(C2cTradeBuyOrSaleNormalNewFragment.newInstance(coinType, true));
+        fragments.add(C2cTradeBuyOrSaleNormalNewFragment.newInstance(coinType, false));
         fragments.add(C2CTradeOrderNormalListFragment.newInstance(coinType, true));
         fragments.add(C2CTradeOrderNormalListFragment.newInstance(coinType, false));
         return fragments;
@@ -359,13 +366,18 @@ public class C2CTradeFragment extends BaseFragment {
             case R.id.tv_tradeC2C_business:
                 if (LoginUtils.isLogin(getActivity())){
                     showRoleLayout(false);
-                    if (role != BUSINESS){
-                        role = BUSINESS;
-                        tvTradeC2CBusiness.setSelected(true);
-                        tvTradeC2CNormal.setSelected(false);
-                        activityTradeC2CTitleRight.setText("商家");
-                        updateBusiness();
-                    }
+                    ///c2c/ismaker.action
+                    //法币验证是否可进入商家页面
+
+                    ismaker();
+
+//                    if (role != BUSINESS){
+//                        role = BUSINESS;
+//                        tvTradeC2CBusiness.setSelected(true);
+//                        tvTradeC2CNormal.setSelected(false);
+//                        activityTradeC2CTitleRight.setText("商家");
+//                        updateBusiness();
+//                    }
                 }
 
                 break;
@@ -373,6 +385,36 @@ public class C2CTradeFragment extends BaseFragment {
                 showRoleLayout(false);
                 break;
         }
+    }
+
+    private void ismaker() {
+        showLoading(null);
+        Map<String, Object> map = new HashMap<>();
+        map.put("coinType", coinType);
+        NetWorks.ismaker(Preferences.getAccessToken(), map, new getBeanCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean o ) {
+                if (o) {
+                    if (role != BUSINESS) {
+                        role = BUSINESS;
+                        tvTradeC2CBusiness.setSelected(true);
+                        tvTradeC2CNormal.setSelected(false);
+                        activityTradeC2CTitleRight.setText("商家");
+                        updateBusiness();
+                    }
+                }else {
+                    showToast("请先申请成为认证商家，具体请联系客服。");
+                }
+
+                hideLoading();
+            }
+
+            @Override
+            public void onError(int errorCode, String reason) {
+                hideLoading();
+                onFail(errorCode, reason);
+            }
+        });
     }
 
     private void showRoleLayout(boolean isShow){

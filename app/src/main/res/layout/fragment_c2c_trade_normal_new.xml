@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="12dp"
+        android:gravity="right"
+        android:text="实时价"
+        android:textColor="#FF868686"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="5.3dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最小下单"
+            android:textColor="#FF868686"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFEE6560"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_cointype_str1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USDT，最大下单"
+            android:textColor="#FF868686"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFEE6560"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_cointype_str2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="USDT"
+            android:textColor="#FF868686"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00CNY"
+            android:textColor="#FFEE6560"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53.33dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_buysaleinput_ring"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:id="@+id/tv_dealnum_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="买入数量"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edt_num"
+            android:inputType="numberDecimal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入数量"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_cointype_str3"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="USDT"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53.33dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_buysaleinput_ring"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="兑换金额"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edt_price"
+            android:inputType="numberDecimal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入金额"
+            android:enabled="false"
+            android:text="0"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_cointype_str4"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="CNY"
+            android:textColor="#FF333333"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_putc2corder_enter"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginLeft="18.67dp"
+        android:layout_marginTop="34.67dp"
+        android:layout_marginRight="18.67dp"
+        android:background="@drawable/bg_c2cbuy_enter"
+        android:gravity="center"
+        android:text="立即买入"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18sp" />
+
+
+    <!--<include layout="@layout/view_divider_line"/>-->
+    <!--<com.jude.easyrecyclerview.EasyRecyclerView-->
+    <!--android:id="@+id/fragment_baseList_list"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:scrollbarStyle="insideInset"-->
+    <!--app:layout_error="@layout/view_error"-->
+    <!--app:layout_empty="@layout/view_empty"-->
+    <!--android:layout_marginTop="10dp"/>-->
+
+</LinearLayout>
