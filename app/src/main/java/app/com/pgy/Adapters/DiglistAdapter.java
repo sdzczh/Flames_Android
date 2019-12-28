@@ -36,7 +36,7 @@ public class DiglistAdapter extends BaseQuickAdapter<MortgageBean.DigListBean, B
             e.printStackTrace();
         }
         DecimalFormat df = new DecimalFormat("0.00");
-        helper.setText(R.id.tv_myteam_profit, "+"+df.format(item.getAmount()) + "PGY");
+        helper.setText(R.id.tv_myteam_profit, "+"+df.format(item.getAmount()) + "ANT");
     }
 
 }

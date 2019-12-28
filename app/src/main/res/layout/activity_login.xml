@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="27dp"
-        android:text="登录 PGY"
+        android:text="登录 ANT"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="25dp"/>
     <RadioGroup
@@ -261,7 +261,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:visibility="gone">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

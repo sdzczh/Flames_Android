@@ -33,7 +33,7 @@
              android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="35sp"
-            android:text="PGY"
+            android:text="ANT"
             android:textStyle="bold"
             android:layout_marginLeft="15dp"/>
       </LinearLayout>

@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="0.00 PGY"
+                    android:text="0.00 ANT"
                     android:textColor="#ffffff"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="0.00 PGY"
+                    android:text="0.00 ANT"
                     android:textColor="#ffffff"
                     android:textSize="18sp"
                     android:textStyle="bold" />

@@ -128,7 +128,7 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
      */
     private List<String> getFragmentsNames() {
         List<String> names = new ArrayList<>();
-        names.add("PGY");
+        names.add("ANT");
         names.add("全球");
         return names;
     }

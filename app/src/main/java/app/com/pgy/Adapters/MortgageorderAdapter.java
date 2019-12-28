@@ -27,7 +27,7 @@ public class MortgageorderAdapter extends BaseQuickAdapter<MortgageorderBean, Ba
     @Override
     protected void convert(@NonNull BaseViewHolder helper, MortgageorderBean item) {
 //        DecimalFormat df = new DecimalFormat("0.00");
-//        helper.setText(R.id.tv_diyaorder_num,item.getAmount()+"PGY");
+//        helper.setText(R.id.tv_diyaorder_num,item.getAmount()+"ANT");
 //        Preferences.init(MyApplication.getInstance().getApplicationContext());
         helper.setText(R.id.tv_diyaorder_num,item.getAmount()+ getCoinName(Preferences.getDiyaCoin()));
         helper.setText(R.id.tv_diyaorder_diyadate,"抵押日期："+item.getStartTime());

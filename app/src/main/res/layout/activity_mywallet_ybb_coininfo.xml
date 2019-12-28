@@ -190,7 +190,7 @@
                         android:id="@+id/tv_activity_mywallet_ybb_coininfo_chName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PGY"
+                        android:text="ANT"
                         android:textColor="@color/txt_half_white"
                         android:textSize="12sp"
                         />
@@ -248,7 +248,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:textColor="@color/txt_half_white"
-                                android:text="PGY"/>
+                                android:text="ANT"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:textColor="@color/txt_half_white"
-                                android:text="PGY"/>
+                                android:text="ANT"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

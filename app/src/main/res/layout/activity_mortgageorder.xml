@@ -34,7 +34,7 @@
             android:layout_marginBottom="10dp"
             android:drawableRight="@mipmap/xiala_xiao"
             android:drawablePadding="2dp"
-            android:text="PGY"
+            android:text="ANT"
             android:textColor="#FF666666"
             android:textSize="17sp" />
     </FrameLayout>

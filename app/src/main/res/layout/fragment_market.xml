@@ -16,7 +16,7 @@
             android:background="@mipmap/c2c_top_bg_1">
             <RadioButton
                 android:id="@+id/rb_fragment_market_oneCoin"
-                android:text="PGY"
+                android:text="ANT"
                 android:checked="true"
                 style="@style/c2cTop_tab"
                 android:textColor="@drawable/selector_font_light_blue"/>

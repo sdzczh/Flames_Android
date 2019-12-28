@@ -27,7 +27,7 @@
             android:layout_marginBottom="10dp"
             android:drawableRight="@mipmap/xiala_xiao"
             android:drawablePadding="5dp"
-            android:text="抵押挖矿(PGY)" />
+            android:text="抵押挖矿(ANT)" />
 
         <ImageView
             android:id="@+id/iv_question"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="昨日收益(PGY)"
+            android:text="昨日收益(ANT)"
             android:textColor="#FFFFFFFF"
             android:textSize="13.33sp" />
 
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
-            android:text="PGY"
+            android:text="ANT"
             android:textColor="#FF333333"
             android:textSize="13.33sp" />
         <LinearLayout

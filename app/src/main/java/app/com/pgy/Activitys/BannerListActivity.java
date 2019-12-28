@@ -62,7 +62,7 @@ public class BannerListActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        tvTitle.setText("PGY 活动");
+        tvTitle.setText("ANT 活动");
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
