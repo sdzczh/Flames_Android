@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -27,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
 import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -53,6 +56,10 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import app.com.pgy.Adapters.KLineShenduListAdapter;
+import app.com.pgy.Constants.DefaultData;
+import app.com.pgy.Models.Beans.ShenduBean;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.BaseWebViewActivity;
@@ -145,7 +152,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
     @BindView(R.id.activity_kLine_bottom_dealList)
     RecyclerView recyclerView;
     @BindView(R.id.activity_kLIne_scrollView)
-    ScrollView scrollView;
+    NestedScrollView scrollView;
     private KLineDealListAdapter dealListAdapter;
     @BindView(R.id.activity_kLine_bottom_descWebView)
     WebView webView;
@@ -157,7 +164,8 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
 
     @BindView(R.id.webView)
     WebView webViewK;
-
+    @BindView(R.id.rv_shendu)
+    RecyclerView rvShendu;
     private KLineTimeAdapter adapter;
     private List<KLineTime> kLineTimes;
     /**
@@ -283,7 +291,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
         initWebview();
     }
 
-    private void initWebview(){
+    private void initWebview() {
 
         webViewK.getSettings().setJavaScriptEnabled(true);
 //        webViewK.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
@@ -312,7 +320,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
             webViewK.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         }
 
-        String info ="<body style=\"margin:0;padding:0\">"+
+        String info = "<body style=\"margin:0;padding:0\">" +
                 "<div class=\"tradingview-widget-container\">\n" +
                 "  <div id=\"tradingview_fc1f4\"></div>\n" +
 //                "  <div class=\"tradingview-widget-copyright\"><a href=\"https://cn.tradingview.com/symbols/HUOBI-BTCUSDT/\" rel=\"noopener\" target=\"_blank\"><span class=\"blue-text\">BTCUSDT图表</span></a>由TradingView提供</div>\n" +
@@ -337,11 +345,11 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
                 "}\n" +
                 "  );\n" +
                 "  </script>\n" +
-                "</div>\n"+
+                "</div>\n" +
                 "</body>";
-        String klineCoin = TextUtils.isEmpty(getCoinInfo(tradeCoin).getRelycoin())?getCoinName(tradeCoin):getCoinInfo(tradeCoin).getRelycoin();
-        String data = String.format(info,MathUtils.getWidthInDp(this),320,klineCoin);//
-        webViewK.loadData(data,"text/html; charset=utf-8", "utf-8");
+        String klineCoin = TextUtils.isEmpty(getCoinInfo(tradeCoin).getRelycoin()) ? getCoinName(tradeCoin) : getCoinInfo(tradeCoin).getRelycoin();
+        String data = String.format(info, MathUtils.getWidthInDp(this), 320, klineCoin);//
+        webViewK.loadData(data, "text/html; charset=utf-8", "utf-8");
 //        webViewK.loadUrl("http://47.56.87.149:8888/static/demo.html");
     }
 
@@ -350,6 +358,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
      */
     private void getKLineDataFromNet() {
         switchScene(new PushData((mType == MARKET_ONECOIN ? "3521" : "3522"), perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
+        switchScene(new PushData("3523", perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
         showLoading(null);
         kLineDatas.clear();
         dealListAdapter.clear();
@@ -455,12 +464,21 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
                 switch (tab.getPosition()) {
                     default:
                     case 0:
-                        /*选中交易*/
-                        recyclerView.setVisibility(View.VISIBLE);
+                        switchScene(new PushData("3523", perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
+                        rvShendu.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
                         webView.setVisibility(View.GONE);
                         break;
                     case 1:
+                        switchScene(new PushData((mType == MARKET_ONECOIN ? "3521" : "3522"), perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
+                        /*选中交易*/
+                        rvShendu.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        webView.setVisibility(View.GONE);
+                        break;
+                    case 2:
                         /*选中简介*/
+                        rvShendu.setVisibility(View.GONE);
                         webView.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                         break;
@@ -736,7 +754,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
      */
     private void setMarkerViewBottom(List<KLineBean.ListBean> mData, MyCombinedChart combinedChart) {
         int c2cPriceScale = getCoinInfo(tradeCoin).getC2cPriceScale();
-        MyLeftMarkerView leftMarkerView = new MyLeftMarkerView(mContext, R.layout.mymarkerview,c2cPriceScale);
+        MyLeftMarkerView leftMarkerView = new MyLeftMarkerView(mContext, R.layout.mymarkerview, c2cPriceScale);
         MyHMarkerView hMarkerView = new MyHMarkerView(mContext, R.layout.mymarkerview_line);
         MyBottomMarkerView bottomMarkerView = new MyBottomMarkerView(mContext, R.layout.mymarkerview);
         combinedChart.setMarker(leftMarkerView, bottomMarkerView, hMarkerView, mData);
@@ -747,7 +765,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
      */
     private void setMarkerView(List<KLineBean.ListBean> mData, MyCombinedChart combinedChart) {
         int c2cPriceScale = getCoinInfo(tradeCoin).getC2cPriceScale();
-        MyLeftMarkerView leftMarkerView = new MyLeftMarkerView(mContext, R.layout.mymarkerview,c2cPriceScale);
+        MyLeftMarkerView leftMarkerView = new MyLeftMarkerView(mContext, R.layout.mymarkerview, c2cPriceScale);
         MyHMarkerView hMarkerView = new MyHMarkerView(mContext, R.layout.mymarkerview_line);
         combinedChart.setMarker(leftMarkerView, hMarkerView, mData);
     }
@@ -930,7 +948,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
             layoutKlineChartMarketMax.setText(klData.getMaxPrice());
             layoutKlineChartMarketMin.setText(klData.getMinPrice());
 
-            layoutKlineChartVolMaVol.setText(MathUtils.getVolUnitText(2,klData.getVol()));
+            layoutKlineChartVolMaVol.setText(MathUtils.getVolUnitText(2, klData.getVol()));
         }
 
         int newIndex = index;
@@ -938,7 +956,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
         if (ma5Data != null && ma5Data.size() > 0) {
             if (newIndex >= 0 && newIndex < ma5Data.size()) {
                 float m5Val = ma5Data.get(newIndex).getVal();
-                layoutKlineChartVolMaMa5.setText(MathUtils.getVolUnitText(2,m5Val));
+                layoutKlineChartVolMaMa5.setText(MathUtils.getVolUnitText(2, m5Val));
             }
         }
 
@@ -946,7 +964,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
         if (ma10Data != null && ma10Data.size() > 0) {
             if (newIndex >= 0 && newIndex < ma10Data.size()) {
                 float m10Val = ma10Data.get(newIndex).getVal();
-                layoutKlineChartVolMaMa10.setText(MathUtils.getVolUnitText(2,m10Val));
+                layoutKlineChartVolMaMa10.setText(MathUtils.getVolUnitText(2, m10Val));
             }
         }
         /*if (null != mData.getMa20DataL() && mData.getMa20DataL().size() > 0) {
@@ -1031,6 +1049,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
         }
         /*底部成交列表*/
         LogUtils.w(TAG, "beforeSize:" + dealListAdapter.getCount());
+
         List<RecordsBean> orderRecords = kLineBean.getRecords();
         if (orderRecords != null && orderRecords.size() > 0) {
             LogUtils.w(TAG, "add:" + orderRecords.size());
@@ -1040,6 +1059,29 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
             //recyclerView.setAdapter(dealListAdapter);
         }
         LogUtils.w(TAG, "afterSize:" + dealListAdapter.getCount());
+
+    }
+
+    @Override
+    public void getKLShenDuBean(ShenduBean shenduBean) {
+
+        if (shenduBean != null) {
+            List<List<String>> asks = shenduBean.asks;
+            rvShendu.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
+                @Override
+                public boolean canScrollVertically() {
+                    return false;
+                }
+
+                @Override
+                public boolean canScrollHorizontally() {
+                    return false;
+                }
+            });
+            KLineShenduListAdapter adapterShendu = new KLineShenduListAdapter();
+            adapterShendu.setData(asks, shenduBean.bids);
+            rvShendu.setAdapter(adapterShendu);
+        }
     }
 
     /**
@@ -1048,7 +1090,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
     private void initTopView(KLineBean.MarketBean market) {
         LogUtils.w(TAG, "market:" + market.toString());
         String newPrice = market.getNewPrice();
-        activityKLineTopPrice.setText("$"+newPrice);
+        activityKLineTopPrice.setText("$" + newPrice);
         activityKLineTopCny.setText("￥" + market.getNewPriceCNY());
         /*获取增跌幅*/
         String chgPrice = market.getChgPrice();

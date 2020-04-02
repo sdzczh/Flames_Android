@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/bg_content_grey"
+    android:background="@color/dark_main_model"
     android:layout_height="200dp">
 
     <app.com.pgy.Widgets.RoundImageView
@@ -21,6 +21,7 @@
         android:id="@+id/layout_im_redPackageRecordHead_type"
         android:text="共发出"
         style="@style/font_14all6"
+        android:textColor="@color/txt_all8"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -28,7 +29,7 @@
     <TextView
         android:id="@+id/layout_im_redPackageRecordHead_amount"
         android:text="¥0.00"
-        android:textColor="@color/txt_dark"
+        android:textColor="@color/color_e6"
         android:textSize="30sp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

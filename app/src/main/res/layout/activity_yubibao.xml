@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <FrameLayout
         style="@style/title_bg">
         <RelativeLayout
@@ -21,7 +21,8 @@
                 android:layout_gravity="bottom"
                 android:layout_marginStart="7dp"
                 android:padding="5dp"
-                android:src="@mipmap/title_back" />
+                android:rotation="-180"
+                android:src="@mipmap/more" />
             <TextView
                 android:id="@+id/tv_activity_yubibao_title"
                 android:layout_width="wrap_content"
@@ -30,7 +31,7 @@
                 android:drawableRight="@mipmap/arrow_down"
                 android:drawablePadding="10dp"
                 android:textSize="18sp"
-                android:textColor="@color/color_525a66"
+                android:textColor="@color/color_e6"
                 android:text="节点钱包"/>
             <ImageView
                 android:id="@+id/iv_activity_yubibao_title_question"
@@ -305,7 +306,7 @@
                         android:id="@+id/tv_activity_yubibao_totalProfit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/color_e6"
                         android:textSize="22sp"
                         android:maxLines="1"
                         android:text="0.00"
@@ -352,7 +353,7 @@
                         android:id="@+id/tv_activity_yubibao_forecastProfit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/color_e6"
                         android:textSize="22sp"
                         android:maxLines="1"
                         android:text="0"
@@ -399,7 +400,7 @@
                         android:id="@+id/tv_activity_yubibao_dayRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/color_e6"
                         android:maxLines="1"
                         android:textSize="22sp"
                         android:text="0.00"
@@ -443,7 +444,7 @@
                 android:layout_height="wrap_content"
                 android:text="流水记录"
                 android:textSize="17sp"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/color_e6"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginBottom="15dp"/>

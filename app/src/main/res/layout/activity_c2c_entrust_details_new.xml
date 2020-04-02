@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <include layout="@layout/view_divider_line_10"/>
     <FrameLayout
@@ -20,16 +20,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <LinearLayout
+                    android:background="@color/dark_main_model"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <app.com.pgy.Widgets.PersonalItemView
+
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_numId"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/color_33"
+                        app:tv_item_left_color="@color/txt_all8"
                         app:tv_item_left_text="单号: 6124249"
-                        app:tv_item_right_color="@color/color_33"
+                        app:tv_item_right_color="@color/color_e6"
                         app:tv_item_right_text="2019-09-19 20:56:15"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>
@@ -38,9 +40,9 @@
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_coinname"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/color_33"
+                        app:tv_item_left_color="@color/txt_all8"
                         app:tv_item_left_text="交易市场"
-                        app:tv_item_right_color="@color/color_33"
+                        app:tv_item_right_color="@color/color_e6"
                         app:tv_item_right_text="USDT/CNY"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>
@@ -49,9 +51,9 @@
                         android:id="@+id/activity_ccEntrustDetails_contentTop_priceBg"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/color_33"
+                        app:tv_item_left_color="@color/txt_all8"
                         app:tv_item_left_text="交易单价"
-                        app:tv_item_right_color="@color/color_33"
+                        app:tv_item_right_color="@color/color_e6"
                         app:tv_item_right_text="7.09 CNY"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>
@@ -60,9 +62,9 @@
                         android:id="@+id/activity_ccEntrustDetails_contentTop_numberBg"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/color_33"
+                        app:tv_item_left_color="@color/txt_all8"
                         app:tv_item_left_text="交易总额"
-                        app:tv_item_right_color="@color/color_33"
+                        app:tv_item_right_color="@color/color_e6"
                         app:tv_item_right_text="354.50 CNY"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>
@@ -71,9 +73,9 @@
                         android:id="@+id/activity_ccEntrustDetails_contentOrder_number"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/color_33"
+                        app:tv_item_left_color="@color/txt_all8"
                         app:tv_item_left_text="交易量"
-                        app:tv_item_right_color="@color/color_33"
+                        app:tv_item_right_color="@color/color_e6"
                         app:tv_item_right_text="50 USDT"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>
@@ -82,9 +84,9 @@
                         android:id="@+id/activity_ccEntrustDetails_top_orderState"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        app:tv_item_left_color="@color/red"
+                        app:tv_item_left_color="@color/txt_all8"
                         app:tv_item_left_text="未付款"
-                        app:tv_item_right_color="@color/red"
+                        app:tv_item_right_color="@color/color_e6"
                         app:tv_item_right_text="29m37s"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"/>
@@ -108,7 +110,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="付款方式"
-                                android:textColor="#ff333333"
+                                android:textColor="@color/color_e6"
                                 android:textSize="20sp"
                                 android:includeFontPadding="false"/>
                             <TextView
@@ -116,7 +118,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="点击内容复制"
-                                android:textColor="#ff868686"
+                                android:textColor="@color/txt_all8"
                                 android:textSize="13sp"
                                 android:includeFontPadding="false"
                                 android:layout_marginLeft="10dp"/>
@@ -335,7 +337,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:text="撤销此单"
-                        android:textColor="#ff868686"
+                        android:textColor="@color/txt_all8"
                         android:textSize="18sp"
                         android:gravity="center"
                         android:visibility="gone"
@@ -401,7 +403,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:text="重新选择付款方式"
-                        android:textColor="#ff868686"
+                        android:textColor="@color/txt_all8"
                         android:textSize="18sp"
                         android:visibility="gone"
                         android:gravity="center"

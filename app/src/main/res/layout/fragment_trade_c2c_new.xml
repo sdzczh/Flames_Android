@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
-        android:background="@color/bg_white"
+        android:background="@color/dark_main_model"
         android:paddingTop="22dp">
 
         <FrameLayout
@@ -29,44 +29,47 @@
                 android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/tv_title"
-                style="@style/title_text"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="10dp"
-                android:text="ECN/CNY"
-                android:drawableRight="@mipmap/xiala_xiao"
-                android:drawablePadding="5dp"/>
-
-            <TextView
                 android:id="@+id/activity_tradeC2C_title_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"
                 android:textSize="14sp"
-                android:textColor="@color/color_66"
+                android:textColor="@color/color_e6"
                 android:text="普通"
-                android:drawableRight="@mipmap/xiala_xiao"
+                android:drawableRight="@mipmap/trade_xiala"
                 android:drawablePadding="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/title_text"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="10dp"
+                android:drawablePadding="5dp"
+                android:drawableRight="@mipmap/trade_xiala"
+                android:text="ECN/CNY"
+                android:textColor="@color/color_e6" />
 
         </FrameLayout>
     </FrameLayout>
     <View
         android:id="@+id/view_line"
+        android:background="@color/dark_line_model"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:background="@color/dark_main_model"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <RadioGroup
+                android:background="@color/dark_main_model"
                 android:id="@+id/rg_fragment_trade_c2c_tab"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:background="@color/white"
                 android:padding="10dp">
                 <RadioButton
                     android:id="@+id/rb_fragment_trade_c2c_tab1"
@@ -84,7 +87,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="@drawable/selector_font_red_99"
+                    android:textColor="@color/selector_font_green_99"
 
                     android:textSize="16sp"
                     android:text="卖出"
@@ -95,7 +98,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="@color/selector_font_appbg_99"
+                    android:textColor="@color/selector_font_green_99"
                     android:textSize="16sp"
                     android:text="当前委托"
                     android:button="@null"
@@ -105,7 +108,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="@color/selector_font_appbg_99"
+                    android:textColor="@color/selector_font_green_99"
                     android:textSize="16sp"
                     android:text="历史委托"
                     android:button="@null"
@@ -122,27 +125,27 @@
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_weight="1"
-                    android:background="#4DB872"/>
+                    android:background="#F0CB7A"/>
                 <View
                     android:id="@+id/view_fragment_trade_c2c_tab2"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_weight="1"
-                    android:background="#EE6560"
+                    android:background="#F0CB7A"
                     android:visibility="invisible"/>
                 <View
                     android:id="@+id/view_fragment_trade_c2c_tab3"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_weight="1"
-                    android:background="#3075EE"
+                    android:background="#F0CB7A"
                     android:visibility="invisible"/>
                 <View
                     android:id="@+id/view_fragment_trade_c2c_tab4"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_weight="1"
-                    android:background="#3075EE"
+                    android:background="#F0CB7A"
                     android:visibility="invisible"/>
             </LinearLayout>
 
@@ -152,21 +155,21 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"/>
+                android:background="@color/dark_main_model"/>
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_content2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"/>
+                android:background="@color/dark_main_model"/>
         </LinearLayout>
         <LinearLayout
+            android:background="@color/dark_bg_color"
             android:id="@+id/ll_tradeC2C_role"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#66000000"
             android:visibility="gone">
             <include layout="@layout/view_divider_line"/>
             <TextView
@@ -174,20 +177,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="普通"
-                android:textColor="@drawable/selector_font_app_33"
+                android:textColor="@color/color_e6"
                 android:textSize="16sp"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:paddingTop="17dp"
                 android:paddingBottom="17dp"
                 android:gravity="center"/>
             <TextView
+                android:background="@color/dark_main_model"
                 android:id="@+id/tv_tradeC2C_business"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="商家"
-                android:textColor="@drawable/selector_font_app_33"
+                android:textColor="@color/color_e6"
                 android:textSize="16sp"
-                android:background="@color/white"
                 android:paddingTop="17dp"
                 android:paddingBottom="17dp"
                 android:gravity="center"/>

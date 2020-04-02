@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.8"
         android:text="BTC"
-        android:textColor="#ff333333"
+        android:textColor="@color/color_e6"
         android:textSize="13sp"
         />
     <TextView
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.5"
         android:text="0"
-        android:textColor="#ff333333"
+        android:textColor="@color/color_e6"
         android:textSize="14sp"
         />
     <TextView
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.5"
         android:text="冻结 0"
-        android:textColor="#ffb5b5b7"
+        android:textColor="@color/txt_all8"
         android:textSize="14sp"
         />
     <ImageView

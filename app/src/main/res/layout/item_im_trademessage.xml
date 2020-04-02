@@ -6,7 +6,7 @@
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:padding="10dp"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_16sp"
             style="@style/font_15dark"/>
         <View
@@ -53,6 +54,7 @@
         android:id="@+id/item_im_tradeMessage_content"
         android:text="内容内容"
         style="@style/font_14dark"
+        android:textColor="@color/color_e6"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -60,7 +62,7 @@
     <TextView
         android:id="@+id/item_im_tradeMessage_orderId"
         android:text="订单编号：12421421423423"
-        android:textColor="@color/txt_all6"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_12sp"
         android:maxLines="1"
         android:layout_marginTop="10dp"

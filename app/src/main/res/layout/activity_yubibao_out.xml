@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <ScrollView
         android:layout_width="match_parent"
@@ -21,18 +21,18 @@
                 android:gravity="center"
                 android:paddingTop="47dp"
                 android:paddingBottom="47dp"
-                android:background="@color/white">
+                android:background="@color/dark_main_model">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
-                    android:textColor="@color/txt_title"
+                    android:textColor="@color/color_e6"
                     android:text="节点账户" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_12sp"
-                    android:textColor="@color/txt_content"
+                    android:textColor="@color/color_e6"
                     android:text="转至"
                     android:includeFontPadding="false"
                     android:layout_marginRight="55dp"
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
-                    android:textColor="@color/txt_title"
+                    android:textColor="@color/color_e6"
                     android:text="币币账户" />
             </LinearLayout>
             <include layout="@layout/view_divider_line_10"/>
@@ -55,11 +55,11 @@
                 android:paddingRight="20dp"
                 android:paddingTop ="35dp"
                 android:paddingBottom="19dp"
-                android:background="@color/white">
+                android:background="@color/dark_main_model">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/txt_title"
+                    android:textColor="@color/txt_all8"
                     android:textSize="15sp"
                     android:text="数量："/>
                 <app.com.pgy.Widgets.NumberEditText
@@ -68,9 +68,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="15sp"
-                    android:textColor="@color/txt_title"
-                    android:background="@color/white"
-                    android:textColorHint="@color/txt_B8C6D2"
+                    android:textColor="@color/color_e6"
+                    android:background="@color/dark_main_model"
+                    android:textColorHint="@color/txt_all6"
                     android:hint="最小转出数量0.0001"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
@@ -85,13 +85,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:textColor="@color/txt_title"
+                    android:textColor="@color/color_e6"
                     android:textSize="15sp"
                     android:text=""/>
                 <View
                     android:layout_width="1dp"
                     android:layout_height="20dp"
-                    android:background="@color/txt_app"/>
+                    android:background="@color/dark_line_model"/>
                 <TextView
                     android:id="@+id/tv_activity_yubibao_out_chooseAll"
                     android:layout_width="wrap_content"
@@ -114,20 +114,20 @@
                 android:orientation="horizontal"
                 android:paddingTop="24dp"
                 android:paddingLeft="20dp"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:paddingBottom="24dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
-                    android:textColor="@color/txt_808DAC"
+                    android:textColor="@color/txt_all8"
                     android:text="可转"/>
                 <TextView
                     android:id="@+id/tv_activity_yubibao_out_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
-                    android:textColor="@color/txt_808DAC"
+                    android:textColor="@color/color_e6"
                     android:text="0.00"
                     android:layout_marginLeft="10dp"/>
                 <TextView

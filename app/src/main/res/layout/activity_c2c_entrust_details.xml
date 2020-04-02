@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_182853"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
 
     <FrameLayout
         style="@style/title_bg"
-        android:background="@color/txt_182853">
+        android:background="@color/dark_main_model">
 
         <ImageView
             android:id="@+id/activity_ccEntrustDetails_back"
@@ -116,7 +116,7 @@
                     android:layout_gravity="center_horizontal"
                     android:maxLines="1"
                     android:text="¥ 0.00"
-                    android:textColor="@color/txt_title"
+                    android:textColor="@color/color_e6"
                     android:textSize="28sp"
                     android:includeFontPadding="false"
                     android:layout_marginTop="25dp"/>
@@ -210,44 +210,45 @@
 
 
                     <!--支付方式-->
-                    <LinearLayout
-                        android:id="@+id/activity_ccEntrustDetails_contentPay_payType_switch"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="@color/bg_white"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingEnd="20dp"
-                        android:paddingStart="20dp"
-                        android:visibility="visible">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="支付方式"
-                            android:textColor="@color/txt_content"
-                            android:textSize="14sp"
-                            />
-                        <ImageView
-                            android:id="@+id/activity_ccEntrustDetails_contentPay_payType_icon"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:src="@mipmap/pay_ali"
-                            android:visibility="visible" />
+                <LinearLayout
+                    android:id="@+id/activity_ccEntrustDetails_contentPay_payType_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/dark_main_model"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp"
+                    android:paddingStart="20dp"
+                    android:visibility="visible">
 
-                        <TextView
-                            android:id="@+id/activity_ccEntrustDetails_contentPay_payType_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="支付宝支付"
-                            android:textColor="@color/txt_content"
-                            android:textSize="@dimen/font_14sp"
-                            android:includeFontPadding="false"
-                            android:layout_marginLeft="7dp"
-                            android:drawableRight="@mipmap/next_go"
-                            android:drawablePadding="10dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="支付方式"
+                        android:textColor="@color/txt_B8C6D2"
+                        android:textSize="14sp" />
 
-                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/activity_ccEntrustDetails_contentPay_payType_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/pay_ali"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/activity_ccEntrustDetails_contentPay_payType_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@mipmap/next_go"
+                        android:includeFontPadding="false"
+                        android:text="支付宝支付"
+                        android:textColor="@color/txt_content"
+                        android:textSize="@dimen/font_14sp" />
+
+                </LinearLayout>
                     <LinearLayout
                         android:id="@+id/activity_ccEntrustDetails_contentTop_priceBg"
                         android:layout_width="match_parent"

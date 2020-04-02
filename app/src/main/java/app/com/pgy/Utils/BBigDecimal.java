@@ -172,15 +172,20 @@ public class BBigDecimal extends BigDecimal {
      */
     public static double divide(double value1, double value2, int scale)
             throws IllegalAccessException {
-        BigDecimal a = new BigDecimal(Double.toString(value1));
-        BigDecimal b = new BigDecimal(Double.toString(value2));
-        // 如果精确范围小于0，抛出异常信息
-        if (scale < 0) {
-            throw new IllegalAccessException("精确度不能小于0");
+        try {
+            BigDecimal a = new BigDecimal(Double.toString(value1));
+            BigDecimal b = new BigDecimal(Double.toString(value2));
+            // 如果精确范围小于0，抛出异常信息
+            if (scale < 0) {
+                throw new IllegalAccessException("精确度不能小于0");
+            }
+            a=a.setScale(scale);//必须重新赋值
+            b=b.setScale(scale);//必须重新赋值
+            return a.divide(b,scale).doubleValue();
+        }catch (Exception e){
+            return 0;
         }
-        a=a.setScale(scale);//必须重新赋值
-        b=b.setScale(scale);//必须重新赋值
-        return a.divide(b,scale).doubleValue();
+
     }
 
 

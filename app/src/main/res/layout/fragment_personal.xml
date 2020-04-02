@@ -1,221 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#f7f8fa">
+        android:background="@color/dark_main_model"
+        android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@mipmap/bg_personal_top">
+            android:layout_height="150dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="18dp"
-                android:layout_marginLeft="18dp">
+                android:layout_marginLeft="18dp"
+                android:orientation="horizontal">
+
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/riv_fragment_personal_headerImg"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    app:riv_oval="true"
+                    android:src="@mipmap/personal_user"
                     app:riv_border_color="@color/white"
                     app:riv_border_width="1dp"
-                    android:src="@mipmap/personal_user"/>
+                    app:riv_oval="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="18dp">
+                    android:layout_marginLeft="18dp"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/tv_fragment_personal_nickname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:text="登录/注册"
-                            android:singleLine="true"
-                            android:maxLines="1"
                             android:ellipsize="end"
-                            android:includeFontPadding="false"/>
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="登录/注册"
+                            android:textColor="@color/white"
+                            android:textSize="17sp" />
+
                         <TextView
                             android:id="@+id/tv_fragment_personal_uuid"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
                             android:text="[1234567]"
                             android:textColor="#aaffffff"
-                            android:textSize="13sp"
-                            android:layout_marginLeft="15dp"/>
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="9dp">
+                        android:layout_marginTop="9dp"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/tv_fragment_personal_realLevel"
                             android:layout_width="70dp"
                             android:layout_height="20dp"
                             android:background="@mipmap/personal_level1"
-                            android:textColor="@color/white"
-                            android:textSize="10sp"
-                            android:text="实名等级"
                             android:gravity="center_vertical|right"
+                            android:paddingLeft="5dp"
                             android:paddingRight="6dp"
-                            android:paddingLeft="5dp"/>
+                            android:text="实名等级"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
+
                         <TextView
                             android:id="@+id/tv_fragment_personal_matterLevel"
                             android:layout_width="70dp"
                             android:layout_height="20dp"
+                            android:layout_marginLeft="10dp"
                             android:background="@mipmap/personal_level_jiangli"
-                            android:textColor="@color/white"
-                            android:textSize="10sp"
-                            android:text="奖励等级"
                             android:gravity="center_vertical|right"
-                            android:paddingRight="6dp"
                             android:paddingLeft="5dp"
-                            android:layout_marginLeft="10dp"/>
+                            android:paddingRight="6dp"
+                            android:text="奖励等级"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
         </LinearLayout>
+
         <FrameLayout
             style="@style/title_bg"
             android:background="@color/transparent"
             android:visibility="gone">
+
             <ImageView
                 android:id="@+id/piv_fragment_personal_item_system"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:padding="5dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="8dp"
                 android:layout_gravity="bottom|right"
-                android:src="@mipmap/personal_system"/>
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="12dp"
+                android:padding="5dp"
+                android:src="@mipmap/personal_system" />
         </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:background="@color/dark_main_model"
             android:gravity="center_vertical"
-            android:background="@color/white">
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/piv_fragment_personal_item_myteam"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:padding="25dp"
-                android:layout_marginLeft="17dp">
+                android:orientation="vertical"
+                android:padding="25dp">
+
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="25dp"
-                    android:src="@mipmap/personal_myteam"/>
+                    android:src="@mipmap/personal_myteam" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/txt_all9"
-                    android:text="我的团队"
+                    android:layout_marginTop="9dp"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="9dp"/>
+                    android:text="我的团队"
+                    android:textColor="@color/txt_all9"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <View
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:background="@mipmap/personal_xuxian2"
                 android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/dark_line_model" />
             <!--<View-->
-                <!--android:layout_width="2dp"-->
-                <!--android:layout_height="2dp"-->
-                <!--android:layerType="software"-->
-                <!--android:background="@drawable/xuxian"-->
-                <!--android:rotation="90"/>-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="2dp"-->
+            <!--android:layerType="software"-->
+            <!--android:background="@drawable/xuxian"-->
+            <!--android:rotation="90"/>-->
             <LinearLayout
                 android:id="@+id/piv_fragment_personal_item_safety"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="25dp">
+
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="25dp"
-                    android:src="@mipmap/personal_safety"/>
+                    android:src="@mipmap/personal_safety" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/txt_all9"
-                    android:text="安全中心"
+                    android:layout_marginTop="9dp"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="9dp"/>
+                    android:text="安全中心"
+                    android:textColor="@color/txt_all9"
+                    android:textSize="14sp" />
             </LinearLayout>
             <!--<View-->
-                <!--android:layout_width="10dp"-->
-                <!--android:layout_height="2dp"-->
-                <!--android:layerType="software"-->
-                <!--android:background="@drawable/xuxian"-->
-                <!--android:rotation="90"/>-->
+            <!--android:layout_width="10dp"-->
+            <!--android:layout_height="2dp"-->
+            <!--android:layerType="software"-->
+            <!--android:background="@drawable/xuxian"-->
+            <!--android:rotation="90"/>-->
             <View
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:background="@mipmap/personal_xuxian2"
                 android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/dark_line_model" />
+
             <LinearLayout
                 android:id="@+id/ll_fragment_personal_renzheng"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="17dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:padding="25dp"
-                android:layout_marginRight="17dp">
+                android:orientation="vertical"
+                android:padding="25dp">
+
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="25dp"
-                    android:src="@mipmap/personal_renzheng"/>
+                    android:src="@mipmap/personal_renzheng" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/txt_all9"
-                    android:text="身份认证"
+                    android:layout_marginTop="9dp"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="9dp"/>
+                    android:text="身份认证"
+                    android:textColor="@color/txt_all9"
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:background="@color/dark_main_model"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/ll_fragment_personal_userinfo"
                     android:layout_width="wrap_content"
@@ -227,132 +252,142 @@
                         android:id="@+id/tv_fragment_personal_tel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_title"
-                        android:textSize="13sp"
-                        android:text="欢迎来到蒲公英"
-                        android:singleLine="true"
-                        android:maxLines="1"
+                        android:layout_marginTop="10dp"
                         android:ellipsize="end"
                         android:includeFontPadding="false"
-                        android:layout_marginTop="10dp"/>
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="欢迎来到蒲公英"
+                        android:textColor="@color/txt_title"
+                        android:textSize="13sp" />
                 </LinearLayout>
-                <app.com.pgy.Widgets.PersonalItemView
-                    android:id="@+id/piv_fragment_personal_item_help"
-                    style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_help"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="帮助中心"
-                    app:iv_item_next_visible="true"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="21dp"/>
-                <View
-                    style="@style/Line"/>
-                <app.com.pgy.Widgets.PersonalItemView
-                    android:id="@+id/piv_fragment_personal_item_version"
-                    style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_version"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="检查版本"
-                    app:iv_item_next_visible="true"
-                    app:tv_item_right_text="3.1.4"
-                    app:tv_item_right_color="@color/txt_all9"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="21dp"/>
-                <View
-                    style="@style/Line"/>
-                <app.com.pgy.Widgets.PersonalItemView
-                    android:id="@+id/piv_fragment_personal_item_group"
-                    style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_group"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="加入社群"
-                    app:iv_item_next_visible="true"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="21dp"/>
-                <View
-                    style="@style/Line"/>
-                <app.com.pgy.Widgets.PersonalItemView
-                    android:id="@+id/piv_fragment_personal_item_poster"
-                    style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_post"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="推荐给好友"
-                    app:iv_item_next_visible="true"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="21dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="#f7f8fa"/>
-                <app.com.pgy.Widgets.PersonalItemView
-                    android:id="@+id/piv_fragment_personal_item_huilv"
-                    style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_huilv"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="汇率概览"
-                    app:iv_item_next_visible="true"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="21dp"/>
+
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_wallet"
                     style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_wallet"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="我的钱包"
-                    app:iv_item_next_visible="true"
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="21dp"
-                    android:visibility="gone"/>
+                    android:visibility="visible"
+                    app:iv_item_left_icon="@mipmap/personal_wallet"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="我的钱包" />
+
+                <View style="@style/Line" />
+
+                <app.com.pgy.Widgets.PersonalItemView
+                    android:id="@+id/piv_fragment_personal_item_help"
+                    style="@style/PersonalItem"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="21dp"
+                    app:iv_item_left_icon="@mipmap/personal_help"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="帮助中心" />
+
+                <View style="@style/Line" />
+
+                <app.com.pgy.Widgets.PersonalItemView
+                    android:id="@+id/piv_fragment_personal_item_version"
+                    style="@style/PersonalItem"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="21dp"
+                    app:iv_item_left_icon="@mipmap/personal_version"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="检查版本"
+                    app:tv_item_right_color="@color/color_e6"
+                    app:tv_item_right_text="3.1.4" />
+
+                <View style="@style/Line" />
+
+                <app.com.pgy.Widgets.PersonalItemView
+                    android:id="@+id/piv_fragment_personal_item_group"
+                    style="@style/PersonalItem"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="21dp"
+                    app:iv_item_left_icon="@mipmap/personal_group"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="加入社群" />
+
+                <View style="@style/Line" />
+
+                <app.com.pgy.Widgets.PersonalItemView
+                    android:id="@+id/piv_fragment_personal_item_poster"
+                    style="@style/PersonalItem"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="21dp"
+                    app:iv_item_left_icon="@mipmap/personal_post"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="推荐给好友" />
 
                 <View
-                    style="@style/Line"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/dark_line_model" />
+
+                <app.com.pgy.Widgets.PersonalItemView
+                    android:id="@+id/piv_fragment_personal_item_huilv"
+                    style="@style/PersonalItem"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginRight="21dp"
+                    app:iv_item_left_icon="@mipmap/personal_huilv"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="汇率概览" />
+
+
+                <View style="@style/Line" />
+
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_feelv"
                     style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_feelv"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="费率详情"
-                    app:iv_item_next_visible="true"
                     android:layout_marginLeft="23dp"
-                    android:layout_marginRight="21dp"/>
-<!--                <app.com.pgy.Widgets.PersonalItemView-->
-<!--                    android:id="@+id/piv_fragment_personal_item_safety"-->
-<!--                    style="@style/PersonalItem"-->
-<!--                    app:iv_item_left_icon_visible="true"-->
-<!--                    app:iv_item_left_icon="@mipmap/personal_safety"-->
-<!--                    app:tv_item_left_color="@color/txt_title"-->
-<!--                    app:tv_item_left_text="安全中心"-->
-<!--                    app:iv_item_next_visible="true"-->
-<!--                    android:layout_marginLeft="23dp"-->
-<!--                    android:layout_marginRight="21dp"/>-->
+                    android:layout_marginRight="21dp"
+                    app:iv_item_left_icon="@mipmap/personal_feelv"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_all8"
+                    app:tv_item_left_text="费率详情" />
+                <!--                <app.com.pgy.Widgets.PersonalItemView-->
+                <!--                    android:id="@+id/piv_fragment_personal_item_safety"-->
+                <!--                    style="@style/PersonalItem"-->
+                <!--                    app:iv_item_left_icon_visible="true"-->
+                <!--                    app:iv_item_left_icon="@mipmap/personal_safety"-->
+                <!--                    app:tv_item_left_color="@color/txt_title"-->
+                <!--                    app:tv_item_left_text="安全中心"-->
+                <!--                    app:iv_item_next_visible="true"-->
+                <!--                    android:layout_marginLeft="23dp"-->
+                <!--                    android:layout_marginRight="21dp"/>-->
 
                 <app.com.pgy.Widgets.PersonalItemView
                     android:id="@+id/piv_fragment_personal_item_web"
                     style="@style/PersonalItem"
-                    app:iv_item_left_icon_visible="true"
-                    app:iv_item_left_icon="@mipmap/personal_web"
-                    app:tv_item_left_color="@color/txt_title"
-                    app:tv_item_left_text="蒲公英官网"
-                    app:iv_item_next_visible="true"
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="21dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    app:iv_item_left_icon="@mipmap/personal_web"
+                    app:iv_item_left_icon_visible="true"
+                    app:iv_item_next_visible="true"
+                    app:tv_item_left_color="@color/txt_title"
+                    app:tv_item_left_text="蒲公英官网" />
                 <!--<app.com.onecoin.Widgets.PersonalItemView-->
-                    <!--style="@style/PersonalItem"-->
-                    <!--app:iv_item_left_icon_visible="true"-->
-                    <!--app:iv_item_left_icon="@mipmap/personal_posters"-->
-                    <!--app:tv_item_left_color="@color/color_525a66"-->
-                    <!--app:tv_item_left_text="邀请海报"-->
-                    <!--app:iv_item_next_visible="true"-->
-                    <!--/>-->
-<!--                <include layout="@layout/view_divider_line_10"/>-->
+                <!--style="@style/PersonalItem"-->
+                <!--app:iv_item_left_icon_visible="true"-->
+                <!--app:iv_item_left_icon="@mipmap/personal_posters"-->
+                <!--app:tv_item_left_color="@color/color_525a66"-->
+                <!--app:tv_item_left_text="邀请海报"-->
+                <!--app:iv_item_next_visible="true"-->
+                <!--/>-->
+                <!--                <include layout="@layout/view_divider_line_10"/>-->
                 <!--                    android:id="@+id/piv_fragment_personal_item_poster"-->
 
                 <LinearLayout
@@ -362,85 +397,88 @@
                     android:paddingLeft="21dp"
                     android:paddingRight="24dp"
                     android:visibility="gone">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="22dp">
+                        android:layout_marginTop="22dp"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="邀请好友"
                             android:textColor="@color/txt_title"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
+
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
                             android:text="邀请好友瓜分收益"
                             android:textColor="@color/txt_B8C6D2"
-                            android:textSize="12sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="12sp" />
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/next"
-                            android:layout_marginTop="3dp" />
+                            android:layout_marginTop="3dp"
+                            android:src="@mipmap/next" />
                     </LinearLayout>
+
                     <app.com.pgy.Widgets.RatioImageView
                         android:id="@+id/iv_invitation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/personal_posters"
-                        app:ratio="3.45"
+                        android:layout_marginBottom="21dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="21dp"/>
+                        android:src="@mipmap/personal_posters"
+                        app:ratio="3.45" />
                 </LinearLayout>
             </LinearLayout>
 
         </FrameLayout>
+
         <RelativeLayout
             android:id="@+id/rl_fragment_personal_userInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="85dp"
             android:layout_marginBottom="45dp"
+            android:layout_marginTop="85dp"
             android:visibility="gone">
 
         </RelativeLayout>
 
-
-
-
         <app.com.pgy.Widgets.PersonalItemView
             android:id="@+id/piv_fragment_personal_item_yibi"
             style="@style/PersonalItem"
-            app:iv_item_left_icon_visible="true"
+            android:visibility="gone"
             app:iv_item_left_icon="@mipmap/personal_yibi"
-            app:tv_item_left_color="@color/color_525a66"
-            app:tv_item_left_text="PGY精灵"
+            app:iv_item_left_icon_visible="true"
             app:iv_item_next_visible="true"
-            android:visibility="gone"/>
+            app:tv_item_left_color="@color/txt_all8"
+            app:tv_item_left_text="PGY精灵" />
 
         <app.com.pgy.Widgets.PersonalItemView
 
             style="@style/PersonalItem"
-            app:iv_item_left_icon_visible="true"
+            android:visibility="gone"
             app:iv_item_left_icon="@mipmap/personal_system"
-            app:tv_item_left_color="@color/color_525a66"
-            app:tv_item_left_text="系统设置"
+            app:iv_item_left_icon_visible="true"
             app:iv_item_next_visible="true"
-            android:visibility="gone"/>
+            app:tv_item_left_color="@color/txt_all8"
+            app:tv_item_left_text="系统设置" />
+
         <TextView
             android:id="@+id/tv_fragment_personal_loginout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@color/white"
-            android:textSize="18sp"
-            android:textColor="@color/color_33"
-            android:text="退出当前账户"
+            android:layout_marginTop="30dp"
+            android:background="@color/dark_main_model"
             android:gravity="center"
-            android:layout_marginTop="30dp"/>
+            android:text="退出当前账户"
+            android:textColor="@color/color_e6"
+            android:textSize="18sp" />
     </LinearLayout>
 </ScrollView>

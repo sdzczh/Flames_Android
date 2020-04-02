@@ -13,7 +13,7 @@
         android:id="@+id/tv_item_force_lever_values"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_7a8799"
+        android:textColor="@color/color_e6"
         android:text="12"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"/>

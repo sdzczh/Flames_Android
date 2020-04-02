@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/dark_main_model"
     android:gravity="center_vertical"
     android:layout_gravity="center_vertical">
     <ImageView
@@ -27,11 +27,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13sp"
-        android:textColor="@color/color_525a66"
+        android:textColor="@color/color_e6"
         android:text=""
         android:hint="请输入"
         android:maxLength="20"
-        android:textColorHint="@color/color_c4c7cc"
-        android:background="@color/white"
+        android:textColorHint="@color/txt_all6"
+        android:background="@color/dark_main_model"
         android:layout_marginRight="20dp"/>
 </LinearLayout>

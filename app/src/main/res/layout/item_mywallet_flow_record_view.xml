@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:textColor="@color/txt_content"
+            android:textColor="@color/txt_all8"
             android:text="充币"/>
         <ImageView
             android:id="@+id/iv_item_flow_record_question"
@@ -35,7 +35,7 @@
             android:id="@+id/tv_item_flow_record_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_525a66"
+            android:textColor="@color/color_e6"
             android:textSize="16sp"
             android:text="+12" />
     </LinearLayout>
@@ -54,13 +54,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="12sp"
-            android:textColor="@color/txt_B8C6D2"
+            android:textColor="@color/color_e6"
             android:text="18-10-02 16:00:00"/>
         <TextView
             android:id="@+id/tv_item_flow_record_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_B8C6D2"
+            android:textColor="@color/txt_all8"
             android:textSize="11sp"
             android:text="BTC" />
     </LinearLayout>

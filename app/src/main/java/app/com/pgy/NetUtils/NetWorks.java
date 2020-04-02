@@ -353,7 +353,6 @@ public class NetWorks extends RetrofitUtils {
         @GET("/order/mainpageInfo.action")
         Call<ResultBean<TradeMessage>> getTradeMessage(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
-
         /**
          * 公告列表
          */

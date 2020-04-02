@@ -3,15 +3,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <FrameLayout
         style="@style/title_bg">
         <ImageView
             android:id="@+id/iv_activity_my_wallet_back"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/title_back"
+            android:src="@mipmap/more"
             android:padding="5dp"
+            android:rotation="-180"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
             android:layout_gravity="bottom"/>
@@ -46,7 +47,7 @@
             android:id="@+id/ll_error_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/dark_bg_color"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone">

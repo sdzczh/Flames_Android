@@ -2,36 +2,42 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/iv_guide_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@mipmap/yindao1"/>
-    <ImageView
+        android:scaleType="centerInside"
+        android:src="@mipmap/yindao1" />
+
+    <TextView
         android:id="@+id/guide_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/yindao1_text"
+        android:textColor="@color/color_e6"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="170dp"/>
+        android:layout_marginBottom="150dp"
+        android:textSize="21sp"
+        />
+
     <ImageView
         android:id="@+id/guide_indactor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/yindao1_indactor"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="100dp"
+        android:src="@mipmap/yindao1_indactor" />
+
     <TextView
         android:id="@+id/guide_login"
-        android:text=""
-        android:textSize="@dimen/font_14sp"
-        android:textColor="@color/color_4d94ff"
-        android:background="@mipmap/must_start"
-        android:gravity="center"
         style="@style/padding10_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:background="@drawable/kqty"
+        android:gravity="center"
+        android:text="立即体验"
+        android:textColor="#F0CB7A"
+        android:textSize="@dimen/font_14sp" />
 </FrameLayout>

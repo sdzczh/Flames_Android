@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="horizontal"
     android:padding="10dp">
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:maxLines="1"
-            android:textColor="@color/txt_dark"
+            android:textColor="@color/color_e6"
             android:textSize="16sp" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="#999999"
+            android:textColor="@color/color_e6"
             android:textSize="12sp" />
 
     </LinearLayout>

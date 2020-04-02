@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/white"/>   <!--填充-->
+    <solid android:color="@color/dark_main_model"/>   <!--填充-->
     <corners android:radius="@dimen/corners_small"/>
-    <stroke android:color="@color/txt_B8C6D2" android:width="0.5dp"/>   <!--描边-->
+    <stroke android:color="@color/dark_line_model" android:width="0.5dp"/>   <!--描边-->
 </shape>

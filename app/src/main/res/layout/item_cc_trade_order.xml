@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,14 +37,14 @@
                 android:layout_height="wrap_content"
                 android:text="ECN"
                 android:maxLines="1"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/color_e6"
                 android:textSize="@dimen/font_15sp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" /CNY"
-                android:textColor="#ff191c1e"
+                android:textColor="@color/color_e6"
                 android:textSize="11sp" />
         </LinearLayout>
 

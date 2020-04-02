@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VOL:"
-        android:textColor="@color/txt_kline"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_10sp" />
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="0.00"
         android:layout_marginEnd="10dp"
-        android:textColor="@color/txt_kline"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_10sp" />
 
     <TextView

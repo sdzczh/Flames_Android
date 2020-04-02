@@ -4,14 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <FrameLayout
         style="@style/title_bg">
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/title_back"
+            android:src="@mipmap/more"
+            android:rotation="-180"
             android:padding="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
@@ -190,7 +191,7 @@
                         android:id="@+id/tv_activity_mywallet_ybb_coininfo_chName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ANT"
+                        android:text="Flames"
                         android:textColor="@color/txt_half_white"
                         android:textSize="12sp"
                         />
@@ -248,7 +249,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:textColor="@color/txt_half_white"
-                                android:text="ANT"/>
+                                android:text="Flames"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -305,7 +306,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:textColor="@color/txt_half_white"
-                                android:text="ANT"/>
+                                android:text="Flames"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -328,7 +329,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:textSize="17sp"
                 android:text="流水记录"
                 android:layout_marginTop="20dp"

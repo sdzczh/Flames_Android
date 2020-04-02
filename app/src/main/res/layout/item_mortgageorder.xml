@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:orientation="vertical"
+    android:background="@color/dark_main_model"
     android:paddingLeft="15dp"
     android:paddingRight="15dp">
 
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="5000PGY"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
 
         <TextView
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="抵押日期：2019-01-01"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -42,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="日利率：2.5%"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12.67sp"
             android:textStyle="bold" />
 
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="释放日期：2019-01-01"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
     </LinearLayout>
 

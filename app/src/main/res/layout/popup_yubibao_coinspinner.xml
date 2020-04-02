@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        android:background="@color/color_e5ffffff"
+        android:background="@color/dark_main_model"
         android:layout_marginTop="45dp">
 
     </app.com.pgy.Widgets.MyDemoGridView>
@@ -17,5 +17,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/color_e5ffffff"/>
+        android:background="@color/dark_line_model"/>
 </LinearLayout>

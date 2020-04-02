@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_white"
     android:orientation="vertical"
+    android:background="@color/dark_bg_color"
     tools:context="app.com.pgy.Activitys.MainActivity">
 
     <FrameLayout
@@ -17,7 +17,7 @@
         android:id="@+id/activity_main_group"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_height"
-        android:background="@color/color_f5"
+        android:background="@color/dark_main_model"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -32,12 +32,15 @@
             android:id="@+id/activity_main_group_market"
             style="@style/MainActivity_tab"
             android:drawableTop="@drawable/selector_bottom_market"
-            android:text="行情" />
+            android:text="行情"
+          />
+
         <RadioButton
             android:id="@+id/activity_main_group_circle"
             style="@style/MainActivity_tab"
             android:drawableTop="@drawable/selector_bottom_circle"
             android:text="法币" />
+
         <RadioButton
             android:id="@+id/activity_main_group_goods"
             style="@style/MainActivity_tab"

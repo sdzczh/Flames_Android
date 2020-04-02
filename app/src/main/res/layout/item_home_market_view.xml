@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="BTC"
-            android:textColor="#ff5c5e66"
+            android:textColor="#e6e6e6"
             android:textSize="15sp"
             />
         <TextView

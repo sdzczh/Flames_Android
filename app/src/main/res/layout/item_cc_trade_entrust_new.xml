@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
 
     <!--头部-->
     <LinearLayout
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="651.00CNY"
-                android:textColor="@color/color_66"
+                android:textColor="@color/color_e6"
                 android:textSize="18sp"
                 android:includeFontPadding="false"/>
 
@@ -135,7 +135,7 @@
                 style="@style/entrust_item_content"
                 android:layout_marginTop="0dp"
                 android:includeFontPadding="false"
-                android:textColor="@color/color_66"
+                android:textColor="@color/color_e6"
                 android:textSize="15sp"
                 android:text="0CNY"/>
 
@@ -154,7 +154,7 @@
                 style="@style/entrust_item_content"
                 android:layout_marginTop="0dp"
                 android:includeFontPadding="false"
-                android:textColor="@color/color_66"
+                android:textColor="@color/color_e6"
                 android:textSize="15sp"
                 android:text="0CNY"/>
             <TextView
@@ -196,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textColor="#ffc6c6ca"
+                    android:textColor="@color/color_e6"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -216,7 +216,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10-100"
-                    android:textColor="#ffc6c6ca"
+                    android:textColor="@color/color_e6"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -257,6 +257,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="状态"
+            android:textColor="@color/color_e6"
             android:maxLines="1"
             android:textSize="@dimen/font_12sp"
             android:layout_gravity="bottom"/>

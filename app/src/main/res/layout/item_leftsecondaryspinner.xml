@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:textSize="15sp"
         android:layout_gravity="center"
-        android:textColor="@color/color_33"
+        android:textColor="@color/color_e6"
         android:gravity="center"
         android:maxLines="1"/>
 </FrameLayout>

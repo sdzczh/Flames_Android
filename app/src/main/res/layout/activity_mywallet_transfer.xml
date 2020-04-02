@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg"
+    android:background="@color/dark_bg_color"
     android:focusableInTouchMode="true"
     android:focusable="true">
     <include layout="@layout/view_personal_title"/>
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/color_e6"
                         android:text="币币账户"
                         android:layout_marginLeft="10dp"
                         android:includeFontPadding="false"/>
@@ -88,7 +88,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
-                        android:textColor="@color/color_292d33"
+                        android:textColor="@color/color_e6"
                         android:text="法币账户"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="38dp"
@@ -168,7 +168,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:textSize="16sp"
                 android:text="币种选择"/>
             <TextView
@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
-                android:textColor="@color/color_292d33"
+                android:textColor="@color/color_e6"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="BTC"
@@ -206,7 +206,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:textSize="16sp"
                 android:text="划转数量"/>
             <app.com.pgy.Widgets.NumberEditText
@@ -216,9 +216,9 @@
                 android:layout_weight="1"
                 android:textSize="16sp"
                 android:maxLength="11"
-                android:textColor="@color/color_292d33"
-                android:background="@color/white"
-                android:textColorHint="@color/txt_B8C6D2"
+                android:textColor="@color/color_e6"
+                android:background="@color/dark_main_model"
+                android:textColorHint="@color/txt_all6"
                 android:hint="请输入划转数量"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"

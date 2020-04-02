@@ -4,19 +4,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_fragment_market_content"
         style="@style/TabLayoutTextStyle15"
         android:layout_width="70dp"
         android:layout_height="50dp"
-        android:background="@color/white"
         app:tabMode="fixed"
         app:tabGravity="center"
         app:tabTextAppearance="@style/TabLayoutTextStyle14"
-        app:tabIndicatorColor="@color/color_4d94ff"
+        app:tabIndicatorColor="#F0CB7A"
         app:tabIndicatorHeight="1.0dp"
-        app:tabSelectedTextColor="@color/color_4d94ff"
+        app:tabSelectedTextColor="#F0CB7A"
         app:tabTextColor="@color/color_7a8799">
     </android.support.design.widget.TabLayout>
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/bg_white"
+    android:background="@color/dark_bg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +16,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
             android:layout_gravity="bottom"
-            android:src="@mipmap/title_back"/>
+            android:rotation="-180"
+            android:src="@mipmap/more"/>
         <com.androidkun.xtablayout.XTabLayout
             android:id="@+id/activity_tradeC2COrderBusiness_title_tab"
             style="@style/TabLayoutTextStyle15"
@@ -70,7 +71,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/activity_tradeC2COrderBusiness_title_viewPager"
         android:layout_width="match_parent"
-        android:background="@color/bg_white"
+        android:background="@color/dark_bg_color"
         android:layout_height="0dp"
         android:layout_weight="1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -85,7 +86,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
     @BindView(R.id.ll_home_top_3)
     LinearLayout llHomeTop3;
     @BindView(R.id.hsv_home_top_unlogin)
-    HorizontalScrollView hsvHomeTopUnlogin;
+    LinearLayout hsvHomeTopUnlogin;
     @BindView(R.id.tv_home_top_title)
     TextView tvHomeTopTitle;
     @BindView(R.id.tv_fragment_home_unlogin)
@@ -237,11 +238,11 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         ivMarkerUp.setImageResource(R.mipmap.home_bottom_up);
         ivMarkerDown.setImageResource(R.mipmap.home_bottom_down);
         if (isLogin()) {
-            viewHomeUnlogin.setVisibility(View.GONE);
+//            viewHomeUnlogin.setVisibility(View.GONE);
             tvFragmentHomeUnlogin.setVisibility(View.GONE);
-            tvHomeTopTitle.setTextColor(getResources().getColor(R.color.black));
-            hsvHomeTopUnlogin.setVisibility(View.GONE);
-            llFragmentHomeC2cAsset.setVisibility(View.VISIBLE);
+//            tvHomeTopTitle.setTextColor(getResources().getColor(R.color.black));
+//            hsvHomeTopUnlogin.setVisibility(View.GONE);
+            llFragmentHomeC2cAsset.setVisibility(View.GONE);
             if (Preferences.getUserMarket() == 1) {
                 ivMarkerUp.setImageResource(R.mipmap.home_bottom_up_sel);
             } else if (Preferences.getUserMarket() == 0) {
@@ -250,7 +251,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         } else {
             viewHomeUnlogin.setVisibility(View.VISIBLE);
             tvFragmentHomeUnlogin.setVisibility(View.VISIBLE);
-            tvHomeTopTitle.setTextColor(getResources().getColor(R.color.white));
+//            tvHomeTopTitle.setTextColor(getResources().getColor(R.color.white));
             hsvHomeTopUnlogin.setVisibility(View.VISIBLE);
             llFragmentHomeC2cAsset.setVisibility(View.GONE);
         }
@@ -271,7 +272,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         if (mHomeInfo.getNewsList() == null || mHomeInfo.getNewsList().size() < 1) {
             rvFragmentHomeNews.setVisibility(View.GONE);
         } else {
-            rvFragmentHomeNews.setVisibility(View.VISIBLE);
+            rvFragmentHomeNews.setVisibility(View.GONE);
             rvFragmentHomeNews.setLayoutManager(new LinearLayoutManager(mContext) {
                 @Override
                 public boolean canScrollVertically() {
@@ -742,7 +743,7 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             ImageView riv = new ImageView(mContext);
-            riv.setScaleType(ImageView.ScaleType.FIT_XY);
+            riv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             if (list == null) {
                 riv.setImageResource(imgs[position % 4]);
             } else {

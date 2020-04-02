@@ -150,8 +150,8 @@ public class MyteamActivity extends BaseActivity {
             public void onSuccess(MyteamBean2 myteamBean) {
                 List<MyteamBean2.RecordsBean> records = myteamBean.getRecords();
                 DecimalFormat dfs = new DecimalFormat("0.00");
-                tvMyteamMyearnings.setText(dfs.format(Double.valueOf(myteamBean.getPersonDigProfit())) + " ANT");
-                tvMyteamTeamearnings.setText(dfs.format(Double.valueOf(myteamBean.getTeamDigProfit())) + " ANT");
+                tvMyteamMyearnings.setText(dfs.format(Double.valueOf(myteamBean.getPersonDigProfit())) + " Flames");
+                tvMyteamTeamearnings.setText(dfs.format(Double.valueOf(myteamBean.getTeamDigProfit())) + " Flames");
                 tvMyteamDirectnum.setText("直推人数：" + myteamBean.getDirectCount());
                 tvMyteamIndirectnum.setText("团队人数：" + myteamBean.getChildCount());
                 mlist.addAll(records);

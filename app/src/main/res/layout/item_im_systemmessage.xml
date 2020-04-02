@@ -22,6 +22,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_16sp"
             style="@style/font_15dark"/>
         <View
@@ -37,7 +38,7 @@
     <TextView
         android:id="@+id/item_im_systemMessage_time"
         android:layout_marginTop="5dp"
-        android:textColor="@color/txt_all9"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_12sp"
         android:maxLines="1"
         android:layout_width="match_parent"
@@ -57,7 +58,7 @@
         android:maxLines="2"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/font_13sp"
-        android:textColor="@color/txt_all6"
+        android:textColor="@color/txt_all8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

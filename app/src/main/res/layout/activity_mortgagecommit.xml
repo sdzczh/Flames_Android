@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical"
     tools:context=".Activitys.MortgagecommitActivity">
 
@@ -18,16 +18,17 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
             android:padding="5dp"
-            android:src="@mipmap/title_back" />
+            android:rotation="-180"
+            android:src="@mipmap/more" />
 
         <TextView
             android:id="@+id/tv_title"
             style="@style/title_text"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"
-            android:drawableRight="@mipmap/xiala_xiao"
+            android:drawableRight="@mipmap/trade_xiala"
             android:drawablePadding="5dp"
-            android:text="抵押挖矿(ANT)" />
+            android:text="抵押挖矿(Flames)" />
 
         <TextView
             android:id="@+id/tv_title_right"
@@ -36,7 +37,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
             android:text="抵押订单"
-            android:textColor="#FF666666"
+            android:textColor="@color/txt_all8"
             android:textSize="17sp" />
     </FrameLayout>
 
@@ -48,7 +49,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="@mipmap/diya_top"
+        android:background="@color/dark_main_model"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -57,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="预计每日收益(ANT)"
+            android:text="预计每日收益(Flames)"
             android:textColor="#FFFFFFFF"
             android:textSize="13.33sp" />
 
@@ -100,8 +101,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:text="ANT 可用余额"
-        android:textColor="#FF333333"
+        android:text="Flames 可用余额"
+        android:textColor="@color/color_e6"
         android:textSize="12sp" />
 
     <TextView
@@ -110,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:text="0.00"
-        android:textColor="#FF111111"
+        android:textColor="@color/txt_all8"
         android:textSize="12sp" />
 
     <LinearLayout
@@ -131,17 +132,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="抵押数量"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
 
         <EditText
             android:id="@+id/edt_diya_num"
             android:inputType="number"
             android:layout_width="0dp"
+            android:textColor="@color/color_e6"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:background="@null"
+            android:textColorHint="@color/txt_all6"
             android:gravity="center_vertical"
             android:hint="1000 PGY起"
             android:singleLine="true"
@@ -153,7 +156,7 @@
             android:layout_height="30dp"
             android:gravity="center"
             android:text="全部"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -171,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="抵押期限"
-            android:textColor="#FF333333"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
         <TextView
             android:id="@+id/tv_diya_date1"
@@ -233,6 +236,7 @@
             android:id="@+id/tv_diya_earningsdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/txt_all6"
             android:layout_marginLeft="3dp"
             android:text="预计0月0日计算收益，赎回需要完成抵押合约"
             android:textSize="12sp" />
@@ -262,6 +266,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
+            android:textColor="@color/txt_all8"
             android:text="同意"
             android:textSize="12sp" />
 
@@ -271,10 +276,11 @@
             android:layout_height="30dp"
             android:gravity="center"
             android:text="抵押挖矿协议"
-            android:textColor="@color/black"
+            android:textColor="@color/txt_all8"
             android:textSize="13sp" />
 
         <TextView
+            android:textColor="@color/txt_all8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="，并知晓页面展示预期收益不代表实际收益承诺"
@@ -289,10 +295,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="30dp"
-        android:background="@mipmap/bg_diya_enter"
+        android:background="#F0CB7A"
         android:gravity="center"
         android:text="确认抵押"
-        android:textColor="@color/white"
+        android:textColor="#323232"
         android:textSize="@dimen/font_18sp" />
 
 

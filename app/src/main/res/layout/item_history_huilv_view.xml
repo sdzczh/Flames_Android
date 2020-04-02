@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <TextView
         android:id="@+id/tv_item_huilv_history_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="时间"
-        android:textColor="@color/color_66"
+        android:textColor="@color/txt_all8"
         android:textSize="13sp"/>
     <TextView
         android:id="@+id/tv_item_huilv_history_value"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="当日汇率"
-        android:textColor="@color/color_66"
+        android:textColor="@color/txt_all8"
         android:textSize="13sp"
         android:gravity="center"/>
     <TextView
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="两周平均汇率"
-        android:textColor="@color/color_66"
+        android:textColor="@color/txt_all8"
         android:textSize="13sp"
         android:gravity="right"
         android:paddingRight="15dp"/>

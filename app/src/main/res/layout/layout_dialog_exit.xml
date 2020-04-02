@@ -25,14 +25,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/txt_dark"
+                android:textColor="@color/color_e6"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/dialog_exit_message"
                 android:textSize="14sp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/txt_all6"
+                android:textColor="@color/color_e6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"/>

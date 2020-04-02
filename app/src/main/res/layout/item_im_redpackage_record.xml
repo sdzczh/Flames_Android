@@ -5,12 +5,12 @@
     android:padding="10dp"
     android:layout_gravity="center"
     android:layout_marginBottom="0.5dp"
-    android:background="@color/bg_white">
+    android:background="@color/dark_main_model">
 
     <TextView
         android:id="@+id/item_im_redPackage_record_name"
         android:text="用户名"
-        android:textColor="@color/txt_dark"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_16sp"
         android:maxLines="1"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/item_im_redPackage_record_amount"
         android:text="0.0"
-        android:textColor="@color/txt_dark"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_16sp"
         android:maxLines="1"
         android:layout_gravity="end"
@@ -31,7 +31,7 @@
         android:text="2018-01-01 19:00"
         android:textSize="@dimen/font_13sp"
         android:maxLines="1"
-        android:textColor="@color/txt_all9"
+        android:textColor="@color/txt_all8"
         android:layout_gravity="bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -41,7 +41,7 @@
         android:text="≈¥0.00"
         android:textSize="@dimen/font_13sp"
         android:maxLines="1"
-        android:textColor="@color/txt_all9"
+        android:textColor="@color/color_e6"
         android:layout_gravity="bottom|end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:background="@color/dark_main_model"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minWidth="300dp"
@@ -17,7 +18,7 @@
             android:id="@+id/dialog_pay_title"
             android:textSize="16sp"
             android:text="请输入交易密码"
-            android:textColor="#525A66"
+            android:textColor="@color/color_e6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"

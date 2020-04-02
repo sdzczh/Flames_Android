@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <TextView
         android:id="@+id/tv_title"
@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="30dp"
         android:text="请输入身份信息"
-        android:textColor="@color/black"
+        android:textColor="@color/color_e6"
         android:textSize="19sp"
         android:drawablePadding="10dp"
         android:layout_marginTop="20dp"/>
@@ -31,15 +31,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/dark_main_model">
                 <app.com.pgy.Widgets.PersonalItemInputView
                     android:id="@+id/piiv_activity_renzheng_name"
                     style="@style/PersonalInputItem"
                     app:tv_input_item_left_text="姓名"
-                    app:tv_input_item_left_color="@color/txt_title"
+                    app:tv_input_item_left_color="@color/txt_all8"
                     app:edt_input_item_right_hint="姓名"
-                    app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
-                    app:edt_input_item_right_color="@color/txt_content"
+                    app:edt_input_item_right_hintcolor="@color/txt_all6"
+                    app:edt_input_item_right_color="@color/color_e6"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp">
 
@@ -49,11 +49,11 @@
                     android:id="@+id/piiv_activity_renzheng_code"
                     style="@style/PersonalInputItem"
                     app:tv_input_item_left_text="身份证号"
-                    app:tv_input_item_left_color="@color/txt_title"
+                    app:tv_input_item_left_color="@color/txt_all8"
                     app:edt_input_item_right_hint="身份证号"
                     android:layout_marginLeft="10dp"
-                    app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
-                    app:edt_input_item_right_color="@color/txt_content"
+                    app:edt_input_item_right_hintcolor="@color/txt_all6"
+                    app:edt_input_item_right_color="@color/color_e6"
                     android:layout_marginBottom="5dp">
 
                 </app.com.pgy.Widgets.PersonalItemInputView>

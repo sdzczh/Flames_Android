@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:orientation="vertical"
-        android:background="@mipmap/asset_top">
+        android:background="@color/dark_main_model">
         <ImageView
             android:id="@+id/iv_ftagment_account_total_show"
             android:layout_width="16dp"
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="总净资产"
-            android:textColor="#66ffffff"
+            android:textColor="@color/txt_all8"
             android:textSize="13sp"
             android:layout_gravity="center_horizontal"/>
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.00000000"
-                android:textColor="#ffffffff"
+                android:textColor="@color/color_e6"
                 android:textSize="27sp"
                 android:textStyle="bold"
                 android:includeFontPadding="false"/>
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.00"
-                android:textColor="#66ffffff"
+                android:textColor="@color/txt_all8"
                 android:textSize="11sp"
                 />
         </LinearLayout>
@@ -72,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
 
         <LinearLayout
             android:id="@+id/ll_ftagment_account_total_withdraw"
@@ -86,12 +86,12 @@
             <ImageView
                 android:layout_width="19dp"
                 android:layout_height="19dp"
-                android:src="@mipmap/account_recharge_icon"/>
+                android:src="@mipmap/home_recharge_icon"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="充币"
-                android:textColor="@color/color_66"
+                android:textColor="@color/txt_all8"
                 android:textSize="12sp"
                 android:includeFontPadding="false"
                 android:layout_marginTop="10dp"/>
@@ -108,12 +108,12 @@
             <ImageView
                 android:layout_width="19dp"
                 android:layout_height="19dp"
-                android:src="@mipmap/account_withdraw_icon"/>
+                android:src="@mipmap/home_withdraw_icon"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="提币"
-                android:textColor="@color/color_66"
+                android:textColor="@color/txt_all8"
                 android:textSize="12sp"
                 android:includeFontPadding="false"
                 android:layout_marginTop="10dp"/>
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="资金划转"
-                android:textColor="@color/color_66"
+                android:textColor="@color/txt_all8"
                 android:textSize="12sp"
                 android:includeFontPadding="false"
                 android:layout_marginTop="10dp"/>
@@ -147,7 +147,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
         <LinearLayout
             android:id="@+id/ll_ftagment_account_total_fabi"
             android:layout_width="match_parent"
@@ -164,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="法币账户"
-                    android:textColor="#ff666666"
+                    android:textColor="@color/txt_all8"
                     android:textSize="15sp"
                     android:layout_marginTop="15dp"/>
                 <TextView
@@ -172,7 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.0000"
-                    android:textColor="#ff666666"
+                    android:textColor="@color/color_e6"
                     android:textSize="18sp"
                     android:drawableLeft="@mipmap/account_coin"
                     android:layout_marginTop="15dp"
@@ -196,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00"
-                        android:textColor="#ff999999"
+                        android:textColor="@color/color_e6"
                         android:textSize="12sp"
                         />
                 </LinearLayout>
@@ -225,7 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="币币账户"
-                    android:textColor="#ff666666"
+                    android:textColor="@color/txt_all8"
                     android:textSize="15sp"
                     android:layout_marginTop="15dp"/>
                 <TextView
@@ -233,7 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.0000"
-                    android:textColor="#ff666666"
+                    android:textColor="@color/color_e6"
                     android:textSize="18sp"
                     android:drawableLeft="@mipmap/account_coin"
                     android:layout_marginTop="15dp"
@@ -257,7 +257,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00"
-                        android:textColor="#ff999999"
+                        android:textColor="@color/color_e6"
                         android:textSize="12sp"
                         />
                 </LinearLayout>

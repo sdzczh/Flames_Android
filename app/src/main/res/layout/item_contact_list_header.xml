@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
+    android:background="@color/dark_main_model"
     android:orientation="vertical">
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_friends"
-            android:textColor="#353535"
+            android:textColor="@color/color_e6"
             android:textSize="16sp" />
 
         <TextView
@@ -47,7 +47,7 @@
         android:layout_height="0.1dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:background="#d9d9d9" />
+        android:background="@color/dark_line_model" />
 
     <LinearLayout
         android:id="@+id/re_yibijingling"
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yibijingling"
-            android:textColor="#353535"
+            android:textColor="@color/color_e6"
             android:textSize="16sp" />
 
     </LinearLayout>

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <!--<FrameLayout-->
         <!--style="@style/title_bg">-->
@@ -346,7 +346,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:text="收益记录"
                 android:includeFontPadding="false"
                 android:layout_marginTop="40dp"

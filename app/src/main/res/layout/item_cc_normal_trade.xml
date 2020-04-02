@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="vertical">
 
     <View
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="币圈小诸葛"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/color_e6"
                 android:textSize="@dimen/font_15sp"
                 android:layout_marginLeft="10dp"/>
             <View
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textColor="@color/txt_content"
+                android:textColor="@color/color_e6"
                 android:textSize="11sp"
                 android:text="100单"/>
         </LinearLayout>
@@ -93,7 +93,7 @@
                     <!--数量-->
                     <TextView
                         android:id="@+id/ccNormal_buy_item_number"
-                        android:textColor="@color/txt_content"
+                        android:textColor="@color/color_e6"
                         android:textSize="12sp"
                         android:maxLines="1"
                         android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
                     <!--限额-->
                     <TextView
                         android:id="@+id/ccNormal_buy_item_limitAmount"
-                        android:textColor="@color/txt_content"
+                        android:textColor="@color/color_e6"
                         android:textSize="12sp"
                         android:maxLines="1"
                         android:layout_width="wrap_content"

@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <TextView
         android:id="@+id/tv_item_invitation_rank_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="第10期邀请支付榜排名"
-        android:textColor="@color/txt_title"
+        android:textColor="@color/color_e6"
         android:textSize="17sp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"/>

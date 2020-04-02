@@ -1,162 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/poster_bg">
+    android:background="@color/dark_bg_color"
+    android:orientation="vertical">
+
     <FrameLayout
         style="@style/title_bg"
         android:background="@color/transparent">
+
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:padding="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="8dp"
             android:layout_gravity="bottom"
-            android:src="@mipmap/poster_back"/>
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:rotation="-180"
+            android:src="@mipmap/more" />
+
         <TextView
             android:id="@+id/tv_title"
             style="@style/title_text"
-            android:textColor="@color/white"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"
-            android:text="推荐给好友"/>
+            android:text="推荐给好友"
+            android:textColor="@color/color_e6" />
     </FrameLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <LinearLayout
             android:id="@+id/ll_activity_posters_share_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:background="@mipmap/poster_popup_bg"
-            android:gravity="center_horizontal">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/poster_logo"
-                android:layout_marginTop="65dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_main_model"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:drawableLeft="@mipmap/poster_logo"
+                android:drawablePadding="@dimen/dp_10"
+                android:gravity="center"
+                android:text="PGY"
+                android:textColor="@color/color_e6"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="全球领先的数字资产交易平台"
                 android:textColor="#ffffffff"
-                android:textSize="21sp"
-                android:layout_marginTop="20dp"
-                />
+                android:textSize="21sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="安全 · 稳定 · 可信"
                 android:textColor="#99ffffff"
-                android:textSize="12sp"
-                android:layout_marginTop="15dp"/>
+                android:textSize="12sp" />
+
             <FrameLayout
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:background="@mipmap/poster_qr_bg"
-                android:layout_marginTop="60dp">
+                android:layout_marginTop="60dp"
+                android:background="@mipmap/poster_qr_bg">
+
                 <ImageView
                     android:id="@+id/iv_activity_posters_share_qrcode"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
             </FrameLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="15dp"
                 android:text="扫描二维码即可下载PGY APP"
                 android:textColor="#ffffffff"
-                android:textSize="12sp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="50dp"/>
+                android:textSize="12sp" />
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="95dp"
+        android:background="@color/dark_main_model"
         android:orientation="horizontal"
-        android:background="@color/white"
         android:paddingLeft="45dp"
         android:paddingRight="45dp">
+
         <LinearLayout
             android:id="@+id/ll_activity_posters_share_wx"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="15dp"
-            android:gravity="center_horizontal">
+            android:padding="15dp">
+
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@mipmap/poster_wx"/>
+                android:src="@mipmap/poster_wx" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="微信好友"
                 android:textColor="#ff999999"
-                android:textSize="12sp"
-                android:layout_marginTop="10dp"/>
+                android:textSize="12sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_activity_posters_share_circle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="15dp"
-            android:gravity="center_horizontal">
+            android:padding="15dp">
+
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@mipmap/poster_circle"/>
+                android:src="@mipmap/poster_circle" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="朋友圈"
                 android:textColor="#ff999999"
-                android:textSize="12sp"
-                android:layout_marginTop="10dp"/>
+                android:textSize="12sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_activity_posters_share_save"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="15dp"
-            android:gravity="center_horizontal">
+            android:padding="15dp">
+
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@mipmap/poster_save"/>
+                android:src="@mipmap/poster_save" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="保存图片"
                 android:textColor="#ff999999"
-                android:textSize="12sp"
-                android:layout_marginTop="10dp"/>
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
-    <include layout="@layout/view_divider_line"/>
+
+    <include layout="@layout/view_divider_line" />
+
     <TextView
         android:id="@+id/tv_activity_posters_share_cancel"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:background="@color/dark_main_model"
+        android:gravity="center"
         android:text="取消"
         android:textColor="#ff4e88f0"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:background="@color/white"/>
+        android:textSize="16sp" />
 </LinearLayout>

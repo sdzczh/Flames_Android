@@ -3,8 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <FrameLayout
+        android:background="@color/dark_bg_color"
     style="@style/title_bg">
     <ImageView
         android:id="@+id/iv_back"
@@ -14,8 +15,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="8dp"
         android:layout_gravity="bottom"
-        android:src="@mipmap/title_back"/>
+        android:rotation="-180"
+        android:src="@mipmap/more"/>
     <TextView
+        android:textColor="@color/color_e6"
         android:id="@+id/tv_title"
         style="@style/title_text"
         android:layout_gravity="center_horizontal|bottom"

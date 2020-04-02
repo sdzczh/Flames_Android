@@ -10,7 +10,7 @@
         android:id="@+id/myspinner_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/txt_allC"
+        android:divider="@color/dark_line_model"
         android:dividerHeight="0.5dp"
         android:scrollbars="none"/>
 

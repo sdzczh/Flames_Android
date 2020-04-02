@@ -6,7 +6,7 @@
     android:paddingTop="15dp"
     android:paddingBottom="15dp"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <!--    android:background="@drawable/bg_corners_whitesolid"-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,27 +19,27 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="00:00"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_12sp" />
         <TextView
             android:id="@+id/entrust_details_item_dealPrice_content"
             android:layout_width="wrap_content"
             android:layout_weight="0.9"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_12sp"/>
         <TextView
             android:id="@+id/entrust_details_item_dealNumber_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_12sp"/>
         <TextView
             android:id="@+id/entrust_details_item_dealAmount_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_12sp"
             android:visibility="gone"/>
     </LinearLayout>
@@ -63,6 +63,7 @@
 
             <TextView
                 android:id="@+id/entrust_details_item_dealPrice_title"
+                android:textColor="@color/txt_all8"
                 style="@style/entrust_item_title" />
 
 
@@ -75,6 +76,7 @@
 
             <TextView
                 android:id="@+id/entrust_details_item_dealNumber_title"
+                android:textColor="@color/txt_all8"
                 style="@style/entrust_item_title" />
 
 
@@ -86,6 +88,7 @@
             style="@style/entrust_item_frame">
 
             <TextView
+                android:textColor="@color/txt_all8"
                 android:id="@+id/entrust_details_item_dealAmount_title"
                 style="@style/entrust_item_title" />
 

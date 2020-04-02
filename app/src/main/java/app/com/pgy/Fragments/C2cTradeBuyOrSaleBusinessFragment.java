@@ -136,14 +136,14 @@ public class C2cTradeBuyOrSaleBusinessFragment extends BaseFragment implements C
             fragmentC2cBusinessPublishPriceTitle.setText("买入价格");
             fragmentC2cBusinessPublishNumberTitle.setText("买入数量");
             fragmentC2cBusinessPublishPublish.setText("立即买入");
-            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.mipmap.c2c_trade_buy);
+//            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.mipmap.c2c_trade_buy);
 //            fragmentC2cBusinessPublishPayTitle.setText("支付方式");
 //            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.drawable.bg_corners_bluesolid);
         } else {
             fragmentC2cBusinessPublishPriceTitle.setText("卖出价格");
             fragmentC2cBusinessPublishNumberTitle.setText("卖出数量");
             fragmentC2cBusinessPublishPublish.setText("立即卖出");
-            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.mipmap.c2c_trade_sale);
+//            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.mipmap.c2c_trade_sale);
 //            fragmentC2cBusinessPublishPayTitle.setText("收款方式");
 //            fragmentC2cBusinessPublishPublish.setBackgroundResource(R.drawable.bg_corners_darkbluesolid);
         }

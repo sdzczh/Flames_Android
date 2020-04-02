@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <include layout="@layout/view_divider_line_10"/>
     <LinearLayout
@@ -15,11 +15,11 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:paddingLeft="20dp"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/txt_all8"
             android:textSize="16sp"
             android:text="币种选择"/>
         <TextView
@@ -54,7 +54,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/txt_all8"
                         android:textSize="15sp"
                         android:text="提币地址："
                         />
@@ -78,10 +78,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="15sp"
-                        android:textColor="@color/txt_content"
-                        android:textColorHint="@color/txt_B8C6D2"
+                        android:textColor="@color/color_e6"
+                        android:textColorHint="@color/txt_all6"
                         android:hint="请输入或长按粘贴地址"
-                        android:background="@color/white"
+                        android:background="@color/dark_main_model"
                         android:paddingLeft="10dp"
                         android:layout_marginRight="10dp"/>
                     <ImageView
@@ -110,7 +110,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/txt_all8"
                         android:textSize="15sp"
                         android:text="数量：        "
                         />
@@ -120,9 +120,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="15sp"
-                        android:textColor="@color/txt_content"
-                        android:background="@color/white"
-                        android:textColorHint="@color/txt_B8C6D2"
+                        android:textColor="@color/color_e6"
+                        android:background="@color/dark_main_model"
+                        android:textColorHint="@color/txt_all6"
                         android:hint="最小提币数量0.01"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
@@ -175,7 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/txt_808DAC"
+                        android:textColor="@color/color_e6"
                         android:text=""
                         android:layout_marginLeft="10dp"/>
                     <TextView
@@ -183,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/txt_808DAC"
+                        android:textColor="@color/color_e6"
                         android:text=""
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -197,7 +197,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/txt_content"
+                        android:textColor="@color/txt_all8"
                         android:text="手续费：    "/>
 
                     <TextView
@@ -206,14 +206,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text=""
-                        android:textColor="@color/txt_01C18B"
+                        android:textColor="@color/color_e6"
                         android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tv_activity_mywallet_withdraw_coinName3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/txt_01C18B"
+                        android:textColor="@color/color_e6"
                         android:text=""
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -228,14 +228,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/color_7a8799"
+                        android:textColor="@color/txt_all8"
                         android:text="实际到账："/>
                     <TextView
                         android:id="@+id/tv_activity_mywallet_withdraw_realAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/txt_01C18B"
+                        android:textColor="@color/color_e6"
                         android:text=""
                         android:layout_marginLeft="10dp"/>
                     <TextView
@@ -243,7 +243,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
-                        android:textColor="@color/txt_01C18B"
+                        android:textColor="@color/color_e6"
                         android:text=""
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -253,7 +253,7 @@
                 android:id="@+id/tv_activity_mywallet_withdraw_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_7a8799"
+                android:textColor="@color/txt_all8"
                 android:textSize="14sp"
                 android:lineSpacingExtra="4dp"
                 android:paddingTop="20dp"

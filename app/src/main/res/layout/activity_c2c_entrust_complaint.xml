@@ -1,216 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/bg_white"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg_color"
+    android:orientation="vertical">
 
-    <include layout="@layout/view_personal_title"/>
-    <include layout="@layout/view_divider_line_10"/>
+    <include layout="@layout/view_personal_title" />
+
+    <include layout="@layout/view_divider_line_10" />
+
     <EditText
         android:id="@+id/activity_ccEntrustComplaint_input"
-        android:textSize="14sp"
-        android:textColor="@color/txt_content"
-        android:textColorHint="@color/txt_B8C6D2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:background="@color/transparent"
-        android:padding="10dp"
+        android:gravity="top|start"
         android:hint="请输入申诉理由"
         android:minLines="4"
-        android:gravity="top|start"
-        android:layout_margin="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:padding="10dp"
+        android:textColor="@color/color_e6"
+        android:textColorHint="@color/txt_all6"
+        android:textSize="14sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/activity_ccEntrustComplaint_img1"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="15dp"
-            android:src="@mipmap/c2c_add_img"/>
+            android:src="@mipmap/c2c_add_img" />
+
         <ImageView
             android:id="@+id/activity_ccEntrustComplaint_img2"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="25dp"
-            android:src="@mipmap/c2c_add_img"/>
+            android:src="@mipmap/c2c_add_img" />
+
         <ImageView
             android:id="@+id/activity_ccEntrustComplaint_img3"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="25dp"
-            android:src="@mipmap/c2c_add_img"/>
+            android:src="@mipmap/c2c_add_img" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:src="@mipmap/img_warn"/>
+            android:src="@mipmap/img_warn" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="1、请确保照片清晰，无水印，无污渍\n2、点击图片可重新上传\n3、图片上传之后请输入文字信息"
             android:textColor="#ff4db872"
-            android:textSize="12sp"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="12sp" />
     </LinearLayout>
+
     <TextView
-        android:text="提起申诉后资产将会冻结，申诉专员将介入本次交易，直至申诉结
-束。恶意申诉属于扰乱平台正常运营秩序，情节严重将冻结账户。"
-        android:textSize="@dimen/font_12sp"
-        android:textColor="@color/txt_B8C6D2"
-        android:lineSpacingExtra="7dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="7dp"
+        android:text="提起申诉后资产将会冻结，申诉专员将介入本次交易，直至申诉结
+束。恶意申诉属于扰乱平台正常运营秩序，情节严重将冻结账户。"
+        android:textColor="@color/txt_B8C6D2"
+        android:textSize="@dimen/font_12sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/activity_ccEntrustComplaint_submit"
-        android:text="提交申诉"
-        android:background="@mipmap/c2c_trade_sale"
-        android:textColor="@color/txt_white"
-        android:layout_marginTop="25dp"
+        style="@style/SubmitTextView"
         android:layout_marginBottom="25dp"
-        style="@style/full_width_textView_margin15"/>
-    <include layout="@layout/view_divider_line_10"/>
-    <include layout="@layout/view_divider_line_10"/>
+        android:layout_marginTop="25dp"
+        android:text="提交申诉" />
+
+    <include layout="@layout/view_divider_line_10" />
+
+    <include layout="@layout/view_divider_line_10" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:text="申诉历史"
-        android:textColor="#ff636363"
-        android:textSize="16sp"
-        android:layout_margin="15dp"/>
-    <include layout="@layout/view_divider_line"/>
+        android:textColor="@color/txt_all8"
+        android:textSize="16sp" />
+
+    <include layout="@layout/view_divider_line" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <LinearLayout
             android:id="@+id/activity_ccEntrustComplaint_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/activity_ccEntrustComplaint_oldimg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="right"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp">
+                android:gravity="right"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginRight="10dp"
-                    android:gravity="right">
+                    android:gravity="right"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/activity_ccEntrustComplaint_name1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="用户名"
                         android:textColor="#ff000000"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/activity_ccEntrustComplaint_oldimg1"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp" />
+
                         <ImageView
                             android:id="@+id/activity_ccEntrustComplaint_oldimg2"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp" />
+
                         <ImageView
                             android:id="@+id/activity_ccEntrustComplaint_oldimg3"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@mipmap/home_logo"/>
+                    android:src="@mipmap/home_logo" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="right"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp">
+                android:gravity="right"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginRight="10dp"
-                    android:gravity="right">
+                    android:gravity="right"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/activity_ccEntrustComplaint_name2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="用户名"
                         android:textColor="#ff000000"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:id="@+id/activity_ccEntrustComplaint_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="申诉订单，申诉原因"
                         android:textColor="#ff000000"
-                        android:textSize="13sp"
-                        android:layout_marginTop="12dp"/>
+                        android:textSize="13sp" />
                 </LinearLayout>
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@mipmap/home_logo"/>
+                    android:src="@mipmap/home_logo" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@mipmap/home_logo"/>
+                    android:src="@mipmap/home_logo" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="客服"
                         android:textColor="#ff000000"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:id="@+id/activity_ccEntrustComplaint_replyContent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="申诉订单，申诉原因"
                         android:textColor="#ff000000"
-                        android:textSize="13sp"
-                        android:layout_marginTop="12dp"/>
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

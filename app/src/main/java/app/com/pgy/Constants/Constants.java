@@ -24,14 +24,16 @@ public class Constants {
 	//debug
 //	public static final String HTTP_URL = "http://192.168.1.1:8080";
 //	public static final String HTTP_URL_DEBUG = "http://192.168.1.1:8080";
+	/*接口url：http://47.56.222.27:8085
+	ws：http://47.56.222.27:1606*/
 	//debug
-	public static final String HTTP_URL = "http://api.pgy.pub";//
+	public static final String HTTP_URL = "http://47.56.222.27:8085";//
 	public static final String HTTP_URL_DEBUG = "http://api.pgy.pub";//
 	/**长连接host，测试、线上*/
 	// release http://47.104.142.76:1606
 			//denbug  192.168.2.165:1606 47.89.49.120:1606
 	public static final String WS_URL_DEBUG = "ws://47.56.87.149:1606";//ws://47.56.87.149:1606
-	public static final String WS_URL = "ws://47.56.87.149:1606";
+	public static final String WS_URL = "ws://47.56.222.27:1606";
 	//debug
 //	public static final String WS_URL_DEBUG = "ws://192.168.1.1:1606";//ws://45.249.244.103:1606
 //	public static final String WS_URL = "ws://192.168.1.1:1606";

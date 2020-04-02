@@ -152,13 +152,13 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
                 if (nvp_content.getCurrentItem() != 0){
                     nvp_content.setCurrentItem(0);
                 }
-                rg_title.setBackgroundResource(R.mipmap.c2c_top_bg_1);
+                rg_title.setBackgroundResource(R.mipmap.button_left);
                 break;
             case R.id.rb_fragment_market_world:
                 nvp_content.setCurrentItem(1);
 //                showToast("玩命开发中");
 //                rg_title.check(R.id.rb_fragment_market_oneCoin);
-                rg_title.setBackgroundResource(R.mipmap.c2c_top_bg_2);
+                rg_title.setBackgroundResource(R.mipmap.btn_qq);
                 break;
             default:
                 break;

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,18 +16,18 @@
         android:paddingRight="0dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/white"
+            android:background="@color/dark_main_model"
             android:gravity="center_vertical">
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:text="收款人"
                 android:includeFontPadding="false"/>
 
@@ -36,11 +36,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:textColor="@color/txt_content"
-                android:text="请输入真实姓名"
+                android:textColor="@color/color_e6"
+                android:hint="请输入真实姓名"
                 android:maxLength="20"
-                android:textColorHint="@color/color_c4c7cc"
-                android:background="@color/white"
+                android:textColorHint="@color/txt_all6"
+                android:background="@color/dark_main_model"
                 android:layout_marginRight="20dp"/>
         </LinearLayout>
         <View style="@style/PersonalLine"
@@ -49,10 +49,10 @@
             android:id="@+id/piiv_activity_bind_weixin"
             style="@style/PersonalInputItem"
             android:layout_marginRight="20dp"
-            app:tv_input_item_left_color="@color/txt_title"
+            app:tv_input_item_left_color="@color/txt_all8"
             app:tv_input_item_left_text="微信账号"
-            app:edt_input_item_right_color="@color/txt_content"
-            app:edt_input_item_right_hintcolor="@color/txt_B8C6D2"
+            app:edt_input_item_right_color="@color/color_e6"
+            app:edt_input_item_right_hintcolor="@color/txt_all6"
             app:edt_input_item_right_hint="请输入微信账号">
         </app.com.pgy.Widgets.PersonalItemInputView>
         <View style="@style/PersonalLine"
@@ -66,7 +66,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:textSize="15sp"
                 android:text="收款二维码"/>
             <ImageView

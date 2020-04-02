@@ -1,5 +1,6 @@
 package app.com.pgy.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -251,14 +252,14 @@ public class C2CTradeFragment extends BaseFragment {
     private void updateNormal() {
         vpContent.setVisibility(View.VISIBLE);
         vpContent2.setVisibility(View.GONE);
-        viewFragmentTradeC2cTab3.setBackgroundResource(R.color.txt_3075EE);
-        viewFragmentTradeC2cTab4.setBackgroundResource(R.color.txt_3075EE);
+        viewFragmentTradeC2cTab3.setBackgroundColor(Color.parseColor("#F0CB7A"));
+        viewFragmentTradeC2cTab4.setBackgroundColor(Color.parseColor("#F0CB7A"));
         rbFragmentTradeC2cTab1.setText("买入");
         rbFragmentTradeC2cTab2.setText("卖出");
         rbFragmentTradeC2cTab3.setText("当前委托");
         rbFragmentTradeC2cTab4.setText("历史委托");
-        rbFragmentTradeC2cTab3.setTextColor(getResources().getColorStateList(R.color.selector_font_appbg_99));
-        rbFragmentTradeC2cTab4.setTextColor(getResources().getColorStateList(R.color.selector_font_appbg_99));
+   /*     rbFragmentTradeC2cTab3.setTextColor(getResources().getColorStateList(R.color.selector_font_appbg_99));
+        rbFragmentTradeC2cTab4.setTextColor(getResources().getColorStateList(R.color.selector_font_appbg_99));*/
         if (nAdapter == null) {
             nAdapter = new ViewPagerAdapter(getChildFragmentManager());
             List<Fragment> normalFragment = new ArrayList<>();
@@ -281,8 +282,8 @@ public class C2CTradeFragment extends BaseFragment {
         rbFragmentTradeC2cTab2.setText("商家卖出");
         rbFragmentTradeC2cTab3.setText("商家接单");
         rbFragmentTradeC2cTab4.setText("当前委托");
-        rbFragmentTradeC2cTab3.setTextColor(getResources().getColorStateList(R.color.selector_font_green_99));
-        rbFragmentTradeC2cTab4.setTextColor(getResources().getColorStateList(R.color.selector_font_green_99));
+    /*    rbFragmentTradeC2cTab3.setTextColor(getResources().getColorStateList(R.color.selector_font_green_99));
+        rbFragmentTradeC2cTab4.setTextColor(getResources().getColorStateList(R.color.selector_font_green_99));*/
         if (bAdapter == null) {
             bAdapter = new ViewPagerAdapter(getChildFragmentManager());
             List<Fragment> businessFragments = getBusinessFragments();

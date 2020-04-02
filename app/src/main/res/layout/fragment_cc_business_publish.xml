@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_white"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
     <include layout="@layout/view_divider_line_10"/>
     <ScrollView
@@ -124,8 +124,8 @@
                     android:layout_gravity="center_vertical|end"
                     android:text="0.0"
                     android:textSize="15sp"
-                    android:textColorHint="@color/txt_B8C6D2"
-                    android:textColor="@color/txt_title"/>
+                    android:textColorHint="@color/txt_all6"
+                    android:textColor="@color/color_e6"/>
 
                 <TextView
                     android:id="@+id/fragment_c2cBusinessPublish_limitMinPrice"

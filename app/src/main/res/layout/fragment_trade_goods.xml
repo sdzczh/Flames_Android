@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F7F8FA">
+    android:background="@color/dark_bg_color">
 
     <!--顶部-->
     <android.support.design.widget.AppBarLayout
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0.5dp"
         android:orientation="vertical"
-        android:background="@color/bg_white"
+        android:background="@color/dark_main_model"
         android:fitsSystemWindows="true">
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                     android:text="DK/CNY"
                     android:textSize="16sp"
                     android:paddingStart="15dp"
-                    android:textColor="@color/txt_title"
+                    android:textColor="@color/color_e6"
                     android:drawableRight="@mipmap/trade_xiala"
                     android:drawablePadding="5dp"
                     android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
                         android:gravity="center_vertical"
                         android:minLines="1"
                         android:text="限价买入"
-                        android:textColor="@color/txt_title"
+                        android:textColor="@color/color_e6"
                         android:textSize="@dimen/font_14sp"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="8dp"/>
@@ -178,7 +178,7 @@
                     <RadioGroup
                         android:id="@+id/fragment_tradeGoods_percentGroup"
                         android:layout_width="match_parent"
-                        android:background="@color/white"
+                        android:background="@color/dark_main_model"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp"
                         android:layout_height="25dp">
@@ -276,10 +276,9 @@
                         android:id="@+id/fragment_tradeGoods_login"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        style="@style/SubmitTextView"
                         android:gravity="center"
                         android:text="登录/注册"
-                        android:textColor="@drawable/selector_enable_font_light_white"
-                        android:background="@drawable/selector_bg_app_color_small"
                         android:textSize="@dimen/font_15sp"
                         android:layout_marginTop="28dp"/>
 
@@ -463,7 +462,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="普通委托"
-                android:textColor="@color/color_66"
+                android:textColor="@color/color_e6"
                 android:textSize="15sp"
                 android:layout_marginLeft="15dp"/>
             <ImageView

@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/bg_white"
+    android:background="@color/dark_bg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!--顶部C2C选择列表-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#fff5f5f5"
+        android:background="@color/dark_main_model"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_height="40dp">
@@ -22,11 +22,11 @@
             android:layout_height="wrap_content"
             app:tabIndicatorHeight="1dp"
             app:tabTextAppearance="@style/TabLayoutTextStyle14"
-            app:tabIndicatorColor="@color/bg_blue"
+            app:tabIndicatorColor="#F0CB7A"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/txt_blue"
+            app:tabSelectedTextColor="#F0CB7A"
             app:tabGravity="center"
-            app:tabTextColor="#7A8799" />
+            app:tabTextColor="@color/color_e6" />
 
         <RadioGroup
             android:id="@+id/fragment_tradeC2c_group"
@@ -42,7 +42,7 @@
                 android:textSize="@dimen/font_14sp"
                 android:checked="true"
                 style="@style/radiobtn_buyOrSale"
-                android:textColor="@drawable/selector_font_light_blue"/>
+                android:textColor="@drawable/selector_font_light_y"/>
 
             <RadioButton
                 android:id="@+id/fragment_tradeC2c_group_business"
@@ -51,7 +51,7 @@
                 android:drawablePadding="5dp"
                 android:textSize="@dimen/font_14sp"
                 style="@style/radiobtn_buyOrSale"
-                android:textColor="@drawable/selector_font_light_blue"/>
+                android:textColor="@drawable/selector_font_light_y"/>
         </RadioGroup>
 
     </LinearLayout>

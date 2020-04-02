@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
-    android:background="@color/bg_dark"
+    android:background="@color/dark_main_model"
     android:gravity="center_vertical"
     android:layout_height="30dp">
     <TextView
@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/item_kLineDeal_price"
         android:text="0.077624"
-        android:textColor="@color/txt_white"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_12sp"
         android:maxLines="1"
         android:gravity="center"
@@ -40,7 +40,7 @@
     <TextView
         android:id="@+id/item_kLineDeal_amount"
         android:text="0.0199"
-        android:textColor="@color/txt_white"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_12sp"
         android:maxLines="1"
         android:layout_width="0dp"

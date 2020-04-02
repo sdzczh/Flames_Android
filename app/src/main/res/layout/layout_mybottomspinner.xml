@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
 
     <ListView
@@ -12,7 +13,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_weight="1"
-        android:divider="#ffe1ebfa"
+        android:divider="@color/dark_line_model"
         android:dividerHeight="1dp"
         android:scrollbars="none"/>
 
@@ -24,7 +25,7 @@
         android:layout_marginBottom="15dp"
         android:text="取消"
         android:textSize="@dimen/font_16sp"
-        android:textColor="#525A66"
+        android:textColor="@color/color_e6"
         android:background="@drawable/bg_corners_whitesolid"
         android:gravity="center"
         style="@style/wrapbutton_padding"

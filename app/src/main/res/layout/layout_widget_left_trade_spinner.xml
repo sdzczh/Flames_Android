@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:layout_width="207dp"
     android:minWidth="207dp"
     android:layout_height="match_parent">
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="现货账户"
-            android:textColor="#ff333333"
+            android:textColor="@color/txt_all8"
             android:textSize="16sp"
             android:layout_marginLeft="15dp"/>
         <View
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="交易信息"
-            android:textColor="#ff333333"
+            android:textColor="@color/txt_all8"
             android:textSize="16sp"
             android:layout_marginLeft="15dp"/>
         <View

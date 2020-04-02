@@ -34,7 +34,7 @@
             android:maxLines="1"
             android:maxWidth="20dp"
             android:text="1"
-            android:textColor="#7A8799"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp"
             android:visibility="gone"/>
 
@@ -46,6 +46,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/color_e6"
             android:text="0.00"
             android:textSize="13sp" />
 
@@ -58,7 +59,7 @@
             android:gravity="end"
             android:maxLines="1"
             android:text="0.00"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/color_e6"
             android:textSize="13sp"
             android:paddingLeft="10dp"/>
     </LinearLayout>

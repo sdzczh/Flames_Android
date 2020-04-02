@@ -25,6 +25,7 @@ import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Activitys.HuiLvActivity;
 import app.com.pgy.Activitys.LoginActivity;
 import app.com.pgy.Activitys.MainActivity;
+import app.com.pgy.Activitys.MyAccountActivity;
 import app.com.pgy.Activitys.MyWalletActivity;
 import app.com.pgy.Activitys.MyteamActivity;
 import app.com.pgy.Activitys.PersonalGroupsActivity;
@@ -180,7 +181,7 @@ public class PersonalFragment extends BaseFragment {
             case R.id.piv_fragment_personal_item_wallet:
                 //  跳转我的钱包
                 if (LoginUtils.isLogin(getActivity())) {
-                    intent = new Intent(mContext, MyWalletActivity.class);
+                    intent = new Intent(mContext, MyAccountActivity.class);
                     intent.putExtra("index", 0);
                 }
                 break;

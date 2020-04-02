@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_content_grey"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
 
     <app.com.pgy.Widgets.TitleView
@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_white"
+        android:background="@color/dark_main_model"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -49,13 +49,14 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:background="@color/bg_white"
+        android:background="@color/dark_main_model"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp"
         android:visibility="gone">
 
         <TextView
+            android:textColor="@color/color_e6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="备注名" />
@@ -69,6 +70,7 @@
             android:focusable="false"
             android:gravity="end"
             android:hint="未设置"
+            android:textColor="@color/color_e6"
             android:paddingEnd="10dp"
             android:paddingStart="10dp" />
 
@@ -83,17 +85,19 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:background="@color/bg_white"
+        android:background="@color/dark_main_model"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <TextView
+            android:textColor="@color/txt_all8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="算力级别" />
 
         <TextView
+            android:textColor="@color/color_e6"
             android:id="@+id/activity_userDetail_level"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -135,9 +139,8 @@
 
         <TextView
             android:id="@+id/activity_userDetail_addFriend"
-            style="@style/full_width_textView_blue"
+            style="@style/SubmitTextView"
             android:layout_marginTop="40dp"
-            android:textColor="@color/txt_white"
             android:text="加好友" />
 
         <TextView

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg"
     android:orientation="vertical">
 
     <FrameLayout style="@style/title_bg">
@@ -16,14 +15,18 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="10dp"
             android:padding="5dp"
-            android:src="@mipmap/title_back" />
+            android:rotation="-180"
+            android:src="@mipmap/more" />
+
         <TextView
             style="@style/title_text"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"
-            android:text="商家信息"/>
+            android:text="商家信息" />
     </FrameLayout>
-    <include layout="@layout/view_divider_line_10"/>
+
+    <include layout="@layout/view_divider_line_10" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -33,13 +36,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bg_white"
             android:orientation="vertical">
             <!--头部-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/bg_white"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:paddingEnd="15dp"
@@ -49,10 +50,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <app.com.pgy.Widgets.RoundImageView
                         android:id="@+id/activity_ccPersonalBusiness_headIcon"
@@ -75,19 +76,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
+                            android:text="币圈小诸葛"
                             android:textColor="@color/txt_title"
-                            android:textSize="@dimen/font_15sp"
-                            android:text="币圈小诸葛"/>
+                            android:textSize="@dimen/font_15sp" />
 
                         <TextView
                             android:id="@+id/activity_ccPersonalBusiness_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
                             android:maxLines="1"
                             android:text="注册时间：2017-11-11"
                             android:textColor="@color/txt_content"
-                            android:textSize="@dimen/font_11sp"
-                            android:layout_marginTop="5dp"/>
+                            android:textSize="@dimen/font_11sp" />
 
                     </LinearLayout>
 
@@ -104,15 +105,15 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/view_divider_line"/>
+                <include layout="@layout/view_divider_line" />
                 <!--第一行列表-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
                     android:orientation="horizontal">
                     <!--委托价-->
                     <LinearLayout
@@ -131,7 +132,8 @@
                             android:textSize="@dimen/font_15sp" />
                     </LinearLayout>
                     <!--委托量-->
-                    <LinearLayout style="@style/entrust_item_frame"
+                    <LinearLayout
+                        style="@style/entrust_item_frame"
                         android:gravity="center">
 
                         <TextView
@@ -165,8 +167,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:layout_marginLeft="15dp"
+                    android:gravity="center_vertical"
                     android:visibility="visible">
 
                     <TextView
@@ -176,11 +178,11 @@
                         android:layout_marginEnd="40dp"
                         android:drawablePadding="5dp"
                         android:drawableStart="@mipmap/rz_sj"
+                        android:gravity="center"
                         android:text="手机认证"
                         android:textColor="@color/txt_content"
                         android:textSize="@dimen/font_11sp"
-                        android:visibility="gone"
-                        android:gravity="center"/>
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/activity_ccPersonalBusiness_certification_realName"
@@ -198,7 +200,7 @@
 
             <View
                 style="@style/Line_10"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp" />
             <!--列表-->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/activity_ccPersonalBusiness_buyList"

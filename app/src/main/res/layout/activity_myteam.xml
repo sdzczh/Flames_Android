@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical"
     tools:context=".Activitys.MyteamActivity">
 
@@ -16,9 +16,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="121dp"
-            android:background="#133B81">
+            android:background="@color/dark_main_model">
             <FrameLayout
-                android:background="#133B81"
+                android:background="@color/dark_main_model"
                 style="@style/title_bg">
                 <ImageView
                     android:id="@+id/ll_back"
@@ -28,11 +28,12 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="8dp"
                     android:layout_gravity="bottom"
-                    android:src="@drawable/ic_back_w"/>
+                    android:rotation="-180"
+                    android:src="@mipmap/more"/>
                 <TextView
                     android:id="@+id/tv_title"
                     style="@style/title_text"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_e6"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginBottom="10dp"
                     android:text="我的团队"
@@ -87,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="个人挖矿收益"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_e6"
                     android:textSize="13.33sp" />
 
                 <TextView
@@ -95,8 +96,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="0.00 ANT"
-                    android:textColor="#ffffff"
+                    android:text="0.00 Flames"
+                    android:textColor="@color/color_e6"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -105,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="直推人数："
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_e6"
                     android:textSize="11.33sp" />
             </LinearLayout>
 
@@ -123,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="团队挖矿收益"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_e6"
                     android:textSize="13.33sp" />
 
                 <TextView
@@ -131,8 +132,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="0.00 ANT"
-                    android:textColor="#ffffff"
+                    android:text="0.00 Flames"
+                    android:textColor="@color/color_e6"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -141,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="团队人数："
-                    android:textColor="#ffffff"
+                    android:textColor="@color/color_e6"
                     android:textSize="11.33sp" />
             </LinearLayout>
         </LinearLayout>
@@ -154,7 +155,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="挖矿奖励明细"
-        android:textColor="#666666"
+        android:textColor="@color/txt_all8"
         android:textSize="12sp" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout

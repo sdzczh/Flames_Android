@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <com.jude.easyrecyclerview.EasyRecyclerView
         android:id="@+id/activity_tradeC2COrderNormal_list"
         android:layout_width="match_parent"

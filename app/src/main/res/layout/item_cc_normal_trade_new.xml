@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="币圈小诸葛"
-                android:textColor="@color/color_66"
+                android:textColor="@color/txt_all8"
                 android:textSize="@dimen/font_15sp"/>
             <View
                 android:layout_width="0dp"
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="7.13 CNY"
-                android:textColor="#ff666666"
+                android:textColor="@color/color_e6"
                 android:textSize="18sp"
                 />
             <ImageView
@@ -107,7 +107,7 @@
             <!--数量-->
             <TextView
                 android:id="@+id/ccNormal_buy_item_number"
-                android:textColor="#C6C6CA"
+                android:textColor="@color/color_e6"
                 android:textSize="12sp"
                 android:maxLines="1"
                 android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
             <!--限额-->
             <TextView
                 android:id="@+id/ccNormal_buy_item_limitAmount"
-                android:textColor="#C6C6CA"
+                android:textColor="@color/color_e6"
                 android:textSize="12sp"
                 android:maxLines="1"
                 android:layout_width="0dp"

@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+
         android:id="@+id/mybottomspinner_item_item"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
-        android:textColor="#525A66"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_16sp"
         android:maxLines="1"
         android:layout_gravity="center"

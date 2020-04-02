@@ -15,7 +15,7 @@
     <color name="green">#5000ff00</color>-->
 
     <!--背景色-->
-    <color name="bg_content_grey">#F5F5F5</color>
+    <color name="bg_content_grey">@color/dark_main_model</color>
     <color name="bg_title_red">#E83030</color>
     <color name="bg_white">#ffffff</color>
     <color name="bg_dark">#ff131f30</color>
@@ -30,7 +30,7 @@
     <color name="bg_orange">#FF9933</color>
     <!--默认分割线-->
     <color name="bg_line">#e8e8eb</color>
-    <color name="bg_green">#ff52cca3</color>
+    <color name="bg_green">@color/dark_line_model</color>
     <color name="bg_green_light">#ffebfff8</color>
     <!--买入未选背景色-->
     <!--<color name="bg_green_half">#AEDEB6</color>-->
@@ -136,4 +136,8 @@
     <color name="bg_kline">#F0F4FA</color>
     <color name="f0">#F0F4FA</color>
     <color name="test">#ff00ff</color>
+    <color name="dark_line_model">#343A46</color>
+    <color name="dark_main_model">#252932</color>
+    <color name="dark_bg_color">#1d2027</color>
+
 </resources>

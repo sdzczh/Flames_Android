@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:background="@color/dark_main_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -15,7 +16,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="个人身份认证"
-                android:textColor="@color/color_33"
+                android:textColor="@color/txt_all8"
                 android:textSize="18sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="28dp"/>
@@ -64,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:layout_marginTop="10dp"
                 android:padding="15dp">
                 <LinearLayout
@@ -76,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lv.1 基础认证"
-                        android:textColor="#ff333333"
+                        android:textColor="@color/txt_all8"
                         android:textSize="13sp"
                         />
                     <View
@@ -106,7 +107,7 @@
                         android:layout_width="57dp"
                         android:layout_height="23dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_e6"
                         android:textSize="12sp"
                         android:text="去认证"
                         android:background="@mipmap/renzheng_btn_bg"/>
@@ -131,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:layout_marginTop="10dp"
                 android:padding="15dp">
                 <LinearLayout
@@ -143,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lv.2 高级认证"
-                        android:textColor="#ff333333"
+                        android:textColor="@color/txt_all8"
                         android:textSize="13sp"
                         />
                     <View
@@ -207,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:layout_marginTop="10dp"
                 android:padding="15dp">
                 <LinearLayout
@@ -219,7 +220,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lv.3 视频认证"
-                        android:textColor="#ff333333"
+                        android:textColor="@color/txt_all8"
                         android:textSize="13sp"
                         />
                     <View

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <app.com.pgy.Widgets.RatioRelativeLayout
         android:id="@+id/rl_item_posters_bg"
         android:orientation="vertical"
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@color/white"
+                android:background="@color/dark_main_model"
                 android:padding="10dp"
                 android:visibility="gone">
                 <TextView
@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:textColor="@color/color_292d33"
+                    android:textColor="@color/color_e6"
                     android:textSize="13sp"
                     android:text="PGY邀请返佣"
                     android:maxLines="1"
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:textSize="9sp"
-                    android:textColor="@color/color_7a8799"
+                    android:textColor="@color/color_e6"
                     android:text="邀您加入PGY，长按识别二维码"
                     android:layout_below="@+id/tv1"
                     android:layout_marginTop="4dp"

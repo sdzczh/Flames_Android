@@ -5,7 +5,7 @@
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
     android:layout_gravity="center_vertical"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="horizontal">
     <!-- 左边头像图片-->
     <ImageView
@@ -19,7 +19,7 @@
         android:textSize="@dimen/font_14sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textColor="@color/txt_all6"
+        android:textColor="@color/color_e6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

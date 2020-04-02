@@ -4,12 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F8FA">
+    android:background="@color/dark_bg_color">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
         <FrameLayout
             style="@style/title_bg">
             <ImageView
@@ -20,7 +20,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="bottom"
-                android:src="@mipmap/title_back"/>
+                android:rotation="-180"
+                android:src="@mipmap/more"/>
             <com.androidkun.xtablayout.XTabLayout
                 android:id="@+id/title_tab"
                 style="@style/TabLayoutTextStyle12"
@@ -28,14 +29,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:xTabTextAppearance="@style/TabLayoutTextStyle12"
-                app:xTabSelectedTextColor="#3075EE"
+                app:xTabSelectedTextColor="#F0CB7A"
                 app:xTabTextColor="@color/color_66"
                 app:xTabTextSize="15sp"
                 app:xTabSelectedTextSize="15sp"
                 app:tabMode="fixed"
                 app:tabGravity="center"
                 app:xTabIndicatorHeight="2dp"
-                app:xTabIndicatorColor="#3075EE"
+                app:xTabIndicatorColor="#F0CB7A"
                 app:tabTextColor="@color/color_66"
                 android:visibility="visible"/>
             <TextView
@@ -44,7 +45,7 @@
                 android:layout_height="28dp"
                 android:text="批量撤单"
                 android:gravity="center"
-                android:textColor="#ff3075ee"
+                android:textColor="#F0CB7A"
                 android:textSize="15sp"
                 android:layout_gravity="right|bottom"
                 android:layout_marginBottom="10dp"
@@ -59,7 +60,7 @@
         android:gravity="center_vertical"
         android:paddingLeft="18dp"
         android:paddingRight="18dp"
-        android:background="@color/white">
+        android:background="@color/dark_main_model">
         <TextView
             android:id="@+id/tv_coin_name"
             android:layout_width="wrap_content"

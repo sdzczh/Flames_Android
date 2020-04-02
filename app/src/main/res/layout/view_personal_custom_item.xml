@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/dark_main_model"
     android:gravity="center_vertical"
     android:layout_gravity="center_vertical">
     <ImageView
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@color/color_525a66"
+        android:textColor="@color/txt_all8"
         android:text=""
         android:includeFontPadding="false"/>
     <View
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="13sp"
-        android:textColor="@color/color_7a8799"
+        android:textColor="@color/color_e6"
         android:text=""/>
     <ImageView
         android:id="@+id/iv_next"

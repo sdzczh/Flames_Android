@@ -5,7 +5,7 @@
     android:paddingEnd="20dp"
     android:paddingTop="10dp"
     android:paddingBottom="17dp"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:layout_gravity="center"
     android:gravity="center_vertical"
     android:layout_height="wrap_content">

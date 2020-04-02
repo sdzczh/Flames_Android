@@ -4,14 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <FrameLayout
         style="@style/title_bg">
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/title_back"
+            android:src="@mipmap/more"
+            android:rotation="-180"
             android:padding="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
@@ -56,7 +57,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/color_525a66"
+                        android:textColor="@color/txt_all8"
                         android:textSize="20sp"
                         android:text="提升算力"/>
                     <TextView
@@ -64,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:textColor="@color/color_a3b4cc"
+                        android:textColor="@color/color_e6"
                         android:text="规则"
                         android:drawableRight="@mipmap/question"
                         android:drawablePadding="5dp"/>
@@ -81,7 +82,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_525a66"
+                    android:textColor="@color/txt_all8"
                     android:layout_marginTop="40dp"
                     android:textSize="20sp"
                     android:text="每日分享"/>
@@ -97,7 +98,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_525a66"
+                    android:textColor="@color/txt_all8"
                     android:layout_marginTop="40dp"
                     android:textSize="20sp"
                     android:text="永久任务"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical"
     tools:context=".Activitys.MortgageActivity">
 
@@ -25,9 +25,9 @@
             style="@style/title_text"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"
-            android:drawableRight="@mipmap/xiala_xiao"
+            android:drawableRight="@mipmap/trade_xiala"
             android:drawablePadding="5dp"
-            android:text="抵押挖矿(ANT)" />
+            android:text="抵押挖矿(Flames)" />
 
         <ImageView
             android:id="@+id/iv_question"
@@ -59,7 +59,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="@mipmap/diya_top"
+        android:background="@color/dark_main_model"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="昨日收益(ANT)"
+            android:text="昨日收益(Flames)"
             android:textColor="#FFFFFFFF"
             android:textSize="13.33sp" />
 
@@ -109,6 +109,7 @@
     <LinearLayout
         android:id="@+id/ll_diya_next"
         android:layout_width="match_parent"
+        android:background="@color/dark_main_model"
         android:layout_height="65dp"
         android:orientation="horizontal">
 
@@ -126,8 +127,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
-            android:text="ANT"
-            android:textColor="#FF333333"
+            android:text="Flames"
+            android:textColor="@color/color_e6"
             android:textSize="13.33sp" />
         <LinearLayout
             android:orientation="vertical"
@@ -146,7 +147,7 @@
                 android:layout_marginTop="9dp"
                 android:text="最高日收益"
                 android:textSize="11.33sp"
-                android:textColor="#FF999999"
+                android:textColor="@color/txt_all8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -163,12 +164,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#FFF7F8FA"/>
+        android:background="@color/dark_bg_color"/>
     <TextView
         android:text="挖矿记录"
         android:layout_marginLeft="15dp"
         android:textSize="13.33sp"
-        android:textColor="#FF666666"
+        android:textColor="@color/color_e6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

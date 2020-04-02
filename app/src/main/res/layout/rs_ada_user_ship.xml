@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:layout_marginBottom="0.5dp"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:padding="10dp"
     android:orientation="horizontal">
 
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@color/txt_dark"
+            android:textColor="@color/color_e6"
             android:textSize="16sp" />
 
         <TextView

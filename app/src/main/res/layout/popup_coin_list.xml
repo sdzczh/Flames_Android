@@ -7,19 +7,20 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:text="数字货币"
-        android:textColor="#ff999999"
+        android:textColor="@color/color_e6"
         android:textSize="14sp"
-        android:background="#F7F8FA"
+        android:background="@color/dark_main_model"
         android:gravity="center"
         android:layout_marginTop="45dp"/>
     <app.com.pgy.Widgets.MyListView
         android:id="@+id/mlv_popup_yubibao_coinlist"
         android:layout_width="match_parent"
+        android:divider="@color/dark_line_model"
         android:layout_height="wrap_content"
-        android:background="#66000000"/>
+        android:background="@color/dark_main_model"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#66000000"/>
+        android:background="@color/dark_bg_color"/>
 </LinearLayout>

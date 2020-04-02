@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:orientation="horizontal"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:layout_marginBottom="0.5dp"
     android:padding="10dp">
 
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:textColor="@color/txt_dark"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_16sp" />
 
         <!--介绍-->
@@ -45,7 +45,7 @@
             android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_all9"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_13sp" />
     </LinearLayout>
 

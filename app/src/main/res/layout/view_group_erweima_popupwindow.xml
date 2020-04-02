@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="@color/txt_content"
+            android:textColor="@color/txt_all8"
             android:text="扫码加入，快速了解币圈"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="42dp"/>

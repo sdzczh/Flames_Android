@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <ImageView
         android:id="@+id/iv_item_forcescore_up_icon"
         android:layout_width="50dp"
@@ -15,7 +15,7 @@
         android:id="@+id/tv_item_forcescore_up_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_525a66"
+        android:textColor="@color/color_e6"
         android:textSize="12sp"
         android:text="标题"
         android:includeFontPadding="false"
@@ -34,7 +34,7 @@
         android:id="@+id/tv_item_forcescore_up_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_c4c7cc"
+        android:textColor="@color/color_e6"
         android:textSize="10sp"
         android:text="已完成"
         android:includeFontPadding="false"

@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:id="@+id/ll_bg"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/dark_main_model"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
     <TextView
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PGY合约大数据每日播报（9月9日）"
-        android:textColor="#ff333333"
+        android:textColor="@color/color_e6"
         android:textSize="16sp"
         android:layout_marginTop="15dp"/>
     <TextView
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sep 8, 2019 10:45:00 AM"
-        android:textColor="#ff999999"
+        android:textColor="@color/txt_all8"
         android:textSize="11sp"
         android:layout_marginTop="5dp"/>
     <View

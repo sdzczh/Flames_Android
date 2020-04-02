@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="61dp"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <TextView
         android:id="@+id/tv_item_forcescore_long_task_title"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="@color/color_525a66"
+        android:textColor="@color/txt_all8"
         android:text="任务名字"
         android:paddingLeft="5dp"
         android:layout_centerVertical="true"/>

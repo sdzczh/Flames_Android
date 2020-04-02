@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_white"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="USDT 余额"
-                        android:textColor="#ff333333"
+                        android:textColor="@color/txt_all8"
                         android:textSize="12sp"
                         />
                     <TextView
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="买入价格"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="@dimen/font_12sp"
                     android:layout_marginRight="20dp"/>
 
@@ -99,12 +99,12 @@
                     android:maxLength="11"
                     android:textSize="16sp"
                     android:textColorHint="#868686"
-                    android:textColor="@color/color_33"/>
+                    android:textColor="@color/txt_all8"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CNY"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="买入数量"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="@dimen/font_12sp"
                     android:layout_marginRight="20dp"/>
 
@@ -148,13 +148,13 @@
                     android:hint="请输入数量"
                     android:textSize="16sp"
                     android:textColorHint="#868686"
-                    android:textColor="@color/color_33"/>
+                    android:textColor="@color/txt_all8"/>
                 <TextView
                     android:id="@+id/fragment_c2cBusinessPublish_coinName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PNY"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -191,7 +191,7 @@
                     android:text="0.0"
                     android:textSize="15sp"
                     android:textColorHint="#868686"
-                    android:textColor="@color/color_33"/>
+                    android:textColor="@color/txt_all8"/>
 
                 <TextView
                     android:id="@+id/fragment_c2cBusinessPublish_limitMinPrice"
@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CNY"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -227,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="最小限额"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="@dimen/font_12sp"
                     android:layout_marginRight="20dp"/>
 
@@ -243,12 +243,12 @@
                     android:hint="请输入最小限额"
                     android:textSize="16sp"
                     android:textColorHint="#868686"
-                    android:textColor="@color/color_33"/>
+                    android:textColor="@color/txt_all8"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CNY"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -267,7 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="最大限额"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="@dimen/font_12sp"
                     android:layout_marginRight="20dp"/>
 
@@ -283,12 +283,12 @@
                     android:hint="请输入最大限额"
                     android:textSize="16sp"
                     android:textColorHint="#868686"
-                    android:textColor="@color/color_33"/>
+                    android:textColor="@color/txt_all8"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CNY"
-                    android:textColor="@color/color_33"
+                    android:textColor="@color/txt_all8"
                     android:textSize="12sp"
                     />
             </LinearLayout>
@@ -443,11 +443,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                style="@style/SubmitTextView"
                 android:textSize="18sp"
                 android:text="发布交易单"
                 android:layout_marginBottom="10dp"
-                android:background="@mipmap/c2c_trade_buy"/>
+              />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

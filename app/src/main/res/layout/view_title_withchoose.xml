@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/view_titleWithChoose_frame"
-    android:background="@color/white">
+    android:background="@color/dark_main_model">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_white"
+        android:background="@color/dark_main_model"
         android:orientation="vertical">
         <View
             android:id="@+id/view_titleWithChoose_statusBar"
@@ -27,8 +27,9 @@
                 android:layout_width="28dp"
                 android:layout_height="43dp"
                 android:padding="5dp"
+                android:rotation="-180"
                 android:layout_marginStart="10dp"
-                android:src="@mipmap/title_back"/>
+                android:src="@mipmap/more"/>
             <TextView
                 android:id="@+id/view_titleWithChoose_title"
                 android:layout_width="0dp"
@@ -36,7 +37,7 @@
                 android:layout_weight="1"
                 android:includeFontPadding="false"
                 android:textSize="25sp"
-                android:textColor="@color/color_525a66"
+                android:textColor="@color/color_e6"
                 android:text="我的标题"
                 android:gravity="center"/>
             <TextView
@@ -45,7 +46,7 @@
                 android:drawableStart="@mipmap/shaixuan"
                 android:drawablePadding="5dp"
                 android:textSize="@dimen/font_14sp"
-                android:textColor="#7A8799"
+                android:textColor="@color/color_e6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

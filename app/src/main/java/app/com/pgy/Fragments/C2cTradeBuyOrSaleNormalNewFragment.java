@@ -114,11 +114,11 @@ public class C2cTradeBuyOrSaleNormalNewFragment extends BaseFragment {
         if (isBuy) {
             tvDealnumInfo.setText("买入数量");
             tvPutc2corderEnter.setText("立即买入");
-            tvPutc2corderEnter.setBackground(getResources().getDrawable(R.drawable.bg_c2cbuy_enter));
+//            tvPutc2corderEnter.setBackground(getResources().getDrawable(R.drawable.bg_c2cbuy_enter));
         } else {
             tvDealnumInfo.setText("卖出数量");
             tvPutc2corderEnter.setText("立即卖出");
-            tvPutc2corderEnter.setBackground(getResources().getDrawable(R.drawable.bg_c2csale_enter));
+//            tvPutc2corderEnter.setBackground(getResources().getDrawable(R.drawable.bg_c2csale_enter));
         }
         refreshCoinType();
         initTaker();

@@ -21,7 +21,7 @@
             android:id="@+id/layout_widget_bottomTradeOrder_tradeCoinName"
             android:text="出售CNY"
             android:textSize="17sp"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/txt_all6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <View
@@ -46,7 +46,7 @@
         android:id="@+id/layout_widget_bottomTradeOrder_perPrice"
         android:text="单价  ¥  1.00"
         android:textSize="@dimen/font_12sp"
-        android:textColor="@color/txt_content"
+        android:textColor="@color/color_e6"
         android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,6 +69,7 @@
             style="@style/EditText_default_input"
             android:layout_weight="1"
             android:padding="10dp"
+            android:textColor="@color/color_e6"
             android:maxLength="11"
             android:layout_width="0dp"
             android:textSize="15sp"
@@ -149,14 +150,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="总金额："
-            android:textColor="@color/txt_title"
+            android:textColor="@color/txt_all8"
             android:textSize="15sp"
             />
         <TextView
             android:id="@+id/layout_widget_bottomTradeOrder_tradeAllAmount"
             android:text="¥ 0.00"
             android:textSize="22sp"
-            android:textColor="@color/txt_app"
+            android:textColor="@color/color_e6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -168,7 +169,7 @@
     <TextView
         android:id="@+id/layout_widget_bottomTradeOrder_btn_trade"
         android:text="下单"
-        android:textColor="@color/txt_white"
+        android:textColor="@color/txt_black"
         android:textSize="@dimen/font_16sp"
         style="@style/SubmitTextView"
         android:layout_marginLeft="0dp"

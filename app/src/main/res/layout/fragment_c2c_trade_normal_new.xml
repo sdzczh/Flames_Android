@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dark_bg_color"
     android:orientation="vertical">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_marginRight="12dp"
         android:gravity="right"
         android:text="实时价"
-        android:textColor="#FF868686"
+        android:textColor="@color/color_e6"
         android:textSize="12sp" />
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="最小下单"
-            android:textColor="#FF868686"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="USDT，最大下单"
-            android:textColor="#FF868686"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="USDT"
-            android:textColor="#FF868686"
+            android:textColor="@color/txt_all8"
             android:textSize="12sp" />
 
 
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="买入数量"
-            android:textColor="#FF333333"
+            android:textColor="@color/color_e6"
             android:textSize="12sp" />
 
         <EditText
@@ -103,8 +103,10 @@
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:background="@null"
+            android:textColorHint="@color/txt_all6"
             android:gravity="center_vertical"
             android:hint="请输入数量"
+            android:textColor="@color/color_e6"
             android:singleLine="true"
             android:textSize="16sp" />
 
@@ -114,7 +116,7 @@
             android:layout_height="30dp"
             android:gravity="center"
             android:text="USDT"
-            android:textColor="#FF333333"
+            android:textColor="@color/color_e6"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -135,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="兑换金额"
-            android:textColor="#FF333333"
+            android:textColor="@color/color_e6"
             android:textSize="12sp" />
 
         <EditText
@@ -146,8 +148,10 @@
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:background="@null"
+            android:textColorHint="@color/txt_all6"
             android:gravity="center_vertical"
             android:hint="请输入金额"
+            android:textColor="@color/color_e6"
             android:enabled="false"
             android:text="0"
             android:singleLine="true"
@@ -159,7 +163,7 @@
             android:layout_height="30dp"
             android:gravity="center"
             android:text="CNY"
-            android:textColor="#FF333333"
+            android:textColor="@color/color_e6"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -173,7 +177,7 @@
         android:background="@drawable/bg_c2cbuy_enter"
         android:gravity="center"
         android:text="立即买入"
-        android:textColor="@color/white"
+        android:textColor="#323232"
         android:textSize="@dimen/font_18sp" />
 
 

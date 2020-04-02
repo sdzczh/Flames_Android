@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <ScrollView
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp"
-            android:background="@color/white">
+            android:background="@color/dark_main_model">
             <app.com.pgy.Widgets.PersonalItemView
                 android:id="@+id/piv_activity_personal_groups_qq"
                 style="@style/PersonalItem"
@@ -35,7 +35,7 @@
                 style="@style/PersonalItem"
                 app:iv_item_left_icon_visible="true"
                 app:iv_item_left_icon="@mipmap/group_weixin"
-                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_color="@color/color_e6"
                 app:tv_item_left_text="微信群"
                 app:tv_item_right_color="@color/txt_content"
                 app:iv_item_erweima_visible="false"
@@ -44,12 +44,12 @@
             </app.com.pgy.Widgets.PersonalItemView>
             <View
                 style="@style/PersonalLine"
-                android:background="@color/white"
+                android:background="@color/dark_line_model"
                 android:visibility="visible"/>
             <app.com.pgy.Widgets.PersonalItemView
                 android:id="@+id/piv_activity_personal_groups_gongzong"
                 style="@style/PersonalItem"
-                app:tv_item_left_color="@color/txt_title"
+                app:tv_item_left_color="@color/color_e6"
                 app:iv_item_left_icon_visible="true"
                 app:iv_item_left_icon="@mipmap/group_weixin"
                 app:tv_item_left_text="公众号"

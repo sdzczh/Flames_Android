@@ -110,7 +110,7 @@ public class AddGroupsActivity extends PermissionActivity {
                 if (group == null || TextUtils.isEmpty(group.getImgpath())){
                     return;
                 }
-                savePicture(group.getImgpath(),tvTitle.getText()+"ANT"+groupName+"二维码");
+                savePicture(group.getImgpath(),tvTitle.getText()+"Flames"+groupName+"二维码");
                 break;
         }
     }

@@ -24,6 +24,6 @@ public class MyteamAdapter extends BaseQuickAdapter<MyteamBean2.RecordsBean, Bas
         helper.setText(R.id.tv_myteam_phone,item.getNickname());
         helper.setText(R.id.tv_myteam_time,item.getCreateTime());
         DecimalFormat df = new DecimalFormat("0.00");
-        helper.setText(R.id.tv_myteam_profit,df.format(item.getAmount()) + "ANT");
+        helper.setText(R.id.tv_myteam_profit,df.format(item.getAmount()) + "Flames");
     }
 }

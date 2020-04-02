@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="vertical">
 <!--    <include layout="@layout/view_divider_line_10"/>-->
     <!--头部-->
@@ -42,7 +42,7 @@
             android:text="CNY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_title"
+            android:textColor="@color/txt_all8"
             android:textSize="@dimen/font_15sp"
             android:layout_marginLeft="12dp"/>
 
@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.01000000 BTC"
-                android:textColor="#ff333333"
+                android:textColor="@color/color_e6"
                 android:textSize="12sp"
                 android:layout_marginLeft="7dp"/>
         </LinearLayout>
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10187.8 USDT"
-                android:textColor="#ff333333"
+                android:textColor="@color/color_e6"
                 android:textSize="12sp"
                 android:layout_marginLeft="7dp"/>
         </LinearLayout>
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.00000000 BTC"
-                android:textColor="#ff333333"
+                android:textColor="@color/color_e6"
                 android:textSize="12sp"
                 android:layout_marginLeft="7dp"/>
         </LinearLayout>
@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
-                android:textColor="#ff333333"
+                android:textColor="@color/color_e6"
                 android:textSize="12sp"
                 android:layout_marginLeft="7dp"/>
         </LinearLayout>

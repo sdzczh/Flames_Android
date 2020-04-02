@@ -7,18 +7,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:minWidth="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:minWidth="300dp"
         android:orientation="vertical">
         <!--文本，标题和提示-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="90dp"
-            android:padding="15dp"
-            android:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/dialog_exit_title"
@@ -31,10 +31,14 @@
             <EditText
                 android:id="@+id/dialog_exit_input"
                 style="@style/EditText16spSignNum"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/dark_main_model"
+                android:textColor="@color/color_e6"
+                android:textColorHint="@color/txt_all6" />
         </LinearLayout>
 
-        <include layout="@layout/view_divider_line"/>
+        <include layout="@layout/view_divider_line" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -44,22 +48,23 @@
 
             <TextView
                 android:id="@+id/dialog_exit_negativeButton"
-                android:textSize="14sp"
-                android:textColor="@color/txt_all9"
-                android:text="negative"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="negative"
+                android:textColor="@color/txt_all9"
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/dialog_exit_positiveButton"
-                android:textSize="14sp"
-                android:textColor="@color/txt_blue"
-                android:text="positive"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="positive"
+                android:textColor="@color/txt_blue"
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>

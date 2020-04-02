@@ -39,46 +39,46 @@ import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
  */
 
 public class MyWalletRechargeActivity extends PermissionActivity {
-    @BindView(R.id.iv_back)
-    ImageView iv_back;
-    @BindView(R.id.tv_title)
-    TextView tv_title;
-    @BindView(R.id.view_line)
-    View viewLine;
-    @BindView(R.id.edt_activity_mywallet_recharge_account)
-    EditText edt_account;
-    @BindView(R.id.edt_activity_mywallet_recharge_address)
-    EditText edt_address;
-    @BindView(R.id.tv_activity_mywallet_recharge_fee)
-    TextView tv_fee;
+            @BindView(R.id.iv_back)
+            ImageView iv_back;
+            @BindView(R.id.tv_title)
+            TextView tv_title;
+            @BindView(R.id.view_line)
+            View viewLine;
+            @BindView(R.id.edt_activity_mywallet_recharge_account)
+            EditText edt_account;
+            @BindView(R.id.edt_activity_mywallet_recharge_address)
+            EditText edt_address;
+            @BindView(R.id.tv_activity_mywallet_recharge_fee)
+            TextView tv_fee;
 
-    @BindView(R.id.iv_activity_mywallet_recharge_qr)
-    ImageView iv_qr;
-    @BindView(R.id.tv_activity_mywallet_recharge_save)
-    TextView tv_save;
-    @BindView(R.id.tv_activity_mywallet_recharge_address)
-    TextView tv_address;
-    @BindView(R.id.tv_activity_mywallet_recharge_copy)
-    TextView tv_copy;
-    @BindView(R.id.tv_activity_mywallet_recharge_desc)
-    TextView tv_desc;
-    @BindView(R.id.tv_activity_mywallet_transfer_coin)
-    TextView tvActivityMywalletTransferCoin;
-    /**
-     * 配置文件中的充值二维码、公司钱包地址
-     */
-    private String companyWalletAddress;
-    private RechargeBean mRechargeBean;
-    private Configuration.CoinInfo currentCoin;
-    private int coinType = -1;
-    private int accountType = StaticDatas.ACCOUNT_GOODS;
+            @BindView(R.id.iv_activity_mywallet_recharge_qr)
+            ImageView iv_qr;
+            @BindView(R.id.tv_activity_mywallet_recharge_save)
+            TextView tv_save;
+            @BindView(R.id.tv_activity_mywallet_recharge_address)
+            TextView tv_address;
+            @BindView(R.id.tv_activity_mywallet_recharge_copy)
+            TextView tv_copy;
+            @BindView(R.id.tv_activity_mywallet_recharge_desc)
+            TextView tv_desc;
+            @BindView(R.id.tv_activity_mywallet_transfer_coin)
+            TextView tvActivityMywalletTransferCoin;
+            /**
+             * 配置文件中的充值二维码、公司钱包地址
+             */
+            private String companyWalletAddress;
+            private RechargeBean mRechargeBean;
+            private Configuration.CoinInfo currentCoin;
+            private int coinType = -1;
+            private int accountType = StaticDatas.ACCOUNT_GOODS;
 
-    private String coinName = "";
-    private Bitmap bitmap;
+            private String coinName = "";
+            private Bitmap bitmap;
 
-    @Override
-    public int getContentViewId() {
-        return R.layout.activity_mywallet_recharge;
+            @Override
+            public int getContentViewId() {
+                return R.layout.activity_mywallet_recharge;
     }
 
     @Override

@@ -5,7 +5,7 @@
     android:layout_height="60dp"
     android:layout_gravity="center"
     android:orientation="horizontal"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:layout_marginBottom="0.5dp"
     android:padding="10dp">
 
@@ -21,7 +21,7 @@
     <!--名字-->
     <TextView
         android:id="@+id/layout_im_groupMember_name"
-        android:textColor="@color/txt_dark"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_16sp"
         android:layout_marginStart="10dp"
         android:layout_gravity="center"
@@ -34,7 +34,7 @@
         android:id="@+id/layout_im_groupMember_owner"
         android:text="房主"
         android:visibility="gone"
-        android:textColor="@color/txt_all6"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_14sp"
         android:layout_marginStart="10dp"
         android:layout_gravity="center"

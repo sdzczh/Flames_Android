@@ -4,7 +4,7 @@
     android:id="@+id/item_im_addFriend_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_white"
+    android:background="@color/dark_main_model"
     android:orientation="horizontal"
     android:padding="10dp"
     android:visibility="visible">
@@ -29,14 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:maxLines="1"
-            android:textColor="@color/txt_dark"
+            android:textColor="@color/color_e6"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/item_im_addFriend_userPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_all9"
+            android:textColor="@color/color_e6"
             android:textSize="@dimen/font_12sp" />
     </LinearLayout>
 

@@ -3,8 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <FrameLayout
+        android:background="@color/dark_main_model"
         style="@style/title_bg">
 
         <RadioGroup
@@ -13,10 +14,10 @@
             android:layout_gravity="center"
             android:layout_width="145dp"
             android:layout_height="29dp"
-            android:background="@mipmap/c2c_top_bg_1">
+            android:background="@mipmap/button_left">
             <RadioButton
                 android:id="@+id/rb_fragment_market_oneCoin"
-                android:text="ANT"
+                android:text="Flames"
                 android:checked="true"
                 style="@style/c2cTop_tab"
                 android:textColor="@drawable/selector_font_light_blue"/>

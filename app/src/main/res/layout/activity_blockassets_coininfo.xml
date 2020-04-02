@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/srl_activity_blockassets_coininfo_refresh"
@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="18sp"
-                    android:textColor="@color/color_525a66"
+                    android:textColor="@color/color_e6"
                     android:text=""/>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -48,7 +48,7 @@
                             android:id="@+id/tv_activity_blockassets_coininfo_avail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/color_525a66"
+                            android:textColor="@color/color_e6"
                             android:textSize="18sp"
                             android:text=""
                             android:includeFontPadding="false"/>
@@ -56,7 +56,7 @@
                             android:id="@+id/tv_activity_blockassets_coininfo_enname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/color_7a8799"
+                            android:textColor="@color/color_e6"
                             android:textSize="14sp"
                             android:text=""
                             android:includeFontPadding="false"
@@ -70,7 +70,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/color_c4c7cc"
+                            android:textColor="@color/color_e6"
                             android:textSize="14sp"
                             android:text="≈"
                             android:includeFontPadding="false"/>
@@ -78,14 +78,14 @@
                             android:id="@+id/tv_activity_blockassets_coininfo_availCny"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/color_c4c7cc"
+                            android:textColor="@color/color_e6"
                             android:textSize="14sp"
                             android:text=""
                             android:includeFontPadding="false"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/color_c4c7cc"
+                            android:textColor="@color/color_e6"
                             android:textSize="14sp"
                             android:text="CNY"
                             android:includeFontPadding="false"/>
@@ -110,7 +110,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="@color/color_f0f4fa"/>
+                android:background="@color/dark_bg_color"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/color_f5f5f5"
+        android:background="@color/dark_bg_color"
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <TextView

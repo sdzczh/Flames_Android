@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
-    android:background="@color/bg_dark"
+    android:background="@color/dark_main_model"
     android:gravity="center_vertical"
     android:layout_height="30dp">
     <TextView
         android:text="时间"
-        android:textColor="#3D4E66"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_10sp"
         android:maxLines="1"
         android:layout_width="0dp"
@@ -17,7 +17,7 @@
 
     <TextView
         android:text="方向"
-        android:textColor="#3D4E66"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_10sp"
         android:maxLines="1"
         android:layout_width="0dp"
@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/item_kLineDealHead_price"
         android:text="价格"
-        android:textColor="#3D4E66"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_10sp"
         android:maxLines="1"
         android:gravity="center"
@@ -38,7 +38,7 @@
     <TextView
         android:id="@+id/item_kLineDealHead_amount"
         android:text="数量"
-        android:textColor="#3D4E66"
+        android:textColor="@color/color_e6"
         android:textSize="@dimen/font_10sp"
         android:maxLines="1"
         android:layout_width="0dp"

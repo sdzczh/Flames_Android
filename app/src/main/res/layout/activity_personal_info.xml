@@ -4,14 +4,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/txt_bg">
+    android:background="@color/dark_bg_color">
     <include layout="@layout/view_personal_title"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
-        android:background="@color/white"
+        android:background="@color/dark_main_model"
         android:focusable="true"
         android:focusableInTouchMode="true">
         <RelativeLayout
@@ -22,10 +22,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="头像"
                 android:layout_centerVertical="true"
-                android:textColor="@color/txt_title"
-                android:textSize="15sp"
-                android:text="头像"/>
+                android:textColor="@color/txt_all8"
+                android:textSize="15sp" />
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/riv_activity_personal_info_headerImg"
                 android:layout_width="32dp"
@@ -40,14 +40,14 @@
                 android:src="@mipmap/next"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                />
+                android:id="@+id/imageView" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_activity_personal_info_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/dark_main_model"
 
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp">
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:textColor="@color/txt_title"
+                android:textColor="@color/txt_all8"
                 android:text="昵称"
                 android:layout_centerVertical="true"/>
             <EditText
@@ -69,7 +69,7 @@
                 android:singleLine="true"
                 android:textSize="13sp"
                 android:textColor="@color/txt_content"
-                android:textColorHint="@color/txt_B8C6D2"
+                android:textColorHint="@color/txt_all6"
                 android:hint="点击输入昵称"
                 android:gravity="right"
                 android:maxLength="10"
@@ -92,9 +92,9 @@
             android:layout_marginTop="15dp"
             app:iv_item_next_visible="true"
             app:tv_item_left_text="性别"
-            app:tv_item_left_color="@color/txt_title"
+            app:tv_item_left_color="@color/txt_all8"
             app:tv_item_right_text=""
-            app:tv_item_right_color="@color/txt_B8C6D2">
+            app:tv_item_right_color="@color/color_e6">
         </app.com.pgy.Widgets.PersonalItemView>
 
         <app.com.pgy.Widgets.PersonalItemView

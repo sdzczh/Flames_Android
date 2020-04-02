@@ -7,7 +7,7 @@
         android:id="@+id/tv_my_spinner_item_content"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textColor="@color/color_525a66"
+        android:textColor="@color/color_e6"
         android:textSize="16sp"
         android:gravity="center"/>
 </LinearLayout>
