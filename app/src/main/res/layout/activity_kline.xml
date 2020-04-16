@@ -258,12 +258,13 @@
                 <android.support.design.widget.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="深度" />
+                    android:text="成交" />
 
                 <android.support.design.widget.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="成交" />
+                    android:text="深度" />
+
 
                 <android.support.design.widget.TabItem
                     android:layout_width="wrap_content"
@@ -281,13 +282,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="500dp"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <android.support.v7.widget.RecyclerView
+                android:visibility="gone"
                 android:id="@+id/rv_shendu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                 />
+                android:layout_height="wrap_content" />
 
             <WebView
                 android:id="@+id/activity_kLine_bottom_descWebView"

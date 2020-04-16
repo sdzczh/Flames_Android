@@ -50,29 +50,34 @@ public class KLineShenduListAdapter extends RecyclerView.Adapter<KLineShenduList
         View bR = holder.itemView.findViewById(R.id.view_bottom_r);
 
         ViewDataBinding bind = DataBindingUtil.bind(holder.itemView);
-        List<String> listL = list.get(position);
+        List<String> listL = new ArrayList<>();
         List<String> listR = new ArrayList<>();
         if (position < list2.size()) {
             listR = list2.get(position);
-            listR.add(0, (position + 1) + "");
+            if (listR.size() < 4) {
+                listR.add(0, (position + 1) + "");
+            }
         } else {
             listR.add("");
             listR.add("");
             listR.add("");
             listR.add("0");
         }
-        if (position < listL.size()) {
+
+        if (position < list.size()) {
             listL = list.get(position);
-            listR.add(0, (position + 1) + "");
+            if (listL.size() < 4) {
+                listL.add(0, (position + 1) + "");
+            }
         } else {
             listL.add("");
             listL.add("");
             listL.add("");
             listL.add("0");
         }
+
         bL.getLayoutParams().width = DisplayUtil.getScreenMetrics(holder.itemView.getContext()).x * Integer.parseInt(listL.get(3)) / 10;
         bR.getLayoutParams().width = DisplayUtil.getScreenMetrics(holder.itemView.getContext()).x * Integer.parseInt(listR.get(3)) / 10;
-
         bind.setVariable(BR.item, listL);
         bind.setVariable(BR.itemRight, listR);
         bind.executePendingBindings();

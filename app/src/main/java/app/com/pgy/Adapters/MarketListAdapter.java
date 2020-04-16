@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -90,7 +91,7 @@ public class MarketListAdapter extends RecyclerArrayAdapter<PushMarketBean.ListB
         private TextView tv_price;
         private TextView tv_priceCny;
         private TextView tv_rise;
-        private LinearLayout ll_bg;
+        private RelativeLayout ll_bg;
 
         MyMarketViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_market_list_view);
@@ -120,7 +121,7 @@ public class MarketListAdapter extends RecyclerArrayAdapter<PushMarketBean.ListB
             }
 
             tv_volum.setText(marketBean.getSumAmount());
-            tv_priceCny.setText("¥"+marketBean.getNewPriceCNY());
+            tv_priceCny.setText("≈¥"+marketBean.getNewPriceCNY());
             tv_price.setText(marketBean.getNewPrice());
             String chgPrice = marketBean.getChgPrice();
             double rateOrFall = MathUtils.string2Double(chgPrice);

@@ -33,7 +33,6 @@ public class KLineMessageReceiver extends BroadcastReceiver {
             int scene = response.getScene();
             switch (scene) {
                 case 3523:
-                    System.out.println("context = [" + context + "], intent = [" + response.getInfo() + "]");
                     ShenduBean shenDuBean = JsonUtils.deserialize(response.getInfo(), ShenduBean.class);
                     if (shenDuBean == null) {
                         shenDuBean = new ShenduBean();

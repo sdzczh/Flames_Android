@@ -358,7 +358,7 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
      */
     private void getKLineDataFromNet() {
         switchScene(new PushData((mType == MARKET_ONECOIN ? "3521" : "3522"), perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
-        switchScene(new PushData("3523", perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
+//        switchScene(new PushData("3523", perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
         showLoading(null);
         kLineDatas.clear();
         dealListAdapter.clear();
@@ -464,17 +464,19 @@ public class KLineActivity extends BaseWebViewActivity implements getPositionCal
                 switch (tab.getPosition()) {
                     default:
                     case 0:
-                        switchScene(new PushData("3523", perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
-                        rvShendu.setVisibility(View.VISIBLE);
-                        recyclerView.setVisibility(View.GONE);
-                        webView.setVisibility(View.GONE);
-                        break;
-                    case 1:
                         switchScene(new PushData((mType == MARKET_ONECOIN ? "3521" : "3522"), perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
                         /*选中交易*/
                         rvShendu.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                         webView.setVisibility(View.GONE);
+                        break;
+                    case 1:
+                        switchScene(new PushData("3523", perCoin + "", tradeCoin + "", currentDate.getTime() + ""));
+                        rvShendu.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
+                        webView.setVisibility(View.GONE);
+
+
                         break;
                     case 2:
                         /*选中简介*/

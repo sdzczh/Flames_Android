@@ -16,7 +16,6 @@ public class HomeMarketBean {
 
     String unitCoinType;
     String newPrice;
-
     public void setCoinType(String coinType) {
         this.coinType = coinType;
     }

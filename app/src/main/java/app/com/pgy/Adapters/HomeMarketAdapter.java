@@ -27,34 +27,38 @@ public class HomeMarketAdapter extends RecyclerArrayAdapter<HomeMarketBean> {
         return new HomeMarketViewHolder(parent);
     }
 
-    class HomeMarketViewHolder extends BaseViewHolder<HomeMarketBean>{
-        TextView tvCoin,tvPrice,tvRose;
+    class HomeMarketViewHolder extends BaseViewHolder<HomeMarketBean> {
+        TextView tvCoin, tvPrice, tvRose, tv_item_home_new_price;
+
         public HomeMarketViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_home_market_view);
             tvCoin = $(R.id.tv_item_home_market_coin);
             tvPrice = $(R.id.tv_item_home_market_price);
             tvRose = $(R.id.tv_item_home_market_rise);
+            tv_item_home_new_price = $(R.id.tv_item_home_new_price);
+
         }
 
         @Override
         public void setData(HomeMarketBean data) {
             Configuration.CoinInfo coinInfo = ToolsUtils.getCoinInfo(MathUtils.string2Integer(data.getCoinType()));
             tvCoin.setText(coinInfo.getCoinname());
-            tvPrice.setText("￥"+data.getNewPriceCNY());
-            tvRose.setText(data.getChgPrice()+"%");
+            tvPrice.setText(data.getNewPrice());
+            tv_item_home_new_price.setText("≈￥" + data.getNewPriceCNY());
+            tvRose.setText(data.getChgPrice() + "%");
             String chgPrice = data.getChgPrice();
             double rateOrFall = MathUtils.string2Double(chgPrice);
-            if (rateOrFall > 0){
+            if (rateOrFall > 0) {
                 /*涨*/
                 tvRose.setBackgroundResource(R.drawable.bg_corners_52cca3);
-                tvRose.setText("+"+chgPrice+"%");
-                tvPrice.setTextColor(Color.parseColor("#4DB872"));
-            }else if (rateOrFall < 0){
+                tvRose.setText("+" + chgPrice + "%");
+                tvPrice.setTextColor(Color.parseColor("#32CD85"));
+            } else if (rateOrFall < 0) {
                 /*跌*/
                 tvRose.setBackgroundResource(R.drawable.bg_corners_fff766);
-                tvRose.setText(chgPrice+"%");
-                tvPrice.setTextColor(Color.parseColor("#F66950"));
-            }else{
+                tvRose.setText(chgPrice + "%");
+                tvPrice.setTextColor(Color.parseColor("#F7251E"));
+            } else {
                 /*平*/
                 tvRose.setBackgroundResource(R.drawable.bg_corners_c4c7cc);
                 tvPrice.setTextColor(Color.parseColor("#c4c7cc"));

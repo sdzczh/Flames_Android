@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_bg_color">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:background="@color/dark_bg_color"
@@ -17,8 +17,7 @@
         <!--交易量-->
         <LinearLayout
 
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:gravity="center|left"
             android:layout_height="match_parent">
@@ -40,6 +39,7 @@
         </LinearLayout>
         <!--最新价-->
         <LinearLayout
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:gravity="center|right"
@@ -62,6 +62,7 @@
         </LinearLayout>
         <!--涨跌幅-->
         <LinearLayout
+            android:layout_alignParentRight="true"
             android:layout_width="95dp"
             android:orientation="horizontal"
             android:gravity="center|right"
@@ -83,7 +84,7 @@
                 android:layout_gravity="center" />
         </LinearLayout
 >
-    </LinearLayout>
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_fragment_marketList_list"
         android:layout_width="match_parent"
