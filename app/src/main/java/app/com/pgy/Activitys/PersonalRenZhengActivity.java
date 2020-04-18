@@ -2,10 +2,8 @@ package app.com.pgy.Activitys;
 
 import android.Manifest;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,7 +16,6 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Activitys.Base.PermissionActivity;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Interfaces.getBeanCallback;
@@ -26,12 +23,10 @@ import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import app.com.pgy.Models.Beans.RealNameResult;
 import app.com.pgy.Models.Beans.RenZhengBean;
 import app.com.pgy.Models.Beans.StringNameBean;
-import app.com.pgy.Models.Beans.User;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.LoginUtils;
-import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Utils.Utils;
 import butterknife.BindView;
@@ -76,6 +71,8 @@ public class PersonalRenZhengActivity extends PermissionActivity {
     TextView tvActivityRenzhengContent2;
     @BindView(R.id.tv_activity_renzheng_content3)
     TextView tvActivityRenzhengContent3;
+    @BindView(R.id.ll_activity_renzheng_two_reviewing)
+    LinearLayout llActivityRenzhengTwoReviewing;
 
     @Override
     public int getContentViewId() {
@@ -114,13 +111,13 @@ public class PersonalRenZhengActivity extends PermissionActivity {
                 break;
             case R.id.tv_activity_renzheng_to1:
                 // 跳转实名认证
-                if (LoginUtils.isLogin(this)){
-                    Intent intent = new Intent(mContext,PersonalRenZhengFirstActivity.class);
-                    startActivityForResult(intent,600);
+                if (LoginUtils.isLogin(this)) {
+                    Intent intent = new Intent(mContext, PersonalRenZhengFirstActivity.class);
+                    startActivityForResult(intent, 600);
                 }
                 break;
             case R.id.tv_activity_renzheng_to2:
-                doRealName();
+                Utils.IntentUtils(mContext, PersonalRenZhengSecondActivity.class);
                 break;
             case R.id.tv_activity_renzheng_to3:
                 showToast("暂未开放");
@@ -152,66 +149,75 @@ public class PersonalRenZhengActivity extends PermissionActivity {
         });
     }
 
-    private void updateView(RenZhengBean renZhengBean){
-        if (renZhengBean != null){
+    private void updateView(RenZhengBean renZhengBean) {
+        if (renZhengBean != null) {
             Preferences.saveUserIdStatus(renZhengBean.getAuthState());
             EventBus.getDefault().post(new EventRealName(true));
             llActivityRenzhengInfo.setVisibility(View.VISIBLE);
 
-            tvActivityRenzhengContent1.setText("认证后可以提币，24小时限额 "+renZhengBean.getWithdrawQuota1()+" "+"\n认证后可以法币交易，单笔限额 "+renZhengBean.getC2cQuota1()+" CNY");
-            tvActivityRenzhengContent2.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota2()+" "+"\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota2()+" CNY");
-            tvActivityRenzhengContent3.setText("增加提币额度，24小时限额 "+renZhengBean.getWithdrawQuota3()+" "+"\n增加法币交易额度，单笔限额 "+renZhengBean.getC2cQuota3()+" CNY");
+            tvActivityRenzhengContent1.setText("认证后可以提币，24小时限额 " + renZhengBean.getWithdrawQuota1() + " " + "\n认证后可以法币交易，单笔限额 " + renZhengBean.getC2cQuota1() + " CNY");
+            tvActivityRenzhengContent2.setText("增加提币额度，24小时限额 " + renZhengBean.getWithdrawQuota2() + " " + "\n增加法币交易额度，单笔限额 " + renZhengBean.getC2cQuota2() + " CNY");
+            tvActivityRenzhengContent3.setText("增加提币额度，24小时限额 " + renZhengBean.getWithdrawQuota3() + " " + "\n增加法币交易额度，单笔限额 " + renZhengBean.getC2cQuota3() + " CNY");
             //身份认证等级 0未认证 1一级 2二级 3三级
             tvActivityRenzhengTo1.setVisibility(View.GONE);
             llActivityRenzhengOneFinished.setVisibility(View.GONE);
             tvActivityRenzhengTo2.setVisibility(View.GONE);
+            llActivityRenzhengTwoReviewing.setVerticalGravity(View.GONE);
             llActivityRenzhengTwoFinished.setVisibility(View.GONE);
             tvActivityRenzhengDesc2.setVisibility(View.GONE);
             tvActivityRenzhengTo3.setVisibility(View.GONE);
             llActivityRenzhengThreeFinished.setVisibility(View.GONE);
             tvActivityRenzhengDesc3.setVisibility(View.GONE);
-            if (renZhengBean.getAuthState() == 0){
+
+            if (renZhengBean.getAuthState() == 0) {
                 tvActivityRenzhengName.setText("未认证");
                 tvActivityRenzhengTel.setText("");
                 tvActivityRenzhengTo1.setVisibility(View.VISIBLE);
                 tvActivityRenzhengDesc2.setVisibility(View.VISIBLE);
                 tvActivityRenzhengDesc3.setVisibility(View.VISIBLE);
-            }else if (renZhengBean.getAuthState() == 1){
+            } else if (renZhengBean.getAuthState() == 1) {
                 tvActivityRenzhengName.setText(renZhengBean.getUserName());
                 tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
                 llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
                 tvActivityRenzhengTo2.setVisibility(View.VISIBLE);
                 tvActivityRenzhengDesc3.setVisibility(View.VISIBLE);
-            }else if (renZhengBean.getAuthState() == 2){
+            } else if (renZhengBean.getAuthState() == 2) {
                 tvActivityRenzhengName.setText(renZhengBean.getUserName());
                 tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
                 llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
                 llActivityRenzhengTwoFinished.setVisibility(View.VISIBLE);
                 tvActivityRenzhengTo3.setVisibility(View.VISIBLE);
-            }else if (renZhengBean.getAuthState() == 3){
+            } else if (renZhengBean.getAuthState() == 3) {
                 tvActivityRenzhengName.setText(renZhengBean.getUserName());
                 tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
                 llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
                 llActivityRenzhengTwoFinished.setVisibility(View.VISIBLE);
                 llActivityRenzhengThreeFinished.setVisibility(View.VISIBLE);
+            }else if (renZhengBean.getAuthState() == 4){
+                tvActivityRenzhengName.setText(renZhengBean.getUserName());
+                tvActivityRenzhengTel.setText(Utils.getSecretPhoneNum(renZhengBean.getPhone()));
+                llActivityRenzhengOneFinished.setVisibility(View.VISIBLE);
+                llActivityRenzhengTwoReviewing.setVisibility(View.VISIBLE);
+                tvActivityRenzhengTo3.setVisibility(View.VISIBLE);
             }
         }
     }
 
-    private void doRealName(){
-        if (LoginUtils.isLogin(this)){
+    private void doRealName() {
+        if (LoginUtils.isLogin(this)) {
             /*请求读写权限*/
-            checkPermission(new PermissionActivity.CheckPermListener() {
+            checkPermission(new CheckPermListener() {
                 @Override
                 public void superPermission() {
                     start2RealName();
                 }
-            }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE);
+            }, R.string.storage, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
 
         }
     }
 
     private String taskId;
+
     /**
      * 去请求实名认证token
      */
@@ -306,21 +312,28 @@ public class PersonalRenZhengActivity extends PermissionActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 600 && resultCode == RESULT_OK){
-            if (data != null){
-                if (!data.getBooleanExtra("finish",false)){
-                    if (data.getIntExtra("state",0) == 1){
+        if (requestCode == 600 && resultCode == RESULT_OK) {
+            if (data != null) {
+                if (!data.getBooleanExtra("finish", false)) {
+                    if (data.getIntExtra("state", 0) == 1) {
                         doRealName();
-                    }else {
+                    } else {
                         initRezheng();
                     }
-                }else {
+                } else {
                     finish();
                 }
 
-            }else {
+            } else {
                 initRezheng();
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

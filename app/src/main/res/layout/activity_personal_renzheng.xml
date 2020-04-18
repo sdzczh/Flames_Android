@@ -178,6 +178,24 @@
                         android:textSize="12sp"
                         android:text="去认证"
                         android:background="@mipmap/renzheng_btn_bg"/>
+                    <LinearLayout
+                        android:id="@+id/ll_activity_renzheng_two_reviewing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@mipmap/reviewing"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="审核中"
+                            android:textColor="@color/orange"
+                            android:textSize="12sp"
+                            android:layout_marginLeft="10dp"/>
+                    </LinearLayout>
                     <TextView
                         android:visibility="gone"
                         android:id="@+id/tv_activity_renzheng_desc2"
@@ -208,6 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:background="@color/dark_main_model"
                 android:layout_marginTop="10dp"
                 android:padding="15dp">

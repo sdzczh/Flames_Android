@@ -1197,6 +1197,13 @@ public class NetWorks extends RetrofitUtils {
         Call<ResultBean> renzhengFirst(@Header("token") String token, @Field("params") String params);
 
         /**
+         * 二级实名认证
+         */
+        @FormUrlEncoded
+        @POST("/realname/level2.action")
+        Call<ResultBean> renzhengSecond(@Header("token") String token, @Field("params") String params);
+
+        /**
          * 团队页面初始化
          */
         @Headers(CACHE_CONTROL_NETWORK)
@@ -4892,6 +4899,40 @@ public class NetWorks extends RetrofitUtils {
         });
     }
 
+    public static void renzhengSecond(String token, Map<String, Object> maps, final getBeanCallback callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        Preferences.init(MyApplication.getInstance().getApplicationContext());
+        String myKey = Preferences.getLocalKey();
+        String params = ToolsUtils.getAESParams(maps, myKey);
+//        String params = ToolsUtils.getBase64Params(maps);
+        Call<ResultBean> resultBeanCall = service.renzhengSecond(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean>() {
+            @Override
+            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
+                ResultBean<String> resultBean = response.body();
+//                setResponseWithNoData(resultBean, callback);
+                if (resultBean == null) {
+                    /*若返回值为空，说明访问路径错误或连接发生错误*/
+                    resultBean = new ResultBean<>();
+                }
+                /*成功返回*/
+                if (resultBean.getCode() == ErrorHandler.RESPONSE_SUCCESS) {
+                    /*code正确，则成功*/
+                    callback.onSuccess(null);
+                } else {
+                    callback.onError(resultBean.getCode(),TextUtils.isEmpty( resultBean.getData())?resultBean.getMsg(): resultBean.getData());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, "");
+            }
+        });
+    }
 
     public static void initmyteam(String token,Map<String, Object> maps, final getBeanCallback<MyteamBean2> callback){
         if (TextUtils.isEmpty(token)) {

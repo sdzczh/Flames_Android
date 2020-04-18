@@ -396,7 +396,9 @@
         <activity android:name=".Activitys.BannerListActivity" />
         <activity android:name=".Activitys.PosterNewActivity" />
         <activity android:name=".Activitys.PersonalRenZhengFirstActivity" />
-        <activity android:name=".Activitys.PersonalRenZhengStateActivity" /> <!-- 第三方的推送 权限 广播 和服务 -->
+        <activity android:name=".Activitys.PersonalRenZhengStateActivity" />
+        <activity android:name=".Activitys.PersonalRenZhengSecondActivity" />
+        <!-- 第三方的推送 权限 广播 和服务 -->
         <!-- 小米 配置开始 < -->
         <service
             android:name="com.xiaomi.push.service.XMPushService"
