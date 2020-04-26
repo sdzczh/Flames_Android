@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_main_model">
-    <android.support.design.widget.TabLayout
+    <!--<com.google.android.material.tabs.TabLayout-->
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_fragment_market_content"
         style="@style/TabLayoutTextStyle15"
         android:layout_width="70dp"
@@ -16,8 +17,7 @@
         app:tabIndicatorColor="#F0CB7A"
         app:tabIndicatorHeight="1.0dp"
         app:tabSelectedTextColor="#F0CB7A"
-        app:tabTextColor="@color/color_7a8799">
-    </android.support.design.widget.TabLayout>
+        app:tabTextColor="@color/color_7a8799"/>
 
     <app.com.pgy.Widgets.NoScrollViewPager
         android:id="@+id/nvp_fragment_market_content_list"

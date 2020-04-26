@@ -17,9 +17,6 @@ import app.com.pgy.Models.Beans.User;
 import app.com.pgy.Models.Beans.PushBean.PushData;
 import app.com.pgy.Utils.JsonUtils;
 import app.com.pgy.Utils.LogUtils;
-import app.com.pgy.im.SealConst;
-import app.com.pgy.im.server.broadcast.BroadcastManager;
-import io.rong.imkit.RongIM;
 
 /**
  * 创建日期：2017/11/22 0022 on 上午 11:23
@@ -470,7 +467,7 @@ public final class Preferences {
         /*退出umeng用户统计*/
         MobclickAgent.onProfileSignOff();
 //        RongIM.getInstance().logout();
-        BroadcastManager.getInstance(mAppContext).sendBroadcast(SealConst.EXIT);
+        //BroadcastManager.getInstance(mAppContext).sendBroadcast(SealConst.EXIT);
         LogUtils.w("exit","用户退出");
         return setLocalUser(null) && setLocalKey("") && setLocalTradePwd("")&&setCurrentLevel(0);
     }

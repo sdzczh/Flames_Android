@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
@@ -23,6 +28,7 @@ import app.com.pgy.Models.Beans.EventBean.EventRealName;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.ImageLoaderUtils;
+import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.MyBottomSpinnerList;
 import butterknife.BindView;
@@ -87,13 +93,24 @@ public class PersonalRenZhengSecondActivity extends BaseUploadPicActivity implem
             showToast("上传图片未返回");
             return;
         }
-        showToast("图片上传成功");
-        ImageLoaderUtils.display(mContext,tvActivityRenzhengAddImg,string);
+        showToast("图片上传成功!");
         imgUrl = string;
+        LogUtils.w(TAG,"imgUrl:"+imgUrl);
+        Glide.with(mContext).load(imgUrl).listener(new RequestListener<String, GlideDrawable>() {
+            @Override
+            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                LogUtils.w(TAG,"e:"+e.toString());
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                return false;
+            }
+        }).placeholder(R.mipmap.renzheng_success).into(tvActivityRenzhengAddImg);
     }
 
     private void submit() {
-        imgUrl ="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587188624919&di=96e7648c153c01ab8e19ce39973b2579&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg";
         /*获取输入的内容*/
         if (TextUtils.isEmpty(imgUrl)) {
             showToast("请上传图片");

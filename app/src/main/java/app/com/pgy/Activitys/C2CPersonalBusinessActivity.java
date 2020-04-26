@@ -2,8 +2,8 @@ package app.com.pgy.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,8 +36,6 @@ import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.BottomTradeOrderFrame;
 import app.com.pgy.Widgets.RoundImageView;
-import io.rong.imkit.RongIM;
-
 import static app.com.pgy.Constants.StaticDatas.ACCOUNT_C2C;
 import static app.com.pgy.Constants.StaticDatas.NORMAL;
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
@@ -371,7 +369,7 @@ public class C2CPersonalBusinessActivity extends BaseActivity {
                 showToast("不能与自己聊天");
                 return;
             }
-            RongIM.getInstance().startPrivateChat(mContext, phone, nikeName);
+            //RongIM.getInstance().startPrivateChat(mContext, phone, nikeName);
         }catch (Exception e){
             e.printStackTrace();
             showToast("系统异常,请重试");

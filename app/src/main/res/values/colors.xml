@@ -27,7 +27,7 @@
     <color name="bg_chart_txt">#A3B4CC</color>
     <color name="bg_halfblue">#B2D1FF</color>
     <!--辅助色-->
-    <color name="bg_orange">#FF9933</color>
+    <color name="bg_orange">#F0CB7A</color>
     <!--默认分割线-->
     <color name="bg_line">#e8e8eb</color>
     <color name="bg_green">@color/dark_line_model</color>

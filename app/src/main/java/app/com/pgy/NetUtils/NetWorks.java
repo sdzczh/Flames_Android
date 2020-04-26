@@ -92,23 +92,13 @@ import app.com.pgy.Models.Beans.MyPersonal;
 import app.com.pgy.Models.Beans.CircleBanner;
 import app.com.pgy.Models.ListBean;
 import app.com.pgy.Models.MyforceInfo;
+import app.com.pgy.Models.RenGouInitBan;
+import app.com.pgy.Models.RenGouRecord;
 import app.com.pgy.Models.ResultBean;
 import app.com.pgy.Models.TakerinitBean;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.ToolsUtils;
 import app.com.pgy.Constants.ErrorHandler;
-import app.com.pgy.im.server.response.GetFriendInfoByIDResponse;
-import app.com.pgy.im.server.response.GetGroupDetailsResponse;
-import app.com.pgy.im.server.response.GetGroupMemberResponse;
-import app.com.pgy.im.server.response.GetGroupResponse;
-import app.com.pgy.im.server.response.GetRedPacketStateResponse;
-import app.com.pgy.im.server.response.GetSendRedPacketResponse;
-import app.com.pgy.im.server.response.GetTransferStateResponse;
-import app.com.pgy.im.server.response.GetUserInfoByPhoneResponse;
-import app.com.pgy.im.server.response.GetUserInfosResponse;
-import app.com.pgy.im.server.response.RedPackageRecord;
-import app.com.pgy.im.server.response.UnReadMessageCount;
-import app.com.pgy.im.server.response.UserRelationshipResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -117,6 +107,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -125,6 +116,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
@@ -763,83 +755,6 @@ public class NetWorks extends RetrofitUtils {
         Call<ResultBean<MainDialogBean>> getMainDialog();
 
         /**
-         * 查找好友
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/friends/find.action")
-        Call<ResultBean<GetUserInfoByPhoneResponse>> findIMFriend(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 获取im中用户信息
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/friends/detail.action")
-        Call<ResultBean<GetFriendInfoByIDResponse>> getIMUserDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 添加好友
-         */
-        @FormUrlEncoded
-        @POST("/talk/friends/add.action")
-        Call<ResultBean> addIMFriend(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * 删除好友
-         */
-        @FormUrlEncoded
-        @POST("/talk/friends/delete.action")
-        Call<ResultBean> deleteIMFriend(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * 群组聊天室列表
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/group/list.action ")
-        Call<ResultBean<GetGroupResponse>> getChatRoomList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 进入群组聊天室
-         */
-        @FormUrlEncoded
-        @POST("/talk/group/join.action")
-        Call<ResultBean> joinInGroup(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * 退出群组聊天室
-         */
-        @FormUrlEncoded
-        @POST("/talk/group/leave.action")
-        Call<ResultBean> exitGroup(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * 群组聊天室列表
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/friends/addlist.action")
-        Call<ResultBean<UserRelationshipResponse>> getNewFriendList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 退出群组聊天室
-         */
-        @FormUrlEncoded
-        @POST("/talk/friends/check.action")
-        Call<ResultBean> checkImFriend(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * 群组聊天室详情
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/group/detail.action")
-        Call<ResultBean<GetGroupDetailsResponse>> getChatRoomDetails(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 群组聊天室列表
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/group/users.action")
-        Call<ResultBean<GetGroupMemberResponse>> getChatRoomMembers(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
          * 取消订单
          */
         @FormUrlEncoded
@@ -847,83 +762,11 @@ public class NetWorks extends RetrofitUtils {
         Call<ResultBean> updateIMFriendRemarkName(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
 
         /**
-         * 我的好友列表
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/friends/list.action")
-        Call<ResultBean<GetUserInfosResponse>> getMyFriendList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 获取im中红包详情
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/redpacket/detail.action")
-        Call<ResultBean<GetRedPacketStateResponse>> getRedPacketDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 获取im中转账详情
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/transfer/detail.action")
-        Call<ResultBean<GetTransferStateResponse>> getTransferDetail(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-
-        /**
-         * 发送红包
-         */
-        @FormUrlEncoded
-        @POST("/talk/redpacket/send.action")
-        Call<ResultBean<GetSendRedPacketResponse>> sendRedPacket(@Header("token") String token, @Field("params") String params);
-
-        /**
          * 修改昵称
          */
         @FormUrlEncoded
         @POST("/user/nickname/update.action")
         Call<ResultBean> changeNickName(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * 领取红包
-         */
-        @FormUrlEncoded
-        @POST("/talk/redpacket/recive.action")
-        Call<ResultBean<GetRedPacketStateResponse>> receiveRedPacket(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-        /**
-         * IM红包记录
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/redpacket/list.action")
-        Call<ResultBean<RedPackageRecord>> getRedPacketRecordList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * IM转账记录
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/transfer/list.action")
-        Call<ResultBean<RedPackageRecord>> getTransferRecordList(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
-
-        /**
-         * 消息免打扰
-         */
-        @FormUrlEncoded
-        @POST("/talk/group/mute.action")
-        Call<ResultBean<MuteResult>> imTalkMute(@Header("token") String token, @Field("params") String params, @Field("sign") String sign);
-
-
-        /**
-         * 发送转账
-         */
-        @FormUrlEncoded
-        @POST("/talk/transfer/send.action")
-        Call<ResultBean<GetSendRedPacketResponse>> sendTransfer(@Header("token") String token, @Field("params") String params);
-
-        /**
-         * I系统消息、交易通知未读消息数
-         */
-        @Headers(CACHE_CONTROL_NETWORK)
-        @GET("/talk/menu/msgMenu.action")
-        Call<ResultBean<UnReadMessageCount>> getIMMessageCount(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
 
         /**
          * 提现订单列表
@@ -1268,6 +1111,25 @@ public class NetWorks extends RetrofitUtils {
 //        @FormUrlEncoded
         @GET("/c2c/taker/init.action")
         Call<ResultBean<TakerinitBean>> initTaker(@Header("token") String token, @Query("params") String params, @Query("sign") String sign);
+
+        /**
+         * 认购页面初始化
+         */
+        //@Headers(CACHE_CONTROL_NETWORK)
+//        @FormUrlEncoded
+        @GET("/buying/init")
+        Call<ResultBean<RenGouInitBan>> rengouInit(@Header("token") String token);
+
+        //@Headers(CACHE_CONTROL_NETWORK)
+//        @FormUrlEncoded
+        @GET("/buying/list")
+        Call<ResultBean<List<RenGouRecord>>> rengouRecord(@Header("token") String token,@Query("params") String params);
+
+        @FormUrlEncoded
+        @POST("/buying/commit")
+        Call<ResultBean> submitRengou(@Header("token") String token,@Field("params") String params);
+
+
     }
 
     /**
@@ -3486,287 +3348,6 @@ public class NetWorks extends RetrofitUtils {
     }
 
     /**
-     * IM查找好友
-     */
-    public static void imFindFriend(String token, Map<String, Object> maps, final getBeanCallback<GetUserInfoByPhoneResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetUserInfoByPhoneResponse>> resultBeanCall = service.findIMFriend(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetUserInfoByPhoneResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetUserInfoByPhoneResponse>> call, Response<ResultBean<GetUserInfoByPhoneResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetUserInfoByPhoneResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetUserInfoByPhoneResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * IM添加好友
-     */
-    public static void getImUserDetail(String token, Map<String, Object> maps, final getBeanCallback<GetFriendInfoByIDResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetFriendInfoByIDResponse>> resultBeanCall = service.getIMUserDetail(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetFriendInfoByIDResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetFriendInfoByIDResponse>> call, Response<ResultBean<GetFriendInfoByIDResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetFriendInfoByIDResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetFriendInfoByIDResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * 获取我的好友列表
-     */
-    public static void getMyFriendList(String token, Map<String, Object> maps, final getBeanCallback<GetUserInfosResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetUserInfosResponse>> resultBeanCall = service.getMyFriendList(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetUserInfosResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetUserInfosResponse>> call, Response<ResultBean<GetUserInfosResponse>> response) {
-                ResultBean<GetUserInfosResponse> responseBody = response.body();
-                setResponse(GetUserInfosResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetUserInfosResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 添加IM好友
-     */
-    public static void addIMFriend(String token, Map<String, Object> maps, final getBeanCallback callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean> resultBeanCall = service.addIMFriend(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean>() {
-            @Override
-            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
-                ResultBean responseBody = response.body();
-                setResponseWithNoData(responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 添加IM好友
-     */
-    public static void deleteIMFriend(String token, Map<String, Object> maps, final getBeanCallback callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean> resultBeanCall = service.deleteIMFriend(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean>() {
-            @Override
-            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
-                ResultBean responseBody = response.body();
-                setResponseWithNoData(responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * 获取群组聊天室列表
-     */
-    public static void getChatRoomList(String token, Map<String, Object> maps, final getBeanCallback<GetGroupResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetGroupResponse>> resultBeanCall = service.getChatRoomList(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetGroupResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetGroupResponse>> call, Response<ResultBean<GetGroupResponse>> response) {
-                ResultBean<GetGroupResponse> responseBody = response.body();
-                setResponse(GetGroupResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetGroupResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * 加入群组聊天室
-     */
-    public static void joinInGroup(String token, Map<String, Object> maps, final getBeanCallback callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean> resultBeanCall = service.joinInGroup(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean>() {
-            @Override
-            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
-                ResultBean responseBody = response.body();
-                setResponseWithNoData(responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * 获取群组聊天室详情
-     */
-    public static void getChatRoomDetails(String token, Map<String, Object> maps, final getBeanCallback<GetGroupDetailsResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetGroupDetailsResponse>> resultBeanCall = service.getChatRoomDetails(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetGroupDetailsResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetGroupDetailsResponse>> call, Response<ResultBean<GetGroupDetailsResponse>> response) {
-                ResultBean<GetGroupDetailsResponse> responseBody = response.body();
-                setResponse(GetGroupDetailsResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetGroupDetailsResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * 退出群组聊天室
-     */
-    public static void exitGroup(String token, Map<String, Object> maps, final getBeanCallback callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean> resultBeanCall = service.exitGroup(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean>() {
-            @Override
-            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
-                ResultBean responseBody = response.body();
-                setResponseWithNoData(responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 审核好友申请
-     */
-    public static void checkIMFriend(String token, Map<String, Object> maps, final getBeanCallback callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean> resultBeanCall = service.checkImFriend(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean>() {
-            @Override
-            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
-                ResultBean responseBody = response.body();
-                setResponseWithNoData(responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-
-    /**
-     * 修改好友备注
-     */
-    public static void updateIMFriendRemarkName(String token, Map<String, Object> maps, final getBeanCallback callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean> resultBeanCall = service.updateIMFriendRemarkName(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean>() {
-            @Override
-            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
-                ResultBean responseBody = response.body();
-                setResponseWithNoData(responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-
-
-
-
-
-    /**
      * 修改昵称
      */
     public static void changeName(String token, Map<String, Object> maps, final getBeanCallback callback) {
@@ -3791,231 +3372,6 @@ public class NetWorks extends RetrofitUtils {
             }
         });
     }
-    /**
-     * 获取红包列表
-     */
-    public static void getRedPackageRecordList(String token, Map<String, Object> maps, final getBeanCallback<RedPackageRecord> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<RedPackageRecord>> resultBeanCall = service.getRedPacketRecordList(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<RedPackageRecord>>() {
-            @Override
-            public void onResponse(Call<ResultBean<RedPackageRecord>> call, Response<ResultBean<RedPackageRecord>> response) {
-                ResultBean<RedPackageRecord> responseBody = response.body();
-                setResponse(RedPackageRecord.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<RedPackageRecord>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * IM获取红包详情
-     */
-    public static void getRedPacketDetail(String token, Map<String, Object> maps, final getBeanCallback<GetRedPacketStateResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetRedPacketStateResponse>> resultBeanCall = service.getRedPacketDetail(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetRedPacketStateResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetRedPacketStateResponse>> call, Response<ResultBean<GetRedPacketStateResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetRedPacketStateResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetRedPacketStateResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * IM领取红包
-     */
-    public static void receiveRedPacket(String token, Map<String, Object> maps, final getBeanCallback<GetRedPacketStateResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetRedPacketStateResponse>> resultBeanCall = service.receiveRedPacket(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetRedPacketStateResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetRedPacketStateResponse>> call, Response<ResultBean<GetRedPacketStateResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetRedPacketStateResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetRedPacketStateResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * IM获取转账详情
-     */
-    public static void getTransferDetail(String token, Map<String, Object> maps, final getBeanCallback<GetTransferStateResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetTransferStateResponse>> resultBeanCall = service.getTransferDetail(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetTransferStateResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetTransferStateResponse>> call, Response<ResultBean<GetTransferStateResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetTransferStateResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetTransferStateResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-    /**
-     * 获取转账记录列表
-     */
-    public static void getTransferRecordList(String token, Map<String, Object> maps, final getBeanCallback<RedPackageRecord> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<RedPackageRecord>> resultBeanCall = service.getTransferRecordList(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<RedPackageRecord>>() {
-            @Override
-            public void onResponse(Call<ResultBean<RedPackageRecord>> call, Response<ResultBean<RedPackageRecord>> response) {
-                ResultBean<RedPackageRecord> responseBody = response.body();
-                setResponse(RedPackageRecord.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<RedPackageRecord>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 发送红包
-     */
-    public static void sendRedPacket(String token, Map<String, Object> maps, final getBeanCallback<GetSendRedPacketResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String key = Preferences.getLocalKey();
-        String params = ToolsUtils.getAESParams(maps, key);
-        Call<ResultBean<GetSendRedPacketResponse>> resultBeanCall = service.sendRedPacket(token, params);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetSendRedPacketResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetSendRedPacketResponse>> call, Response<ResultBean<GetSendRedPacketResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetSendRedPacketResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetSendRedPacketResponse>> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 获取群组聊天室成员列表
-     */
-    public static void getChatRoomMembers(String token, Map<String, Object> maps, final getBeanCallback<GetGroupMemberResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<GetGroupMemberResponse>> resultBeanCall = service.getChatRoomMembers(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetGroupMemberResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetGroupMemberResponse>> call, Response<ResultBean<GetGroupMemberResponse>> response) {
-                ResultBean<GetGroupMemberResponse> responseBody = response.body();
-                setResponse(GetGroupMemberResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetGroupMemberResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 转账
-     */
-    public static void sendTransfer(String token, Map<String, Object> maps, final getBeanCallback<GetSendRedPacketResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String key = Preferences.getLocalKey();
-        String params = ToolsUtils.getAESParams(maps, key);
-        Call<ResultBean<GetSendRedPacketResponse>> resultBeanCall = service.sendTransfer(token, params);
-        resultBeanCall.enqueue(new Callback<ResultBean<GetSendRedPacketResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<GetSendRedPacketResponse>> call, Response<ResultBean<GetSendRedPacketResponse>> response) {
-                ResultBean responseBody = response.body();
-                setResponse(GetSendRedPacketResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<GetSendRedPacketResponse>> call, Throwable t) {
-                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    /**
-     * 获取好友申请列表
-     */
-    public static void getNewFriendList(String token, Map<String, Object> maps, final getBeanCallback<UserRelationshipResponse> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<UserRelationshipResponse>> resultBeanCall = service.getNewFriendList(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<UserRelationshipResponse>>() {
-            @Override
-            public void onResponse(Call<ResultBean<UserRelationshipResponse>> call, Response<ResultBean<UserRelationshipResponse>> response) {
-                ResultBean<UserRelationshipResponse> responseBody = response.body();
-                setResponse(UserRelationshipResponse.class, responseBody, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<UserRelationshipResponse>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
 
     /**
      * 杠杆交易--交易界面信息
@@ -4286,28 +3642,6 @@ public class NetWorks extends RetrofitUtils {
 
             @Override
             public void onFailure(Call<ResultBean<LoanPageInfo>> call, Throwable t) {
-                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
-            }
-        });
-    }
-
-    public static void imTalkMute(String token, Map<String, Object> maps, final getBeanCallback<MuteResult> callback) {
-        if (TextUtils.isEmpty(token)) {
-            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "用户未登录");
-            return;
-        }
-        String params = ToolsUtils.getBase64Params(maps);
-        String sign = ToolsUtils.getUploadSign(maps);
-        Call<ResultBean<MuteResult>> resultBeanCall = service.imTalkMute(token, params, sign);
-        resultBeanCall.enqueue(new Callback<ResultBean<MuteResult>>() {
-            @Override
-            public void onResponse(Call<ResultBean<MuteResult>> call, Response<ResultBean<MuteResult>> response) {
-                ResultBean resultBean = response.body();
-                setResponse(MuteResult.class, resultBean, callback);
-            }
-
-            @Override
-            public void onFailure(Call<ResultBean<MuteResult>> call, Throwable t) {
                 callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
             }
         });
@@ -5099,6 +4433,29 @@ public class NetWorks extends RetrofitUtils {
         });
     }
 
+    public static void submitRengou(String token,Map<String, Object> maps, final getBeanCallback callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        String sign = ToolsUtils.getUploadSign(maps);
+        Call<ResultBean> resultBeanCall = service.submitRengou(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean>() {
+            @Override
+            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
+                ResultBean resultBean = response.body();
+                setResponseWithNoData(resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean> call, Throwable t) {
+                /*获取失败，可能是网络未连接，总之是未与服务器连接*/
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
+
     public static void initTaker(String token,Map<String, Object> maps, final getBeanCallback<TakerinitBean> callback){
         if (TextUtils.isEmpty(token)) {
             callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
@@ -5121,8 +4478,47 @@ public class NetWorks extends RetrofitUtils {
         });
     }
 
+    public static void getRenGouInitInfo(String token,final getBeanCallback<RenGouInitBan> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        Call<ResultBean<RenGouInitBan>> resultBeanCall = service.rengouInit(token);
+        resultBeanCall.enqueue(new Callback<ResultBean<RenGouInitBan>>() {
+            @Override
+            public void onResponse(Call<ResultBean<RenGouInitBan>> call, Response<ResultBean<RenGouInitBan>> response) {
+                ResultBean<RenGouInitBan> resultBean = response.body();
+                setResponse(TakerinitBean.class, resultBean, callback);
+            }
 
+            @Override
+            public void onFailure(Call<ResultBean<RenGouInitBan>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
 
+    public static void getRenGouRecord(String token,Map<String,Object> maps,final getBeanCallback<List<RenGouRecord>> callback){
+        if (TextUtils.isEmpty(token)) {
+            callback.onError(RESPONSE_ERROR_ANDROID_UNLOGIN, "未登录");
+            return;
+        }
+        String params = ToolsUtils.getBase64Params(maps);
+        String sign = ToolsUtils.getUploadSign(maps);
+        Call<ResultBean<List<RenGouRecord>>> resultBeanCall = service.rengouRecord(token,params);
+        resultBeanCall.enqueue(new Callback<ResultBean<List<RenGouRecord>>>() {
+            @Override
+            public void onResponse(Call<ResultBean<List<RenGouRecord>>> call, Response<ResultBean<List<RenGouRecord>>> response) {
+                ResultBean<List<RenGouRecord>> resultBean = response.body();
+                setResponse(TakerinitBean.class, resultBean, callback);
+            }
+
+            @Override
+            public void onFailure(Call<ResultBean<List<RenGouRecord>>> call, Throwable t) {
+                callback.onError(ErrorHandler.RESPONSE_ERROR_ANDROID_REQUESTTIMEOUT, t.toString());
+            }
+        });
+    }
 
     /**
      * 获取大文件

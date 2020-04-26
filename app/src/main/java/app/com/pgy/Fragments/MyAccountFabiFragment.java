@@ -2,38 +2,30 @@ package app.com.pgy.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import app.com.pgy.Activitys.MyWalletCoinInfoActivity;
 import app.com.pgy.Activitys.MyWalletRechargeActivity;
 import app.com.pgy.Activitys.MyWalletTransferActivity;
 import app.com.pgy.Activitys.MyWalletWithdrawActivity;
-import app.com.pgy.Activitys.MyWalletYbbCoinInfoActivity;
 import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Adapters.MyAccountListAdapter;
-import app.com.pgy.Adapters.MyWalletListAdapter;
 import app.com.pgy.Constants.Preferences;
-import app.com.pgy.Constants.StaticDatas;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Interfaces.getPositionCallback;
@@ -42,7 +34,6 @@ import app.com.pgy.Models.Beans.EventBean.EventMainChangeState;
 import app.com.pgy.Models.Beans.MyWallet;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
-import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.TimeUtils;
 import butterknife.BindView;
 import butterknife.OnClick;

@@ -2,19 +2,16 @@ package app.com.pgy.Fragments;
 
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -438,8 +435,8 @@ public class HomeFragmentNew extends BaseFragment implements HomeMarketReceiver.
 //                    .build();
 //        }
 //        slideAdapter = new SlideAdapter(slides);
-        uvp_slide.setAdapter(new SlideAdapter(slides));
-
+        SlideAdapter slideAdapter = new SlideAdapter(slides);
+        uvp_slide.setAdapter(slideAdapter);
     }
 
     private void updateAssetShow() {

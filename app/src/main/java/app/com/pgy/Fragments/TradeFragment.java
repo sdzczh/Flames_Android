@@ -1,21 +1,17 @@
 package app.com.pgy.Fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import app.com.pgy.Widgets.MyLeftSecondarySpinnerList;
 import app.com.pgy.Widgets.MyTradeLeftSpinnerPopupWondow;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,12 +24,7 @@ import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.Models.Beans.EventBean.EventMarketScene;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
-import app.com.pgy.Utils.Utils;
 import app.com.pgy.Widgets.NoScrollViewPager;
-import app.com.pgy.im.UI.IMMainActivity;
-import io.rong.imkit.RongIM;
-import io.rong.imkit.manager.IUnReadMessageObserver;
-import io.rong.imlib.model.Conversation;
 
 /**
  * 创建日期：2018/04/18 0022 on 上午 11:23
@@ -41,7 +32,7 @@ import io.rong.imlib.model.Conversation;
  *
  * @author 徐庆重
  */
-public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener, IUnReadMessageObserver {
+public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener {
     private static TradeFragment instance;
     @BindView(R.id.fragment_trade_group)
     RadioGroup fragmentTradeGroup;
@@ -65,12 +56,6 @@ public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedC
         return instance;
     }
 
-    final Conversation.ConversationType[] conversationTypes = {
-            Conversation.ConversationType.PRIVATE,
-            Conversation.ConversationType.GROUP, Conversation.ConversationType.SYSTEM,
-            Conversation.ConversationType.PUBLIC_SERVICE, Conversation.ConversationType.APP_PUBLIC_SERVICE
-    };
-
     @Override
     public int getContentViewId() {
         return R.layout.fragment_trade;
@@ -93,14 +78,14 @@ public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedC
         }
     }
 
-    @Override
+    /*@Override
     public void onCountChanged(int i) {
         if (i > 0 || Preferences.isHasNewFriend()) {
             viewTitleMessagePoint.setVisibility(View.VISIBLE);
         } else {
             viewTitleMessagePoint.setVisibility(View.GONE);
         }
-    }
+    }*/
 
     @Override
     protected void initData() {
@@ -202,7 +187,7 @@ public class TradeFragment extends BaseFragment implements RadioGroup.OnCheckedC
     public void onViewClicked(View view) {
         switch (view.getId()){
             case R.id.view_titleMessage_frame:
-                Utils.IntentUtils(mContext, IMMainActivity.class);
+                //Utils.IntentUtils(mContext, IMMainActivity.class);
                 break;
             case R.id.iv_fragment_trade_more:
                 MyTradeLeftSpinnerPopupWondow spinnerCoin = new MyTradeLeftSpinnerPopupWondow(getActivity(), Preferences.getGoodsPerCoin());

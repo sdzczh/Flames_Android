@@ -18,12 +18,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <android.support.v4.view.ViewPager
+                <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp_activity_invitation_posters_viewpage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"/>
 
-                </android.support.v4.view.ViewPager>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

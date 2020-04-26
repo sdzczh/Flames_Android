@@ -2,12 +2,13 @@ package app.com.pgy.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.makeramen.roundedimageview.RoundedImageView;

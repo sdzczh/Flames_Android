@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg_color"
+    android:orientation="vertical">
+
+    <app.com.pgy.Widgets.TitleView
+        android:id="@+id/activity_renzheng_main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_right="认购记录"
+        app:tv_tv_right_visibility="visable"
+        app:tv_title="@string/app_name"/>
+
+    <!--当前参与人数-->
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="@color/dark_main_model"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <TextView
+            android:text="当前参与人数"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/activity_renzheng_main_personNum"
+            android:text="0"
+            android:textSize="@dimen/font_12sp"
+            android:maxLines="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/color_e6"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <!--当前进度-->
+    <LinearLayout
+        android:layout_marginTop="1dp"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="@color/dark_main_model"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <TextView
+            android:text="当前进度"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/activity_renzheng_main_schedule_progress"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="?android:progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/hor_progress_bg"
+                android:layout_width="210dp"
+                android:layout_height="10dp"/>
+            <TextView
+                android:id="@+id/activity_renzheng_main_schedule_per"
+                android:text="0%"
+                android:textColor="@color/color_e6"
+                android:textSize="@dimen/font_11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_renzheng_main_schedule_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/activity_renzheng_main_schedule_title"
+                android:textColor="@color/color_e6"
+                android:textSize="@dimen/font_11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_renzheng_main_schedule_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+    <!--结束时间-->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="@color/dark_main_model"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <TextView
+            android:text="结束时间"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/activity_renzheng_main_finishTime"
+            android:textSize="@dimen/font_12sp"
+            android:maxLines="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/txt_all8"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <!--付款地址-->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="@color/dark_main_model"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <TextView
+            android:text="付款地址"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/activity_renzheng_main_payAddress"
+            android:textSize="@dimen/font_12sp"
+            android:maxLines="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/txt_all8"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/activity_renzheng_main_payArUrl"
+            android:src="@mipmap/qr_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+    </LinearLayout>
+
+    <!--我的USDT地址-->
+    <LinearLayout
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:gravity="center"
+        android:background="@color/dark_main_model"
+        android:layout_height="44dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/activity_renzheng_main_udtdAddressTitle"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="我的地址"
+            android:layout_marginStart="1dp"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"/>
+
+        <app.com.pgy.Widgets.NumberEditText
+            android:id="@+id/activity_renzheng_main_udtdAddress"
+            style="@style/EditText_default_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="请输入地址"
+            android:inputType="numberDecimal"
+            android:maxLength="11" />
+
+    </LinearLayout>
+
+    <!--认购数量-->
+    <LinearLayout
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:gravity="center"
+        android:background="@color/dark_main_model"
+        android:layout_height="44dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="认购数量"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"/>
+
+        <app.com.pgy.Widgets.NumberEditText
+            android:id="@+id/activity_renzheng_main_buyAmt"
+            style="@style/EditText_default_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="请输入认购数量（单位：Flames）"
+            android:inputType="numberDecimal"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_renzheng_main_defaultRadio"
+        android:text="当前比例 1U=5Flames"
+        android:textSize="@dimen/font_12sp"
+        android:textColor="@color/txt_all8"
+        android:gravity="end"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!--认购数量-->
+    <LinearLayout
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:gravity="center"
+        android:background="@color/dark_main_model"
+        android:layout_height="44dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需支付"
+            android:textSize="@dimen/font_16sp"
+            android:textColor="@color/txt_white"/>
+
+        <TextView
+            android:id="@+id/activity_renzheng_main_payAmt"
+            android:text="0"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="end"
+            android:textSize="@dimen/font_12sp"
+            android:textColor="@color/color_e6"
+            android:maxLines="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/activity_renzheng_main_pay_coinName"
+            android:textSize="@dimen/font_12sp"
+            android:textColor="@color/txt_all8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="玩法说明:"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="@dimen/font_12sp"
+        android:textColor="#EE6560"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/activity_renzheng_main_playRule"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/font_12sp"
+        android:textColor="#EE6560"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+    <TextView
+        android:id="@+id/activity_renzheng_main_submit"
+        android:layout_marginTop="0dp"
+        style="@style/SubmitTextView"
+        android:text="提交" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

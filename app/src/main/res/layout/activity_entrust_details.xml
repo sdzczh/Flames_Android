@@ -401,7 +401,7 @@
                     android:textSize="12sp"
                     />
             </LinearLayout>
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/activity_entrustDetails_list"
                 android:layout_width="match_parent"
                 android:paddingStart="15dp"

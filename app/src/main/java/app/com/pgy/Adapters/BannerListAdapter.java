@@ -33,32 +33,19 @@ public class BannerListAdapter extends RecyclerArrayAdapter<BannerInfo> {
         return new BannerListViewHolder(parent);
     }
 
-    class BannerListViewHolder extends BaseViewHolder<BannerInfo> implements View.OnClickListener{
+    class BannerListViewHolder extends BaseViewHolder<BannerInfo>{
         RatioImageView riv;
         TextView tvTitle;
         public BannerListViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_banner_list_view);
             riv = $(R.id.iv_banner_list);
             tvTitle = $(R.id.tv_banner_title);
-            tvTitle.setOnClickListener(this);
-            riv.setOnClickListener(this);
         }
 
         @Override
         public void setData(BannerInfo data) {
             tvTitle.setText(data.getTitle());
             ImageLoaderUtils.display(getContext(),riv,data.getImgpath());
-        }
-
-        @Override
-        public void onClick(View v) {
-            BannerInfo item = getItem(getAdapterPosition());
-//            Intent intent = new Intent(mContext, WebDetailActivity.class);
-//            intent.putExtra("title", item.getTitle());
-//            intent.putExtra("url", item.getAddress());
-//            mContext.startActivity(intent);
-            BannerIntentUtils.bannerToActivity(mContext, item);
-
         }
     }
 }

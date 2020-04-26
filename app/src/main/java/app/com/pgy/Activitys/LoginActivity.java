@@ -36,9 +36,6 @@ import app.com.pgy.Utils.NetUtil;
 import app.com.pgy.Utils.PasswordUtil;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Utils.ToolsUtils;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.UserInfo;
-
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 /**

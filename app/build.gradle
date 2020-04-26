@@ -1,5 +1,5 @@
-apply plugin: 'com.android.application'
-//apply plugin: 'com.jakewharton.butterknife' //plugin Butterknife
+apply plugin: rootProject.ext.plugins['application']
+apply plugin: 'com.jakewharton.butterknife' //plugin Butterknife
 //apply plugin: 'org.greenrobot.greendao' // apply plugin GreenDao
 
 android {
@@ -23,16 +23,15 @@ android {
         }
     }
 
-    compileSdkVersion 29
-    buildToolsVersion "28.0.3"
+    compileSdkVersion rootProject.ext.android['compileSdkVersion']
+
     defaultConfig {
         applicationId "app.com.pgy"
-        minSdkVersion 19
-        targetSdkVersion 29
+        minSdkVersion rootProject.ext.android['minSdkVersion']
+        targetSdkVersion rootProject.ext.android['targetSdkVersion']
+        versionCode rootProject.ext.android['versionCode']
+        versionName rootProject.ext.android['versionName']
 
-        /*2019年7月29日 1  1.0.0 xu*/
-        versionCode 31
-        versionName "5.0"
         multiDexEnabled true
 
         ndk {
@@ -81,6 +80,12 @@ android {
     dataBinding {
         enabled = true
     }
+
+    // Butterknife requires Java 8.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 repositories {
     flatDir {
@@ -90,57 +95,62 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/sun.misc.BASE64Decoder.jar')
-    compile files('libs/bouncycastle.jar')
-    compile files('libs/autobahn-0.5.0.jar')
-    compile files('libs/umeng-common-2.1.0.jar')
-    compile files('libs/umeng-share-core-6.9.6.jar')
-    compile files('libs/umeng-share-wechat-full-6.9.6.jar')
-    compile files('libs/umeng-shareboard-widget-6.9.6.jar')
-    compile files('libs/umeng-sharetool-6.9.6.jar')
-    compile files('libs/wechat-sdk-android-without-mta-5.1.4.jar')
-//    compile files('libs/umeng_social_tool.jar')
-//    compile files('libs/umeng_social_shareboard.jar')
-//    compile files('libs/umeng_social_net.jar')
-//    compile files('libs/umeng_social_api.jar')
-//    compile files('libs/umeng_shareboard_widget.jar')
-//    compile files('libs/SocialSDK_WeChat_Simplify.jar')
-//    compile files('libs/SocialSDK_QQ_Simplify.jar')
-    compile(name: 'FaceLivenessOpen-2.1.6.15', ext: 'aar')
-    compile(name: 'rpsdk-3.1.0.1', ext: 'aar')
-    compile(name: 'SecurityGuardSDK-external-release-5.4.9901', ext: 'aar')
-    compile(name: 'SecurityBodySDK-external-release-5.4.79', ext: 'aar')
-    compile(name: 'NoCaptchaSDK-external-release-5.4.33', ext: 'aar')
-    compile(name: 'oss-android-sdk-2.9.2', ext: 'aar')
-    /*compile files('libs/okhttp-3.2.0.jar')*/
-    /*compile files('libs/okio-1.6.0.jar')*/
-    compile files('libs/windvane-min-8.0.3.2.3.jar')
-    /*compile 'com.google.zxing:core:3.3.0'*/
-    compile files('libs/core-3.3.0.jar')
+    implementation files('libs/sun.misc.BASE64Decoder.jar')
+    implementation files('libs/bouncycastle.jar')
+    implementation files('libs/autobahn-0.5.0.jar')
+    implementation files('libs/umeng-common-2.1.0.jar')
+    implementation files('libs/umeng-share-core-6.9.6.jar')
+    implementation files('libs/umeng-share-wechat-full-6.9.6.jar')
+    implementation files('libs/umeng-shareboard-widget-6.9.6.jar')
+    implementation files('libs/umeng-sharetool-6.9.6.jar')
+    implementation files('libs/wechat-sdk-android-without-mta-5.1.4.jar')
+//    implementation files('libs/umeng_social_tool.jar')
+//    implementation files('libs/umeng_social_shareboard.jar')
+//    implementation files('libs/umeng_social_net.jar')
+//    implementation files('libs/umeng_social_api.jar')
+//    implementation files('libs/umeng_shareboard_widget.jar')
+//    implementation files('libs/SocialSDK_WeChat_Simplify.jar')
+//    implementation files('libs/SocialSDK_QQ_Simplify.jar')
+    implementation(name: 'FaceLivenessOpen-2.1.6.15', ext: 'aar')
+    implementation(name: 'rpsdk-3.1.0.1', ext: 'aar')
+    implementation(name: 'SecurityGuardSDK-external-release-5.4.9901', ext: 'aar')
+    implementation(name: 'SecurityBodySDK-external-release-5.4.79', ext: 'aar')
+    implementation(name: 'NoCaptchaSDK-external-release-5.4.33', ext: 'aar')
+    implementation(name: 'oss-android-sdk-2.9.2', ext: 'aar')
+    /*implementation files('libs/okhttp-3.2.0.jar')*/
+    /*implementation files('libs/okio-1.6.0.jar')*/
+    implementation files('libs/windvane-min-8.0.3.2.3.jar')
+    /*implementation 'com.google.zxing:core:3.3.0'*/
+    implementation files('libs/core-3.3.0.jar')
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    /**
+     * ui
+     */
+    api rootProject.ext.dependencies['appcompat-v7']
+    api rootProject.ext.dependencies['appcompat-v4']
+    api rootProject.ext.dependencies['design']
+    api rootProject.ext.dependencies['constraint']
+    api rootProject.ext.dependencies['recyclerview']
+
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
     implementation 'com.squareup.retrofit2:retrofit:2.0.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-    implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     implementation 'com.umeng.analytics:analytics:latest.integration'
     implementation 'com.alibaba:fastjson:1.2.47'
     //noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
     /*
-                                compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+                                implementation 'com.github.PhilJay:MPAndroidChart:v2.1.6'
                             */
     implementation 'com.dalong:marqueeview:1.0.1'
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.jude:easyrecyclerview:4.4.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'com.journeyapps:zxing-android-embedded:2.3.0@aar'
     implementation 'com.journeyapps:zxing-android-legacy:2.3.0@aar'
@@ -148,22 +158,16 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
 //    testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.github.fenjuly:ToggleExpandLayout:774e497692'
     implementation 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'
     //图片裁剪
     implementation 'com.oginotihiro:cropview:1.0.0'
-    implementation project(':MPChartLib')
-    implementation project(':IMLib')
-    compile files('libs/MiPush_SDK_Client_3_5_1.jar')
-    compile files('libs/greendao-1.3.7.jar')
-    implementation project(':CallKit')
-    implementation project(':CallLib')
+    implementation files('libs/MiPush_SDK_Client_3_5_1.jar')
+    implementation files('libs/greendao-1.3.7.jar')
     implementation 'com.github.lzyzsd:jsbridge:1.0.4'
     implementation 'com.androidkun:XTabLayout:1.1.4'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-    implementation project(':IMKit')
-    compile('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
+    implementation('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
         transitive = true
     }
 
@@ -177,6 +181,6 @@ dependencies {
     //封装的baseadapter  https://www.jianshu.com/p/b343fcff51b0
 //    implementation 'com.lzy.net:okgo:3.0.4'
 //okgo请求框架 封装的okhttp  https://github.com/jeasonlzy/okhttp-OkGo
-
+    implementation 'com.lxj:xpopup:1.8.17'
 
 }

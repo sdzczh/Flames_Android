@@ -2,11 +2,10 @@ package app.com.pgy.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -35,13 +34,8 @@ import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.LoginUtils;
 import app.com.pgy.Widgets.CoinTypeListPopupwindow;
-import app.com.pgy.im.utils.Resource;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
-import io.rong.imlib.IFwLogCallback;
-
 import static app.com.pgy.Constants.StaticDatas.BUSINESS;
 import static app.com.pgy.Constants.StaticDatas.NORMAL;
 

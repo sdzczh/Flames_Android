@@ -103,7 +103,7 @@ public class PersonalRenZhengActivity extends PermissionActivity {
         initRezheng();
     }
 
-    @OnClick({R.id.iv_back, R.id.tv_activity_renzheng_to1, R.id.tv_activity_renzheng_to2, R.id.tv_activity_renzheng_to3})
+    @OnClick({R.id.iv_back,R.id.tv_activity_renzheng_to1, R.id.tv_activity_renzheng_to2, R.id.tv_activity_renzheng_to3})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -162,7 +162,7 @@ public class PersonalRenZhengActivity extends PermissionActivity {
             tvActivityRenzhengTo1.setVisibility(View.GONE);
             llActivityRenzhengOneFinished.setVisibility(View.GONE);
             tvActivityRenzhengTo2.setVisibility(View.GONE);
-            llActivityRenzhengTwoReviewing.setVerticalGravity(View.GONE);
+            llActivityRenzhengTwoReviewing.setVisibility(View.GONE);
             llActivityRenzhengTwoFinished.setVisibility(View.GONE);
             tvActivityRenzhengDesc2.setVisibility(View.GONE);
             tvActivityRenzhengTo3.setVisibility(View.GONE);
@@ -330,10 +330,4 @@ public class PersonalRenZhengActivity extends PermissionActivity {
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

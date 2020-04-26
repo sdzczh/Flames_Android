@@ -18,17 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import app.com.pgy.Widgets.C2cTradeDialog;
 import butterknife.BindView;
 import butterknife.OnClick;
 import app.com.pgy.Activitys.Base.PermissionActivity;
@@ -50,8 +46,6 @@ import app.com.pgy.Widgets.MyBottomSpinnerList;
 import app.com.pgy.Widgets.RoundImageView;
 import app.com.pgy.Widgets.TextAndTextItem;
 import app.com.pgy.im.widget.DownTimer;
-import io.rong.imkit.RongIM;
-
 import static app.com.pgy.Constants.StaticDatas.ALIPAY;
 import static app.com.pgy.Constants.StaticDatas.BANKCARD;
 import static app.com.pgy.Constants.StaticDatas.BUSINESS;
@@ -674,26 +668,6 @@ public class C2CEntrustDetailsActivity extends PermissionActivity {
                 break;
             default:
                 break;
-        }
-    }
-
-    /**
-     * 开始聊天
-     */
-    public void startChat() {
-        if (!isLogin()) {
-            showToast(R.string.unlogin);
-            return;
-        }
-        try {
-            if (Preferences.getLocalUser().getPhone().equals(userPhone)) {
-                showToast("不能与自己聊天");
-                return;
-            }
-            RongIM.getInstance().startPrivateChat(mContext, userPhone, userNikeName);
-        } catch (Exception e) {
-            e.printStackTrace();
-            showToast("系统异常");
         }
     }
 

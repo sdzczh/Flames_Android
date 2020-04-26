@@ -52,8 +52,6 @@ import app.com.pgy.im.widget.DownTimer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.rong.imkit.RongIM;
-
 import static app.com.pgy.Constants.StaticDatas.ALIPAY;
 import static app.com.pgy.Constants.StaticDatas.BANKCARD;
 import static app.com.pgy.Constants.StaticDatas.BUSINESS;

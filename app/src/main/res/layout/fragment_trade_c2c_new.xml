@@ -149,14 +149,14 @@
                     android:visibility="invisible"/>
             </LinearLayout>
 
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp_content"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:background="@color/dark_main_model"/>
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp_content2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

@@ -20,7 +20,7 @@
             android:layout_height="40dp" />
     </FrameLayout>
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/layout_widget_leftSecondarySpinner_tab"
         style="@style/TabLayoutTextStyle15"
         android:layout_marginStart="15dp"
@@ -35,7 +35,7 @@
         app:tabGravity="center"
         app:tabTextColor="@color/txt_all8" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/layout_widget_leftSecondarySpinner_list"
         android:layout_width="match_parent"
         android:layout_weight="1"

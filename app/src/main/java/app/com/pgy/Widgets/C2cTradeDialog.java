@@ -3,7 +3,7 @@ package app.com.pgy.Widgets;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;

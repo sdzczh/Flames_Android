@@ -2,9 +2,9 @@ package app.com.pgy.Constants;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.multidex.MultiDexApplication;
-import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.multidex.MultiDexApplication;
 
 import com.alibaba.security.rp.RPSDK;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -19,21 +19,6 @@ import app.com.pgy.Models.Beans.Configuration;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.TimeUtils;
-import app.com.pgy.im.SealAppContext;
-import app.com.pgy.im.SealUserInfoManager;
-import app.com.pgy.im.message.RedPacketMessage;
-import app.com.pgy.im.message.RedPacketNotificationMessage;
-import app.com.pgy.im.message.TestMessage;
-import app.com.pgy.im.message.TransferMeassage;
-import app.com.pgy.im.message.provider.ContactNotificationMessageProvider;
-import app.com.pgy.im.message.provider.RedPacketMessageProvider;
-import app.com.pgy.im.message.provider.RedPacketNotificationMessageProvider;
-import app.com.pgy.im.message.provider.TestMessageProvider;
-import app.com.pgy.im.message.provider.TransferMessageProvider;
-import io.rong.imkit.RongIM;
-import io.rong.imkit.widget.provider.RealTimeLocationMessageProvider;
-import io.rong.imlib.ipc.RongExceptionHandler;
-import io.rong.push.RongPushClient;
 
 import static com.alibaba.security.rp.RPSDK.RPSDKEnv.RPSDKEnv_ONLINE;
 import static app.com.pgy.Constants.Constants.DEBUG;
@@ -112,54 +97,6 @@ public class MyApplication extends MultiDexApplication {
         });
     }
 
-    public void initRongyun() {
-        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext()))) {
-
-//            LeakCanary.install(this);//内存泄露检测
-            //RongPushClient.registerHWPush(this);
-            RongPushClient.registerMiPush(this, "2882303761517473625", "5451747338625");
-            /*try {
-                RongPushClient.registerFCM(this);
-            } catch (RongException e) {
-                e.printStackTrace();
-            }*/
-            RongIM.setServerInfo("nav.cn.ronghub.com", "up.qbox.me");
-            RongIM.init(this);
-            SealAppContext.init(this);
-            //SharedPreferencesContext.init(this);
-            Thread.setDefaultUncaughtExceptionHandler(new RongExceptionHandler(this));
-
-            try {
-                RongIM.registerMessageTemplate(new ContactNotificationMessageProvider());
-                RongIM.registerMessageTemplate(new RealTimeLocationMessageProvider());
-                RongIM.registerMessageType(TestMessage.class);
-                RongIM.registerMessageTemplate(new TestMessageProvider());
-                RongIM.registerMessageType(RedPacketMessage.class);
-                RongIM.registerMessageTemplate(new RedPacketMessageProvider());
-                RongIM.registerMessageType(RedPacketNotificationMessage.class);
-                RongIM.registerMessageTemplate(new RedPacketNotificationMessageProvider());
-                RongIM.registerMessageType(TransferMeassage.class);
-                RongIM.registerMessageTemplate(new TransferMessageProvider());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            openSealDBIfHasCachedToken();
-        }
-    }
-
-
-    private void openSealDBIfHasCachedToken() {
-        String cachedToken = Preferences.getTalkToken();
-        if (!TextUtils.isEmpty(cachedToken)) {
-            String current = getCurProcessName(this);
-            String mainProcessName = getPackageName();
-            if (mainProcessName.equals(current)) {
-                SealUserInfoManager instance = SealUserInfoManager.getInstance();
-                instance.openDB();
-                LogUtils.w("dataBase","MyApplication:openDB");
-            }
-        }
-    }
 
     /**获取当前进程*/
     public static String getCurProcessName(Context context) {

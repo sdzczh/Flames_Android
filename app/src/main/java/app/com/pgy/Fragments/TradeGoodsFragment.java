@@ -6,43 +6,29 @@ import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import com.androidkun.xtablayout.XTabLayout;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.material.appbar.AppBarLayout;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
-import com.umeng.commonsdk.debug.D;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import app.com.pgy.Activitys.KLineActivity;
 import app.com.pgy.Activitys.LoginActivity;
 import app.com.pgy.Activitys.MainActivity;
@@ -82,9 +68,7 @@ import app.com.pgy.Widgets.MyBottomSpinnerList;
 import app.com.pgy.Widgets.MyTradeCoinMarketPopupWindown;
 import app.com.pgy.Widgets.MyTradeTypeChoosePopupWindow;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 import static app.com.pgy.Constants.StaticDatas.BUY;
 import static app.com.pgy.Constants.StaticDatas.MARKET_ONECOIN;
@@ -153,12 +137,6 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
     TextView fragmentTradeGoodsLogin;
     @BindView(R.id.fragment_tradeGoods_appBarLayout)
     AppBarLayout fragmentTradeGoodsAppBarLayout;
-    @BindView(R.id.fragment_tradeGoods_klineTime_first)
-    TextView fragmentTradeGoodsKlineTimeFirst;
-    @BindView(R.id.fragment_tradeGoods_klineTime_second)
-    TextView fragmentTradeGoodsKlineTimeSecond;
-    @BindView(R.id.fragment_tradeGoods_klineTime_third)
-    TextView fragmentTradeGoodsKlineTimeThird;
     @BindView(R.id.titleLine)
     View titleLine;
 
@@ -416,38 +394,6 @@ public class TradeGoodsFragment extends BaseFragment implements GoodsListReceive
         switchLoginFrame();
         /*根据当前现货交易币计价币、交易类型、是否、设置左侧界面*/
         switchCoinFrame();
-    }
-
-    private LineData getLineData(List<KLineBean.ListBean> kLines) {
-        int color = getResources().getColor(R.color.bg_blue);
-        if (kLines == null || kLines.size() <= 0) {
-            Log.w(TAG, "获取数据为空");
-            return null;
-        }
-        List<String> xValues = new ArrayList<>();
-        // x轴显示的数据,时间
-        for (KLineBean.ListBean coinline : kLines) {
-            xValues.add("");
-        }
-        // y轴的数据，价格
-        List<Entry> yValues = new ArrayList<>();
-        for (int i = 0; i < kLines.size(); i++) {
-            String price = kLines.get(i).getClosePrice();
-            yValues.add(new Entry(Float.valueOf(price), i));
-        }
-        LineDataSet lineDataSet = new LineDataSet(yValues, "折线图" /*显示在比例图上*/);
-        /*设置折线的样式*/
-        lineDataSet.setDrawValues(false);
-        lineDataSet.setColor(color);// 设置折线的颜色
-        lineDataSet.setDrawCircles(false);  //不用小圆圈表示
-        lineDataSet.setDrawCubic(false);     //允许曲线平滑
-        //lineDataSet.setCubicIntensity(0.2f);    //设置曲线平滑度
-        lineDataSet.setDrawHighlightIndicators(false);  //关闭指引线
-        List<ILineDataSet> lineDataSets = new ArrayList<>();
-        lineDataSets.add(lineDataSet);
-        //创建LineData数据，x轴数据是list<String>，y轴是list<Entry>
-        LineData lineData = new LineData(xValues, lineDataSets);
-        return lineData;
     }
 
     /**

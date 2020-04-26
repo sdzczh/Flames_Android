@@ -192,7 +192,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="审核中"
-                            android:textColor="@color/orange"
+                            android:textColor="@color/bg_orange"
                             android:textSize="12sp"
                             android:layout_marginLeft="10dp"/>
                     </LinearLayout>

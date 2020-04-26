@@ -2,55 +2,33 @@ package app.com.pgy.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Log;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-//import com.lzy.okgo.OkGo;
-//import com.lzy.okgo.callback.StringCallback;
-//import com.lzy.okgo.model.Response;
 import com.scwang.smartrefresh.header.WaterDropHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Adapters.MyteamAdapter;
-import app.com.pgy.Constants.Constants;
 import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Interfaces.getBeanCallback;
-import app.com.pgy.Models.Beans.MyteamBean;
 import app.com.pgy.Models.Beans.MyteamBean2;
-import app.com.pgy.Models.Beans.TradeMessage;
-import app.com.pgy.Models.ResultBean;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
-import app.com.pgy.Utils.ImageLoaderUtils;
-import app.com.pgy.Utils.TimeUtils;
-import app.com.pgy.Utils.ToolsUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static app.com.pgy.Constants.Constants.HTTP_URL;
-import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 public class MyteamActivity extends BaseActivity {
 

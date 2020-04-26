@@ -26,12 +26,12 @@ import app.com.pgy.Activitys.HuiLvActivity;
 import app.com.pgy.Activitys.LoginActivity;
 import app.com.pgy.Activitys.MainActivity;
 import app.com.pgy.Activitys.MyAccountActivity;
-import app.com.pgy.Activitys.MyWalletActivity;
 import app.com.pgy.Activitys.MyteamActivity;
 import app.com.pgy.Activitys.PersonalGroupsActivity;
 import app.com.pgy.Activitys.PersonalInfoActivity;
 import app.com.pgy.Activitys.PersonalRenZhengActivity;
 import app.com.pgy.Activitys.PosterNewActivity;
+import app.com.pgy.Activitys.RenGouMainActivity;
 import app.com.pgy.Activitys.SecuritycenterActivity;
 import app.com.pgy.Activitys.SystemSettingActivity;
 import app.com.pgy.Constants.Preferences;
@@ -53,8 +53,6 @@ import app.com.pgy.Utils.LoginUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.ExitDialog;
 import app.com.pgy.Widgets.PersonalItemView;
-import app.com.pgy.im.SealConst;
-import app.com.pgy.im.server.broadcast.BroadcastManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -322,7 +320,7 @@ public class PersonalFragment extends BaseFragment {
     private void sendLogoutMessage() {
         LogUtils.w("receiver", "Setting发送退出通知");
         EventBus.getDefault().post(new EventLoginState(false));
-        BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.EXIT);
+        //BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.EXIT);
         MyWebSocket.getMyWebSocket().stopSocket();
         refreshUserMessage();
     }

@@ -40,7 +40,7 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/activity_kLIne_scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -192,33 +192,6 @@
 
 
             </LinearLayout>
-            <!--分时-->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/activity_kLine_chart_times"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal"
-                android:visibility="gone" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="#ff081724"
-                android:visibility="gone" />
-            <!--成交价分时图-->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="320dp"
-                android:visibility="gone">
-                <!--<include layout="@layout/layout_klinechart_price_ma"/>-->
-                <include layout="@layout/layout_kline_chart_market" />
-
-                <app.com.pgy.Widgets.mychart.MyCombinedChart
-                    android:id="@+id/activity_kLine_chart_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </FrameLayout>
 
             <WebView
                 android:id="@+id/webView"
@@ -226,26 +199,13 @@
                 android:layout_height="320dp"
                 android:background="@color/transparent"
                 android:scrollbarSize="0dp" />
-            <!--成交量分时图-->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:visibility="gone">
-
-                <include layout="@layout/layout_klinechart_vol_ma" />
-
-                <app.com.pgy.Widgets.mychart.MyCombinedChart
-                    android:id="@+id/activity_kLine_chart_amount"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </FrameLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="#ff081724" />
 
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/activity_kLine_bottom_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -255,36 +215,36 @@
                 app:tabSelectedTextColor="#DFBD86"
                 app:tabTextColor="@color/color_e6">
 
-                <android.support.design.widget.TabItem
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="成交" />
 
-                <android.support.design.widget.TabItem
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="深度" />
 
 
-                <android.support.design.widget.TabItem
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="简介" />
-            </android.support.design.widget.TabLayout>
+            </com.google.android.material.tabs.TabLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="#ff081724" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/activity_kLine_bottom_dealList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="500dp"
                 android:visibility="visible" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:visibility="gone"
                 android:id="@+id/rv_shendu"
                 android:layout_width="match_parent"
@@ -297,7 +257,7 @@
                 android:minHeight="500dp"
                 android:visibility="gone" />
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
     <!--买入卖出界面-->
     <LinearLayout
         android:id="@+id/activity_kLine_buyOrSaleFrame"

@@ -1,7 +1,7 @@
 package app.com.pgy.Fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.R;

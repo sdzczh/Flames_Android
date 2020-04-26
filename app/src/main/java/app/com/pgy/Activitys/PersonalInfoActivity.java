@@ -1,6 +1,5 @@
 package app.com.pgy.Activitys;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -41,11 +40,6 @@ import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.MyBottomSpinnerList;
 import app.com.pgy.Widgets.PersonalItemView;
-import app.com.pgy.im.SealConst;
-import app.com.pgy.im.server.broadcast.BroadcastManager;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.UserInfo;
-
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 /**
@@ -240,7 +234,7 @@ public class PersonalInfoActivity extends BaseUploadPicActivity implements getSt
 //                if (RongIM.getInstance() != null) {
 //                    RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), user.getName(), Uri.parse(iconUrl)));
 //                }
-                BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.CHANGEINFO);
+                //BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.CHANGEINFO);
                 updateData();
                 hideLoading();
             }
@@ -265,7 +259,7 @@ public class PersonalInfoActivity extends BaseUploadPicActivity implements getSt
             public void onSuccess(Object o) {
                 Preferences.saveUserName(newName);
                 EventBus.getDefault().post(new EventUserInfoChange());
-                BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.CHANGEINFO);
+                //BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.CHANGEINFO);
 //                RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getPhone(), newName, Uri.parse(user.getHeadImg())));
 //                RongIM.getInstance().setCurrentUserInfo(new UserInfo(user.getPhone(), newName, Uri.parse(user.getHeadImg())));
                 showToast("修改昵称成功");

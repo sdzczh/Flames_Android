@@ -1,36 +1,30 @@
 package app.com.pgy.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.DividerDecoration;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import app.com.pgy.Activitys.Base.BaseActivity;
-import app.com.pgy.Activitys.Base.BaseListActivity;
+import app.com.pgy.Activitys.Base.WebDetailActivity;
 import app.com.pgy.Adapters.BannerListAdapter;
 import app.com.pgy.Constants.Preferences;
-import app.com.pgy.Constants.StaticDatas;
 import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.BannerInfo;
-import app.com.pgy.Models.Beans.C2cNormalEntrust;
 import app.com.pgy.Models.ListBean;
 import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
 import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
+import app.com.pgy.Utils.Utils;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import static app.com.pgy.Constants.StaticDatas.NORMAL;
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 /**
@@ -72,6 +66,23 @@ public class BannerListActivity extends BaseActivity {
         activityBaselistList.setLayoutManager(new LinearLayoutManager(mContext));
         activityBaselistList.setAdapter(adapter);
         activityBaselistList.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.transparent), MathUtils.dip2px(mContext,15)));
+        adapter.setOnItemClickListener(position -> {
+            BannerInfo item = adapter.getItem(position);
+            if (item == null){
+                return;
+            }
+            int type = item.getType();
+            if (type == 1){
+                //跳转认购主界面
+                Utils.IntentUtils(mContext,RenGouMainActivity.class);
+            }else if (type == 0){
+                //跳转网页
+                Intent intent = new Intent(mContext, WebDetailActivity.class);
+                intent.putExtra("title", ""+item.getTitle());
+                intent.putExtra("url", item.getAddress());
+                startActivity(intent);
+            }
+        });
         requestData();
     }
 

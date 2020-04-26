@@ -11,7 +11,7 @@ import app.com.pgy.R;
  * Created by YX on 2018/7/13.
  */
 
-public class RatioRadioButton extends RadioButton {
+public class RatioRadioButton extends androidx.appcompat.widget.AppCompatRadioButton {
     private float ratio = 0f;
     public RatioRadioButton(Context context) {
         super(context);

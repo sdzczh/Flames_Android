@@ -6,11 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.AnimatorSet;
@@ -28,7 +27,7 @@ import app.com.pgy.Utils.MathUtils;
  * @author xuqingzhong
  * */
 
-public class BlockImageView extends AppCompatImageView{
+public class BlockImageView extends AppCompatImageView {
     private static final String TAG = "BlockImageView";
     private static final int DELAY_TIME = 10*1000;
     private Paint paintText,bgPaint;

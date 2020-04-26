@@ -10,11 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/PGY-Android.iml" filepath="$PROJECT_DIR$/PGY-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/zhaohe.iml" filepath="$PROJECT_DIR$/zhaohe.iml" group="zhaohe" />
-      <module fileurl="file://$PROJECT_DIR$/CallKit/zhaohe-CallKit.iml" filepath="$PROJECT_DIR$/CallKit/zhaohe-CallKit.iml" group="zhaohe/CallKit" />
-      <module fileurl="file://$PROJECT_DIR$/CallLib/zhaohe-CallLib.iml" filepath="$PROJECT_DIR$/CallLib/zhaohe-CallLib.iml" group="zhaohe/CallLib" />
-      <module fileurl="file://$PROJECT_DIR$/IMKit/zhaohe-IMKit.iml" filepath="$PROJECT_DIR$/IMKit/zhaohe-IMKit.iml" group="zhaohe/IMKit" />
-      <module fileurl="file://$PROJECT_DIR$/IMLib/zhaohe-IMLib.iml" filepath="$PROJECT_DIR$/IMLib/zhaohe-IMLib.iml" group="zhaohe/IMLib" />
-      <module fileurl="file://$PROJECT_DIR$/MPChartLib/zhaohe-MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/zhaohe-MPChartLib.iml" group="zhaohe/MPChartLib" />
       <module fileurl="file://$PROJECT_DIR$/app/zhaohe-app.iml" filepath="$PROJECT_DIR$/app/zhaohe-app.iml" group="zhaohe/app" />
     </modules>
   </component>

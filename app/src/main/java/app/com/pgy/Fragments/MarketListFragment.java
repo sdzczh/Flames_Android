@@ -3,9 +3,9 @@ package app.com.pgy.Fragments;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -33,8 +33,6 @@ import app.com.pgy.Receivers.MarketListReceiver;
 import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.MathUtils;
 
-import static app.com.pgy.Constants.StaticDatas.MARKET_MAIN;
-import static app.com.pgy.Constants.StaticDatas.MARKET_ONECOIN;
 import static app.com.pgy.Fragments.MarketFragment.TYPE_ONCOIN;
 import static app.com.pgy.Fragments.MarketFragment.TYPE_WORLD;
 

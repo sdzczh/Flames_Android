@@ -1,8 +1,8 @@
 package app.com.pgy.Activitys;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +25,6 @@ import app.com.pgy.Models.Beans.EventBean.EventGoodsToTrade;
 import app.com.pgy.Models.Beans.EventBean.EventTradeCancelAll;
 import app.com.pgy.R;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

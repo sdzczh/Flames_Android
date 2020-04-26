@@ -68,7 +68,7 @@
     <!--</LinearLayout>-->
 
     <!--底部内容-->
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/activity_tradeC2COrderBusiness_title_viewPager"
         android:layout_width="match_parent"
         android:background="@color/dark_bg_color"

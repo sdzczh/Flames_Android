@@ -1,10 +1,9 @@
 package app.com.pgy.Fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -12,21 +11,14 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
-import butterknife.OnClick;
 import app.com.pgy.Adapters.ViewPagerAdapter;
-import app.com.pgy.Constants.Preferences;
 import app.com.pgy.Fragments.Base.BaseFragment;
 import app.com.pgy.Models.Beans.EventBean.EventKLineSceneDestroy;
 import app.com.pgy.Models.Beans.EventBean.EventLoginState;
 import app.com.pgy.Models.Beans.EventBean.EventMarketScene;
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
-import app.com.pgy.Utils.Utils;
 import app.com.pgy.Widgets.NoScrollViewPager;
-import app.com.pgy.im.UI.IMMainActivity;
-import io.rong.imkit.RongIM;
-import io.rong.imkit.manager.IUnReadMessageObserver;
-import io.rong.imlib.model.Conversation;
 
 /**
  * 创建日期：2018/04/18 0022 on 上午 11:23
@@ -34,7 +26,7 @@ import io.rong.imlib.model.Conversation;
  *
  * @author 徐庆重
  */
-public class MarketFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener ,IUnReadMessageObserver {
+public class MarketFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener{
     public static final int TYPE_ONCOIN = 0;
     public static final int TYPE_WORLD = 1;
 
@@ -45,8 +37,6 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
     NoScrollViewPager nvp_content;
     @BindView(R.id.view_titleMessage_point)
     View viewTitleMessagePoint;
-    @BindView(R.id.view_titleMessage_frame)
-    FrameLayout viewTitleMessageFrame;
     private List<Fragment> fragments;
     private List<String> fragmentsName;
 
@@ -69,21 +59,6 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
         }
         fragments = getFragments();
         fragmentsName = getFragmentsNames();
-    }
-
-    final Conversation.ConversationType[] conversationTypes = {
-            Conversation.ConversationType.PRIVATE,
-            Conversation.ConversationType.GROUP, Conversation.ConversationType.SYSTEM,
-            Conversation.ConversationType.PUBLIC_SERVICE, Conversation.ConversationType.APP_PUBLIC_SERVICE
-    };
-
-    @Override
-    public void onCountChanged(int i) {
-        if (i > 0 || Preferences.isHasNewFriend()){
-            viewTitleMessagePoint.setVisibility(View.VISIBLE);
-        }else {
-            viewTitleMessagePoint.setVisibility(View.GONE);
-        }
     }
 
     /**
@@ -163,11 +138,6 @@ public class MarketFragment extends BaseFragment implements RadioGroup.OnChecked
             default:
                 break;
         }
-    }
-
-    @OnClick(R.id.view_titleMessage_frame)
-    public void onViewClicked() {
-        Utils.IntentUtils(mContext, IMMainActivity.class);
     }
 
     @Override

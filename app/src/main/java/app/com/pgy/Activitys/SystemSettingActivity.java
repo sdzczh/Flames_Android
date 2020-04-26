@@ -37,9 +37,6 @@ import app.com.pgy.Utils.LogUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Widgets.ExitDialog;
 import app.com.pgy.Widgets.PersonalItemView;
-import app.com.pgy.im.SealConst;
-import app.com.pgy.im.server.broadcast.BroadcastManager;
-
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 /**
@@ -204,7 +201,7 @@ public class SystemSettingActivity extends PermissionActivity {
     private void sendLogoutMessage() {
         LogUtils.w("receiver", "Setting发送退出通知");
         EventBus.getDefault().post(new EventLoginState(false));
-        BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.EXIT);
+        //BroadcastManager.getInstance(mContext).sendBroadcast(SealConst.EXIT);
         MyWebSocket.getMyWebSocket().stopSocket();
         finish();
     }

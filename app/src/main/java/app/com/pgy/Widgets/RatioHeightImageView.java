@@ -12,7 +12,7 @@ import app.com.pgy.R;
 /**
  * Create by YX on 2019/9/29 0029
  */
-public class RatioHeightImageView extends ImageView {
+public class RatioHeightImageView extends androidx.appcompat.widget.AppCompatImageView {
     private float ratio = 0f;
 
     public RatioHeightImageView(Context context, AttributeSet attrs, int defStyle) {

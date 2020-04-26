@@ -92,7 +92,7 @@
             android:layout_marginRight="16dp"
             android:button="@null"
             android:background="@drawable/selector_normal_bussiness"/>
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/activity_tradeC2C_title_tab"
             style="@style/TabLayoutTextStyle14"
             android:layout_width="0dp"

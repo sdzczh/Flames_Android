@@ -318,15 +318,6 @@ public class MathUtils {
         return mFormat.format(num);
     }
 
-    public static String getDecimalFormatVol(float vol) {
-        if (vol <= 0){
-            return "0.00";
-        }
-        int digits = com.github.mikephil.charting.utils.Utils.getDecimals(vol);
-        DecimalFormat decimalFormat = getDecimalFormat(digits);
-        return decimalFormat.format(vol);//format 返回的是字符串
-    }
-
     /**获取当前进度条的进度*/
     public static int getCurrentPercent(int start, int end, int currentForce, int max) {
         if (end <= start){

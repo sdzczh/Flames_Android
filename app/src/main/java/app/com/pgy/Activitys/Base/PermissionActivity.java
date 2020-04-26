@@ -1,10 +1,8 @@
 package app.com.pgy.Activitys.Base;
 
-
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import java.util.List;
-
 import app.com.pgy.R;
 import app.com.pgy.Utils.LogUtils;
 

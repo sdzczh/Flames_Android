@@ -1,8 +1,8 @@
 package app.com.pgy.Activitys;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,29 +13,16 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import app.com.pgy.Activitys.Base.BaseActivity;
 import app.com.pgy.Adapters.ViewPagerAdapter;
-import app.com.pgy.Constants.Preferences;
-import app.com.pgy.Constants.StaticDatas;
 import app.com.pgy.Fragments.MyAccountBibiFragment;
 import app.com.pgy.Fragments.MyAccountFabiFragment;
 import app.com.pgy.Fragments.MyAccountTotalFragment;
-import app.com.pgy.Fragments.TradeGoodsCurrentEntrustListFragment;
-import app.com.pgy.Fragments.TradeGoodsHistoryListFragment;
-import app.com.pgy.Interfaces.getBeanCallback;
 import app.com.pgy.Models.Beans.EventBean.EventAccountChange;
-import app.com.pgy.Models.Beans.MyWallet;
-import app.com.pgy.NetUtils.NetWorks;
 import app.com.pgy.R;
-import app.com.pgy.Utils.TimeUtils;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
 /**
  * Create by Android on 2019/10/14 0014

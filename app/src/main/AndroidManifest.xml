@@ -54,6 +54,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_lancher_new"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
         <activity android:name=".Activitys.MortgageorderActivity"></activity>
@@ -153,9 +154,6 @@
             android:name=".Activitys.PostersActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".im.UI.IMMainActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Activitys.MyWalletActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -216,100 +214,7 @@
             android:name=".Activitys.BlockTradeActviity"
             android:screenOrientation="portrait" /> <!-- <activity -->
         <!-- android:name=".Activitys.BlockTradeActviity" -->
-        <!-- android:screenOrientation="portrait"/> -->
-        <activity
-            android:name=".im.UI.AddFriendActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.SystemMessageListActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.TradeMessageListActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.SearchMineFriendActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.NewFriendListActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.UserDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.NoteInformationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.GroupDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.TotalGroupMemberActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.SendRedPackageActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.RedPackageRecordsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.RedPackageDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.TransferActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.TransferDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.TransferRecordsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".im.UI.ConversationActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="app.com.pgy"
-                    android:pathPrefix="/conversation/"
-                    android:scheme="rong" />
-            </intent-filter>
-        </activity> <!-- 会话列表 -->
-        <activity
-            android:name=".im.UI.ConversationListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="app.com.pgy"
-                    android:path="/conversationlist"
-                    android:scheme="rong" />
-            </intent-filter>
-        </activity> <!-- 聚合会话列表 -->
-        <activity
-            android:name=".im.UI.SubConversationListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="app.com.pgy"
-                    android:path="/subconversationlist"
-                    android:scheme="rong" />
-            </intent-filter>
-        </activity>
         <!--
 <receiver
             android:name="im.SealNotificationReceiver"
@@ -333,13 +238,13 @@
         <receiver android:name=".Receivers.AlarmReceiver" /> <!-- 新包下载 -->
         <service android:name=".Services.DownloadService" /> <!-- 融云IM -->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="app.com.pgy.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/rc_file_path" />
+                android:resource="@xml/file_paths" />
         </provider> <!-- 友盟分享 -->
         <meta-data
             android:name="UMENG_APPKEY"
@@ -369,7 +274,7 @@
         <!-- android:screenOrientation="portrait" -->
         <!-- android:theme="@android:style/Theme.Translucent.NoTitleBar" /> -->
         <!-- 解决华为移动服务升级问题的透明界面（必须声明） -->
-        <activity
+        <!--<activity
             android:name="com.huawei.android.hms.agent.common.HMSAgentActivity"
             android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
             android:excludeFromRecents="true"
@@ -379,7 +284,7 @@
             <meta-data
                 android:name="hwc-theme"
                 android:value="androidhwext:style/Theme.Emui.Translucent" />
-        </activity>
+        </activity>-->
         <activity android:name=".Activitys.CalanderActivity" />
         <activity android:name=".Activitys.InVitationActivity" />
         <activity android:name=".Activitys.InVitationHistoryActivity" />
@@ -398,6 +303,8 @@
         <activity android:name=".Activitys.PersonalRenZhengFirstActivity" />
         <activity android:name=".Activitys.PersonalRenZhengStateActivity" />
         <activity android:name=".Activitys.PersonalRenZhengSecondActivity" />
+        <activity android:name=".Activitys.RenGouMainActivity"/>
+        <activity android:name=".Activitys.RenGouListActivity"/>
         <!-- 第三方的推送 权限 广播 和服务 -->
         <!-- 小米 配置开始 < -->
         <service
@@ -431,19 +338,7 @@
                 <action android:name="com.xiaomi.push.PING_TIMER" />
             </intent-filter>
         </receiver>
-        <receiver
-            android:name="io.rong.push.platform.MiMessageReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.ERROR" />
-            </intent-filter>
-        </receiver>
+
     </application>
 
 </manifest>
