@@ -6,25 +6,27 @@ public class RenGouInitBan implements Serializable {
 
     /**
      * imgUrl : http://qr.topscan.com/api.php?text=dfsdgdsfagdfg
-     * explain : 士大夫大师傅但是
-     * coinType : 1
+     * explain : 认购玩法说明认购玩法说明认购玩法说明
+     * coinType : 0
+     * total : 10000.0
      * address : dfsdgdsfagdfg
-     * defaultRadio : 5
-     * countUsers : 2
-     * percentage : 0
+     * defaultRadio : 5.0
+     * countUsers : 4
+     * percentage : 10.0
      * endTime : 2020-04-15 20:00:00
      * id : 1
-     * coinName : BTC
-     * buyingTotal : 0
+     * coinName : CNHT
+     * buyingTotal : 1000
      */
 
     private String imgUrl;
     private String explain;
     private int coinType;
+    private double total;
     private String address;
-    private int defaultRadio;
+    private double defaultRadio;
     private int countUsers;
-    private int percentage;
+    private double percentage;
     private String endTime;
     private int id;
     private String coinName;
@@ -54,6 +56,14 @@ public class RenGouInitBan implements Serializable {
         this.coinType = coinType;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -62,11 +72,11 @@ public class RenGouInitBan implements Serializable {
         this.address = address;
     }
 
-    public int getDefaultRadio() {
+    public double getDefaultRadio() {
         return defaultRadio;
     }
 
-    public void setDefaultRadio(int defaultRadio) {
+    public void setDefaultRadio(double defaultRadio) {
         this.defaultRadio = defaultRadio;
     }
 
@@ -78,11 +88,11 @@ public class RenGouInitBan implements Serializable {
         this.countUsers = countUsers;
     }
 
-    public int getPercentage() {
+    public double getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(int percentage) {
+    public void setPercentage(double percentage) {
         this.percentage = percentage;
     }
 

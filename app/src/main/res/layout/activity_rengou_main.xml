@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:tv_right="认购记录"
         app:tv_tv_right_visibility="visable"
-        app:tv_title="@string/app_name"/>
+        app:tv_title="认购"/>
 
     <!--当前参与人数-->
     <LinearLayout
@@ -231,7 +231,7 @@
 
     <TextView
         android:id="@+id/activity_renzheng_main_defaultRadio"
-        android:text="当前比例 1U=5Flames"
+        android:text="当前比例 1USDT=5Flames"
         android:textSize="@dimen/font_12sp"
         android:textColor="@color/txt_all8"
         android:gravity="end"
@@ -272,8 +272,8 @@
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/activity_renzheng_main_pay_coinName"
             android:textSize="@dimen/font_12sp"
+            android:text="USDT"
             android:textColor="@color/txt_all8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

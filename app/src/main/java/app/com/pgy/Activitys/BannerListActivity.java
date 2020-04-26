@@ -1,5 +1,6 @@
 package app.com.pgy.Activitys;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import app.com.pgy.R;
 import app.com.pgy.Utils.MathUtils;
 import app.com.pgy.Utils.TimeUtils;
 import app.com.pgy.Utils.Utils;
+import app.com.pgy.Widgets.ExitDialog;
 import butterknife.BindView;
 import static app.com.pgy.Constants.StaticDatas.SYSTEMTYPE_ANDROID;
 
@@ -74,7 +76,11 @@ public class BannerListActivity extends BaseActivity {
             int type = item.getType();
             if (type == 1){
                 //跳转认购主界面
-                Utils.IntentUtils(mContext,RenGouMainActivity.class);
+                if (isLogin()){
+                    Utils.IntentUtils(mContext,RenGouMainActivity.class);
+                }else{
+                    showLoginDialog();
+                }
             }else if (type == 0){
                 //跳转网页
                 Intent intent = new Intent(mContext, WebDetailActivity.class);
@@ -84,6 +90,28 @@ public class BannerListActivity extends BaseActivity {
             }
         });
         requestData();
+    }
+    private ExitDialog exitDialog;
+
+    private void showLoginDialog() {
+        final ExitDialog.Builder builder = new ExitDialog.Builder(mContext);
+        builder.setTitle("当前暂未登录，是否去登录？");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("去登录",
+                (dialog, which) -> {
+                    dialog.dismiss();
+                    Utils.IntentUtils(mContext,LoginActivity.class);
+                });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        exitDialog = builder.create();
+        exitDialog.show();
+
     }
 
 

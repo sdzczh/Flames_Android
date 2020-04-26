@@ -59,15 +59,13 @@ public class RenGouMainActivity extends BaseActivity {
     TextView activityRenzhengMainPlayRule;
     @BindView(R.id.activity_renzheng_main_submit)
     TextView activityRenzhengMainSubmit;
-    @BindView(R.id.activity_renzheng_main_pay_coinName)
-    TextView activityRenzhengMainPayCoinName;
     @BindView(R.id.activity_renzheng_main_schedule_title)
     TextView activityRenzhengMainScheduleTitle;
     @BindView(R.id.activity_renzheng_main_defaultRadio)
     TextView activityRenzhengMainDefaultRadio;
     @BindView(R.id.activity_renzheng_main_udtdAddressTitle)
     TextView activityRenzhengMainUdtdAddressTitle;
-    private int defaultRadio = 0;
+    private double defaultRadio = 0;
     private String imgUrl;
     private int id;
 
@@ -95,22 +93,21 @@ public class RenGouMainActivity extends BaseActivity {
 
                 imgUrl = renGouInitBan.getImgUrl();
 
-                int percentage = renGouInitBan.getPercentage();
-                activityRenzhengMainScheduleProgress.setProgress(percentage);
+                double percentage = renGouInitBan.getPercentage();
+                activityRenzhengMainScheduleProgress.setProgress((int) percentage);
                 activityRenzhengMainSchedulePer.setText(percentage + "%");
 
+                double total = renGouInitBan.getTotal();
                 String buyingTotal = renGouInitBan.getBuyingTotal();
-                Integer buyTotal = MathUtils.string2Integer(buyingTotal);
-                BigDecimal current = new BigDecimal(buyingTotal).multiply(new BigDecimal(percentage));
                 String coinName = renGouInitBan.getCoinName();
                 int coinType = renGouInitBan.getCoinType();
 
-                String str1 = "<font color='#F0CB7A'>" + current.toPlainString().concat(" ").concat(coinName) + "</font>";
-                String str2 = "<font color='#E6E6E6'> / " + buyingTotal.concat(" ").concat(coinName) + "</font>";
+                String str1 = "<font color='#F0CB7A'>" + buyingTotal.concat(" ").concat(coinName) + "</font>";
+                String str2 = "<font color='#E6E6E6'> / " + MathUtils.formatdoubleNumber(total).concat(" ").concat(coinName) + "</font>";
                 activityRenzhengMainScheduleTitle.setText(Html.fromHtml(str1.concat(str2)));
 
                 defaultRadio = renGouInitBan.getDefaultRadio();
-                activityRenzhengMainDefaultRadio.setText("当前比例  1" + coinName + "=" + defaultRadio + "Flames");
+                activityRenzhengMainDefaultRadio.setText("当前比例  1USDT" + "=" + defaultRadio + coinName);
 
                 String address = renGouInitBan.getAddress();
                 activityRenzhengMainPayAddress.setText(address);//付款地址
@@ -121,7 +118,6 @@ public class RenGouMainActivity extends BaseActivity {
 
                 activityRenzhengMainUdtdAddressTitle.setText("我的" + coinName + "地址");
                 activityRenzhengMainUdtdAddress.setHint("请输入" + coinName + "地址");
-                activityRenzhengMainPayCoinName.setText(coinName);
 
                 String explain = renGouInitBan.getExplain();
                 activityRenzhengMainPlayRule.setText(explain);

@@ -181,6 +181,4 @@ dependencies {
     //封装的baseadapter  https://www.jianshu.com/p/b343fcff51b0
 //    implementation 'com.lzy.net:okgo:3.0.4'
 //okgo请求框架 封装的okhttp  https://github.com/jeasonlzy/okhttp-OkGo
-    implementation 'com.lxj:xpopup:1.8.17'
-
 }
